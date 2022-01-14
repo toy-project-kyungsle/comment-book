@@ -1,14 +1,14 @@
-import path from 'path';
-import webpack from 'webpack';
+const path = require('path');
+const webpack = require('webpack');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
-const config: webpack.Configuration = {
-  name: 'bookHelper',
+const config = {
+  name: 'sleact',
   mode: isDevelopment ? 'development' : 'production',
   devtool: !isDevelopment ? 'hidden-source-map' : 'eval',
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    extensions: ['.js', '.jsx', '.json'],
     alias: {
       '@hooks': path.resolve(__dirname, 'hooks'),
       '@components': path.resolve(__dirname, 'components'),
@@ -20,11 +20,10 @@ const config: webpack.Configuration = {
   entry: {
     app: './client',
   },
-  target: ['web', 'es5'],
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.jsx?$/,
         loader: 'babel-loader',
         options: {
           presets: [
@@ -36,7 +35,6 @@ const config: webpack.Configuration = {
               },
             ],
             '@babel/preset-react',
-            '@babel/preset-typescript',
           ],
           env: {
             development: {
@@ -63,4 +61,4 @@ const config: webpack.Configuration = {
   },
 };
 
-export default config;
+module.exports = config;
