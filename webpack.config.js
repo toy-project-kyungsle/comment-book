@@ -59,6 +59,12 @@ const config = {
     filename: '[name].js',
     publicPath: '/dist/',
   },
+  devServer: {
+    historyApiFallback: true, // react router
+    port: 3080,
+    devMiddleware: { publicPath: '/dist/' },
+    static: { directory: path.resolve(__dirname) },
+  },
 };
 
 module.exports = config;
