@@ -5,6 +5,7 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 const MainPage = loadable(() => import('@layouts/MainPage'));
 const MyBooks = loadable(() => import('@pages/MyBooks'));
 const Categories = loadable(() => import('@pages/Categories'));
+const HotBooks = loadable(() => import('@pages/HotBooks'));
 
 const App = () => (
   <Router>
@@ -12,6 +13,7 @@ const App = () => (
       <Route path="/" element={<MainPage />} />
       <Route path="/mybooks" element={<MyBooks />} />
       <Route path="/categories" element={<Categories />} />
+      <Route path="/hotbooks" element={<HotBooks />} />
     </Routes>
   </Router>
 );

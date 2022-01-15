@@ -1,14 +1,5 @@
-ADD emotion plugins & Mybooks & Categories
+ADD pages/hotbooks
 
-Current Version : v1.0
+Current Version : v1.1
 
-- add package "@emotion/react @emotion/styled": package to use emotion
-- add package "eslint-config-react-app": because eslint error message alert 
-  does not appear in react.
-- add package "eslint-plugin-import": eslint for "import".
-- add package "eslint-plugin-react": Used to catch unused methods, state, and props. for this, 
-  a key is added to ".eslint". It also displays an error when using an undefined tag like "Link".
-  "react/jsx-no-undef" is the error message.
-- edit mainpage & styles: edit main page with divs.
-- add Mybooks & Categories: Mybooks show the books I read, and Categories give information about
-  books classified with categories
+edit hotbooks. Implement a div that recommends popular books on Naver Books as slides

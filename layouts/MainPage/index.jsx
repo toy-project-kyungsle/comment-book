@@ -22,7 +22,9 @@ function MainPage() {
       <Categories>
         <Link to="/categories">categories</Link>
       </Categories>
-      <NewBooks>NewBooks</NewBooks>
+      <NewBooks>
+        <Link to="/hotbooks">hotbooks</Link>
+      </NewBooks>
       <Footer>Footer</Footer>
     </Container>
   );
