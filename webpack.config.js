@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -66,5 +67,9 @@ const config = {
     static: { directory: path.resolve(__dirname) },
   },
 };
+
+if (isDevelopment && config.plugins) {
+  config.plugins.push(new ReactRefreshWebpackPlugin());
+}
 
 module.exports = config;

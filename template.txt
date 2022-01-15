@@ -1,11 +1,13 @@
-Add dev-server
+FIX #1 - add refresh plugin
 
 Current Version : v1.0
 
-Add dev-server, port num 3080. This is because, when developing through a live 
-server using localhost, i cannot check the results of my code in real time.
+The term 'Hot Reloading' used in the general sense to refer to changing the content 
+on the page but without a full page reload. Previously Hot Reloading for React was done 
+with a technique called Hot Module Replacement, for technical reasons that approach is no 
+longer used and instead React provides an API for "Fast Refresh." Fast Refresh is 
+what we'll be using.
 
-- issue
-
-you have to check the error "$RefreshReg$ is not defined". 
-It occurs when i type "npm run dev".
+so i use the "@pmmmwh/react-refresh-webpack-plugin" to use react refresh in my 
+project. I can use this plugin using with "babel-loader". So i can use "Fast Refresh",
+by using this package.
