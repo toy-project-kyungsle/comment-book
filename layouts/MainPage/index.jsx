@@ -1,14 +1,34 @@
 import React from 'react';
 import { Container, Header, InfoDiv, HaveReadBooks, Categories, NewBooks, Footer } from '@layouts/MainPage/styles';
 import { Link } from 'react-router-dom';
+import useInput from '@hooks/useinput';
 
 function MainPage() {
+  const [search, setSearch, onChangeSearch] = useInput();
+
   return (
     <Container>
       <Header>
         <div className="Section">
           <div>title</div>
-          <div>search</div>
+          <div>
+            <div>
+              <form>
+                <input
+                  type="text"
+                  placeholder="Search Movie!"
+                  value={search}
+                  onChange={onChangeSearch}
+                  onMouseOut={() => {
+                    setSearch('');
+                  }}
+                ></input>
+                <Link to={`/search/${search}`}>
+                  <button>Search</button>
+                </Link>
+              </form>
+            </div>
+          </div>
         </div>
         <div className="Section">
           <div>selectbtn</div>

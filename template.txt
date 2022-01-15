@@ -1,5 +1,8 @@
-ADD pages/hotbooks
+ADD Search pages and Search bar
 
 Current Version : v1.1
 
-edit hotbooks. Implement a div that recommends popular books on Naver Books as slides
+- add pages/Search: Added Search Page to find the book you want. 
+  I havea a plan to change this page to modal later.
+- add searchbar to MainPage: I made the search bar and created 
+  an input that passes the search words in query string to search page
