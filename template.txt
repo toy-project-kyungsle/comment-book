@@ -1,8 +1,6 @@
-ADD Search pages and Search bar
+Use axios for search engine to get Naver Open Data
 
 Current Version : v1.1
 
-- add pages/Search: Added Search Page to find the book you want. 
-  I havea a plan to change this page to modal later.
-- add searchbar to MainPage: I made the search bar and created 
-  an input that passes the search words in query string to search page
+- Get node package "axios" to use data from "Naver Open API data".  
+- Add axios to pages/Search component with using clint_id and secret password.
