@@ -1,6 +1,9 @@
-Add back folder for starting server project
+Update node and node package
 
+~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-Create back folder for starting server project. It is new node project folder.
-And it has new pacake.json, I just download some packages for "server.js"
+New version is needed, because node version I have used was so old to
+use some node package like "eslint, express, eslint-plugin...".
+So I update node version from "v14.15.5" to "v16.13.2".
+And also update the eslint package version from "^8.6.0" to "^8.7.0".

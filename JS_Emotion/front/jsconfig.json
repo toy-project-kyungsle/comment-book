@@ -15,19 +15,19 @@
     "checkJs": true,
     "paths": {
       "@hooks/*": [
-        "hooks/*"
+        "src/hooks/*"
       ],
       "@components/*": [
-        "components/*"
+        "src/components/*"
       ],
       "@layouts/*": [
-        "layouts/*"
+        "src/layouts/*"
       ],
       "@pages/*": [
-        "pages/*"
+        "src/pages/*"
       ],
       "@utils/*": [
-        "utils/*"
+        "src/utils/*"
       ],
     }
   }
