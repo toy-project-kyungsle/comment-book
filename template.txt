@@ -1,25 +1,8 @@
-Add jsconfig.json to use Import Suggestion
+Refactor the folder structure
 
 Current Version : v1.1
 
-fix #3, Pop-up for import proposal.
-
-- Analysis
-Javascript doesn't have type so when I develop the code, VScode compiler doesn't
-check the files (components, modules...).
-
-- Solution
-Make jsconfig.json file and add "checkJS" option to check the files while i
-develop the project code. Plus, add many options for jsconfig.json file to
-use some convenient tools for me. 
-
-"module, lib, target" option for setting up the files. 
-optiton "module" can set the version of module exporting, so I can use 
-"import" module when I made ".js" file. optiton "target" set the version
-of bundle file (App). option "lib" is used for providing the list of 
-library for compile to compiler.
-
-Optuin "path" is also useful for developing code. It uses option "baseUrl" and
-I can set alias for specific folder. I can use the root about that file, using 
-alias not real root. So I have no need to use "../../../../" for writing the root.
-
+Refactor the folder structure to seperete project, folder "front" and "back".
+And add folder "public" containing html files or favicon, logo and so on.
+folder "src" includes all the Javascript files for the project. Bundle file also
+exists in this folder
