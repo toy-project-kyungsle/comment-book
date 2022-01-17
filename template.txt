@@ -1,26 +1,25 @@
-Add express on server.js for getting data from Naver
+Add jsconfig.json to use Import Suggestion
 
 Current Version : v1.1
 
-fix #2, about CORS error when using axios to get Naver API data.
+fix #3, Pop-up for import proposal.
 
 - Analysis
- CORS error is occured because the domains of the client and 
-server are different. So it was necessary for me to build a server.
+Javascript doesn't have type so when I develop the code, VScode compiler doesn't
+check the files (components, modules...).
 
 - Solution
- The "express module" can send requests to the server through 
-the "Server End Point". After making the client and server communicate through axios, 
-the response from the Naver server is sended to localhost:3085 dev server. 
+Make jsconfig.json file and add "checkJS" option to check the files while i
+develop the project code. Plus, add many options for jsconfig.json file to
+use some convenient tools for me. 
 
-Therefore, unlike the commit before when the domain was Naver, now the domain is localhost, 
-so the CORS error could be avoided.
+"module, lib, target" option for setting up the files. 
+optiton "module" can set the version of module exporting, so I can use 
+"import" module when I made ".js" file. optiton "target" set the version
+of bundle file (App). option "lib" is used for providing the list of 
+library for compile to compiler.
 
-In addition, by downloading the node package called cors, data sharing between the client 
-and server was enabled. This is where the term CORS (Cross Origin-Resource Sharing) comes from, 
-which means sharing each other's data. This term relates to browser security.
-
-As a result, the items of the response are delivered through the port of localhost:3085, 
-and the items are sended to client when It opens the address "localhost:3080". 
-This is possible by writing the "get" method of axios in the "Search" component.
+Optuin "path" is also useful for developing code. It uses option "baseUrl" and
+I can set alias for specific folder. I can use the root about that file, using 
+alias not real root. So I have no need to use "../../../../" for writing the root.
 
