@@ -1,8 +1,6 @@
-Refactor the folder structure
+Add back folder for starting server project
 
 Current Version : v1.1
 
-Refactor the folder structure to seperete project, folder "front" and "back".
-And add folder "public" containing html files or favicon, logo and so on.
-folder "src" includes all the Javascript files for the project. Bundle file also
-exists in this folder
+Create back folder for starting server project. It is new node project folder.
+And it has new pacake.json, I just download some packages for "server.js"

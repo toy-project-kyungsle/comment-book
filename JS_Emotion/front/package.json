@@ -1,7 +1,7 @@
 {
-  "name": "book_helper",
+  "name": "bookhelper_js_emotion_front",
   "version": "1.0.0",
-  "description": "Making Book Helper App!",
+  "description": "client project for BookHelper written JS and Emotion.",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env webpack serve --env development",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/keinn51/Book_Helper.git"
   },
   "keywords": [
-    "Book"
+    "front"
   ],
   "author": "keinn51",
   "license": "ISC",
