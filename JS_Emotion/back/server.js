@@ -9,12 +9,14 @@ const SECRET_KEY = "Vqc5tG7Frb";
 
 app.use(cors());
 
-app.use("/search/:search/:display", (req, res) => {
+app.use("/search/:search/:display/:start", (req, res) => {
+  console.log(req.params.start);
   axios
     .get("https://openapi.naver.com/v1/search/book.json", {
       params: {
         query: req.params.search,
         display: req.params.display,
+        start: req.params.start,
       },
       headers: {
         "X-Naver-Client-Id": ID_KEY,

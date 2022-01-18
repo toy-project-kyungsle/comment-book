@@ -1,10 +1,10 @@
-Refactor folder structure adding "router", "render"
+Implement basic Search for books
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-I just delete "pages", "lauouts" folders and use "router", "render".
-Because all the jsx files in "pages" is more proper to be called 
-"router" files than "pages". They are routes files in router.
-All the files in "render" folder will be rendered at actual client 
-page, so I think it is better to call them "render" files. 
+- You can send the string to “server.js” by sending data with the address.
+- “server.js” receives this string and requests the data I want to the Naver Open API.
+- Using the requested data, a component called “SearchRender” renders it. 
+  I've also added CSS related to this component and "Search.jsx". 
+  But it's not perfect and it's still ugly. More elements will be added.
