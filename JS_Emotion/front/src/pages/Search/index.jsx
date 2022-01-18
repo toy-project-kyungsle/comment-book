@@ -4,9 +4,9 @@ import { useParams } from 'react-router';
 import axios from 'axios';
 
 function Search() {
-  const { search } = useParams();
+  const { search, display } = useParams();
 
-  axios.get('http://localhost:3085/search').then((res) => console.log(res));
+  axios.get(`http://localhost:3085/search/${search}/${display}`).then((res) => console.log(res));
 
   console.log(typeof search);
 

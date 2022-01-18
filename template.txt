@@ -1,8 +1,8 @@
-Move "index.html" to root directory from "public"
+Fix #5 by using params in URL from Search.js to server.js
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-Can't run dev server because unknown path error.
-It just occurs "404 error", and cannot get any data.
-So I just move the HTML file to root directory from "public".
+I came up with a way to pass data as a parameter through an address in "Search.js".
+I was wondering if this could be used in "app.use" method used in the "server.js", 
+so I applied it. I ended up making improvements with this one.

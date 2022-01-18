@@ -15,7 +15,7 @@ const App = () => (
       <Route path="/mybooks" element={<MyBooks />} />
       <Route path="/categories" element={<Categories />} />
       <Route path="/hotbooks" element={<HotBooks />} />
-      <Route path="/search/:search/*" element={<Search />} />
+      <Route path="/search/:search/:display/*" element={<Search />} />
     </Routes>
   </Router>
 );

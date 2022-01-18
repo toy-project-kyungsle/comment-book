@@ -23,7 +23,7 @@ function MainPage() {
                     setSearch('');
                   }}
                 ></input>
-                <Link to={`/search/${search}`}>
+                <Link to={`/search/${search}/10`}>
                   <button>Search</button>
                 </Link>
               </form>
