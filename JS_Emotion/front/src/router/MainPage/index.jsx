@@ -32,7 +32,7 @@ function MainPage() {
         </div>
         <div className="Section">
           <div>selectbtn</div>
-          <div>login</div>
+          <Link to="/login">Login</Link>
         </div>
       </Header>
       <InfoDiv>InfoDiv</InfoDiv>

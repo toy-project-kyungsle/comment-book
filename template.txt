@@ -1,10 +1,7 @@
-Implement basic Search for books
+Add db.js for saving favorite books data
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-- You can send the string to “server.js” by sending data with the address.
-- “server.js” receives this string and requests the data I want to the Naver Open API.
-- Using the requested data, a component called “SearchRender” renders it. 
-  I've also added CSS related to this component and "Search.jsx". 
-  But it's not perfect and it's still ugly. More elements will be added.
+"db.js" has ispn about books. I will change the db
+by using db program like "mySQL".

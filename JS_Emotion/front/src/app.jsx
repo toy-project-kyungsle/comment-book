@@ -7,10 +7,14 @@ const MyBooks = loadable(() => import('@router/MyBooks'));
 const Categories = loadable(() => import('@router/Categories'));
 const HotBooks = loadable(() => import('@router/HotBooks'));
 const Search = loadable(() => import('@router/Search'));
+const Login = loadable(() => import('@router/Login'));
+const SingUp = loadable(() => import('@router/SingUp'));
 
 const App = () => (
   <Router>
     <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SingUp />} />
       <Route path="/" element={<MainPage />} />
       <Route path="/mybooks" element={<MyBooks />} />
       <Route path="/categories" element={<Categories />} />
