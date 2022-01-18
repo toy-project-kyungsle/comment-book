@@ -31,13 +31,13 @@ function Search() {
             <SearchRender
               key={book.isbn}
               title={book.title}
-              coverImg={book.image}
-              price={book.price}
-              discount={book.discount}
+              coverImg={book.coverLargeUrl}
+              priceStandard={book.priceStandard}
+              priceSales={book.priceSales}
               author={book.author}
               description={book.description}
               link={book.link}
-              pubdate={book.pubdate}
+              pubDate={book.pubDate}
             />
           ))}
         </Books>
@@ -47,7 +47,7 @@ function Search() {
           <List>
             {List_arr.map((lst) => {
               return (
-                <Link key={lst} to={`/search/${search}/${display}/${(lst - 1) * 10 + 1}`}>
+                <Link key={lst} to={`/search/${search}/${display}/${lst}`}>
                   {lst}
                 </Link>
               );

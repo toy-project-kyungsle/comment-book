@@ -4,29 +4,26 @@ const cors = require("cors");
 const port = 3085;
 const axios = require("axios");
 
-const ID_KEY = "9uU2qHN7dYtWTQBpV68p";
-const SECRET_KEY = "Vqc5tG7Frb";
-
 app.use(cors());
 
 app.use("/search/:search/:display/:start", (req, res) => {
-  console.log(req.params.start);
+  console.log(req.params);
   axios
-    .get("https://openapi.naver.com/v1/search/book.json", {
-      params: {
-        query: req.params.search,
-        display: req.params.display,
-        start: req.params.start,
+    .get(
+      "http://book.interpark.com/api/search.api?key=175AF4ED9C547CE56E4781C9077B755D3F3078DD67FB8C6689A191043673F01D",
+      {
+        params: {
+          query: req.params.search,
+          maxResults: req.params.display,
+          start: req.params.start,
+          output: "json",
+        },
       },
-      headers: {
-        "X-Naver-Client-Id": ID_KEY,
-        "X-Naver-Client-Secret": SECRET_KEY,
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
+    )
     .then(function (response) {
-      const items = response.data.items;
-      res.send({ items: items });
+      const items = response.data.item;
+      // console.log(items);
+      res.send({ items });
     })
     .catch(function (error) {
       console.log(error);

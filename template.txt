@@ -1,7 +1,8 @@
-Add db.js for saving favorite books data
+Refactor server.js using Interpark data
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-"db.js" has ispn about books. I will change the db
-by using db program like "mySQL".
+I will use Interpark Open API instead of Naver API.
+Interpark Open APi serves to me more useful outputs.
+That gives Book category data & BestSeller & New arrival, which Naver doesn't.

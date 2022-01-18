@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImgDiv, Letters, Movie, Show, Title } from '@render/SearchRender/styles';
 
-function SearchRender({ title, coverImg, price, discount, author, description, link, pubdate }) {
+function SearchRender({ title, coverImg, priceStandard, priceSales, author, description, link, pubDate }) {
   return (
     <Movie>
       <Show>
@@ -17,10 +17,10 @@ function SearchRender({ title, coverImg, price, discount, author, description, l
               </h3>
             </div>
           </Title>
-          <p>{price ? `price: ${price}` : null}</p>
-          <p>{discount ? `discount: ${discount} ` : null}</p>
+          <p>{priceStandard ? `price: ${priceStandard}` : null}</p>
+          <p>{priceSales ? `discount: ${priceSales} ` : null}</p>
           <p>{author ? `author: ${author} ` : null}</p>
-          <p>{pubdate ? `pubdate: ${pubdate} ` : null}</p>
+          <p>{pubDate ? `pubdate: ${pubDate} ` : null}</p>
           <p>{description ? (description.length > 180 ? `${description.slice(0, 180)}...` : description) : null}</p>
         </Letters>
       </Show>
