@@ -1,8 +1,10 @@
-Fix #5 by using params in URL from Search.js to server.js
+Refactor folder structure adding "router", "render"
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-I came up with a way to pass data as a parameter through an address in "Search.js".
-I was wondering if this could be used in "app.use" method used in the "server.js", 
-so I applied it. I ended up making improvements with this one.
+I just delete "pages", "lauouts" folders and use "router", "render".
+Because all the jsx files in "pages" is more proper to be called 
+"router" files than "pages". They are routes files in router.
+All the files in "render" folder will be rendered at actual client 
+page, so I think it is better to call them "render" files. 

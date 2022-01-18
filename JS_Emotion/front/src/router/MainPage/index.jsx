@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Header, InfoDiv, HaveReadBooks, Categories, NewBooks, Footer } from '@layouts/MainPage/styles';
+import { Container, Header, InfoDiv, HaveReadBooks, Categories, NewBooks, Footer } from '@router/MainPage/styles';
 import { Link } from 'react-router-dom';
 import useInput from '@hooks/useinput';
 

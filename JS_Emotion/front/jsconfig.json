@@ -20,11 +20,11 @@
       "@components/*": [
         "src/components/*"
       ],
-      "@layouts/*": [
-        "src/layouts/*"
+      "@render/*": [
+        "src/render/*"
       ],
-      "@pages/*": [
-        "src/pages/*"
+      "@router/*": [
+        "src/router/*"
       ],
       "@utils/*": [
         "src/utils/*"

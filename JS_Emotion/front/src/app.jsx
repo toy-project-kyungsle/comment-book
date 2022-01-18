@@ -2,11 +2,11 @@ import loadable from '@loadable/component';
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
-const MainPage = loadable(() => import('@layouts/MainPage'));
-const MyBooks = loadable(() => import('@pages/MyBooks'));
-const Categories = loadable(() => import('@pages/Categories'));
-const HotBooks = loadable(() => import('@pages/HotBooks'));
-const Search = loadable(() => import('@pages/Search'));
+const MainPage = loadable(() => import('@router/MainPage'));
+const MyBooks = loadable(() => import('@router/MyBooks'));
+const Categories = loadable(() => import('@router/Categories'));
+const HotBooks = loadable(() => import('@router/HotBooks'));
+const Search = loadable(() => import('@router/Search'));
 
 const App = () => (
   <Router>
