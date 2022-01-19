@@ -7,8 +7,7 @@ function MyBooks() {
   const [mybooks, setMybooks] = useInput([]);
   const [loading, setLoading] = useInput(false);
 
-  useEffect(() => {
-    setLoading(true);
+  async function getFavorites() {
     Favorites.forEach((book) => {
       axios.get(`http://localhost:3085/mybooks/${book}`).then((res) => {
         setMybooks((curr) => {
@@ -16,12 +15,14 @@ function MyBooks() {
           curr.push(res.data.items[0]);
           return curr;
         });
-        // console.log(res.data.items);
-        // console.log(mybooks[0]);
-        setLoading(false);
       });
     });
-  }, [mybooks, setLoading, setMybooks]);
+  }
+
+  useEffect(() => {
+    setLoading(true);
+    getFavorites().then(() => setLoading(false));
+  }, [setLoading, setMybooks]);
 
   // console.log(mybooks);
 

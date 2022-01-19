@@ -17,6 +17,6 @@ export const MyBooksCollection = styled.div``;
 
 export const Categories = styled.div``;
 
-export const NewBooks = styled.div``;
+export const HotBooksCollection = styled.div``;
 
 export const Footer = styled.div``;

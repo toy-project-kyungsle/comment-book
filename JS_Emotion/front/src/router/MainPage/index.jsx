@@ -1,8 +1,17 @@
 import React from 'react';
-import { Container, Header, InfoDiv, Categories, NewBooks, Footer, MyBooksCollection } from '@router/MainPage/styles';
+import {
+  Container,
+  Header,
+  InfoDiv,
+  Categories,
+  Footer,
+  MyBooksCollection,
+  HotBooksCollection,
+} from '@router/MainPage/styles';
 import { Link } from 'react-router-dom';
 import useInput from '@hooks/useinput';
-import MyBooks from '@router/MyBooks';
+import MyBooks from '@components/MyBooks';
+import HotBooks from '@components/HotBooks';
 
 function MainPage() {
   const [search, setSearch, onChangeSearch] = useInput();
@@ -38,14 +47,14 @@ function MainPage() {
       </Header>
       <InfoDiv>InfoDiv</InfoDiv>
       <MyBooksCollection>
-        <MyBooks></MyBooks>
+        <MyBooks />
       </MyBooksCollection>
       <Categories>
         <Link to="/categories">categories</Link>
       </Categories>
-      <NewBooks>
-        <Link to="/hotbooks">hotbooks</Link>
-      </NewBooks>
+      <HotBooksCollection>
+        <HotBooks />
+      </HotBooksCollection>
       <Footer>Footer</Footer>
     </Container>
   );

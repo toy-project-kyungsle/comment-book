@@ -1,8 +1,8 @@
-Add "mybooks" component at Mainpage
+Add BestSeller part to MainPage
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
 Add new app at "server.js" by adding new URL for End Point.
-Using "/mybooks/:search" at app, so I can search book I wanna 
-get data.
+Using "/hotBooks" at app, All the Bestselling books are rendered 
+at MainPage.
