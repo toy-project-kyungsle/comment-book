@@ -1,6 +1,7 @@
 import useInput from '@hooks/useinput';
 import axios from 'axios';
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function HotBooks() {
   const [hotbooks, setHotbooks] = useInput([]);
@@ -28,7 +29,9 @@ function HotBooks() {
       ) : (
         <div>
           {hotbooks.map((book) => (
-            <img src={book.coverSmallUrl} alt={book.title} />
+            <Link to={`/detailpage/${book.isbn}`}>
+              <img src={book.coverSmallUrl} alt={book.title} />
+            </Link>
           ))}
         </div>
       )}

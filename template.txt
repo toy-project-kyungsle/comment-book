@@ -1,9 +1,7 @@
-Refactor the "db.js" and MyBooks component
+Add DetailPage to MyBooks and HotBooks components
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-Just edit the "db.js" make serve to me json data rather than just 
-gives me "ispn" number. Because the ispn data makes me call axios 
-manu times at one component. So until I can use real db, use the db.js 
-json data.
+When you click the Image of Mainpage, You can go to detail page 
+about the books. I will refactor the page to Modal.

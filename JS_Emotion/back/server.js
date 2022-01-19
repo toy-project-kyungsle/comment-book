@@ -15,8 +15,6 @@ app.use("/search/:search/:display/:start", (req, res) => {
         query: req.params.search,
         maxResults: req.params.display,
         start: req.params.start,
-        // queryType: "isbn",
-        // query: "9788991799608",
         output: "json",
       },
     })
@@ -30,7 +28,7 @@ app.use("/search/:search/:display/:start", (req, res) => {
     });
 });
 
-app.use("/mybooks/:search", (req, res) => {
+app.use("/detailpage/:search", (req, res) => {
   // console.log(req.params);
   axios
     .get("http://book.interpark.com/api/search.api", {
