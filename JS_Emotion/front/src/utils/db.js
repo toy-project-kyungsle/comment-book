@@ -1,12 +1,6 @@
-export default function Favorites() {
-  return [
-    '8991799604 9788991799608',
-    '8998529289 9788998529284',
-    '8937437562 9788937437564',
-    '8969520937 9788969520937',
-    '8937834790 9788937834790',
-  ];
-}
+const Favorites = ['9788991799608'];
+
+export default Favorites;
 
 /*
 This comment is for develop! (ispn : keyword)

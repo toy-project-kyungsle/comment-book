@@ -1,8 +1,8 @@
-Refactor server.js using Interpark data
+Add "mybooks" component at Mainpage
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-I will use Interpark Open API instead of Naver API.
-Interpark Open APi serves to me more useful outputs.
-That gives Book category data & BestSeller & New arrival, which Naver doesn't.
+Add new app at "server.js" by adding new URL for End Point.
+Using "/mybooks/:search" at app, so I can search book I wanna 
+get data.

@@ -13,7 +13,7 @@ export const Header = styled.div`
 
 export const InfoDiv = styled.div``;
 
-export const HaveReadBooks = styled.div``;
+export const MyBooksCollection = styled.div``;
 
 export const Categories = styled.div``;
 
