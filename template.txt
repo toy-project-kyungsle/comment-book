@@ -1,7 +1,21 @@
-Add "Category_Name.js" to use detail category name
+Add regexpression for checking detail category
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-Query request category name doesn't include detail category name.
-So use the Category database to use that.
+- what I did
+Original category name looks like "book>social".
+So I use regexpression to catch "social" in that string.
+/(.+?)>(.+)/ is the expression. I can use the expression by 
+str.match(regexp).
+
+- What It is?
+Officially /(.+?)>(.+)/ Explain in the order I think.
+
+1. // : contains any expression you want.
+2. /.>./ : Since the corresponding character is in the form of "character > character", 
+  expression . stands for any character.
+3. /.+>.+/ : + means more than one character.
+4. /(.+)>(.+)/ : Grouping is done using parentheses. This returns the first and second groups as elements of the array.
+
+"book>social", "book>social", "book", "social"] uses the returned format.
