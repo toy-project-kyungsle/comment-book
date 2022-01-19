@@ -1,8 +1,9 @@
-Add BestSeller part to MainPage
+Refactor the "db.js" and MyBooks component
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-Add new app at "server.js" by adding new URL for End Point.
-Using "/hotBooks" at app, All the Bestselling books are rendered 
-at MainPage.
+Just edit the "db.js" make serve to me json data rather than just 
+gives me "ispn" number. Because the ispn data makes me call axios 
+manu times at one component. So until I can use real db, use the db.js 
+json data.

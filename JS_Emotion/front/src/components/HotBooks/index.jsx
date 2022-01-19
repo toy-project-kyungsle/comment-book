@@ -12,7 +12,7 @@ function HotBooks() {
       .get(`http://localhost:3085/hotbooks`)
       .then((res) => {
         setHotbooks(res.data.items);
-        console.log(res.data.items);
+        // console.log(res.data.items);
         // console.log(hotbooks[0]);
         setLoading(false);
       })

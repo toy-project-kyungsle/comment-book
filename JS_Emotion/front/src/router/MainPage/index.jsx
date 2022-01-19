@@ -55,7 +55,7 @@ function MainPage() {
       <HotBooksCollection>
         <HotBooks />
       </HotBooksCollection>
-      <Footer>Footer</Footer>
+      <Footer>Copyright to Kyungsle</Footer>
     </Container>
   );
 }

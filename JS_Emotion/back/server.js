@@ -11,7 +11,7 @@ app.use("/search/:search/:display/:start", (req, res) => {
   axios
     .get("http://book.interpark.com/api/search.api", {
       params: {
-        key: "175AF4ED9C547CE56E4781C9077B755D3F3078DD67FB8C6689A191043673F01D",
+        key: "B882F0871FB3BDB05CB040F3925EB04EA0FC63EA18F82FC788AE198D4785E337",
         query: req.params.search,
         maxResults: req.params.display,
         start: req.params.start,
@@ -35,7 +35,7 @@ app.use("/mybooks/:search", (req, res) => {
   axios
     .get("http://book.interpark.com/api/search.api", {
       params: {
-        key: "175AF4ED9C547CE56E4781C9077B755D3F3078DD67FB8C6689A191043673F01D",
+        key: "B882F0871FB3BDB05CB040F3925EB04EA0FC63EA18F82FC788AE198D4785E337",
         queryType: "isbn",
         query: req.params.search,
         output: "json",
@@ -56,7 +56,7 @@ app.use("/hotbooks", (req, res) => {
   axios
     .get("http://book.interpark.com/api/bestSeller.api", {
       params: {
-        key: "175AF4ED9C547CE56E4781C9077B755D3F3078DD67FB8C6689A191043673F01D",
+        key: "B882F0871FB3BDB05CB040F3925EB04EA0FC63EA18F82FC788AE198D4785E337",
         categoryId: 100,
         output: "json",
       },
