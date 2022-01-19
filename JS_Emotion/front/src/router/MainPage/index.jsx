@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import useInput from '@hooks/useinput';
 import MyBooks from '@components/MyBooks';
 import HotBooks from '@components/HotBooks';
+import CategoriesRecommend from '@components/CategoriesRecommend';
 
 function MainPage() {
   const [search, setSearch, onChangeSearch] = useInput();
@@ -50,7 +51,7 @@ function MainPage() {
         <MyBooks />
       </MyBooksCollection>
       <Categories>
-        <Link to="/categories">categories</Link>
+        <CategoriesRecommend></CategoriesRecommend>
       </Categories>
       <HotBooksCollection>
         <HotBooks />

@@ -8,7 +8,7 @@ function MyBooks() {
   return (
     <div>
       {Favorites?.map((book) => {
-        console.log(book);
+        // console.log(book);
         return (
           <Link to={`/detailpage/${book.isbn}`}>
             <img src={book.coverSmallUrl} alt={book.title} />

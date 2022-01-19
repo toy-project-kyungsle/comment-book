@@ -1,7 +1,7 @@
-Add DetailPage to MyBooks and HotBooks components
+Add "Category_Name.js" to use detail category name
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-When you click the Image of Mainpage, You can go to detail page 
-about the books. I will refactor the page to Modal.
+Query request category name doesn't include detail category name.
+So use the Category database to use that.
