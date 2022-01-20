@@ -1,19 +1,6 @@
-Use atom for using global state in "Favorite.js"
+Divide the Header from MainPage to component "Header"
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-We use atom to share the current state value of "Favorites" between components.
-Atom is a tool that allows the state value to be used globally among the 
-components that use it. Among the components, a component called 
-“CategoriesRecommend” and a component called “MyBooks” Use content 
-from "Favorite.js".
-
-However, if one component changes the value of Favorites, the other 
-component can't figure it out. Let's assume that MyBooks modifies 
-the value of "favorite.js". At this time, Favorite.js is just a js file, 
-and this modification value is valid only in MyBooks scope. 
- "CategoriesRecommend" won't know the modified content at this reason.
-
-So I felt the need to use atoms to manage state globally,
-I use atom to solve this problem.
+So I can use "Header" when I'm in "Detail" page.
