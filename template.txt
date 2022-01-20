@@ -1,6 +1,7 @@
-Divide the Header from MainPage to component "Header"
+Start version 1.2
 
 ~delete this when commit! just enter dd!~
-Current Version : v1.1
+Current Version : v1.2
 
-So I can use "Header" when I'm in "Detail" page.
+In this version, I will Implement slides and div styles.
+And add CSS all the components.
