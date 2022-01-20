@@ -1,21 +1,19 @@
-Add regexpression for checking detail category
+Use atom for using global state in "Favorite.js"
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.1
 
-- what I did
-Original category name looks like "book>social".
-So I use regexpression to catch "social" in that string.
-/(.+?)>(.+)/ is the expression. I can use the expression by 
-str.match(regexp).
+We use atom to share the current state value of "Favorites" between components.
+Atom is a tool that allows the state value to be used globally among the 
+components that use it. Among the components, a component called 
+“CategoriesRecommend” and a component called “MyBooks” Use content 
+from "Favorite.js".
 
-- What It is?
-Officially /(.+?)>(.+)/ Explain in the order I think.
+However, if one component changes the value of Favorites, the other 
+component can't figure it out. Let's assume that MyBooks modifies 
+the value of "favorite.js". At this time, Favorite.js is just a js file, 
+and this modification value is valid only in MyBooks scope. 
+ "CategoriesRecommend" won't know the modified content at this reason.
 
-1. // : contains any expression you want.
-2. /.>./ : Since the corresponding character is in the form of "character > character", 
-  expression . stands for any character.
-3. /.+>.+/ : + means more than one character.
-4. /(.+)>(.+)/ : Grouping is done using parentheses. This returns the first and second groups as elements of the array.
-
-"book>social", "book>social", "book", "social"] uses the returned format.
+So I felt the need to use atoms to manage state globally,
+I use atom to solve this problem.

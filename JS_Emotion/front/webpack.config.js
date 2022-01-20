@@ -16,6 +16,7 @@ const config = {
       '@render': path.resolve(__dirname, 'src/render'),
       '@router': path.resolve(__dirname, 'src/router'),
       '@utils': path.resolve(__dirname, 'src/utils'),
+      '@atom': path.resolve(__dirname, 'src/atom'),
     },
   },
   entry: {

@@ -21,7 +21,7 @@ function MainPage() {
     <Container>
       <Header>
         <div className="Section">
-          <div>title</div>
+          <div>Favorites</div>
           <div>
             <div>
               <form>
@@ -42,7 +42,11 @@ function MainPage() {
           </div>
         </div>
         <div className="Section">
-          <div>selectbtn</div>
+          <div>
+            <button>book</button>
+            <button>movie</button>
+            <button>drama</button>
+          </div>
           <Link to="/login">Login</Link>
         </div>
       </Header>
