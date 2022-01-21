@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Description, ImgDiv, LeftSection, Letters, RightSection, ShortView, Comment } from './styles';
 
-function DetailRender({ title, coverImg, priceStandard, priceSales, author, description, link, pubDate }) {
+function DetailRender({ title, coverImg, priceStandard, priceSales, author, description, link, pubDate, genre }) {
   return (
     <Container>
       <LeftSection>
@@ -13,14 +13,14 @@ function DetailRender({ title, coverImg, priceStandard, priceSales, author, desc
             <h3>
               <a href={link}>{title}</a>
             </h3>
-            <p>{priceStandard ? `price: ${priceStandard}` : null}</p>
-            <p>{priceSales ? `discount: ${priceSales} ` : null}</p>
             <p>{author ? `author: ${author} ` : null}</p>
+            <p>{genre ? `genre: ${genre} ` : null}</p>
+            <p>{priceStandard && priceSales ? `price: ${priceStandard} ➡ ${priceSales}` : null}</p>
             <p>{pubDate ? `pubdate: ${pubDate} ` : null}</p>
           </Letters>
         </ShortView>
         <Description>
-          <p>{description ? (description.length > 180 ? `${description.slice(0, 180)}...` : description) : null}</p>
+          <p>{description ? (description.length > 800 ? `${description.slice(0, 800)}...` : description) : null}</p>
         </Description>
       </LeftSection>
       <RightSection>

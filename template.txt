@@ -1,7 +1,9 @@
-Add Comment Box for Detail Books
+Add GetCategoryName function to utils
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.2
 
-I will Implement the rating program for detailed books.
-Now I just make some divs.
+GetCategoryName is the function orinally exists in CategoriesRecommend 
+component. I get this out and remake the function in utils folder.
+The function's parameter will be the one book information. (It is Object)
+And It returns the string of detailed book category name, not upper classifier.

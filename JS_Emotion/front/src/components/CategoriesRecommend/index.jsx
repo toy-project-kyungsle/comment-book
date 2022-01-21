@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import Favorites from '@atom/Favorite';
-import Category_List from '@atom/Category_Name';
 import { useRecoilState } from 'recoil';
 import useInput from '@hooks/useinput';
+import getCategoryName from '@utils/getCategoryName';
 
 function CategoriesRecommend() {
   // console.log(Favorites);
@@ -14,7 +14,7 @@ function CategoriesRecommend() {
     let CategoryArr = [];
 
     favoriteBooks.forEach((book) => {
-      let objKey = Category_List[book.categoryId].match(/(.+)>(.+)/)[2];
+      let objKey = getCategoryName(book);
       CategoryObj[objKey] ? (CategoryObj[objKey] += 1) : (CategoryObj[objKey] = 1);
     });
 

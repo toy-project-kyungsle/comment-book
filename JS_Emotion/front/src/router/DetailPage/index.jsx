@@ -1,5 +1,6 @@
 import useInput from '@hooks/useinput';
 import DetailRender from '@render/DetailRender';
+import getCategoryName from '@utils/getCategoryName';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';
@@ -20,16 +21,17 @@ function DetailPage() {
 
   return (
     <>
-      {loading ? (
+      {loading || !datailBook ? (
         <div>Loading</div>
       ) : (
         <DetailRender
           key={datailBook.isbn}
           title={datailBook.title}
+          author={datailBook.author}
+          genre={getCategoryName(datailBook)}
           coverImg={datailBook.coverLargeUrl}
           priceStandard={datailBook.priceStandard}
           priceSales={datailBook.priceSales}
-          author={datailBook.author}
           description={datailBook.description}
           link={datailBook.link}
           pubDate={datailBook.pubDate}

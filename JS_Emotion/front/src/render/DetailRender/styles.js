@@ -3,13 +3,15 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   position: absolute;
   top: 15%;
-  left: 10%;
+  left: 15%;
   display: flex;
   flex-direction: row;
 
+  height: 70%;
   width: 70%;
 
   border: 1px solid black;
+  border-radius: 20px;
 `;
 
 export const LeftSection = styled.div`
@@ -26,6 +28,8 @@ export const ShortView = styled.div`
   display: flex;
   flex-direction: row;
   padding: 10px 10px;
+
+  height: 65%;
 `;
 
 export const ImgDiv = styled.div`
@@ -38,9 +42,8 @@ export const Letters = styled.div`
   width: 70%;
   margin: 20px 0 0 30px;
   & h3,
-  p,
-  div {
-    margin: 10px;
+  p {
+    margin: 20px 0 20px 0;
   }
 `;
 
