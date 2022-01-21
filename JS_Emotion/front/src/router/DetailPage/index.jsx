@@ -23,29 +23,17 @@ function DetailPage() {
       {loading ? (
         <div>Loading</div>
       ) : (
-        <div>
-          <div>
-            <DetailRender
-              key={datailBook.isbn}
-              title={datailBook.title}
-              coverImg={datailBook.coverLargeUrl}
-              priceStandard={datailBook.priceStandard}
-              priceSales={datailBook.priceSales}
-              author={datailBook.author}
-              description={datailBook.description}
-              link={datailBook.link}
-              pubDate={datailBook.pubDate}
-            />
-          </div>
-          <div>
-            <ul>
-              <div>
-                <span>comment</span>
-                <span>star</span>
-              </div>
-            </ul>
-          </div>
-        </div>
+        <DetailRender
+          key={datailBook.isbn}
+          title={datailBook.title}
+          coverImg={datailBook.coverLargeUrl}
+          priceStandard={datailBook.priceStandard}
+          priceSales={datailBook.priceSales}
+          author={datailBook.author}
+          description={datailBook.description}
+          link={datailBook.link}
+          pubDate={datailBook.pubDate}
+        />
       )}
       ;
     </>

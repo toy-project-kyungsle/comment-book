@@ -1,7 +1,7 @@
-Start version 1.2
+Add Comment Box for Detail Books
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.2
 
-In this version, I will Implement slides and div styles.
-And add CSS all the components.
+I will Implement the rating program for detailed books.
+Now I just make some divs.
