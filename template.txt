@@ -1,9 +1,53 @@
-Add GetCategoryName function to utils
+Use transition to make slide for myBooks
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.2
 
-GetCategoryName is the function orinally exists in CategoriesRecommend 
-component. I get this out and remake the function in utils folder.
-The function's parameter will be the one book information. (It is Object)
-And It returns the string of detailed book category name, not upper classifier.
+- What I Use
+By implementing a slide, the contents of MyBooks Component of MainPage 
+can be viewed through the slide.
+
+- The reason for using
+Because I can list the books I have read, and you can easily see 
+which books I have read with the click of a button. 
+It can also give users the impression of a dynamic page motion.
+
+- Detail explaining
+Two components are used to implement the slide. 
+A component called MybooksSlider allows the slider to be displayed 
+and moves it when the "button" is pressed.
+
+MyBooks is a component that renders while reading the book data 
+stored in Favorites.js.
+
+There are two main divs in "MybooksSlider", "SlidesViewer" and "Slides". 
+"Slides" are a series of books that I want to show, and "SlidesViewer" 
+can be thought of as a “frame” to restrict number of books. 
+
+Only the books in the "SlidesViewer" are rendered and the rest of the books 
+are invisible because "overflow:hidden" is handled. 
+If you want to render only two books, you can set the width 
+of the "SlidesViewer" by two width of books.
+
+- Main Concept
+
+(1) transform in CSS
+
+The CSS transform property allows you to apply rotation, scaling, skew, 
+and translation effects to elements. transform changes the coordinate 
+space of the CSS visual formatting model.
+
+translate can change the position of the element, 
+and scale can change the size of the element. 
+In this commit, I implemented the transition of the Slide sideways with 
+translate, which increases the scale slightly when I put my hand on the Button.
+
+opacity in CSS
+
+You can set the opacity of an element with opacity. 
+Default is 1, no inheritance. I used it to make the color lighter.
+
+transition in CSS
+
+With this option, the transform proceeds with a delay of about 0.5 seconds. 
+I used it to show the slide dynamically.

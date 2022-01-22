@@ -1,24 +1,14 @@
-import Favorites from '@atom/Favorite';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { BookContainer, Img } from './styles';
 
-function MyBooks() {
-  const [mybooks] = useRecoilState(Favorites);
-  // console.log(`mybooks`);
-  // console.log(mybooks);
-
+function MyBooks({ coverImg, title, isbn }) {
   return (
-    <div>
-      {mybooks?.map((book) => {
-        // console.log(book);
-        return (
-          <Link to={`/detailpage/${book.isbn}`}>
-            <img src={book.coverSmallUrl} alt={book.title} />
-          </Link>
-        );
-      })}
-    </div>
+    <BookContainer>
+      <Link to={`/detailpage/${isbn}`}>
+        <Img src={coverImg} alt={title} />
+      </Link>
+    </BookContainer>
   );
 }
 
