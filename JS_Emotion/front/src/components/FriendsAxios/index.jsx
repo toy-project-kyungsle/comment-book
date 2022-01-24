@@ -3,6 +3,7 @@ import FriendsData from '@atom/FriendsData';
 import { useRecoilState } from 'recoil';
 import axios from 'axios';
 import { BookImg, BookList } from './styles';
+import { Link } from 'react-router-dom';
 
 function FriendsBookAxios() {
   const [friend] = useRecoilState(FriendsData);
@@ -41,7 +42,9 @@ function FriendsBookAxios() {
         <BookList>
           {books.map((book) => (
             <BookImg>
-              <img src={book.coverLargeUrl} alt={book.title}></img>
+              <Link to={`/detailpage/${book.isbn}`}>
+                <img src={book.coverLargeUrl} alt={book.title}></img>
+              </Link>
             </BookImg>
           ))}
         </BookList>

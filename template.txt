@@ -1,7 +1,7 @@
-Rename FriendsBook to Friends
+Add Link for Friends List images to use detail page
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.2
 
 - The reason
-"FriendsBook" is so long.
+You can go to detail page by clicking the image in list.
