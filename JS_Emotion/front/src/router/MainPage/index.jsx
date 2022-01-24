@@ -12,7 +12,9 @@ function MainPage() {
       <MybooksSlider />
       <Friends />
       <HotNewBooksSlider />
-      <Footer>Copyright to Kyungsle</Footer>
+      <Footer>
+        <div className="Copyright">Copyright to Kyungsle</div>
+      </Footer>
     </Container>
   );
 }

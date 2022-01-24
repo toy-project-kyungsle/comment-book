@@ -1,7 +1,13 @@
-Use Slider for HotNewBooks 
+Update MyBooks using emotion props
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.2
 
-- The reason
-It is similar to "MyBooks" Component.
+- What I make
+In "MyBooks", I passed props to emotion using the length of my book list 
+existing in "Favorite.js", and updated CSS.
+
+- The reason to do this
+"Favorite.js" is temporary, but since it is a DB that lists my favorite books, 
+I had to respond flexibly to the increasing length of this object. 
+The best way is to send props to CSS to prepare for diverse situations.

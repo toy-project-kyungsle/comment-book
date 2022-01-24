@@ -12,20 +12,20 @@ function MybooksSlider() {
     if (trans >= 0) {
       return;
     }
-    setTrans((current) => current + 470);
+    setTrans((current) => current + 590);
   };
 
   const onClickR = () => {
-    if (trans <= -1380) {
+    if (trans <= -(((mybooks.length - 4) / 2) * 590)) {
       return;
     }
-    setTrans((current) => current - 470);
+    setTrans((current) => current - 590);
   };
 
   return (
     <Container>
       <SlidesViewer>
-        <Slides style={{ transform: `translateX(${trans}px)` }}>
+        <Slides trans={trans} bookCount={mybooks.length}>
           {mybooks.map((book) => {
             return (
               <MyBooks key={book.id} title={book.title} coverImg={book.coverLargeUrl} isbn={book.isbn} type="MyBooks" />

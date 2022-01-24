@@ -2,26 +2,29 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   position: relative;
+  margin-top: 8%;
 `;
 
-export const SlidesViewer = styled.div`
-  position: relative;
-  margin: 0 auto;
-  width: 940px;
-  height: 345px;
-  overflow: hidden;
-`;
+export const SlidesViewer = styled.div({
+  position: `relative`,
+  margin: `0 auto`,
+  width: `1180px`,
+  height: `345px`,
+  overflow: `hidden`,
+});
 
-export const Slides = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2350px;
-  height: 345px;
-  display: flex;
+export const Slides = styled.div(
+  {
+    position: `absolute`,
+    left: `0`,
+    top: `0`,
+    height: `345px`,
+    display: `flex`,
 
-  transition: 0.5s;
-`;
+    transition: `0.5s`,
+  },
+  (props) => ({ width: 295 * props.bookCount, transform: `translateX(${props.trans}px)` }),
+);
 
 export const Controller = styled.div`
   .Left,

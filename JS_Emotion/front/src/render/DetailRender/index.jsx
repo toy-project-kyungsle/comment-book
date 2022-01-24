@@ -1,3 +1,4 @@
+import CommentBox from '@components/CommentBox';
 import React from 'react';
 import { Container, Description, ImgDiv, LeftSection, Letters, RightSection, ShortView, Comment } from './styles';
 
@@ -25,60 +26,12 @@ function DetailRender({ title, coverImg, priceStandard, priceSales, author, desc
       </LeftSection>
       <RightSection>
         <div>
-          <Comment>
-            <div>
-              <p>Kyunglse</p>
-              <p>Nice Book!</p>
-            </div>
-            <div>
-              <p>Star</p>
-            </div>
-          </Comment>
-          <Comment>
-            <div>
-              <p>Kyunglse</p>
-              <p>Nice Book!</p>
-            </div>
-            <div>
-              <p>Star</p>
-            </div>
-          </Comment>
-          <Comment>
-            <div>
-              <p>Kyunglse</p>
-              <p>Nice Book!</p>
-            </div>
-            <div>
-              <p>Star</p>
-            </div>
-          </Comment>
-          <Comment>
-            <div>
-              <p>Kyunglse</p>
-              <p>Nice Book!</p>
-            </div>
-            <div>
-              <p>Star</p>
-            </div>
-          </Comment>
-          <Comment>
-            <div>
-              <p>Kyunglse</p>
-              <p>Nice Book!</p>
-            </div>
-            <div>
-              <p>Star</p>
-            </div>
-          </Comment>
-          <Comment>
-            <div>
-              <p>Kyunglse</p>
-              <p>Nice Book!</p>
-            </div>
-            <div>
-              <p>Star</p>
-            </div>
-          </Comment>
+          <CommentBox />
+          <CommentBox />
+          <CommentBox />
+          <CommentBox />
+          <CommentBox />
+          <CommentBox />
         </div>
       </RightSection>
     </Container>

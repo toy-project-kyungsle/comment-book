@@ -2,12 +2,12 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   position: absolute;
-  top: 15%;
+  top: 25%;
   left: 15%;
   display: flex;
   flex-direction: row;
 
-  height: 70%;
+  height: 50%;
   width: 70%;
 
   border: 1px solid black;
@@ -59,12 +59,4 @@ export const RightSection = styled.div`
   z-index: 2;
 
   width: 30%;
-`;
-
-export const Comment = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  height: ${Number(100 / 6)}%;
 `;

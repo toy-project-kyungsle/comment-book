@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   width: 70%;
   height: 70%;
-  margin: 0 auto;
+  margin: 8% auto 0 auto;
 `;
 
 export const OnePickWrapper = styled.div`

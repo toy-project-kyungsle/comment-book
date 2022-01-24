@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const MyBookContainer = styled.div`
   width: 235px;
+  margin: 0 30px;
   border: none;
   border-radius: 5px;
   overflow: hidden;

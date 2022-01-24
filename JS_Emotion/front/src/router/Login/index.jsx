@@ -1,7 +1,8 @@
 import React from 'react';
+import { Container } from './styles';
 
 function Login() {
-  return <div>Login</div>;
+  return <Container fontsize={`200px`}>Login</Container>;
 }
 
 export default Login;
