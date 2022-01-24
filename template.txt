@@ -1,19 +1,10 @@
-Use CSS grid to make MyInfo Box in MainPage
+Add MyInfo component in Mainpage
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.2
 
-- What I Use
-I used grid and applied it to the div corresponding to "InfoLetters" in "MainPage".
-
 - The reason for using
-If flexbox chooses alignment method in one axis direction (x or y), 
-grid can choose div alignment in both axes. 
-Therefore, it was adopted because it allows free placement of divs on the plane.
+To show my favorite book categories and my book information.
 
 - Detail explaining
-If there is a parent relationship in "div1 > div2"  way, if display=”grid” is 
-applied to div1, the arrangement of div2 is changed to the grid setting. 
-You can set grid-template-columns and grid-template-rows in the CSS of div1, 
-which sets the size of each div in the row direction and the size of each div 
-in the column direction.
+I use "flaticon" images in CategoryBox, with CategoryName.

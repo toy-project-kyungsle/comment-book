@@ -1,6 +1,6 @@
 import useInput from '@hooks/useinput';
 import DetailRender from '@render/DetailRender';
-import getCategoryName from '@utils/getCategoryName';
+import getCategoryName from '@utils/GetDetailedName';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router';

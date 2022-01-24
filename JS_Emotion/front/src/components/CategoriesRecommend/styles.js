@@ -7,11 +7,27 @@ export const Container = styled.div`
     height: 20%;
     font-size: 30px;
   }
-  .categoryBox {
+  .categoryContainer {
+    display: flex;
+    justify-content: space-around;
+    height: 80%;
+    width: 100%;
+    padding-top: 20px;
     border: 1px solid black;
     border-radius: 10px;
   }
-  .category {
-    height: ${80 / 5}%;
+  .CategoryBox {
+    position: relative;
+    height: 100%;
+    top: 15%;
+  }
+  .categoryImg {
+    margin-bottom: 20px;
+    & img {
+      height: 100px;
+    }
+  }
+  .categoryName {
+    text-align: center;
   }
 `;

@@ -2,37 +2,46 @@ import React, { useEffect } from 'react';
 import Favorites from '@atom/Favorite';
 import { useRecoilState } from 'recoil';
 import useInput from '@hooks/useinput';
-import getCategoryName from '@utils/getCategoryName';
-import { Container, InfoCategory } from './styles';
+import GetName from '@utils/GetDetailedName';
+import { Container } from './styles';
+import CategoryImg from '@atom/CategoryImg';
 
 function CategoriesRecommend() {
   // console.log(Favorites);
   const [favoriteBooks] = useRecoilState(Favorites);
-  const [sortedCategory, setSortedCategory] = useInput([]);
+  const [sortedCategoryID, setSortedCategoryID] = useInput([]);
 
   useEffect(() => {
-    let CategoryObj = {};
-    let CategoryArr = [];
+    let CategoryIDObj = {};
+    let CategoryIDArr = [];
 
     favoriteBooks.forEach((book) => {
-      let objKey = getCategoryName(book);
-      CategoryObj[objKey] ? (CategoryObj[objKey] += 1) : (CategoryObj[objKey] = 1);
+      CategoryIDObj[book.categoryId] ? (CategoryIDObj[book.categoryId] += 1) : (CategoryIDObj[book.categoryId] = 1);
     });
 
-    CategoryArr = Object.entries(CategoryObj);
+    CategoryIDArr = Object.entries(CategoryIDObj);
 
-    setSortedCategory(
-      CategoryArr.sort((a, b) => b[1] - a[1])
+    setSortedCategoryID(
+      CategoryIDArr.sort((a, b) => b[1] - a[1])
         .map((elem) => elem.shift())
         .flat(),
     );
-  }, [favoriteBooks, setSortedCategory]);
+  }, [favoriteBooks, setSortedCategoryID]);
 
   return (
     <Container>
       <div className="name">내 카테고리 순위</div>
-      <div className="categoryBox">
-        {sortedCategory.map((category, idx) => (idx <= 4 ? <div className="category">{category}</div> : null))}
+      <div className="categoryContainer">
+        {sortedCategoryID?.map((category, idx) =>
+          idx <= 4 ? (
+            <div className="CategoryBox">
+              <div className="categoryImg">
+                <img src={CategoryImg[category].img} alt=""></img>
+              </div>
+              <div className="categoryName">{GetName(category)}</div>
+            </div>
+          ) : null,
+        )}
       </div>
     </Container>
   );

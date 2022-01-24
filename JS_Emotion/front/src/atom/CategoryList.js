@@ -1,4 +1,4 @@
-const Category_List = {
+const CategoryList = {
   100: '국내도서',
 
   101: '국내도서>소설',
@@ -140,4 +140,4 @@ const Category_List = {
   430: 'DVD>EBS 교육용',
 };
 
-export default Category_List;
+export default CategoryList;
