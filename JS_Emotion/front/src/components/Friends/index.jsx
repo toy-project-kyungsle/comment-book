@@ -1,5 +1,5 @@
 import FriendsData from '@atom/FriendsData';
-import FriendsBookAxios from '@components/FriendsBookAxios';
+import FriendsBookAxios from '@components/FriendsAxios';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';

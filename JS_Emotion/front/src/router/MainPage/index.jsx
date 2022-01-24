@@ -3,14 +3,14 @@ import { Container, Footer, HotBooksCollection } from './styles';
 import HotBooks from '@components/HotBooks';
 import MybooksSlider from '@components/MybooksSlider';
 import MyInfo from '@components/MyInfo';
-import FriendsBook from '@components/FriendsBook';
+import Friends from '@components/Friends';
 
 function MainPage() {
   return (
     <Container>
       <MybooksSlider />
       <MyInfo />
-      <FriendsBook />
+      <Friends />
       <HotBooksCollection>
         <HotBooks />
       </HotBooksCollection>

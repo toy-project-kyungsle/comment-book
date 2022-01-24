@@ -1,8 +1,7 @@
-Add FriendsBook component in Mainpage
+Rename FriendsBook to Friends
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.2
 
-- The reason for using
-To show friend's favorite books for user. It shows the comment 
-your friends entered, and rating they gave.
+- The reason
+"FriendsBook" is so long.
