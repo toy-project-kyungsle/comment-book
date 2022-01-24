@@ -3,6 +3,7 @@ import Favorites from '@atom/Favorite';
 import { useRecoilState } from 'recoil';
 import useInput from '@hooks/useinput';
 import getCategoryName from '@utils/getCategoryName';
+import { Container, InfoCategory } from './styles';
 
 function CategoriesRecommend() {
   // console.log(Favorites);
@@ -28,9 +29,12 @@ function CategoriesRecommend() {
   }, [favoriteBooks, setSortedCategory]);
 
   return (
-    <div>
-      <span>{sortedCategory}</span>
-    </div>
+    <Container>
+      <div className="name">내 카테고리 순위</div>
+      <div className="categoryBox">
+        {sortedCategory.map((category, idx) => (idx <= 4 ? <div className="category">{category}</div> : null))}
+      </div>
+    </Container>
   );
 }
 

@@ -1,16 +1,14 @@
 import React from 'react';
-import { Container, Categories, Footer, HotBooksCollection } from '@router/MainPage/styles';
+import { Container, Footer, HotBooksCollection } from './styles';
 import HotBooks from '@components/HotBooks';
-import CategoriesRecommend from '@components/CategoriesRecommend';
 import MybooksSlider from '@components/MybooksSlider';
+import MyInfo from '@components/MyInfo';
 
 function MainPage() {
   return (
     <Container>
       <MybooksSlider />
-      <Categories>
-        <CategoriesRecommend></CategoriesRecommend>
-      </Categories>
+      <MyInfo />
       <HotBooksCollection>
         <HotBooks />
       </HotBooksCollection>
