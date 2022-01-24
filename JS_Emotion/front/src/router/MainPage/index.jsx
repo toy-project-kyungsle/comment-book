@@ -1,19 +1,17 @@
 import React from 'react';
-import { Container, Footer, HotBooksCollection } from './styles';
-import HotBooks from '@components/HotBooks';
+import { Container, Footer } from './styles';
 import MybooksSlider from '@components/MybooksSlider';
 import MyInfo from '@components/MyInfo';
 import Friends from '@components/Friends';
+import HotNewBooksSlider from '@components/HotNewBooksSlider';
 
 function MainPage() {
   return (
     <Container>
-      <MybooksSlider />
       <MyInfo />
+      <MybooksSlider />
       <Friends />
-      <HotBooksCollection>
-        <HotBooks />
-      </HotBooksCollection>
+      <HotNewBooksSlider />
       <Footer>Copyright to Kyungsle</Footer>
     </Container>
   );

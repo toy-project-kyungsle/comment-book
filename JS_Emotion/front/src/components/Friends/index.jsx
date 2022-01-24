@@ -1,5 +1,5 @@
 import FriendsData from '@atom/FriendsData';
-import FriendsBookAxios from '@components/FriendsAxios';
+import FriendsAxios from '@components/FriendsAxios';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { Container, CurrentBook, CurrentImg, CurrentLetter, FriendName, OnePickWrapper } from './styles';
 
-function FriendsBook() {
+function Friends() {
   const [friend] = useRecoilState(FriendsData);
   const [loading, setLoading] = useState(false);
   const [friendBook, setFriendBook] = useState({});
@@ -47,7 +47,7 @@ function FriendsBook() {
                 <p>{friendBook.author}</p>
                 <p>{friend['jimin'].eval[friendBook.isbn].comment}</p>
                 <p>{`rating: ${friend['jimin'].eval[friendBook.isbn].rating}`}</p>
-                <FriendsBookAxios />
+                <FriendsAxios />
               </CurrentLetter>
             </CurrentBook>
           </OnePickWrapper>
@@ -57,4 +57,4 @@ function FriendsBook() {
   );
 }
 
-export default FriendsBook;
+export default Friends;

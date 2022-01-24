@@ -1,7 +1,7 @@
-Add Link for Friends List images to use detail page
+Use Slider for HotNewBooks 
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.2
 
 - The reason
-You can go to detail page by clicking the image in list.
+It is similar to "MyBooks" Component.

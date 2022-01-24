@@ -5,7 +5,7 @@ import axios from 'axios';
 import { BookImg, BookList } from './styles';
 import { Link } from 'react-router-dom';
 
-function FriendsBookAxios() {
+function FriendsAxios() {
   const [friend] = useRecoilState(FriendsData);
   const [loading, setLoading] = useState(false);
   const [books, setBooks] = useState([]);
@@ -21,7 +21,7 @@ function FriendsBookAxios() {
           curr.push(res.data.items[0]);
           return curr;
         });
-        console.log(res.data.items[0]);
+        // console.log(res.data.items[0]);
         count += 1;
         if (count <= 4) getBook();
         if (count === 5) setLoading(false);
@@ -53,4 +53,4 @@ function FriendsBookAxios() {
   );
 }
 
-export default FriendsBookAxios;
+export default FriendsAxios;

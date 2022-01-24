@@ -14,7 +14,7 @@ function DetailPage() {
     setLoading(true);
     axios.get(`http://localhost:3085/isbnsearch/${isbn}`).then((res) => {
       setDetailBook(res.data.items[0]);
-      console.log(res.data.items);
+      // console.log(res.data.items);
       setLoading(false);
     });
   }, [isbn, setDetailBook, setLoading]);
