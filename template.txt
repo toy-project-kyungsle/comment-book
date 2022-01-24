@@ -1,10 +1,8 @@
-Add MyInfo component in Mainpage
+Add FriendsBook component in Mainpage
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.2
 
 - The reason for using
-To show my favorite book categories and my book information.
-
-- Detail explaining
-I use "flaticon" images in CategoryBox, with CategoryName.
+To show friend's favorite books for user. It shows the comment 
+your friends entered, and rating they gave.

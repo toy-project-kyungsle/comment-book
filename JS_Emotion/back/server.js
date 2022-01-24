@@ -28,7 +28,7 @@ app.use("/search/:search/:display/:start", (req, res) => {
     });
 });
 
-app.use("/detailpage/:search", (req, res) => {
+app.use("/isbnsearch/:search", (req, res) => {
   // console.log(req.params);
   axios
     .get("http://book.interpark.com/api/search.api", {
@@ -61,7 +61,7 @@ app.use("/hotbooks", (req, res) => {
     })
     .then(function (response) {
       const items = response.data.item;
-      console.log(items);
+      // console.log(items);
       res.send({ items });
     })
     .catch(function (error) {

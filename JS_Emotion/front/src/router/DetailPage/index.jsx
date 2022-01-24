@@ -12,7 +12,7 @@ function DetailPage() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:3085/detailpage/${isbn}`).then((res) => {
+    axios.get(`http://localhost:3085/isbnsearch/${isbn}`).then((res) => {
       setDetailBook(res.data.items[0]);
       console.log(res.data.items);
       setLoading(false);
