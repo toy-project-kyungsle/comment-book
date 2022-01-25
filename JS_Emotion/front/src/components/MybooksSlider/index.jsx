@@ -26,8 +26,17 @@ function MybooksSlider() {
     <Container>
       <SlidesViewer>
         <Slides trans={trans} bookCount={mybooks.length}>
-          {mybooks.map((book) => {
-            return <MyBookImg key={book.id} title={book.title} coverImg={book.coverLargeUrl} isbn={book.isbn} />;
+          {mybooks?.map((book) => {
+            return (
+              <MyBookImg
+                key={book.id}
+                title={book.title}
+                coverImg={book.coverLargeUrl}
+                isbn={book.isbn}
+                shortcomment={book.eval?.shortcomment}
+                rating={book.eval?.rating}
+              />
+            );
           })}
         </Slides>
       </SlidesViewer>
