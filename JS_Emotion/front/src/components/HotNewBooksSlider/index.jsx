@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Controller, Slides, SlidesViewer } from './styles';
-import MyBooks from '@components/BookLinker';
 import axios from 'axios';
 import useInput from '@hooks/useinput';
+import HotNewBookImg from '@components/HotNewBookImg';
 
 function HotNewBooksSlider() {
   const [trans, setTrans] = useState(0);
@@ -46,13 +46,7 @@ function HotNewBooksSlider() {
             <Slides style={{ transform: `translateX(${trans}px)` }}>
               {hotbooks?.map((book) => {
                 return (
-                  <MyBooks
-                    key={book.id}
-                    title={book.title}
-                    coverImg={book.coverLargeUrl}
-                    isbn={book.isbn}
-                    type="HotNewBooks"
-                  />
+                  <HotNewBookImg key={book.id} title={book.title} coverImg={book.coverLargeUrl} isbn={book.isbn} />
                 );
               })}
             </Slides>

@@ -30,6 +30,11 @@ const Favorites = atom({
       mobileLink: 'http://m.book.interpark.com/view.html?PRD_NO=208527149&SHOP_NO=0000400000',
       additionalLink: 'http://book.interpark.com/gate/ippgw.jsp?goods_no=208527149&biz_cd=',
       reviewCount: 4,
+      eval: {
+        shortcomment: '신이 모나드인가 아닌가를 두고 두 철학자가 벌이는 사투가 너무 흥미진진하다',
+        comment: '',
+        rating: 5,
+      },
     },
     {
       itemId: 204053992,
@@ -60,6 +65,11 @@ const Favorites = atom({
       mobileLink: 'http://m.book.interpark.com/view.html?PRD_NO=204053992&SHOP_NO=0000400000',
       additionalLink: 'http://book.interpark.com/gate/ippgw.jsp?goods_no=204053992&biz_cd=',
       reviewCount: 90,
+      eval: {
+        shortcomment: '이 책을 읽고 나는 도대체 사랑이 무엇인지 더는 알 수 없게 되었다.',
+        comment: '',
+        rating: 5,
+      },
     },
     {
       itemId: 1424632,
@@ -90,6 +100,11 @@ const Favorites = atom({
       mobileLink: 'http://m.book.interpark.com/view.html?PRD_NO=1424632&SHOP_NO=0000400000',
       additionalLink: 'http://book.interpark.com/gate/ippgw.jsp?goods_no=1424632&biz_cd=',
       reviewCount: 114,
+      eval: {
+        shortcomment: '많은 사람들이 알고 있는 추리소설의 대표작! 기대를 져버리지 않는 고전 추리물이다.',
+        comment: '',
+        rating: 5,
+      },
     },
     {
       itemId: 235794805,
@@ -123,6 +138,11 @@ const Favorites = atom({
       mobileLink: 'http://m.book.interpark.com/view.html?PRD_NO=235794805&SHOP_NO=0000400000',
       additionalLink: 'http://book.interpark.com/gate/ippgw.jsp?goods_no=235794805&biz_cd=',
       reviewCount: 6,
+      eval: {
+        shortcomment: '군주란 어떻게 행동해야 하는가를 절실히 보여준다. 정치학의 메뉴얼',
+        comment: '',
+        rating: 5,
+      },
     },
     {
       itemId: 226452844,
@@ -153,6 +173,11 @@ const Favorites = atom({
       mobileLink: 'http://m.book.interpark.com/view.html?PRD_NO=226452844&SHOP_NO=0000400000',
       additionalLink: 'http://book.interpark.com/gate/ippgw.jsp?goods_no=226452844&biz_cd=',
       reviewCount: 51,
+      eval: {
+        shortcomment: '우리가 알던 정의는 정의가 아니다. 정의는 인식이 아닌 깊은 고뇌에서 발생한다.',
+        comment: '',
+        rating: 5,
+      },
     },
     {
       itemId: 4219800,
@@ -183,6 +208,11 @@ const Favorites = atom({
       mobileLink: 'http://m.book.interpark.com/view.html?PRD_NO=4219800&SHOP_NO=0000400000',
       additionalLink: 'http://book.interpark.com/gate/ippgw.jsp?goods_no=4219800&biz_cd=',
       reviewCount: 138,
+      eval: {
+        shortcomment: '총과 균, 쇠가 어떻게 우리의 인생과 역사를 바꾸어왔는지를 알려주는 역작.',
+        comment: '',
+        rating: 5,
+      },
     },
     {
       itemId: 242589926,
@@ -213,6 +243,11 @@ const Favorites = atom({
       mobileLink: 'http://m.book.interpark.com/view.html?PRD_NO=242589926&SHOP_NO=0000400000',
       additionalLink: 'http://book.interpark.com/gate/ippgw.jsp?goods_no=242589926&biz_cd=',
       reviewCount: 26,
+      eval: {
+        shortcomment: '이 책을 읽고 글을 어떻게 써야 하는지에 대한 조금의 감이 잡혔다.',
+        comment: '',
+        rating: 5,
+      },
     },
     {
       itemId: 211972914,
@@ -243,6 +278,11 @@ const Favorites = atom({
       mobileLink: 'http://m.book.interpark.com/view.html?PRD_NO=211972914&SHOP_NO=0000400000',
       additionalLink: 'http://book.interpark.com/gate/ippgw.jsp?goods_no=211972914&biz_cd=',
       reviewCount: 112,
+      eval: {
+        shortcomment: '어떤 방식의 삶이 맞는 것인지는 나도 잘 모른다. 그냥 살 뿐',
+        comment: '',
+        rating: 5,
+      },
     },
     {
       itemId: 239211661,
@@ -304,6 +344,11 @@ const Favorites = atom({
       mobileLink: 'http://m.book.interpark.com/view.html?PRD_NO=283721089&SHOP_NO=0000400000',
       additionalLink: 'http://book.interpark.com/gate/ippgw.jsp?goods_no=283721089&biz_cd=',
       reviewCount: 7,
+      eval: {
+        shortcomment: '말로만 들었던 4차 산업 혁명이 아주 빠른 속도로 우리에게 다가오고 있다.',
+        comment: '',
+        rating: 5,
+      },
     },
   ],
 });

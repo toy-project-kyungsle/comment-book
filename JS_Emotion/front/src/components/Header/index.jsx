@@ -30,11 +30,11 @@ function Header() {
         </div>
       </LeftSection>
       <RightSection>
-        <div>
+        {/* <div>
           <button>book</button>
           <button>movie</button>
           <button>drama</button>
-        </div>
+        </div> */}
         <Link to="/login">Login</Link>
       </RightSection>
     </Container>

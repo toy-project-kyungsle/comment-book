@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import Favorites from '@atom/Favorite';
 import { Container, Controller, Slides, SlidesViewer } from './styles';
-import MyBooks from '@components/BookLinker';
+import MyBookImg from '@components/MyBookImg';
 
 function MybooksSlider() {
   const [mybooks] = useRecoilState(Favorites);
@@ -27,9 +27,7 @@ function MybooksSlider() {
       <SlidesViewer>
         <Slides trans={trans} bookCount={mybooks.length}>
           {mybooks.map((book) => {
-            return (
-              <MyBooks key={book.id} title={book.title} coverImg={book.coverLargeUrl} isbn={book.isbn} type="MyBooks" />
-            );
+            return <MyBookImg key={book.id} title={book.title} coverImg={book.coverLargeUrl} isbn={book.isbn} />;
           })}
         </Slides>
       </SlidesViewer>
