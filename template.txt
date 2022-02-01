@@ -1,13 +1,10 @@
-Add comment and rating to MyBooks Img hover
+Add background color all the components
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.2
 
 - What I make
-I can show comment and rating to users they entered before. 
-It is shown when you move your mouse over the Img. 
-I make my short-comment and rationg all my favorite books. 
-And edit the syles about myBook, using variable in JS.
-You can check in the "sytles.js" file.
+So I add the styled div tag called "Background" in all the components.
 
 - The reason to do this
+- Principals of them

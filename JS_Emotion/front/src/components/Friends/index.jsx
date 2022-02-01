@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { Container, CurrentBook, CurrentImg, CurrentLetter, FriendName, OnePickWrapper } from './styles';
+import { Background, Container, CurrentBook, CurrentImg, CurrentLetter, FriendName, OnePickWrapper } from './styles';
 
 function Friends() {
   const [friend] = useRecoilState(FriendsData);
@@ -33,25 +33,27 @@ function Friends() {
       {loading || !friend[`jimin`] || !Object.keys(friendBook).length ? (
         <div>Loading..</div>
       ) : (
-        <Container>
-          <FriendName>{`jimin`}</FriendName>
-          <OnePickWrapper>
-            <CurrentBook>
-              <CurrentImg>
-                <Link to={`/detailpage/${friendBook.isbn}`}>
-                  <img src={friendBook.coverLargeUrl} alt={friendBook.title}></img>
-                </Link>
-              </CurrentImg>
-              <CurrentLetter>
-                <p className="title">{friendBook.title}</p>
-                <p>{friendBook.author}</p>
-                <p>{friend['jimin'].eval[friendBook.isbn].comment}</p>
-                <p>{`rating: ${friend['jimin'].eval[friendBook.isbn].rating}`}</p>
-                <FriendsAxios />
-              </CurrentLetter>
-            </CurrentBook>
-          </OnePickWrapper>
-        </Container>
+        <Background>
+          <Container>
+            <FriendName>{`jimin`}</FriendName>
+            <OnePickWrapper>
+              <CurrentBook>
+                <CurrentImg>
+                  <Link to={`/detailpage/${friendBook.isbn}`}>
+                    <img src={friendBook.coverLargeUrl} alt={friendBook.title}></img>
+                  </Link>
+                </CurrentImg>
+                <CurrentLetter>
+                  <p className="title">{friendBook.title}</p>
+                  <p>{friendBook.author}</p>
+                  <p>{friend['jimin'].eval[friendBook.isbn].comment}</p>
+                  <p>{`rating: ${friend['jimin'].eval[friendBook.isbn].rating}`}</p>
+                  <FriendsAxios />
+                </CurrentLetter>
+              </CurrentBook>
+            </OnePickWrapper>
+          </Container>
+        </Background>
       )}
     </>
   );

@@ -1,8 +1,15 @@
 import styled from '@emotion/styled';
 
+export const Background = styled.div`
+  /* position: absolute; */
+  background-color: wheat;
+  height: 545px;
+  width: 100%;
+  padding-top: 100px;
+`;
+
 export const Container = styled.div`
   position: relative;
-  margin-top: 8%;
 `;
 
 export const SlidesViewer = styled.div({

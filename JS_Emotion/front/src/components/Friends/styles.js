@@ -1,9 +1,16 @@
 import styled from '@emotion/styled';
 
+export const Background = styled.div`
+  background-color: grey;
+
+  height: 650px;
+  padding-top: 80px;
+`;
+
 export const Container = styled.div`
   width: 70%;
-  height: 70%;
-  margin: 8% auto 0 auto;
+  /* height: 600px; */
+  margin: 0 auto;
 `;
 
 export const OnePickWrapper = styled.div`

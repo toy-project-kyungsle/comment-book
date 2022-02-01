@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Controller, Slides, SlidesViewer } from './styles';
+import { Background, Container, Controller, Slides, SlidesViewer } from './styles';
 import axios from 'axios';
 import useInput from '@hooks/useinput';
 import HotNewBookImg from '@components/HotNewBookImg';
@@ -41,23 +41,25 @@ function HotNewBooksSlider() {
       {loading || !hotbooks ? (
         <div>Loading..</div>
       ) : (
-        <Container>
-          <SlidesViewer>
-            <Slides style={{ transform: `translateX(${trans}px)` }}>
-              {hotbooks?.map((book) => {
-                return (
-                  <HotNewBookImg key={book.id} title={book.title} coverImg={book.coverLargeUrl} isbn={book.isbn} />
-                );
-              })}
-            </Slides>
-          </SlidesViewer>
-          <Controller>
-            <button className="Left" onClick={onClickL}>{`<`}</button>
-            <button className="Right" onClick={onClickR}>
-              {'>'}
-            </button>
-          </Controller>
-        </Container>
+        <Background>
+          <Container>
+            <SlidesViewer>
+              <Slides style={{ transform: `translateX(${trans}px)` }}>
+                {hotbooks?.map((book) => {
+                  return (
+                    <HotNewBookImg key={book.id} title={book.title} coverImg={book.coverLargeUrl} isbn={book.isbn} />
+                  );
+                })}
+              </Slides>
+            </SlidesViewer>
+            <Controller>
+              <button className="Left" onClick={onClickL}>{`<`}</button>
+              <button className="Right" onClick={onClickR}>
+                {'>'}
+              </button>
+            </Controller>
+          </Container>
+        </Background>
       )}
     </>
   );

@@ -7,7 +7,7 @@ export const Container = styled.div`
   left: 0;
   top: 0;
   width: 100%; */
-  background-color: #fff;
+  background-color: #191970;
   z-index: 100;
   flex-direction: row;
   justify-content: space-between;

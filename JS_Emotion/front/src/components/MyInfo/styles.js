@@ -1,17 +1,30 @@
 import styled from '@emotion/styled';
 
+export const Background = styled.div`
+  background-color: #191970;
+  height: 400px;
+
+  border-top: wheat 1px solid;
+`;
+
 export const Container = styled.div`
+  /* background-color: black; */
+  color: wheat;
+
   width: 80%;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+  margin-top: 28px;
   padding: 20px;
 
   border: 1px solid black;
   border-radius: 10px;
+  border-color: wheat;
 `;
 
 export const InfoLetters = styled.div`
+  /* background-color: black; */
   height: 300px;
   width: 40%;
 
