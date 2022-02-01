@@ -1,19 +1,21 @@
 import styled from '@emotion/styled';
 
-export const Background = styled.div`
-  background-color: #191970;
+const background_color = '#9ebce9';
+const font_color = '#3e4756';
 
-  height: 400px;
+export const Background = styled.div`
+  background-color: ${background_color};
+
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  border-top: wheat 1px solid;
+  border-top: ${font_color} 1px solid;
 `;
 
 export const Container = styled.div`
-  /* background-color: black; */
-  color: wheat;
+  color: ${font_color};
 
   width: 80%;
   display: flex;
@@ -23,11 +25,10 @@ export const Container = styled.div`
 
   border: 1px solid black;
   border-radius: 10px;
-  border-color: wheat;
+  border-color: ${font_color};
 `;
 
 export const InfoLetters = styled.div`
-  /* background-color: black; */
   height: 300px;
   width: 40%;
 

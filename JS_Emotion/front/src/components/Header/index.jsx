@@ -10,8 +10,10 @@ function Header() {
     <Background>
       <Container>
         <LeftSection>
-          <div>
-            <Link to={`/`}>Favorites</Link>
+          <div className="PageName">
+            <div>
+              <Link to={`/`}>Favorites</Link>
+            </div>
           </div>
           <div>
             <form>
@@ -36,7 +38,9 @@ function Header() {
           <button>movie</button>
           <button>drama</button>
         </div> */}
-          <Link to="/login">Login</Link>
+          <div>
+            <Link to="/login">Login</Link>
+          </div>
         </RightSection>
       </Container>
     </Background>

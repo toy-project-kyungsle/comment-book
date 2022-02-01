@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 
+const background_color = '#B07485';
+
 export const Container = styled.div``;
 
 export const Footer = styled.div`
-  background-color: yellow;
+  background-color: ${background_color};
 
   height: 20%;
   .Copyright {

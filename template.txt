@@ -1,10 +1,9 @@
-Refactor the background margin to flex-box
+Change the color about background
 
-~delete this when commit! just enter dd!~
 Current Version : v1.2
 
 - What I make
-So I add the styled div tag called "Background" in all the components.
+Background's color was so terrible.. So I change the color!
 
 - The reason to do this
 - Principals of them

@@ -1,7 +1,10 @@
 import styled from '@emotion/styled';
 
+const background_color = '#988dc4';
+// const font_color = '#3e4756';
+
 export const Background = styled.div`
-  background-color: grey;
+  background-color: ${background_color};
 
   height: 650px;
   display: flex;
