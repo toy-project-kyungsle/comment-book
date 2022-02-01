@@ -5,11 +5,11 @@ function CommentBox() {
   return (
     <Comment>
       <div>
-        <p>Kyunglse</p>
+        <p className="name">Kyunglse</p>
         <p>Nice Book!</p>
       </div>
       <div>
-        <p>Star</p>
+        <p>⭐️⭐️⭐️⭐️⭐️</p>
       </div>
     </Comment>
   );

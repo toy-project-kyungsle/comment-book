@@ -2,6 +2,8 @@ import useInput from '@hooks/useinput';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Background, Container, LeftSection, RightSection } from './styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 function Header() {
   const [search, setSearch, onChangeSearch] = useInput();
@@ -27,7 +29,9 @@ function Header() {
                 }}
               ></input>
               <Link to={`/search/${search}/10/1`}>
-                <button>Search</button>
+                <button>
+                  <FontAwesomeIcon icon={faSearch} size="lg" style={{ color: 'wheat' }} />
+                </button>
               </Link>
             </form>
           </div>

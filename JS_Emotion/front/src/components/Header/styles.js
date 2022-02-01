@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 const margin_meduim = '20px';
 const font_size_medium = '15px';
 const font_size_large = '25px';
-const background_color = '#9ebce9';
-const font_color = '#3e4756';
+const background_color = '#2c2b29';
+const font_color = 'wheat';
 
 export const Background = styled.div`
   background-color: ${background_color};
@@ -38,6 +38,17 @@ export const LeftSection = styled.div`
   }
   & a {
     font-size: ${font_size_large};
+  }
+  & input {
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 20px;
+    text-align: center;
+  }
+  & button {
+    background-color: ${background_color};
+    border: none;
+    cursor: pointer;
   }
   & form {
     margin: auto 0 auto ${margin_meduim};

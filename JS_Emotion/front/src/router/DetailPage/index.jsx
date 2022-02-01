@@ -37,7 +37,6 @@ function DetailPage() {
           pubDate={datailBook.pubDate}
         />
       )}
-      ;
     </>
   );
 }

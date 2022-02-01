@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const background_color = '#988dc4';
+const background_color = '#E8EFFF';
 // const font_color = '#3e4756';
 
 export const Background = styled.div`

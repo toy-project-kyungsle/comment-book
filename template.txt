@@ -1,4 +1,4 @@
-Change the color about background
+Update the detail page using CSS
 
 Current Version : v1.2
 
