@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
 
 export const Background = styled.div`
-  /* position: absolute; */
   background-color: wheat;
+
   height: 545px;
   width: 100%;
-  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const Container = styled.div`

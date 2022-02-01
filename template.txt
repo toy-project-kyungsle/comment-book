@@ -1,4 +1,4 @@
-Add background color all the components
+Refactor the background margin to flex-box
 
 ~delete this when commit! just enter dd!~
 Current Version : v1.2

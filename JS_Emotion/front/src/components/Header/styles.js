@@ -1,17 +1,21 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
+export const Background = styled.div`
+  background-color: #191970;
+
   height: 10%;
   display: flex;
-  /* position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%; */
-  background-color: #191970;
-  z-index: 100;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const Container = styled.div`
+  height: 40%;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   & a {
+    color: wheat;
     text-decoration: none;
   }
 `;

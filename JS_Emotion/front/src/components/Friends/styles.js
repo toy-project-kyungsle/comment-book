@@ -4,7 +4,9 @@ export const Background = styled.div`
   background-color: grey;
 
   height: 650px;
-  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const Container = styled.div`
