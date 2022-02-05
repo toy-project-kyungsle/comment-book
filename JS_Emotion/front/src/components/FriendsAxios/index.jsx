@@ -42,7 +42,7 @@ function FriendsAxios() {
         <BookList>
           {books.map((book) => (
             <BookImg>
-              <Link to={`/detailpage/${book.isbn}`}>
+              <Link to={`/comment/${book.isbn}`}>
                 <img src={book.coverLargeUrl} alt={book.title}></img>
               </Link>
             </BookImg>

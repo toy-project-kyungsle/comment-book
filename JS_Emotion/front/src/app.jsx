@@ -8,7 +8,7 @@ const MainPage = loadable(() => import('@router/MainPage'));
 const Search = loadable(() => import('@router/Search'));
 const Login = loadable(() => import('@router/Login'));
 const SingUp = loadable(() => import('@router/SingUp'));
-const DetailPage = loadable(() => import('@router/DetailPage'));
+const Comment = loadable(() => import('@router/Comment'));
 
 const App = () => (
   <RecoilRoot>
@@ -18,8 +18,8 @@ const App = () => (
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SingUp />} />
         <Route path="/" element={<MainPage />} />
-        <Route path="/detailpage/:isbn" element={<DetailPage />} />
         <Route path="/search/:search/:display/:start/*" element={<Search />} />
+        <Route path="/comment/:isbn" element={<Comment />} />
       </Routes>
     </Router>
   </RecoilRoot>

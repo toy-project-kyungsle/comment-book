@@ -34,6 +34,7 @@ function Search() {
               {books.map((book) => (
                 <SearchRender
                   key={book.isbn}
+                  isbn={book.isbn}
                   title={book.title}
                   coverImg={book.coverLargeUrl}
                   priceStandard={book.priceStandard}

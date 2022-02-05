@@ -2,10 +2,11 @@ import React from 'react';
 import { ImgDiv, Letters, Container, Show, Title } from '@render/SearchRender/styles';
 import { Link } from 'react-router-dom';
 
-function SearchRender({ title, coverImg, priceStandard, priceSales, author, description, link, pubDate }) {
+function SearchRender({ isbn, title, coverImg, priceStandard, priceSales, author, description, link, pubDate }) {
   return (
     <Container>
-      <Link to={`/search`}>
+      <Link to={`/comment/${isbn}`}>
+        {console.log(isbn)}
         <Show>
           <ImgDiv>
             <img src={coverImg} alt={title} />

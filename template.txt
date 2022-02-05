@@ -1,9 +1,13 @@
-Add CSS for Search Component
+Delete Detail page and Add Comment Page
 
 Current Version : v1.2
 
 - What I make
-I add shadow box, font-size, color, font-weight, and so on...
+Detail page doesn't needed for my web because my web is for writing my feeling 
+after reading the books. So I have no need to give book data to user. Then, I 
+show my comment for the book and rating. You can get the book data by clicking 
+the title of book at comment page. It makes you move to Interpark page about 
+that book.
 
 - The reason to do this
 - Principals of them

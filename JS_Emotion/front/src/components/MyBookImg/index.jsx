@@ -19,7 +19,7 @@ function MyBookImg({ coverImg, title, isbn, shortcomment, rating }) {
 
   return (
     <BookContainer>
-      <Link to={`/detailpage/${isbn}`}>
+      <Link to={`/comment/${isbn}`}>
         <BookImg src={coverImg} alt={title} onMouseOver={onMouseOverImg} onMouseOut={onMouseOutImg} />
         <Wrap wrapDisplay={wrapDisplay}>
           <p className="comment">{shortcomment}</p>

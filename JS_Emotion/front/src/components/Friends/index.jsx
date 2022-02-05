@@ -39,7 +39,7 @@ function Friends() {
             <OnePickWrapper>
               <CurrentBook>
                 <CurrentImg>
-                  <Link to={`/detailpage/${friendBook.isbn}`}>
+                  <Link to={`/comment/${friendBook.isbn}`}>
                     <img src={friendBook.coverLargeUrl} alt={friendBook.title}></img>
                   </Link>
                 </CurrentImg>

@@ -3,7 +3,6 @@ import { Container, Footer } from './styles';
 import MybooksSlider from '@components/MybooksSlider';
 import MyInfo from '@components/MyInfo';
 import Friends from '@components/Friends';
-import HotNewBooksSlider from '@components/HotNewBooksSlider';
 
 function MainPage() {
   return (
