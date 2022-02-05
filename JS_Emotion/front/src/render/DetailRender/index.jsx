@@ -1,6 +1,16 @@
 import CommentBox from '@components/CommentBox';
 import React from 'react';
-import { Container, Description, ImgDiv, LeftSection, Letters, RightSection, ShortView, Background } from './styles';
+import {
+  Container,
+  Description,
+  ImgDiv,
+  LeftSection,
+  Letters,
+  RightSection,
+  ShortView,
+  Background,
+  LetterGrid,
+} from './styles';
 
 function DetailRender({ title, coverImg, priceStandard, priceSales, author, description, link, pubDate, genre }) {
   return (
@@ -15,18 +25,24 @@ function DetailRender({ title, coverImg, priceStandard, priceSales, author, desc
               <h3>
                 <a href={link}>{title}</a>
               </h3>
-              <p>
-                {author ? (
-                  <>
-                    <span>author</span>
-                    <span>{author}</span>
-                  </>
-                ) : null}
-              </p>
-              <p>{genre ? `genre ${genre} ` : null}</p>
-              <p>{priceStandard && priceSales ? `price ${priceStandard} ➡ ${priceSales}` : null}</p>
-              <p>{pubDate ? `pubdate ${pubDate} ` : null}</p>
-              <p>{`rating ⭐️⭐️⭐️⭐️⭐️ `}</p>
+              <LetterGrid>
+                <div>
+                  <span></span>
+                  <span></span>
+                </div>
+                <p>
+                  {author ? (
+                    <>
+                      <span>author</span>
+                      <span>{author}</span>
+                    </>
+                  ) : null}
+                </p>
+                <p>{genre ? `genre ${genre} ` : null}</p>
+                <p>{priceStandard && priceSales ? `price ${priceStandard} ➡ ${priceSales}` : null}</p>
+                <p>{pubDate ? `pubdate ${pubDate} ` : null}</p>
+                <p>{`rating ⭐️⭐️⭐️⭐️⭐️ `}</p>
+              </LetterGrid>
             </Letters>
           </ShortView>
           <Description>

@@ -1,7 +1,10 @@
 import styled from '@emotion/styled';
 
+const background_color = 'white';
+const container_color = '#ececec';
+
 export const Background = styled.div`
-  background-color: white;
+  background-color: ${background_color};
   height: 90%;
   display: flex;
   flex-direction: column;
@@ -9,10 +12,12 @@ export const Background = styled.div`
 `;
 
 export const Container = styled.div`
+  background-color: ${container_color};
+
   display: flex;
   flex-direction: row;
 
-  height: 450px;
+  height: 500px;
   width: 70%;
   margin: 0 auto;
   padding: 20px;
@@ -33,17 +38,10 @@ export const LeftSection = styled.div`
 export const ShortView = styled.div`
   display: flex;
   flex-direction: row;
-  height: 270px;
-  /* padding: 10px 10px; */
-
-  height: 65%;
 `;
 
 export const ImgDiv = styled.div`
   float: left;
-  width: 165px;
-  height: 270px;
-  overflow: hidden;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3), 0px 2px 2px rgba(0, 0, 0, 0.22);
 `;
 
@@ -61,6 +59,8 @@ export const Letters = styled.div`
     margin: 30px 0 30px 0;
   }
 `;
+
+export const LetterGrid = styled.div``;
 
 export const Description = styled.div`
   width: 100%;

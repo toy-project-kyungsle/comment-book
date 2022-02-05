@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 export const Comment = styled.div`
+  background-color: white;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;

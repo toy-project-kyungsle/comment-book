@@ -1,9 +1,10 @@
-Update the detail page using CSS
+Delete the Hotbookslider
 
 Current Version : v1.2
 
 - What I make
-Background's color was so terrible.. So I change the color!
+Hotbook slider doesn't needed for me right now.
+So I use comment for that component, and use that later.
 
 - The reason to do this
 - Principals of them
