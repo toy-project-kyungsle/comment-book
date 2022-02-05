@@ -52,9 +52,9 @@ function DetailRender({ title, coverImg, priceStandard, priceSales, author, desc
         <RightSection>
           <div>
             <CommentBox />
+            {/* <CommentBox />
             <CommentBox />
-            <CommentBox />
-            <CommentBox />
+            <CommentBox /> */}
           </div>
         </RightSection>
       </Container>

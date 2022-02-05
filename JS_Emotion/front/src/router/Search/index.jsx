@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Books, Container, Footer, List } from '@router/Search/styles';
+import { Books, Container, Empty, Footer, List, Ment } from './styles';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import useInput from '@hooks/useinput';
@@ -16,7 +16,7 @@ function Search() {
     setLoading(true);
     axios.get(`http://localhost:3085/search/${search}/${display}/${start}`).then((res) => {
       setBooks(res.data.items);
-      console.log(res.data.items);
+      // console.log(res.data.items);
       setLoading(false);
     });
   }, [display, search, setBooks, setLoading, start]);
@@ -26,21 +26,29 @@ function Search() {
       {loading ? (
         <div>Loading</div>
       ) : (
-        <Books>
-          {books.map((book) => (
-            <SearchRender
-              key={book.isbn}
-              title={book.title}
-              coverImg={book.coverLargeUrl}
-              priceStandard={book.priceStandard}
-              priceSales={book.priceSales}
-              author={book.author}
-              description={book.description}
-              link={book.link}
-              pubDate={book.pubDate}
-            />
-          ))}
-        </Books>
+        <>
+          <Ment>Click to add!</Ment>
+
+          {books.length > 0 ? (
+            <Books>
+              {books.map((book) => (
+                <SearchRender
+                  key={book.isbn}
+                  title={book.title}
+                  coverImg={book.coverLargeUrl}
+                  priceStandard={book.priceStandard}
+                  priceSales={book.priceSales}
+                  author={book.author}
+                  description={book.description}
+                  link={book.link}
+                  pubDate={book.pubDate}
+                />
+              ))}
+            </Books>
+          ) : (
+            <Empty>Noting Else...</Empty>
+          )}
+        </>
       )}
       {loading ? null : (
         <Footer>

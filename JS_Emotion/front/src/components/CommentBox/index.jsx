@@ -5,12 +5,10 @@ function CommentBox() {
   return (
     <Comment>
       <div>
-        <p className="name">Kyunglse</p>
-        <p>Nice Book!</p>
+        <p className="name">No one Comment</p>
+        <p>Please Comment Here!</p>
       </div>
-      <div>
-        <p>⭐️⭐️⭐️⭐️⭐️</p>
-      </div>
+      <div>{/* <p>⭐️⭐️⭐️⭐️⭐️</p> */}</div>
     </Comment>
   );
 }

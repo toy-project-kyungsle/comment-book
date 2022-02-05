@@ -1,10 +1,9 @@
-Delete the Hotbookslider
+Add CSS for Search Component
 
 Current Version : v1.2
 
 - What I make
-Hotbook slider doesn't needed for me right now.
-So I use comment for that component, and use that later.
+I add shadow box, font-size, color, font-weight, and so on...
 
 - The reason to do this
 - Principals of them
