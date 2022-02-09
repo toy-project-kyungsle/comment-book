@@ -3,7 +3,7 @@ import { Books, Container, Empty, Footer, List, Ment } from './styles';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import useInput from '@hooks/useinput';
-import SearchRender from '@render/SearchRender';
+import SearchRender from '@components/SearchRender';
 import { Link } from 'react-router-dom';
 
 function Search() {

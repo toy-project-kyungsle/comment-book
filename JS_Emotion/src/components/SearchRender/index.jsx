@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImgDiv, Letters, Container, Show, Title } from '@render/SearchRender/styles';
+import { ImgDiv, Letters, Container, Show, Title } from '@components/SearchRender/styles';
 import { Link } from 'react-router-dom';
 
 function SearchRender({ isbn, title, coverImg, priceStandard, priceSales, author, description, link, pubDate }) {

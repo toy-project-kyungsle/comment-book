@@ -19,15 +19,7 @@ function Header() {
           </div>
           <div>
             <form>
-              <input
-                type="text"
-                placeholder="Search Movie!"
-                value={search}
-                onChange={onChangeSearch}
-                onMouseOut={() => {
-                  setSearch('');
-                }}
-              ></input>
+              <input type="text" placeholder="Search Movie!" value={search} onChange={onChangeSearch}></input>
               <Link to={`/search/${search}/10/1`}>
                 <button>
                   <FontAwesomeIcon icon={faSearch} size="lg" style={{ color: 'wheat' }} />
@@ -37,11 +29,6 @@ function Header() {
           </div>
         </LeftSection>
         <RightSection>
-          {/* <div>
-          <button>book</button>
-          <button>movie</button>
-          <button>drama</button>
-        </div> */}
           <div>
             <Link to="/login">Login</Link>
           </div>

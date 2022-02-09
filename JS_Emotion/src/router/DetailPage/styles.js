@@ -36,6 +36,7 @@ export const LeftSection = styled.div`
 `;
 
 export const ShortView = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
 `;
@@ -46,7 +47,7 @@ export const ImgDiv = styled.div`
 `;
 
 export const Letters = styled.div`
-  width: 70%;
+  width: 65%;
   margin-left: 50px;
   & a {
     text-decoration: none;
@@ -60,7 +61,17 @@ export const Letters = styled.div`
   }
 `;
 
-export const LetterGrid = styled.div``;
+export const AddEditComment = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+`;
+
+export const LetterGrid = styled.div`
+  display: grid;
+  grid-template-columns: 100px 2fr;
+  grid-auto-rows: minmax(40px, auto);
+`;
 
 export const Description = styled.div`
   width: 100%;

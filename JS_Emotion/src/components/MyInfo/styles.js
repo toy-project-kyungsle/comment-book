@@ -52,6 +52,7 @@ export const InfoLetters = styled.div`
 
     .title {
       font-weight: bold;
+      color: black;
     }
   }
 `;
