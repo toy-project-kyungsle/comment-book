@@ -5,6 +5,7 @@ import React from 'react';
 function MyInfo() {
   return (
     <Background>
+      <p style={{ margin: `0px auto 50px auto`, fontSize: `100px`, fontFamily: "'Rowdies', cursive" }}>My Book Collection</p>
       <Container>
         <InfoLetters>
           <div className="name">Kyungsle</div>
@@ -19,7 +20,7 @@ function MyInfo() {
         </InfoLetters>
         <CategoriesRecommend />
       </Container>
-    </Background>
+    </Background >
   );
 }
 

@@ -10,7 +10,6 @@ function MainPage() {
       <MyInfo />
       <MybooksSlider />
       <Friends />
-      {/* <HotNewBooksSlider /> */}
       <Footer>
         <div className="Copyright">Copyright to Kyungsle</div>
       </Footer>

@@ -49,26 +49,6 @@ app.use("/isbnsearch/:search", (req, res) => {
     });
 });
 
-// app.use("/hotbooks", (req, res) => {
-//   // console.log(req.params);
-//   axios
-//     .get("http://book.interpark.com/api/bestSeller.api", {
-//       params: {
-//         key: "175AF4ED9C547CE56E4781C9077B755D3F3078DD67FB8C6689A191043673F01D",
-//         categoryId: 100,
-//         output: "json",
-//       },
-//     })
-//     .then(function (response) {
-//       const items = response.data.item;
-//       // console.log(items);
-//       res.send({ items });
-//     })
-//     .catch(function (error) {
-//       console.log(error);
-//     });
-// });
-
 app.listen(port, () => {
   console.log(`express is running on ${port}`);
 });

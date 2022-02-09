@@ -33,28 +33,31 @@ function Friends() {
       {loading || !friend[`jimin`] || !Object.keys(friendBook).length ? (
         <div>Loading..</div>
       ) : (
-        <Background>
-          <Container>
-            <FriendName>{`jimin`}</FriendName>
-            <OnePickWrapper>
-              <CurrentBook>
-                <CurrentImg>
-                  <Link to={`/comment/${friendBook.isbn}`}>
-                    <img src={friendBook.coverLargeUrl} alt={friendBook.title}></img>
-                  </Link>
-                </CurrentImg>
-                <CurrentLetter>
-                  <p className="title">{friendBook.title}</p>
-                  <p>{friendBook.author}</p>
-                  <p>{friend['jimin'].eval[friendBook.isbn].comment}</p>
-                  <p>{`rating: ${friend['jimin'].eval[friendBook.isbn].rating}`}</p>
-                  <FriendsAxios />
-                </CurrentLetter>
-              </CurrentBook>
-            </OnePickWrapper>
-          </Container>
-        </Background>
-      )}
+          <Background>
+            <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '50px' }}>
+              <p style={{ fontSize: `70px`, fontFamily: "'Rowdies', cursive" }}>Friend's Book</p>
+            </div>
+            <Container>
+              <FriendName>{`jimin`}</FriendName>
+              <OnePickWrapper>
+                <CurrentBook>
+                  <CurrentImg>
+                    <Link to={`/comment/${friendBook.isbn}`}>
+                      <img src={friendBook.coverLargeUrl} alt={friendBook.title}></img>
+                    </Link>
+                  </CurrentImg>
+                  <CurrentLetter>
+                    <p className="title">{friendBook.title}</p>
+                    <p>{friendBook.author}</p>
+                    <p>{friend['jimin'].eval[friendBook.isbn].comment}</p>
+                    <p>{`rating: ${friend['jimin'].eval[friendBook.isbn].rating}`}</p>
+                    <FriendsAxios />
+                  </CurrentLetter>
+                </CurrentBook>
+              </OnePickWrapper>
+            </Container>
+          </Background>
+        )}
     </>
   );
 }

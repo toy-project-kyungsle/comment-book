@@ -6,7 +6,7 @@ const background_color = '#99A5D9';
 export const Background = styled.div`
   background-color: ${background_color};
 
-  height: 545px;
+  height: 1000px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -15,6 +15,7 @@ export const Background = styled.div`
 
 export const Container = styled.div`
   position: relative;
+  width: 100%;
 `;
 
 export const SlidesViewer = styled.div({
@@ -42,7 +43,7 @@ export const Controller = styled.div`
   .Left,
   .Right {
     position: absolute;
-    top: 40%;
+    top: 65%;
     background-color: transparent;
     border: none;
     outline: none;

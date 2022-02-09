@@ -1,13 +1,14 @@
-Delete Detail page and Add Comment Page
+Put the title inner 50 words, Uppercase is needed!
 
-Current Version : v1.2
+Current Version : v*.*
 
 - What I make
-Detail page doesn't needed for my web because my web is for writing my feeling 
-after reading the books. So I have no need to give book data to user. Then, I 
-show my comment for the book and rating. You can get the book data by clicking 
-the title of book at comment page. It makes you move to Interpark page about 
-that book.
+Say something you did. Just write the skills you used.
+All the lines must in 70 words.
 
 - The reason to do this
+Say why you choose the skill. All the lines must in 70 words.
+
 - Principals of them
+Why the skill can make to do what you want.
+All the lines must in 70 words.

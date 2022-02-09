@@ -6,15 +6,14 @@ const background_color = '#E8EFFF';
 export const Background = styled.div`
   background-color: ${background_color};
 
-  height: 650px;
+  height: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
 export const Container = styled.div`
-  width: 70%;
-  /* height: 600px; */
+  width: 1200px;
   margin: 0 auto;
 `;
 

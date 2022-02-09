@@ -7,7 +7,7 @@ const font_color = '#3e4756';
 export const Background = styled.div`
   background-color: ${background_color};
 
-  height: 650px;
+  height:700px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +21,7 @@ export const Container = styled.div`
   width: 80%;
   display: flex;
   flex-direction: row;
-  margin: 0 auto;
+  margin: 0 auto 0 auto;
   padding: 20px;
 
   border-radius: 10px;
