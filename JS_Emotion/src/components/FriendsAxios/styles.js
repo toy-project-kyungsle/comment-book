@@ -9,5 +9,6 @@ export const BookImg = styled.div`
   width: 170px;
   & img {
     width: 170px;
+    height: 230px;
   }
 `;

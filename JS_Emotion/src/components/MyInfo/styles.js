@@ -7,7 +7,7 @@ const font_color = '#3e4756';
 export const Background = styled.div`
   background-color: ${background_color};
 
-  height:700px;
+  height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,9 +16,10 @@ export const Background = styled.div`
 `;
 
 export const Container = styled.div`
+  font-family: 'Noto Sans KR', sans-serif;
   color: ${font_color};
 
-  width: 80%;
+  width: 1000px;
   display: flex;
   flex-direction: row;
   margin: 0 auto 0 auto;

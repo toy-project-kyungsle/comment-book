@@ -9,7 +9,7 @@ const font_color = 'wheat';
 export const Background = styled.div`
   background-color: ${background_color};
 
-  height: 10%;
+  height: 70px;
   display: flex;
   flex-direction: column;
   justify-content: center;

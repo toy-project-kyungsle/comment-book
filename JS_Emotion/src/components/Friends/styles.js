@@ -13,7 +13,8 @@ export const Background = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 1200px;
+  font-family: 'Noto Sans KR', sans-serif;
+  width: 1000px;
   margin: 0 auto;
 `;
 

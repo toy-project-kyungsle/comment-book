@@ -2,6 +2,9 @@ import styled from '@emotion/styled';
 
 const background_color = '#99A5D9';
 // const font_color = '#3e4756';
+const ImgWidth = 235;
+const ImgHeight = 345;
+const ImgLeftRighMargin = 10;
 
 export const Background = styled.div`
   background-color: ${background_color};
@@ -18,13 +21,13 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-export const SlidesViewer = styled.div({
-  position: `relative`,
-  margin: `0 auto`,
-  width: `1180px`,
-  height: `345px`,
-  overflow: `hidden`,
-});
+export const SlidesViewer = styled.div`
+  position: relative;
+  margin: 0 auto;
+  width: ${ImgWidth * 4 + ImgLeftRighMargin * (4 * 2)}px;
+  height: ${ImgHeight}px;
+  overflow: hidden;
+`;
 
 export const Slides = styled.div(
   {
@@ -36,14 +39,17 @@ export const Slides = styled.div(
 
     transition: `0.5s`,
   },
-  (props) => ({ width: 295 * props.bookCount, transform: `translateX(${props.trans}px)` }),
+  (props) => ({
+    width: (ImgWidth + ImgLeftRighMargin * 2) * props.bookCount,
+    transform: `translateX(${props.trans}px)`,
+  }),
 );
 
 export const Controller = styled.div`
   .Left,
   .Right {
     position: absolute;
-    top: 65%;
+    top: 68%;
     background-color: transparent;
     border: none;
     outline: none;
@@ -64,3 +70,5 @@ export const Controller = styled.div`
     right: 80px;
   }
 `;
+
+export { ImgWidth, ImgLeftRighMargin };

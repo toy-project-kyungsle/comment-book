@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 const container_color = '#FFF7E9';
 
 export const Container = styled.div`
+  font-family: 'Noto Sans KR', sans-serif;
   width: 60%;
   margin-left: 20px;
   .name {
