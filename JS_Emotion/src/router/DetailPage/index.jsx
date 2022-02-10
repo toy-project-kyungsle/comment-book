@@ -13,6 +13,10 @@ import {
   OnelineTextArea,
   SubmitComment,
   AddEditBtn,
+  Description,
+  BtnDiv,
+  InfoBtn,
+  ExitInfoBtn,
 } from './styles';
 import TextareaAutosize from 'react-textarea-autosize';
 
@@ -21,20 +25,26 @@ function DetailPage() {
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(false);
   const [longComment, setLongComment, onCangeLongComment] = useInput('');
-  const [editMode, SetEditMode] = useInput(false);
+  const [editMode, setEditMode] = useState(false);
+  const [infoMode, setInfoMode] = useState(false);
 
   const onSubmitForm = useCallback(
     (e) => {
       e.preventDefault();
       setLongComment('');
-      SetEditMode((prev) => !prev);
+      setEditMode(false);
+      setInfoMode(false);
     },
     [setLongComment],
   );
 
+  const onClickInfoBtn = useCallback(() => {
+    setInfoMode((prev) => !prev);
+  }, []);
+
   const onClickAddEditBtn = useCallback(() => {
-    SetEditMode((prev) => !prev);
-  }, [SetEditMode]);
+    setEditMode((prev) => !prev);
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -63,33 +73,51 @@ function DetailPage() {
                 <LetterGrid>
                   {book.author ? (
                     <>
-                      <div>작가</div>
-                      <div>{book.author}</div>
+                      <div>
+                        <div>작가</div>
+                      </div>
+                      <div>
+                        <div>{book.author}</div>
+                      </div>
                     </>
                   ) : null}
-                  <div>평점</div>
-                  <div>⭐️⭐️⭐️⭐️⭐️</div>
+                  <div>
+                    <div>평점</div>
+                  </div>
+                  <div>
+                    <div>⭐️⭐️⭐️⭐️⭐️</div>
+                  </div>
                   {book.categoryId ? (
                     <>
-                      <div>장르</div>
-                      <div>{GetDetailedName(book.categoryId)}</div>{' '}
+                      <div>
+                        <div>장르</div>
+                      </div>
+                      <div>
+                        <div>{GetDetailedName(book.categoryId)}</div>
+                      </div>{' '}
                     </>
                   ) : null}
                   {book.pubDate ? (
                     <>
-                      <div>출판일</div>
-                      <div>{book.pubDate}</div>
+                      <div>
+                        <div>출판일</div>
+                      </div>
+                      <div>
+                        <div>{book.pubDate}</div>
+                      </div>
                     </>
                   ) : null}
-                  <div>한줄 평</div>
-                  <div>{editMode ? <OnelineTextArea></OnelineTextArea> : <span>아직 한줄평이 없습니다..</span>}</div>
+                  <div>
+                    <div>한줄 평</div>
+                  </div>
+                  <div>{editMode ? <OnelineTextArea></OnelineTextArea> : <div>아직 한줄평이 없습니다..</div>}</div>
                 </LetterGrid>
               </Letters>
             </ShortView>
             {editMode ? (
-              <form onSubmit={onSubmitForm}>
+              <form onSubmit={onSubmitForm} style={{ minHeight: '180px' }}>
                 <TextareaAutosize
-                  style={{ width: '100%' }}
+                  style={{ width: '100%', marginTop: '10px' }}
                   minRows={10}
                   value={longComment}
                   onChange={onCangeLongComment}
@@ -98,10 +126,22 @@ function DetailPage() {
                   <SubmitComment>수정완료</SubmitComment>
                 </div>
               </form>
+            ) : infoMode ? (
+              <>
+                <Description>
+                  <p>{book.description}</p>
+                </Description>
+                <BtnDiv>
+                  <ExitInfoBtn onClick={onClickInfoBtn}>코멘트</ExitInfoBtn>
+                </BtnDiv>
+              </>
             ) : (
               <>
                 <p>후기를 남기지 않으셨습니다..😂</p>
-                <AddEditBtn onClick={onClickAddEditBtn}>후기 작성 (수정)</AddEditBtn>
+                <BtnDiv>
+                  <InfoBtn onClick={onClickInfoBtn}>책 정보 보기</InfoBtn>
+                  <AddEditBtn onClick={onClickAddEditBtn}>후기 작성 (수정)</AddEditBtn>
+                </BtnDiv>
               </>
             )}
           </Container>

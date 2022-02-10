@@ -31,6 +31,7 @@ export const ShortView = styled.div`
 `;
 
 export const ImgDiv = styled.div`
+  height: 280px;
   float: left;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3), 0px 2px 2px rgba(0, 0, 0, 0.22);
 `;
@@ -52,6 +53,12 @@ export const LetterGrid = styled.div`
   display: grid;
   grid-template-columns: 100px 2fr;
   grid-auto-rows: minmax(30px, auto);
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 `;
 
 export const OnelineTextArea = styled.textarea`
@@ -61,10 +68,58 @@ export const OnelineTextArea = styled.textarea`
 export const SubmitComment = styled.button`
   position: absolute;
   right: 20px;
+
+  height: 30px;
+  width: 80px;
+  font-size: 15px;
+
+  margin: 10px 0;
+
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3), 1px 1px 1px rgba(0, 0, 0, 0.22);
 `;
 
-export const AddEditBtn = styled.button`
+export const BtnDiv = styled.div`
   position: absolute;
   right: 20px;
   bottom: 20px;
+`;
+
+export const InfoBtn = styled.button`
+  height: 30px;
+  width: 120px;
+  font-size: 15px;
+
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3), 1px 1px 1px rgba(0, 0, 0, 0.22);
+`;
+
+export const AddEditBtn = styled.button`
+  height: 30px;
+  width: 120px;
+  font-size: 15px;
+
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3), 1px 1px 1px rgba(0, 0, 0, 0.22);
+`;
+
+export const ExitInfoBtn = styled.button`
+  height: 30px;
+  width: 120px;
+  font-size: 15px;
+
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3), 1px 1px 1px rgba(0, 0, 0, 0.22);
+`;
+
+export const Description = styled.div`
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
+  padding-right: 10px;
+  text-align: justify;
 `;
