@@ -47,18 +47,24 @@ export const Letters = styled.div`
   }
 `;
 
-export const OnelineTextArea = styled.textarea`
-  width: 100%;
-`;
-
-export const AddEditComment = styled.div`
-  position: absolute;
-  right: 20px;
-`;
-
 export const LetterGrid = styled.div`
   height: 225px;
   display: grid;
   grid-template-columns: 100px 2fr;
   grid-auto-rows: minmax(30px, auto);
+`;
+
+export const OnelineTextArea = styled.textarea`
+  width: 100%;
+`;
+
+export const SubmitComment = styled.button`
+  position: absolute;
+  right: 20px;
+`;
+
+export const AddEditBtn = styled.button`
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
 `;

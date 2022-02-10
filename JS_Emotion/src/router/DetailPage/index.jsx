@@ -1,7 +1,7 @@
 import useInput from '@hooks/useinput';
 import GetDetailedName from '@utils/GetDetailedName';
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import {
   Container,
@@ -10,15 +10,31 @@ import {
   ShortView,
   Background,
   LetterGrid,
-  AddEditComment,
   OnelineTextArea,
+  SubmitComment,
+  AddEditBtn,
 } from './styles';
 import TextareaAutosize from 'react-textarea-autosize';
 
 function DetailPage() {
   const { isbn } = useParams();
-  const [book, setBook] = useInput({});
-  const [loading, setLoading] = useInput(false);
+  const [book, setBook] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [longComment, setLongComment, onCangeLongComment] = useInput('');
+  const [editMode, SetEditMode] = useInput(false);
+
+  const onSubmitForm = useCallback(
+    (e) => {
+      e.preventDefault();
+      setLongComment('');
+      SetEditMode((prev) => !prev);
+    },
+    [setLongComment],
+  );
+
+  const onClickAddEditBtn = useCallback(() => {
+    SetEditMode((prev) => !prev);
+  }, [SetEditMode]);
 
   useEffect(() => {
     setLoading(true);
@@ -66,16 +82,28 @@ function DetailPage() {
                     </>
                   ) : null}
                   <div>한줄 평</div>
-                  <div>
-                    <OnelineTextArea></OnelineTextArea>
-                  </div>
+                  <div>{editMode ? <OnelineTextArea></OnelineTextArea> : <span>아직 한줄평이 없습니다..</span>}</div>
                 </LetterGrid>
               </Letters>
             </ShortView>
-            <TextareaAutosize style={{ width: '100%' }} minRows={10} />
-            <AddEditComment>
-              <button>Add or Edit Comment</button>
-            </AddEditComment>
+            {editMode ? (
+              <form onSubmit={onSubmitForm}>
+                <TextareaAutosize
+                  style={{ width: '100%' }}
+                  minRows={10}
+                  value={longComment}
+                  onChange={onCangeLongComment}
+                />
+                <div>
+                  <SubmitComment>수정완료</SubmitComment>
+                </div>
+              </form>
+            ) : (
+              <>
+                <p>후기를 남기지 않으셨습니다..😂</p>
+                <AddEditBtn onClick={onClickAddEditBtn}>후기 작성 (수정)</AddEditBtn>
+              </>
+            )}
           </Container>
         </Background>
       )}
