@@ -19,24 +19,18 @@ import {
   ExitInfoBtn,
 } from './styles';
 import TextareaAutosize from 'react-textarea-autosize';
+import { dbService, authService } from '@utils/fbase';
+import { setDoc, doc } from 'firebase/firestore';
 
 function DetailPage() {
   const { isbn } = useParams();
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(false);
-  const [longComment, setLongComment, onCangeLongComment] = useInput('');
+  const [rating, setRating, onChangeRating] = useInput(0);
+  const [shortcomment, setShortComment, onChangeShortComment] = useInput('아직 한줄평이 없습니다..');
+  const [longComment, setLongComment, onCangeLongComment] = useInput('후기를 남기지 않으셨습니다..😂');
   const [editMode, setEditMode] = useState(false);
   const [infoMode, setInfoMode] = useState(false);
-
-  const onSubmitForm = useCallback(
-    (e) => {
-      e.preventDefault();
-      setLongComment('');
-      setEditMode(false);
-      setInfoMode(false);
-    },
-    [setLongComment],
-  );
 
   const onClickInfoBtn = useCallback(() => {
     setInfoMode((prev) => !prev);
@@ -46,11 +40,28 @@ function DetailPage() {
     setEditMode((prev) => !prev);
   }, []);
 
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await setDoc(doc(dbService, 'BookEvals', book.isbn), {
+        userID: authService.currentUser.uid,
+        rating,
+        longComment,
+        shortcomment,
+        edittedAt: Date.now(),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    setEditMode(false);
+    setInfoMode(false);
+  };
+
   useEffect(() => {
     setLoading(true);
     axios.get(`http://localhost:3085/isbnsearch/${isbn}`).then((res) => {
       setBook(res.data.items[0]);
-      console.log(res.data.items[0]);
+      // console.log(res.data.items[0]);
       setLoading(false);
     });
   }, [isbn, setBook, setLoading]);
@@ -85,7 +96,15 @@ function DetailPage() {
                     <div>평점</div>
                   </div>
                   <div>
-                    <div>⭐️⭐️⭐️⭐️⭐️</div>
+                    <div>
+                      <div>
+                        {editMode ? (
+                          <OnelineTextArea onChange={onChangeRating} value={rating}></OnelineTextArea>
+                        ) : (
+                          <div>{rating}</div>
+                        )}
+                      </div>
+                    </div>
                   </div>
                   {book.categoryId ? (
                     <>
@@ -94,7 +113,7 @@ function DetailPage() {
                       </div>
                       <div>
                         <div>{GetDetailedName(book.categoryId)}</div>
-                      </div>{' '}
+                      </div>
                     </>
                   ) : null}
                   {book.pubDate ? (
@@ -110,12 +129,18 @@ function DetailPage() {
                   <div>
                     <div>한줄 평</div>
                   </div>
-                  <div>{editMode ? <OnelineTextArea></OnelineTextArea> : <div>아직 한줄평이 없습니다..</div>}</div>
+                  <div>
+                    {editMode ? (
+                      <OnelineTextArea onChange={onChangeShortComment} value={shortcomment}></OnelineTextArea>
+                    ) : (
+                      <div>{shortcomment}</div>
+                    )}
+                  </div>
                 </LetterGrid>
               </Letters>
             </ShortView>
             {editMode ? (
-              <form onSubmit={onSubmitForm} style={{ minHeight: '180px' }}>
+              <div style={{ minHeight: '180px' }}>
                 <TextareaAutosize
                   style={{ width: '100%', marginTop: '10px' }}
                   minRows={10}
@@ -123,9 +148,9 @@ function DetailPage() {
                   onChange={onCangeLongComment}
                 />
                 <div>
-                  <SubmitComment>수정완료</SubmitComment>
+                  <SubmitComment onClick={onSubmit}>수정완료</SubmitComment>
                 </div>
-              </form>
+              </div>
             ) : infoMode ? (
               <>
                 <Description>
@@ -137,7 +162,7 @@ function DetailPage() {
               </>
             ) : (
               <>
-                <p>후기를 남기지 않으셨습니다..😂</p>
+                <p>{longComment}</p>
                 <BtnDiv>
                   <InfoBtn onClick={onClickInfoBtn}>책 정보 보기</InfoBtn>
                   <AddEditBtn onClick={onClickAddEditBtn}>후기 작성 (수정)</AddEditBtn>
