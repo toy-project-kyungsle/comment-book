@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretSquareLeft } from '@fortawesome/free-solid-svg-icons';
 import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
 import { dbService, authService } from '@utils/fbase';
-import { getDocs, collection } from 'firebase/firestore';
+import { getDoc, doc } from 'firebase/firestore';
 
 function MybooksSlider() {
   const [trans, setTrans] = useState(0);
@@ -29,9 +29,9 @@ function MybooksSlider() {
   };
 
   const getBookInfo = async () => {
-    const dbBooks = await getDocs(collection(dbService, `UserEval_${authService.currentUser.uid}`));
+    const dbBooks = await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid));
 
-    dbBooks.forEach((e) => setMybooks((prev) => [e.data(), ...prev]));
+    setMybooks(Object.values(dbBooks.data()));
     setLoading(false);
   };
 

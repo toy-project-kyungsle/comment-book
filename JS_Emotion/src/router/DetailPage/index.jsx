@@ -25,12 +25,14 @@ import { setDoc, doc, getDoc } from 'firebase/firestore';
 function DetailPage() {
   const { isbn } = useParams();
   const [book, setBook] = useState({});
+  const [bookIsbn, setBookIsbn] = useState(0);
   const [loading, setLoading] = useState(false);
   const [rating, setRating, onChangeRating] = useInput(0);
   const [shortComment, setShortComment, onChangeShortComment] = useInput('아직 한줄평이 없습니다..');
   const [longComment, setLongComment, onCangeLongComment] = useInput('후기를 남기지 않으셨습니다..😂');
   const [editMode, setEditMode] = useState(false);
   const [infoMode, setInfoMode] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const onClickInfoBtn = useCallback(() => {
     setInfoMode((prev) => !prev);
@@ -44,12 +46,15 @@ function DetailPage() {
     event.preventDefault();
     try {
       await setDoc(
-        doc(dbService, `UserEval_${authService.currentUser.uid}`, book.isbn),
-        Object.assign(book, {
-          rating,
-          shortComment,
-          longComment,
-        }),
+        doc(dbService, `UserEval`, authService.currentUser.uid),
+        {
+          [bookIsbn]: Object.assign({}, book, {
+            rating,
+            shortComment,
+            longComment,
+          }),
+        },
+        { merge: true },
       );
     } catch (error) {
       console.log(error);
@@ -59,11 +64,11 @@ function DetailPage() {
   };
 
   const getBookInfo = async () => {
-    const dbBooks = await (await getDoc(doc(dbService, `UserEval_${authService.currentUser.uid}`, book.isbn))).data();
+    const dbBooks = await (await getDoc(doc(dbService, `UserEval`, authService.currentUser.uid))).data();
     if (dbBooks) {
-      setRating(dbBooks.rating);
-      setShortComment(dbBooks.shortComment);
-      setLongComment(dbBooks.longComment);
+      setRating(dbBooks[bookIsbn]?.rating);
+      setShortComment(dbBooks[bookIsbn]?.shortComment);
+      setLongComment(dbBooks[bookIsbn]?.longComment);
     }
     setLoading(false);
   };
@@ -72,12 +77,20 @@ function DetailPage() {
     setLoading(true);
     axios.get(`http://localhost:3085/isbnsearch/${isbn}`).then((res) => {
       setBook(res.data.items[0]);
+      setBookIsbn(res.data.items[0].isbn);
     });
   }, [isbn, setBook, setLoading]);
 
   useEffect(() => {
-    if (Object.keys(book).length) getBookInfo();
-  }, [book]);
+    authService.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+      if (isLoggedIn && Object.keys(book).length) getBookInfo();
+    });
+  }, [isLoggedIn, book]);
 
   return (
     <>
