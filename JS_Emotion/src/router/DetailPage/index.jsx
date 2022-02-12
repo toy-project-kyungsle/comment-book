@@ -27,7 +27,7 @@ function DetailPage() {
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(false);
   const [rating, setRating, onChangeRating] = useInput(0);
-  const [shortcomment, setShortComment, onChangeShortComment] = useInput('아직 한줄평이 없습니다..');
+  const [shortComment, setShortComment, onChangeShortComment] = useInput('아직 한줄평이 없습니다..');
   const [longComment, setLongComment, onCangeLongComment] = useInput('후기를 남기지 않으셨습니다..😂');
   const [editMode, setEditMode] = useState(false);
   const [infoMode, setInfoMode] = useState(false);
@@ -43,13 +43,14 @@ function DetailPage() {
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      await setDoc(doc(dbService, 'BookEvals', book.isbn), {
-        userID: authService.currentUser.uid,
-        rating,
-        longComment,
-        shortcomment,
-        edittedAt: Date.now(),
-      });
+      await setDoc(
+        doc(dbService, authService.currentUser.uid, book.isbn),
+        Object.assign(book, {
+          rating,
+          shortComment,
+          longComment,
+        }),
+      );
     } catch (error) {
       console.log(error);
     }
@@ -58,10 +59,10 @@ function DetailPage() {
   };
 
   const getBookInfo = async () => {
-    const dbBooks = await (await getDoc(doc(dbService, 'BookEvals', book.isbn))).data();
+    const dbBooks = await (await getDoc(doc(dbService, authService.currentUser.uid, book.isbn))).data();
     if (dbBooks) {
       setRating(dbBooks.rating);
-      setShortComment(dbBooks.shortcomment);
+      setShortComment(dbBooks.shortComment);
       setLongComment(dbBooks.longComment);
     }
     setLoading(false);
@@ -143,9 +144,9 @@ function DetailPage() {
                   </div>
                   <div>
                     {editMode ? (
-                      <OnelineTextArea onChange={onChangeShortComment} value={shortcomment}></OnelineTextArea>
+                      <OnelineTextArea onChange={onChangeShortComment} value={shortComment}></OnelineTextArea>
                     ) : (
-                      <div>{shortcomment}</div>
+                      <div>{shortComment}</div>
                     )}
                   </div>
                 </LetterGrid>

@@ -10,6 +10,11 @@ function Header() {
   const [search, , onChangeSearch] = useInput();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const onLogOutClick = () => {
+    authService.signOut();
+    alert('로그아웃 되셨습니다!');
+  };
+
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
@@ -19,11 +24,6 @@ function Header() {
       }
     });
   }, []);
-
-  const onLogOutClick = () => {
-    authService.signOut();
-    alert('로그아웃 되셨습니다!');
-  };
 
   // console.log(authService.currentUser);
 
