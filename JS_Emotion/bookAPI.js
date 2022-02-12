@@ -1,21 +1,21 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const cors = require("cors");
+const cors = require('cors');
 const port = 3085;
-const axios = require("axios");
+const axios = require('axios');
 
 app.use(cors());
 
-app.use("/search/:search/:display/:start", (req, res) => {
+app.use('/search/:search/:display/:start', (req, res) => {
   // console.log(req.params);
   axios
-    .get("http://book.interpark.com/api/search.api", {
+    .get('http://book.interpark.com/api/search.api', {
       params: {
-        key: "175AF4ED9C547CE56E4781C9077B755D3F3078DD67FB8C6689A191043673F01D",
+        key: '175AF4ED9C547CE56E4781C9077B755D3F3078DD67FB8C6689A191043673F01D',
         query: req.params.search,
         maxResults: req.params.display,
         start: req.params.start,
-        output: "json",
+        output: 'json',
       },
     })
     .then(function (response) {
@@ -28,15 +28,15 @@ app.use("/search/:search/:display/:start", (req, res) => {
     });
 });
 
-app.use("/isbnsearch/:search", (req, res) => {
+app.use('/isbnsearch/:search', (req, res) => {
   // console.log(req.params);
   axios
-    .get("http://book.interpark.com/api/search.api", {
+    .get('http://book.interpark.com/api/search.api', {
       params: {
-        key: "175AF4ED9C547CE56E4781C9077B755D3F3078DD67FB8C6689A191043673F01D",
-        queryType: "isbn",
+        key: '175AF4ED9C547CE56E4781C9077B755D3F3078DD67FB8C6689A191043673F01D',
+        queryType: 'isbn',
         query: req.params.search,
-        output: "json",
+        output: 'json',
       },
     })
     .then(function (response) {
