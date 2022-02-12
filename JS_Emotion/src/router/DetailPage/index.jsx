@@ -20,7 +20,7 @@ import {
 } from './styles';
 import TextareaAutosize from 'react-textarea-autosize';
 import { dbService, authService } from '@utils/fbase';
-import { setDoc, doc } from 'firebase/firestore';
+import { setDoc, doc, getDoc } from 'firebase/firestore';
 
 function DetailPage() {
   const { isbn } = useParams();
@@ -57,14 +57,26 @@ function DetailPage() {
     setInfoMode(false);
   };
 
+  const getBookInfo = async () => {
+    const dbBooks = await (await getDoc(doc(dbService, 'BookEvals', book.isbn))).data();
+    if (dbBooks) {
+      setRating(dbBooks.rating);
+      setShortComment(dbBooks.shortcomment);
+      setLongComment(dbBooks.longComment);
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
     setLoading(true);
     axios.get(`http://localhost:3085/isbnsearch/${isbn}`).then((res) => {
       setBook(res.data.items[0]);
-      // console.log(res.data.items[0]);
-      setLoading(false);
     });
   }, [isbn, setBook, setLoading]);
+
+  useEffect(() => {
+    if (Object.keys(book).length) getBookInfo();
+  }, [book]);
 
   return (
     <>

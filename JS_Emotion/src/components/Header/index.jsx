@@ -25,7 +25,7 @@ function Header() {
     alert('로그아웃 되셨습니다!');
   };
 
-  console.log(authService.currentUser);
+  // console.log(authService.currentUser);
 
   return (
     <Background>

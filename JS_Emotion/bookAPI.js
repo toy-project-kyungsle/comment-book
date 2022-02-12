@@ -7,7 +7,6 @@ const axios = require('axios');
 app.use(cors());
 
 app.use('/search/:search/:display/:start', (req, res) => {
-  // console.log(req.params);
   axios
     .get('http://book.interpark.com/api/search.api', {
       params: {
@@ -20,7 +19,6 @@ app.use('/search/:search/:display/:start', (req, res) => {
     })
     .then(function (response) {
       const items = response.data.item;
-      // console.log(items);
       res.send({ items });
     })
     .catch(function (error) {
@@ -29,7 +27,6 @@ app.use('/search/:search/:display/:start', (req, res) => {
 });
 
 app.use('/isbnsearch/:search', (req, res) => {
-  // console.log(req.params);
   axios
     .get('http://book.interpark.com/api/search.api', {
       params: {
@@ -41,7 +38,6 @@ app.use('/isbnsearch/:search', (req, res) => {
     })
     .then(function (response) {
       const items = response.data.item;
-      // console.log(items);
       res.send({ items });
     })
     .catch(function (error) {
