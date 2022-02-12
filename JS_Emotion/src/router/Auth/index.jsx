@@ -8,6 +8,7 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import '@utils/fbase';
+import { authService } from '@utils/fbase';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -36,7 +37,7 @@ const Auth = () => {
         await signInWithEmailAndPassword(auth, email, password);
       }
     } catch (error) {
-      setError(error);
+      setError(error.message);
     }
   };
 
@@ -52,6 +53,11 @@ const Auth = () => {
   };
 
   const toggleAccount = () => setNewAccount((prev) => !prev);
+
+  // console.log(authService.currentUser);
+  // setInterval(() => {
+  //   console.log(authService.currentUser);
+  // }, 2000);
 
   return (
     <div>

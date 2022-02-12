@@ -1,12 +1,30 @@
 import useInput from '@hooks/useinput';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Background, Container, LeftSection, RightSection } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { authService } from '@utils/fbase';
 
 function Header() {
-  const [search, setSearch, onChangeSearch] = useInput();
+  const [search, , onChangeSearch] = useInput();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+  }, []);
+
+  const onLogOutClick = () => {
+    authService.signOut();
+  };
+
+  console.log(authService.currentUser);
 
   return (
     <Background>
@@ -32,6 +50,7 @@ function Header() {
           <div>
             <Link to="/auth">Login</Link>
           </div>
+          <div>{isLoggedIn ? <p onClick={onLogOutClick}>Logout</p> : null}</div>
         </RightSection>
       </Container>
     </Background>

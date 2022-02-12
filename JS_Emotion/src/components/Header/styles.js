@@ -66,4 +66,8 @@ export const RightSection = styled.div`
   & a {
     font-size: ${font_size_medium};
   }
+  & p {
+    color: ${font_color};
+    font-size: ${font_size_medium};
+  }
 `;
