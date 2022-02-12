@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import firestore from '@utils/fbase';
+import '@utils/fbase';
 
 const Login = () => {
   const [email, setEmail] = useState('');
