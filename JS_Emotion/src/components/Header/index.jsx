@@ -22,6 +22,7 @@ function Header() {
 
   const onLogOutClick = () => {
     authService.signOut();
+    alert('로그아웃 되셨습니다!');
   };
 
   console.log(authService.currentUser);
@@ -47,10 +48,7 @@ function Header() {
           </div>
         </LeftSection>
         <RightSection>
-          <div>
-            <Link to="/auth">Login</Link>
-          </div>
-          <div>{isLoggedIn ? <p onClick={onLogOutClick}>Logout</p> : null}</div>
+          <div>{isLoggedIn ? <p onClick={onLogOutClick}>Logout</p> : <Link to="/auth">Login</Link>}</div>
         </RightSection>
       </Container>
     </Background>

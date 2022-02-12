@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
@@ -9,13 +8,14 @@ import {
 } from 'firebase/auth';
 import '@utils/fbase';
 import { authService } from '@utils/fbase';
+import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [newAccount, setNewAccount] = useState(true);
   const [error, setError] = useState('');
-  const auth = getAuth();
+  const navigate = useNavigate();
 
   const onChange = (event) => {
     const {
@@ -32,10 +32,11 @@ const Auth = () => {
     event.preventDefault();
     try {
       if (newAccount) {
-        await createUserWithEmailAndPassword(auth, email, password);
+        await createUserWithEmailAndPassword(authService, email, password);
       } else {
-        await signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(authService, email, password);
       }
+      navigate('/');
     } catch (error) {
       setError(error.message);
     }
@@ -49,15 +50,10 @@ const Auth = () => {
     } else if (name === 'github') {
       provider = new GithubAuthProvider();
     }
-    await signInWithPopup(auth, provider);
+    await signInWithPopup(authService, provider);
   };
 
   const toggleAccount = () => setNewAccount((prev) => !prev);
-
-  // console.log(authService.currentUser);
-  // setInterval(() => {
-  //   console.log(authService.currentUser);
-  // }, 2000);
 
   return (
     <div>
