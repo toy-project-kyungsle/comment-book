@@ -30,7 +30,7 @@ function Header() {
         </LeftSection>
         <RightSection>
           <div>
-            <Link to="/login">Login</Link>
+            <Link to="/auth">Login</Link>
           </div>
         </RightSection>
       </Container>

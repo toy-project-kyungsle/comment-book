@@ -6,8 +6,7 @@ import { RecoilRoot } from 'recoil';
 
 const MainPage = loadable(() => import('@router/MainPage'));
 const Search = loadable(() => import('@router/Search'));
-const Login = loadable(() => import('@router/Login'));
-const SingUp = loadable(() => import('@router/SingUp'));
+const Auth = loadable(() => import('@router/Auth'));
 const DetailPage = loadable(() => import('@router/DetailPage'));
 
 const App = () => (
@@ -15,8 +14,7 @@ const App = () => (
     <Router>
       <Header />
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SingUp />} />
+        <Route path="/auth" element={<Auth />} />
         <Route path="/" element={<MainPage />} />
         <Route path="/search/:search/:display/:start/*" element={<Search />} />
         <Route path="/comment/:isbn" element={<DetailPage />} />
