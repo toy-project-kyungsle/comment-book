@@ -44,7 +44,7 @@ function DetailPage() {
     event.preventDefault();
     try {
       await setDoc(
-        doc(dbService, authService.currentUser.uid, book.isbn),
+        doc(dbService, `UserEval_${authService.currentUser.uid}`, book.isbn),
         Object.assign(book, {
           rating,
           shortComment,
@@ -59,7 +59,7 @@ function DetailPage() {
   };
 
   const getBookInfo = async () => {
-    const dbBooks = await (await getDoc(doc(dbService, authService.currentUser.uid, book.isbn))).data();
+    const dbBooks = await (await getDoc(doc(dbService, `UserEval_${authService.currentUser.uid}`, book.isbn))).data();
     if (dbBooks) {
       setRating(dbBooks.rating);
       setShortComment(dbBooks.shortComment);

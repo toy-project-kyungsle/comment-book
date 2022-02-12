@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import Favorites from '@atom/Favorite';
 import { Container, Controller, Slides, SlidesViewer, Background, ImgWidth, ImgLeftRighMargin } from './styles';
 import MyBookImg from '@components/MyBookImg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretSquareLeft } from '@fortawesome/free-solid-svg-icons';
 import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
 import { dbService, authService } from '@utils/fbase';
-import { doc, getDoc, getDocs, collection } from 'firebase/firestore';
+import { getDocs, collection } from 'firebase/firestore';
 
 function MybooksSlider() {
   const [trans, setTrans] = useState(0);
@@ -31,7 +29,7 @@ function MybooksSlider() {
   };
 
   const getBookInfo = async () => {
-    const dbBooks = await getDocs(collection(dbService, authService.currentUser.uid));
+    const dbBooks = await getDocs(collection(dbService, `UserEval_${authService.currentUser.uid}`));
 
     dbBooks.forEach((e) => setMybooks((prev) => [e.data(), ...prev]));
     setLoading(false);

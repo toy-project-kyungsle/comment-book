@@ -1,12 +1,9 @@
 import useInput from '@hooks/useinput';
 import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
 import { BookContainer, BookImg, Wrap } from './styles';
-import Favorites from '@atom/Favorite';
 
 function MyBookImg({ coverImg, title, isbn, shortcomment, rating }) {
-  const [FavoriteBook] = useRecoilState(Favorites);
   const [wrapDisplay, setWrapDisplay] = useInput('none');
 
   const onMouseOverImg = useCallback(() => {
