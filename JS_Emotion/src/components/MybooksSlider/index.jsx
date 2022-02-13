@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Container, Controller, Slides, SlidesViewer, Background, ImgWidth, ImgLeftRighMargin } from './styles';
 import MyBookImg from '@components/MyBookImg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,11 +7,15 @@ import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
 import { dbService, authService } from '@utils/fbase';
 import { getDoc, doc } from 'firebase/firestore';
 
+const ratingSection = ['0 ~ 1', '1 ~ 2', '2 ~ 3', '3 ~ 4', '4 ~ 5'];
+
 function MybooksSlider() {
   const [trans, setTrans] = useState(0);
   const [mybooks, setMybooks] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [categoryList, setCategoryList] = useState({});
+  const [editYearList, setEditYearList] = useState([]);
 
   const onClickL = () => {
     if (trans >= 0) {
@@ -32,8 +36,28 @@ function MybooksSlider() {
     const dbBooks = await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid));
 
     setMybooks(Object.values(dbBooks.data()));
+  };
+
+  const getCategoryList = async () => {
+    const CTBooks = await getDoc(doc(dbService, 'BookCategoryList', 'AllCategory'));
+
+    setCategoryList(CTBooks.data());
     setLoading(false);
   };
+
+  const onClickCateorySort = useCallback(() => {
+    // setMybooks((prev) => prev.filter((elem) => elem.categoryId));
+  }, []);
+
+  const onClickRatinSort = useCallback(() => {
+    // setMybooks((prev) => prev.fi)
+  }, []);
+
+  const deleteSameElem = useCallback((arr) => {
+    let result = [];
+    new Set(arr).forEach((e) => result.push(e));
+    return result.sort((a, b) => b - a);
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -43,9 +67,29 @@ function MybooksSlider() {
       } else {
         setIsLoggedIn(false);
       }
-      if (isLoggedIn) getBookInfo();
+      if (isLoggedIn) {
+        getBookInfo();
+        getCategoryList();
+      }
     });
   }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (mybooks.length > 0) {
+      mybooks.forEach((elem) => {
+        if (!editYearList.includes(new Date(elem.editDate).getFullYear())) {
+          setEditYearList((prev) => [new Date(elem.editDate).getFullYear(), ...prev]);
+        }
+      });
+    }
+  }, [editYearList, mybooks]);
+
+  const onClickYearSort = (e) => {
+    console.log(e.target.innerText);
+    setMybooks((prev) =>
+      prev.filter((elem) => new Date(elem.editDate).getFullYear().toString() === e.target.innerText),
+    );
+  };
 
   return loading ? (
     <div>loading..</div>
@@ -54,6 +98,28 @@ function MybooksSlider() {
       <Container>
         <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '50px' }}>
           <p style={{ fontSize: `70px`, fontFamily: "'Rowdies', cursive" }}>All the Book I read</p>
+          <div>
+            <span>Category</span>
+            <span>Rating</span>
+            <span>Date</span>
+          </div>
+          {/* <div>
+            {categoryList
+              ? Object.entries(categoryList).map((name) => {
+                  return <p>{name[1]}</p>;
+                })
+              : null}
+          </div>
+          <div>
+            {ratingSection.map((elem) => {
+              return <p>{elem}</p>;
+            })}
+          </div> */}
+          <div>
+            {deleteSameElem(editYearList)?.map((year) => {
+              return <p onClick={onClickYearSort}>{year}</p>;
+            })}
+          </div>
         </div>
         <div>
           <SlidesViewer>

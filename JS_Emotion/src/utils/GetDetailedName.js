@@ -1,8 +1,9 @@
 import CategoryList from '@atom/CategoryList';
 
 function GetDetailedName(categoryID) {
-  // console.log(categoryId);
-  return CategoryList[categoryID]?.match(/(.+)>(.+)/)[2];
+  let tempArr = CategoryList[categoryID]?.match(/(.+)>(.+)/);
+  if (tempArr?.length > 2) return tempArr[2];
+  return '';
 }
 
 export default GetDetailedName;

@@ -8,8 +8,8 @@ function MyInfo() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [laoding, setLoading] = useState(true);
   const [bookCount, setBookCount] = useState(0);
-  const [bestBook, setBestBook] = useState('');
-  const [bestCategory, setBestCategory] = useState('');
+  const [bestBook, setBestBook] = useState('인생책이 아직 없습니다..');
+  const [bestCategory, setBestCategory] = useState('얘도 없어요..');
 
   useEffect(() => {
     setLoading(true);
@@ -22,17 +22,20 @@ function MyInfo() {
       if (isLoggedIn) {
         const q = query(collection(dbService, `UserEval`));
         onSnapshot(q, (snapshot) => {
-          let dataArr = Object.entries(snapshot.docs[0].data()).sort((a, b) => b[1]['rating'] - a[1]['rating']);
-          let CategoryObj = {};
-          dataArr.forEach((elem) =>
-            CategoryObj[elem[1]['categoryId']]
-              ? (CategoryObj[elem[1]['categoryId']] += 1)
-              : (CategoryObj[elem[1]['categoryId']] = 1),
-          );
+          let dataArr = Object.entries(snapshot.docs[0]?.data());
+          if (dataArr.length > 0) {
+            dataArr.sort((a, b) => b[1]['rating'] - a[1]['rating']);
+            let CategoryObj = {};
+            dataArr?.forEach((elem) =>
+              CategoryObj[elem[1]['categoryId']]
+                ? (CategoryObj[elem[1]['categoryId']] += 1)
+                : (CategoryObj[elem[1]['categoryId']] = 1),
+            );
 
-          setBestBook(dataArr[0][1]['title']);
-          setBookCount(dataArr.length);
-          setBestCategory(GetDetailedName(Object.entries(CategoryObj).sort((a, b) => b[1] - a[1])[0][0]));
+            setBestBook(dataArr[0][1]['title']);
+            setBookCount(dataArr.length);
+            setBestCategory(GetDetailedName(Object.entries(CategoryObj).sort((a, b) => b[1] - a[1])[0][0]));
+          }
         });
         setLoading(false);
       }

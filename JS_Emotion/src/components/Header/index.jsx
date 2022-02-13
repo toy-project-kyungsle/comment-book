@@ -25,8 +25,6 @@ function Header() {
     });
   }, []);
 
-  // console.log(authService.currentUser);
-
   return (
     <Background>
       <Container>

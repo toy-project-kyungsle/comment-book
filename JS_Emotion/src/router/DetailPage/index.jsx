@@ -52,6 +52,7 @@ function DetailPage() {
             rating,
             shortComment,
             longComment,
+            editDate: Date(),
           }),
         },
         { merge: true },
