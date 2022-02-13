@@ -20,7 +20,7 @@ import {
 } from './styles';
 import TextareaAutosize from 'react-textarea-autosize';
 import { dbService, authService } from '@utils/fbase';
-import { setDoc, doc, getDoc } from 'firebase/firestore';
+import { setDoc, doc, getDoc, deleteField, updateDoc } from 'firebase/firestore';
 
 function DetailPage() {
   const { isbn } = useParams();
@@ -42,37 +42,58 @@ function DetailPage() {
     setEditMode((prev) => !prev);
   }, []);
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      await setDoc(
-        doc(dbService, `UserEval`, authService.currentUser.uid),
-        {
-          [bookIsbn]: Object.assign({}, book, {
-            rating,
-            shortComment,
-            longComment,
-            editDate: Date(),
-          }),
-        },
-        { merge: true },
-      );
-    } catch (error) {
-      console.log(error);
-    }
+  const onClickCancle = useCallback(() => {
     setEditMode(false);
-    setInfoMode(false);
-  };
+  }, []);
 
-  const getBookInfo = async () => {
+  const onClickDelete = useCallback(async () => {
+    const ok = window.confirm('정말로 이 후기를 지우시겠습니까?');
+    if (ok) {
+      const commentRef = doc(dbService, 'UserEval', authService.currentUser.uid);
+      await updateDoc(commentRef, {
+        [bookIsbn]: deleteField(),
+      })
+        .then(() => window.alert('삭제 완료'))
+        .catch((err) => console.log(err));
+    }
+  }, [bookIsbn]);
+
+  const onSubmit = useCallback(
+    async (event) => {
+      event.preventDefault();
+      try {
+        await setDoc(
+          doc(dbService, `UserEval`, authService.currentUser.uid),
+          {
+            [bookIsbn]: Object.assign({}, book, {
+              rating,
+              shortComment,
+              longComment,
+              editDate: Date(),
+            }),
+          },
+          { merge: true },
+        );
+      } catch (error) {
+        console.log(error);
+      }
+      setEditMode(false);
+      setInfoMode(false);
+    },
+    [book, bookIsbn, longComment, rating, shortComment],
+  );
+
+  const getBookInfo = useCallback(async () => {
     const dbBooks = await (await getDoc(doc(dbService, `UserEval`, authService.currentUser.uid))).data();
-    if (dbBooks) {
+    if (!dbBooks[bookIsbn] || !dbBooks) {
+      setInfoMode(true);
+    } else if (dbBooks) {
       setRating(dbBooks[bookIsbn]?.rating);
       setShortComment(dbBooks[bookIsbn]?.shortComment);
       setLongComment(dbBooks[bookIsbn]?.longComment);
     }
     setLoading(false);
-  };
+  }, [bookIsbn, setLongComment, setRating, setShortComment]);
 
   useEffect(() => {
     setLoading(true);
@@ -91,7 +112,7 @@ function DetailPage() {
       }
       if (isLoggedIn && Object.keys(book).length) getBookInfo();
     });
-  }, [isLoggedIn, book]);
+  }, [isLoggedIn, book, getBookInfo]);
 
   return (
     <>
@@ -119,11 +140,11 @@ function DetailPage() {
                       </div>
                     </>
                   ) : null}
-                  <div>
-                    <div>평점</div>
-                  </div>
-                  <div>
-                    <div>
+                  {!infoMode ? (
+                    <>
+                      <div>
+                        <div>평점</div>
+                      </div>
                       <div>
                         {editMode ? (
                           <OnelineTextArea onChange={onChangeRating} value={rating}></OnelineTextArea>
@@ -131,8 +152,8 @@ function DetailPage() {
                           <div>{rating}</div>
                         )}
                       </div>
-                    </div>
-                  </div>
+                    </>
+                  ) : null}
                   {book.categoryId ? (
                     <>
                       <div>
@@ -153,16 +174,20 @@ function DetailPage() {
                       </div>
                     </>
                   ) : null}
-                  <div>
-                    <div>한줄 평</div>
-                  </div>
-                  <div>
-                    {editMode ? (
-                      <OnelineTextArea onChange={onChangeShortComment} value={shortComment}></OnelineTextArea>
-                    ) : (
-                      <div>{shortComment}</div>
-                    )}
-                  </div>
+                  {!infoMode ? (
+                    <>
+                      <div>
+                        <div>한줄 평</div>
+                      </div>
+                      <div>
+                        {editMode ? (
+                          <OnelineTextArea onChange={onChangeShortComment} value={shortComment}></OnelineTextArea>
+                        ) : (
+                          <div>{shortComment}</div>
+                        )}
+                      </div>
+                    </>
+                  ) : null}
                 </LetterGrid>
               </Letters>
             </ShortView>
@@ -174,9 +199,10 @@ function DetailPage() {
                   value={longComment}
                   onChange={onCangeLongComment}
                 />
-                <div>
+                <BtnDiv>
+                  <button onClick={onClickCancle}>취소</button>
                   <SubmitComment onClick={onSubmit}>수정완료</SubmitComment>
-                </div>
+                </BtnDiv>
               </div>
             ) : infoMode ? (
               <>
@@ -193,6 +219,7 @@ function DetailPage() {
                 <BtnDiv>
                   <InfoBtn onClick={onClickInfoBtn}>책 정보 보기</InfoBtn>
                   <AddEditBtn onClick={onClickAddEditBtn}>후기 작성 (수정)</AddEditBtn>
+                  <button onClick={onClickDelete}>후기 삭제</button>
                 </BtnDiv>
               </>
             )}

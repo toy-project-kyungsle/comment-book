@@ -53,7 +53,7 @@ function MyInfo() {
       </p>
       <Container>
         <InfoLetters>
-          <div className="name">User Name</div>
+          <div className="name">{authService?.currentUser?.displayName}</div>
           <div className="letterBox">
             <div className="title">{'읽은 책수'}</div>
             <div>{bookCount}</div>

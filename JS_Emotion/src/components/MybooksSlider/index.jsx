@@ -112,7 +112,7 @@ function MybooksSlider() {
             <span>Rating</span>
             <span>Date</span>
           </div>
-          <div>
+          {/* <div>
             {categoryList
               ? Object.entries(categoryList).map((name) => {
                   return <p onClick={onClickCateorySort}>{name[1]}</p>;
@@ -128,7 +128,7 @@ function MybooksSlider() {
             {deleteSameElem(editYearList)?.map((year) => {
               return <p onClick={onClickYearSort}>{year}</p>;
             })}
-          </div>
+          </div> */}
         </div>
         <div>
           <SlidesViewer>
