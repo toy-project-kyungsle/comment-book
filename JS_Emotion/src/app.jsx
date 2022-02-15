@@ -1,5 +1,4 @@
 import loadable from '@loadable/component';
-import Header from '@components/Header';
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
@@ -12,7 +11,6 @@ const DetailPage = loadable(() => import('@router/DetailPage'));
 const App = () => (
   <RecoilRoot>
     <Router>
-      <Header />
       <Routes>
         <Route path="/auth" element={<Auth />} />
         <Route path="/" element={<MainPage />} />

@@ -1,8 +1,11 @@
-import { Container, InfoLetters, Background } from './styles';
+import { InfoBox, Background, BackgroundImg, TitleBox, Container } from './styles';
 import React, { useEffect, useState } from 'react';
 import { dbService, authService } from '@utils/fbase';
 import { collection, query, onSnapshot } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
+// @ts-ignore
+import backImg from './bookImg.png';
+import Header from '@components/Header';
 
 function MyInfo() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,11 +29,13 @@ function MyInfo() {
           if (dataArr.length > 0) {
             dataArr.sort((a, b) => b[1]['rating'] - a[1]['rating']);
             let CategoryObj = {};
-            dataArr?.forEach((elem) =>
-              CategoryObj[elem[1]['categoryId']]
-                ? (CategoryObj[elem[1]['categoryId']] += 1)
-                : (CategoryObj[elem[1]['categoryId']] = 1),
-            );
+            dataArr?.forEach((elem) => {
+              if (GetDetailedName(elem[1]['categoryId']) !== '') {
+                CategoryObj[elem[1]['categoryId']]
+                  ? (CategoryObj[elem[1]['categoryId']] += 1)
+                  : (CategoryObj[elem[1]['categoryId']] = 1);
+              }
+            });
 
             setBestBook(dataArr[0][1]['title']);
             setBookCount(dataArr.length);
@@ -42,29 +47,32 @@ function MyInfo() {
     });
   }, [isLoggedIn]);
 
-  // console.log(bestCategory);
-
   return laoding ? (
     <div>loading..</div>
   ) : (
-    <Background>
-      <p style={{ margin: `0px auto 50px auto`, fontSize: `80px`, fontFamily: "'Rowdies', cursive" }}>
-        My Book Collection
-      </p>
-      <Container>
-        <InfoLetters>
-          <div className="name">{authService?.currentUser?.displayName}</div>
-          <div className="letterBox">
-            <div className="title">{'읽은 책수'}</div>
-            <div>{bookCount}</div>
-            <div className="title">{`Best Book`}</div>
-            <div>{bestBook}</div>
-            <div className="title">{`Best Category`}</div>
-            <div>{bestCategory}</div>
-          </div>
-        </InfoLetters>
-      </Container>
-    </Background>
+    <>
+      <Background>
+        <BackgroundImg src={backImg} alt="null" />
+        <Header />
+        <TitleBox>
+          <p className="title" style={{}}>
+            My Book Collection
+          </p>
+          <p className="goodMent">
+            The reading of all good books is like conversation with the finest men of past Centuries
+          </p>
+          <p className="mentor">- Rene Descartes</p>
+        </TitleBox>
+        <InfoBox>
+          <div className="title">{'읽은 책수'}</div>
+          <div className="info">{bookCount}개의 책을 읽으셨습니다</div>
+          <div className="title">{`Best Book`}</div>
+          <div className="info">{bestBook}</div>
+          <div className="title">{`Best Category`}</div>
+          <div className="info">{bestCategory}</div>
+        </InfoBox>
+      </Background>
+    </>
   );
 }
 

@@ -9,11 +9,21 @@ const ImgLeftRighMargin = 10;
 export const Background = styled.div`
   background-color: ${background_color};
 
-  height: 1000px;
+  height: 700px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+`;
+
+export const TopBox = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 `;
 
 export const Container = styled.div`

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Container, Controller, Slides, SlidesViewer, Background, ImgWidth, ImgLeftRighMargin } from './styles';
+import { Container, Controller, Slides, SlidesViewer, Background, ImgWidth, ImgLeftRighMargin, TopBox } from './styles';
 import MyBookImg from '@components/MyBookImg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretSquareLeft } from '@fortawesome/free-solid-svg-icons';
@@ -105,14 +105,17 @@ function MybooksSlider() {
   ) : (
     <Background>
       <Container>
-        <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '50px' }}>
-          <p style={{ fontSize: `70px`, fontFamily: "'Rowdies', cursive" }}>All the Book I read</p>
-          <div>
-            <span>Category</span>
-            <span>Rating</span>
-            <span>Date</span>
+        <TopBox>
+          <div className="container">
+            <div>My books</div>
+            <div>
+              <span>Category</span>
+              <span>Rating</span>
+              <span>Date</span>
+            </div>
           </div>
-          {/* <div>
+        </TopBox>
+        {/* <div>
             {categoryList
               ? Object.entries(categoryList).map((name) => {
                   return <p onClick={onClickCateorySort}>{name[1]}</p>;
@@ -129,7 +132,6 @@ function MybooksSlider() {
               return <p onClick={onClickYearSort}>{year}</p>;
             })}
           </div> */}
-        </div>
         <div>
           <SlidesViewer>
             <Slides trans={trans} bookCount={mybooks.length}>

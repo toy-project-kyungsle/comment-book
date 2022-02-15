@@ -1,29 +1,15 @@
 import styled from '@emotion/styled';
 
-const margin_meduim = '20px';
-const font_size_medium = '15px';
-const font_size_large = '25px';
-const background_color = '#2c2b29';
-const font_color = 'wheat';
-
-export const Background = styled.div`
-  background-color: ${background_color};
-
-  height: 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
 export const Container = styled.div`
-  height: 40%;
+  position: absolute;
+  top: 10%;
+  right: 7%;
+  left: 7%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 ${margin_meduim} 0 ${margin_meduim};
 
   & a {
-    color: ${font_color};
     text-decoration: none;
   }
 `;
@@ -31,31 +17,15 @@ export const Container = styled.div`
 export const LeftSection = styled.div`
   display: flex;
   flex-direction: row;
-  & div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
   & a {
-    font-size: ${font_size_large};
-  }
-  & input {
-    height: 25px;
-    border: 1px solid black;
-    border-radius: 20px;
-    text-align: center;
-  }
-  & button {
-    background-color: ${background_color};
-    border: none;
-    cursor: pointer;
-  }
-  & form {
-    margin: auto 0 auto ${margin_meduim};
+    margin: auto 0;
+    color: #050505d3;
+    font-size: 20px;
   }
 `;
 
 export const RightSection = styled.div`
+  color: #050505d3;
   display: flex;
   flex-direction: row;
   & div {
@@ -63,11 +33,27 @@ export const RightSection = styled.div`
     flex-direction: column;
     justify-content: center;
   }
-  & a {
-    font-size: ${font_size_medium};
-  }
+  & a,
   & p {
-    color: ${font_color};
-    font-size: ${font_size_medium};
+    font-size: 15px;
+  }
+  & input {
+    background: none;
+    height: 24px;
+    width: 130px;
+    margin: 0px 5px 8px 20px;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 13px;
+    text-align: center;
+  }
+  & input:focus {
+    outline: none;
+  }
+  .searchBtn {
+    background: none;
+    margin: 0 20px 5px 0;
+    border: none;
+    cursor: pointer;
   }
 `;

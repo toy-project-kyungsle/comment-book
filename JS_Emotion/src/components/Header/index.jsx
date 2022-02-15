@@ -1,19 +1,27 @@
 import useInput from '@hooks/useinput';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Background, Container, LeftSection, RightSection } from './styles';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Container, LeftSection, RightSection } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { authService } from '@utils/fbase';
 
 function Header() {
-  const [search, , onChangeSearch] = useInput();
+  const [search, setSearch, onChangeSearch] = useInput('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  let navigate = useNavigate();
 
   const onLogOutClick = () => {
     authService.signOut();
     alert('로그아웃 되셨습니다!');
   };
+
+  const onKeyDown = useCallback(
+    (e) => {
+      if (e.key === 'Enter') return navigate(`/search/${search}/10/1`);
+    },
+    [navigate, search],
+  );
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
@@ -26,30 +34,30 @@ function Header() {
   }, []);
 
   return (
-    <Background>
-      <Container>
-        <LeftSection>
-          <div className="PageName">
-            <div>
-              <Link to={`/`}>Favorites</Link>
-            </div>
-          </div>
-          <div>
-            <form>
-              <input type="text" placeholder="Search Movie!" value={search} onChange={onChangeSearch}></input>
-              <Link to={`/search/${search}/10/1`}>
-                <button>
-                  <FontAwesomeIcon icon={faSearch} size="lg" style={{ color: 'wheat' }} />
-                </button>
-              </Link>
-            </form>
-          </div>
-        </LeftSection>
-        <RightSection>
-          <div>{isLoggedIn ? <p onClick={onLogOutClick}>Logout</p> : <Link to="/auth">Login</Link>}</div>
-        </RightSection>
-      </Container>
-    </Background>
+    <Container>
+      <LeftSection>
+        <Link to={`/`}>Favorites</Link>
+      </LeftSection>
+      <RightSection>
+        <div>
+          <input
+            type="text"
+            placeholder="Search"
+            value={search}
+            onChange={onChangeSearch}
+            onKeyDown={onKeyDown}
+          ></input>
+        </div>
+        <div>
+          <Link to={`/search/${search}/10/1`}>
+            <button className="searchBtn">
+              <FontAwesomeIcon icon={faSearch} style={{ color: `grey`, fontSize: '15px' }} />
+            </button>
+          </Link>
+        </div>
+        <div>{isLoggedIn ? <p onClick={onLogOutClick}>Logout</p> : <Link to="/auth">Login</Link>}</div>
+      </RightSection>
+    </Container>
   );
 }
 

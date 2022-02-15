@@ -1,58 +1,54 @@
 import styled from '@emotion/styled';
 
-const background_color = '#FFFFFF';
-const info_color = '#FFF7E9';
-const font_color = '#3e4756';
-
 export const Background = styled.div`
-  background-color: ${background_color};
-
-  height: 700px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  border-top: ${font_color} 1px solid;
+  position: relative;
 `;
 
-export const Container = styled.div`
-  font-family: 'Noto Sans KR', sans-serif;
-  color: ${font_color};
-
-  width: 1000px;
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto 0 auto;
-  padding: 20px;
-
-  border-radius: 10px;
+export const BackgroundImg = styled.img`
+  z-index: -1;
+  width: 100%;
 `;
 
-export const InfoLetters = styled.div`
-  height: 300px;
-  width: 40%;
+export const TitleBox = styled.div`
+  position: absolute;
+  left: 7%;
+  bottom: 9%;
+  width: 400px;
+  font-family: 'Roboto Slab', serif;
 
-  .name {
-    font-weight: bold;
-    height: 20%;
-    font-size: 30px;
-    text-shadow: 3px 3px #f2f3f3;
+  .title {
+    font-size: 24px;
   }
-  .letterBox {
-    background-color: ${info_color};
+  .goodMent,
+  .mentor {
+    font-size: 14px;
+    color: #0000007b;
+  }
+`;
 
-    height: 80%;
-    display: grid;
-    grid-template-columns: 35% 65%;
-    grid-template-rows: ${100 / 3}% ${100 / 3}% ${100 / 3}%;
-    padding: 40px 20px 0px 20px;
+export const InfoBox = styled.div`
+  position: absolute;
+  right: 5%;
+  bottom: 10.2%;
+  height: 15%;
 
-    border-radius: 10px;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3), 0px 2px 2px rgba(0, 0, 0, 0.22);
+  width: 300px;
 
-    .title {
-      font-weight: bold;
-      color: black;
-    }
+  font-family: 'Noto Sans KR', sans-serif;
+
+  display: grid;
+  grid-template-columns: 150px 250px;
+  grid-template-rows: ${100 / 3}% ${100 / 3}% ${100 / 3}%;
+
+  .title {
+    font-size: 14px;
+
+    font-weight: 800;
+    color: #0000007b;
+  }
+
+  .info {
+    font-size: 13px;
+    color: #3e4756;
   }
 `;
