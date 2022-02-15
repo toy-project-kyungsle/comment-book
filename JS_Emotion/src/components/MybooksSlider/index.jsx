@@ -1,9 +1,19 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Container, Controller, Slides, SlidesViewer, Background, ImgWidth, ImgLeftRighMargin, TopBox } from './styles';
+import {
+  Container,
+  Controller,
+  Slides,
+  SlidesViewer,
+  Background,
+  ImgWidth,
+  ImgLeftRighMargin,
+  TopBox,
+  SlidesContainer,
+} from './styles';
 import MyBookImg from '@components/MyBookImg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretSquareLeft } from '@fortawesome/free-solid-svg-icons';
-import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { dbService, authService } from '@utils/fbase';
 import { getDoc, doc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
@@ -18,19 +28,23 @@ function MybooksSlider() {
   const [categoryList, setCategoryList] = useState({});
   const [editYearList, setEditYearList] = useState([]);
 
+  const [categoryListOpen, setCategoryListOpen] = useState(false);
+  const [ratingListOpen, setRatingListOpen] = useState(false);
+  const [yearListOpen, setYearListOpen] = useState(false);
+
   const onClickL = () => {
     if (trans >= 0) {
       return;
     }
-    setTrans((current) => current + (ImgWidth * 2 + ImgLeftRighMargin * 4));
+    setTrans((current) => current + (ImgWidth * 4 + ImgLeftRighMargin * 6));
     console.log(ImgLeftRighMargin, ImgWidth);
   };
 
   const onClickR = () => {
-    if (trans <= -(((mybooks.length - 4) / 2) * (ImgWidth * 2 + ImgLeftRighMargin * 4))) {
+    if (trans <= -(((mybooks.length - 4) / 4) * (ImgWidth * 4 + ImgLeftRighMargin * 6))) {
       return;
     }
-    setTrans((current) => current - (ImgWidth * 2 + ImgLeftRighMargin * 4));
+    setTrans((current) => current - (ImgWidth * 4 + ImgLeftRighMargin * 6));
   };
 
   const getBookInfo = async () => {
@@ -40,18 +54,16 @@ function MybooksSlider() {
   };
 
   const getCategoryList = async () => {
-    const CTBooks = await getDoc(doc(dbService, 'BookCategoryList', 'DetailCateory'));
+    const CTBooks = await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid));
 
     setCategoryList(CTBooks.data());
     setLoading(false);
   };
 
-  const onClickCateorySort = useCallback(
-    (e) => {
-      setMybooks((prev) => prev.filter((elem) => categoryList[elem.categoryId] === e.target.innerText));
-    },
-    [categoryList],
-  );
+  const onClickCateorySort = useCallback((e) => {
+    // console.log(e.target.innerText);
+    setMybooks((prev) => prev.filter((elem) => GetDetailedName(elem.categoryId) === e.target.innerText));
+  }, []);
 
   const onClickRatingSort = useCallback((e) => {
     let tempArr = e.target.innerText?.match(/(.+)~(.+)/);
@@ -66,6 +78,24 @@ function MybooksSlider() {
       prev.filter((elem) => new Date(elem.editDate).getFullYear().toString() === e.target.innerText),
     );
   };
+
+  const onClickCataoryToggle = useCallback(() => {
+    setCategoryListOpen(true);
+    setRatingListOpen(false);
+    setYearListOpen(false);
+  }, []);
+
+  const onClickRatingToggle = useCallback(() => {
+    setRatingListOpen(true);
+    setCategoryListOpen(false);
+    setYearListOpen(false);
+  }, []);
+
+  const onClickYearToggle = useCallback(() => {
+    setYearListOpen(true);
+    setCategoryListOpen(false);
+    setRatingListOpen(false);
+  }, []);
 
   const deleteSameElem = useCallback((arr) => {
     let result = [];
@@ -103,63 +133,85 @@ function MybooksSlider() {
   return loading ? (
     <div>loading..</div>
   ) : (
-    <Background>
-      <Container>
-        <TopBox>
-          <div className="container">
-            <div>My books</div>
-            <div>
-              <span>Category</span>
-              <span>Rating</span>
-              <span>Date</span>
-            </div>
+    <>
+      <TopBox>
+        <div className="upperContainer">
+          <div className="title">My books</div>
+          <div className="classify">
+            <span onClick={onClickCataoryToggle}>Category</span>
+            <span onClick={onClickRatingToggle}>Rating</span>
+            <span onClick={onClickYearToggle}>Year</span>
           </div>
-        </TopBox>
-        {/* <div>
+        </div>
+        {/* category temp! */}
+        {categoryListOpen ? (
+          <div className="classifyModal">
             {categoryList
               ? Object.entries(categoryList).map((name) => {
-                  return <p onClick={onClickCateorySort}>{name[1]}</p>;
+                  return GetDetailedName(name[1][`categoryId`]) !== '' ? (
+                    <div className="content" onClick={onClickCateorySort}>
+                      <div className="contentInner">
+                        <div>{GetDetailedName(name[1][`categoryId`])}</div>
+                      </div>
+                    </div>
+                  ) : null;
                 })
               : null}
           </div>
-          <div>
+        ) : ratingListOpen ? (
+          <div className="classifyModal">
             {ratingSection.map((elem) => {
-              return <p onClick={onClickRatingSort}>{elem}</p>;
+              return (
+                <div className="content" onClick={onClickRatingSort}>
+                  <div className="contentInner">
+                    <div>{elem}</div>
+                  </div>
+                </div>
+              );
             })}
           </div>
-          <div>
+        ) : yearListOpen ? (
+          <div className="classifyModal">
             {deleteSameElem(editYearList)?.map((year) => {
-              return <p onClick={onClickYearSort}>{year}</p>;
+              return (
+                <div className="content" onClick={onClickYearSort}>
+                  <div className="contentInner">
+                    <div>{year}</div>
+                  </div>
+                </div>
+              );
             })}
-          </div> */}
-        <div>
-          <SlidesViewer>
-            <Slides trans={trans} bookCount={mybooks.length}>
-              {mybooks?.map((book) => {
-                return (
-                  <MyBookImg
-                    key={book.id}
-                    title={book.title}
-                    coverImg={book.coverLargeUrl}
-                    isbn={book.isbn}
-                    shortcomment={book.shortComment}
-                    rating={book.rating}
-                  />
-                );
-              })}
-            </Slides>
-          </SlidesViewer>
-          <Controller>
-            <button className="Left" onClick={onClickL}>
-              <FontAwesomeIcon icon={faCaretSquareLeft} />
-            </button>
-            <button className="Right" onClick={onClickR}>
-              <FontAwesomeIcon icon={faCaretSquareRight} />
-            </button>
-          </Controller>
-        </div>
-      </Container>
-    </Background>
+          </div>
+        ) : null}
+      </TopBox>
+
+      <SlidesContainer>
+        <SlidesViewer>
+          <Slides trans={trans} bookCount={mybooks.length}>
+            {mybooks?.map((book) => {
+              return (
+                <MyBookImg
+                  key={book.id}
+                  title={book.title}
+                  coverImg={book.coverLargeUrl}
+                  isbn={book.isbn}
+                  shortcomment={book.shortComment}
+                  rating={book.rating}
+                />
+              );
+            })}
+          </Slides>
+        </SlidesViewer>
+        <Controller>
+          <button className="Left" onClick={onClickL}>
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </button>
+          <button className="Right" onClick={onClickR}>
+            <FontAwesomeIcon icon={faChevronRight} />
+          </button>
+        </Controller>
+      </SlidesContainer>
+    </>
   );
 }
 

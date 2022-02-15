@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
 
-const PictureWidth = '235px';
-const PictureHeight = '345px';
-const Margin_Small = '10px';
+const PictureWidth = '210px';
+const PictureHeight = '308.3px';
+const Margin_Small = `${160 / 6}px`;
 const Padding_Small = '20px';
 
 export const BookContainer = styled.div`
   width: ${PictureWidth};
+  height: ${PictureHeight};
   margin: 0 ${Margin_Small};
 
   border: none;
@@ -25,7 +26,7 @@ export const BookImg = styled.img`
 
 export const Wrap = styled.div`
   width: ${PictureWidth};
-  height: 100%;
+  height: ${PictureHeight};
   padding: ${Padding_Small};
   display: ${(props) => props.wrapDisplay};
   position: absolute;

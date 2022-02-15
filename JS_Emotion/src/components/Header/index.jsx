@@ -7,7 +7,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { authService } from '@utils/fbase';
 
 function Header() {
-  const [search, setSearch, onChangeSearch] = useInput('');
+  const [search, , onChangeSearch] = useInput('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   let navigate = useNavigate();
 
@@ -55,7 +55,7 @@ function Header() {
             </button>
           </Link>
         </div>
-        <div>{isLoggedIn ? <p onClick={onLogOutClick}>Logout</p> : <Link to="/auth">Login</Link>}</div>
+        <div className="auth">{isLoggedIn ? <p onClick={onLogOutClick}>Logout</p> : <Link to="/auth">Login</Link>}</div>
       </RightSection>
     </Container>
   );

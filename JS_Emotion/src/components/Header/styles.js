@@ -22,6 +22,9 @@ export const LeftSection = styled.div`
     color: #050505d3;
     font-size: 20px;
   }
+  & a:hover {
+    color: #aca7cb;
+  }
 `;
 
 export const RightSection = styled.div`
@@ -55,5 +58,13 @@ export const RightSection = styled.div`
     margin: 0 20px 5px 0;
     border: none;
     cursor: pointer;
+  }
+
+  .auth {
+    & p:hover,
+    & a:hover {
+      cursor: pointer;
+      color: #aca7cb;
+    }
   }
 `;
