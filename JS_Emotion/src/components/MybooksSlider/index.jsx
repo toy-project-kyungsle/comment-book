@@ -9,6 +9,7 @@ import {
   ImgLeftRighMargin,
   TopBox,
   SlidesBackground,
+  ClassifyingModal,
 } from './styles';
 import MyBookImg from '@components/MyBookImg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +18,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { dbService, authService } from '@utils/fbase';
 import { getDoc, doc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
+import Xmark from './xmark.png';
 
 const ratingSection = ['0~1', '1~2', '2~3', '3~4', '4~5'];
 
@@ -25,7 +27,7 @@ function MybooksSlider() {
   const [mybooks, setMybooks] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [categoryList, setCategoryList] = useState({});
+  const [categoryList, setCategoryList] = useState([]);
   const [editYearList, setEditYearList] = useState([]);
 
   const [categoryListOpen, setCategoryListOpen] = useState(false);
@@ -56,7 +58,14 @@ function MybooksSlider() {
   const getCategoryList = async () => {
     const CTBooks = await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid));
 
-    setCategoryList(CTBooks.data());
+    // console.log(Object.values(CTBooks?.data()));
+
+    setCategoryList(
+      deleteSameElem(Object.values(CTBooks?.data())?.map((e) => e['categoryId']))
+        .map((e) => GetDetailedName(e))
+        .filter((e) => e !== '')
+        .sort((a, b) => (a < b ? -1 : a === b ? 0 : 1)),
+    );
     setLoading(false);
   };
 
@@ -100,7 +109,13 @@ function MybooksSlider() {
   const deleteSameElem = useCallback((arr) => {
     let result = [];
     new Set(arr).forEach((e) => result.push(e));
-    return result.sort((a, b) => b - a);
+    return result;
+  }, []);
+
+  const onClickCloseBtn = useCallback(() => {
+    setYearListOpen(false);
+    setCategoryListOpen(false);
+    setRatingListOpen(false);
   }, []);
 
   useEffect(() => {
@@ -128,7 +143,7 @@ function MybooksSlider() {
     }
   }, [editYearList, mybooks]);
 
-  // console.log(categoryList);
+  console.log(categoryList);
 
   return loading ? (
     <div>loading..</div>
@@ -143,45 +158,68 @@ function MybooksSlider() {
             <span onClick={onClickYearToggle}>Year</span>
           </div>
         </div>
-        {/* category temp! */}
+        {/* category */}
         {categoryListOpen ? (
-          <div className="classifyModal">
-            {categoryList
-              ? Object.entries(categoryList).map((name) => {
-                  return GetDetailedName(name[1][`categoryId`]) !== '' ? (
-                    <div className="content" onClick={onClickCateorySort}>
+          <ClassifyingModal>
+            <div className="modal_grid">
+              {categoryList
+                ? categoryList.map((name) => {
+                    return (
+                      <div className="content" onClick={onClickCateorySort}>
+                        <div className="contentInner">
+                          <div>{name}</div>
+                        </div>
+                      </div>
+                    );
+                  })
+                : null}
+            </div>
+            <div>
+              <button className="closeBtn" onClick={onClickCloseBtn}>
+                <img src={Xmark} alt="null"></img>
+              </button>
+            </div>
+          </ClassifyingModal>
+        ) : ratingListOpen ? (
+          <ClassifyingModal>
+            <div className="modal_grid">
+              {ratingSection.map((elem) => {
+                return (
+                  <div className="content" onClick={onClickRatingSort}>
+                    <div className="contentInner">
+                      <div>{elem}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div>
+              <button className="closeBtn" onClick={onClickCloseBtn}>
+                <img src={Xmark} alt="null"></img>
+              </button>
+            </div>
+          </ClassifyingModal>
+        ) : yearListOpen ? (
+          <ClassifyingModal>
+            <div className="modal_grid">
+              {deleteSameElem(editYearList)
+                ?.sort((a, b) => b - a)
+                ?.map((year) => {
+                  return (
+                    <div className="content" onClick={onClickYearSort}>
                       <div className="contentInner">
-                        <div>{GetDetailedName(name[1][`categoryId`])}</div>
+                        <div>{year}</div>
                       </div>
                     </div>
-                  ) : null;
-                })
-              : null}
-          </div>
-        ) : ratingListOpen ? (
-          <div className="classifyModal">
-            {ratingSection.map((elem) => {
-              return (
-                <div className="content" onClick={onClickRatingSort}>
-                  <div className="contentInner">
-                    <div>{elem}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        ) : yearListOpen ? (
-          <div className="classifyModal">
-            {deleteSameElem(editYearList)?.map((year) => {
-              return (
-                <div className="content" onClick={onClickYearSort}>
-                  <div className="contentInner">
-                    <div>{year}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                  );
+                })}
+            </div>
+            <div>
+              <button className="closeBtn" onClick={onClickCloseBtn}>
+                <img src={Xmark} alt="null"></img>
+              </button>
+            </div>
+          </ClassifyingModal>
         ) : null}
       </TopBox>
 

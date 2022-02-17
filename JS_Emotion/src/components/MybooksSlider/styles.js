@@ -31,23 +31,30 @@ export const TopBox = styled.div`
       color: wheat;
     }
   }
-  .classifyModal {
-    background-color: #ececec;
-    z-index: 3;
-    position: absolute;
+`;
 
-    font-family: 'Noto Sans KR', sans-serif;
-    color: #00000096;
+export const ClassifyingModal = styled.div`
+  background-color: #ececec;
+  z-index: 3;
+  position: absolute;
+  right: 0;
+  top: 30px;
 
+  display: flex;
+
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #00000096;
+
+  max-width: 655px;
+  min-height: 80px;
+  padding: 0 10px 0 20px;
+
+  .modal_grid {
     display: grid;
     grid-template-columns: repeat(5, 120px);
-    /* grid-template-rows: repeat(auto-fill, minmax(40px, auto)); */
 
-    max-width: 640px;
+    max-width: 600px;
     min-height: 80px;
-    padding: 0 20px;
-    right: 0;
-    top: 30px;
 
     .content {
       display: flex;
@@ -61,6 +68,23 @@ export const TopBox = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      & div:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .closeBtn {
+    border: none;
+    background-color: none;
+    margin-top: 13px;
+    & img {
+      height: 13px;
+      width: 13px;
+    }
+    & img:hover {
+      cursor: pointer;
     }
   }
 `;
