@@ -71,6 +71,7 @@ export const ClassifyingModal = styled.div`
 
       & div:hover {
         cursor: pointer;
+        color: wheat;
       }
     }
   }

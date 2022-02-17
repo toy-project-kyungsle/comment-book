@@ -45,13 +45,15 @@ export const Wrap = styled.div`
     line-height: 300%;
   }
   .rating {
+    font-family: 'Roboto Slab', serif;
     width: calc(${PictureWidth} - (2 * ${Padding_Small}));
     position: absolute;
     bottom: ${Margin_Small};
     & hr {
-      opacity: 0.5;
+      opacity: 0.8;
     }
     & p {
+      font-family: 'Noto Sans KR', sans-serif;
       text-align: center;
     }
   }

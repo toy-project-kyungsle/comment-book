@@ -6,12 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { authService } from '@utils/fbase';
 
-function Header() {
+function Header({ isLoggedin, setIsLoggedin, setShowLoginModal }) {
   const [search, , onChangeSearch] = useInput('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   let navigate = useNavigate();
 
   const onLogOutClick = () => {
+    setIsLoggedin(false);
     authService.signOut();
     alert('로그아웃 되셨습니다!');
   };
@@ -23,15 +24,13 @@ function Header() {
     [navigate, search],
   );
 
-  useEffect(() => {
-    authService.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-    });
-  }, []);
+  const onClickLogin = useCallback(() => {
+    setShowLoginModal(true);
+  }, [setShowLoginModal]);
+
+  const onClickSearchBtn = useCallback(() => {
+    return navigate(`/search/${search}/10/1`);
+  }, [navigate, search]);
 
   return (
     <Container>
@@ -49,13 +48,15 @@ function Header() {
           ></input>
         </div>
         <div>
-          <Link to={`/search/${search}/10/1`}>
+          <span>
             <button className="searchBtn">
-              <FontAwesomeIcon icon={faSearch} style={{ color: `grey`, fontSize: '15px' }} />
+              <FontAwesomeIcon icon={faSearch} style={{ color: `grey`, fontSize: '15px' }} onClick={onClickSearchBtn} />
             </button>
-          </Link>
+          </span>
         </div>
-        <div className="auth">{isLoggedIn ? <p onClick={onLogOutClick}>Logout</p> : <Link to="/auth">Login</Link>}</div>
+        <div className="auth">
+          {isLoggedin ? <p onClick={onLogOutClick}>Logout</p> : <p onClick={onClickLogin}>Login</p>}
+        </div>
       </RightSection>
     </Container>
   );

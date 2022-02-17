@@ -21,16 +21,22 @@ import Xmark from './xmark.png';
 
 const ratingSection = ['0~1', '1~2', '2~3', '3~4', '4~5'];
 
-function MybooksSlider({ loading, setLoadNum }) {
+function MybooksSlider({ loading, setLoadNum, isLoggedin }) {
   const [trans, setTrans] = useState(0);
   const [mybooks, setMybooks] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedin] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
   const [editYearList, setEditYearList] = useState([]);
 
   const [categoryListOpen, setCategoryListOpen] = useState(false);
   const [ratingListOpen, setRatingListOpen] = useState(false);
   const [yearListOpen, setYearListOpen] = useState(false);
+
+  const deleteSameElem = useCallback((arr) => {
+    let result = [];
+    new Set(arr).forEach((e) => result.push(e));
+    return result;
+  }, []);
 
   const onClickL = () => {
     if (trans >= 0) {
@@ -47,23 +53,30 @@ function MybooksSlider({ loading, setLoadNum }) {
     setTrans((current) => current - (ImgWidth * 4 + ImgLeftRighMargin * 6));
   };
 
-  const getBookInfo = async () => {
-    const dbBooks = await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid));
+  const getBookInfo = useCallback(async () => {
+    if (isLoggedin) {
+      const dbBooks = await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid));
 
-    setMybooks(Object.values(dbBooks.data()));
-  };
+      setMybooks(Object.values(dbBooks.data()));
+    }
+  }, [isLoggedin]);
 
-  const getCategoryList = async () => {
-    const CTBooks = await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid));
+  const getCategoryList = useCallback(async () => {
+    if (isLoggedin) {
+      const CTBooks = await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid));
 
-    setCategoryList(
-      deleteSameElem(Object.values(CTBooks?.data())?.map((e) => e['categoryId']))
-        .map((e) => GetDetailedName(e))
-        .filter((e) => e !== '')
-        .sort((a, b) => (a < b ? -1 : a === b ? 0 : 1)),
-    );
+      if (CTBooks) {
+        setCategoryList(
+          deleteSameElem(Object.values(CTBooks?.data())?.map((e) => e['categoryId']))
+            .map((e) => GetDetailedName(e))
+            .filter((e) => e !== '')
+            .sort((a, b) => (a < b ? -1 : a === b ? 0 : 1)),
+        );
+      }
+    }
+
     setLoadNum((prev) => prev + 1);
-  };
+  }, [deleteSameElem, isLoggedin, setLoadNum]);
 
   const onClickCateorySort = useCallback((e) => {
     // console.log(e.target.innerText);
@@ -102,12 +115,6 @@ function MybooksSlider({ loading, setLoadNum }) {
     setRatingListOpen(false);
   }, []);
 
-  const deleteSameElem = useCallback((arr) => {
-    let result = [];
-    new Set(arr).forEach((e) => result.push(e));
-    return result;
-  }, []);
-
   const onClickCloseBtn = useCallback(() => {
     setYearListOpen(false);
     setCategoryListOpen(false);
@@ -115,18 +122,13 @@ function MybooksSlider({ loading, setLoadNum }) {
   }, []);
 
   useEffect(() => {
-    authService.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-      if (isLoggedIn) {
-        getBookInfo();
-        getCategoryList();
-      }
-    });
-  }, [isLoggedIn]);
+    if (isLoggedin) {
+      getBookInfo();
+      getCategoryList();
+    } else {
+      setLoadNum((prev) => prev + 1);
+    }
+  }, [getBookInfo, getCategoryList, isLoggedin, setLoadNum]);
 
   useEffect(() => {
     if (mybooks.length > 0) {
@@ -138,7 +140,7 @@ function MybooksSlider({ loading, setLoadNum }) {
     }
   }, [editYearList, mybooks]);
 
-  return loading ? (
+  return !isLoggedin ? null : loading ? (
     <div>loading..</div>
   ) : (
     <>

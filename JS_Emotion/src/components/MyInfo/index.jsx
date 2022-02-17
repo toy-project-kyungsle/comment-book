@@ -5,39 +5,42 @@ import { collection, query, onSnapshot } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
 import Header from '@components/Header';
 
-function MyInfo({ loading, setLoadNum }) {
+function MyInfo({ loading, setLoadNum, isLoggedin, setIsLoggedin, setShowLoginModal }) {
   const [bookCount, setBookCount] = useState(0);
   const [bestBook, setBestBook] = useState("There's no favorite book");
   const [bestCategory, setBestCategory] = useState("There's no favorite category");
 
-  const getMyInfo = useCallback(async () => {
-    const q = query(collection(dbService, `UserEval`));
-    await onSnapshot(q, (snapshot) => {
-      let dataArr = Object.entries(snapshot.docs[0]?.data());
-      if (dataArr.length > 0) {
-        dataArr.sort((a, b) => b[1]['rating'] - a[1]['rating']);
-        let CategoryObj = {};
-        dataArr?.forEach((elem) => {
-          if (GetDetailedName(elem[1]['categoryId']) !== '') {
-            CategoryObj[elem[1]['categoryId']]
-              ? (CategoryObj[elem[1]['categoryId']] += 1)
-              : (CategoryObj[elem[1]['categoryId']] = 1);
+  const getMyInfo = useCallback(
+    async (user) => {
+      if (user) {
+        const q = query(collection(dbService, `UserEval`));
+        await onSnapshot(q, (snapshot) => {
+          let dataArr = Object.entries(snapshot.docs[0]?.data());
+          if (dataArr.length > 0) {
+            dataArr.sort((a, b) => b[1]['rating'] - a[1]['rating']);
+            let CategoryObj = {};
+            dataArr?.forEach((elem) => {
+              if (GetDetailedName(elem[1]['categoryId']) !== '') {
+                CategoryObj[elem[1]['categoryId']]
+                  ? (CategoryObj[elem[1]['categoryId']] += 1)
+                  : (CategoryObj[elem[1]['categoryId']] = 1);
+              }
+            });
+
+            setBestBook(dataArr[0][1]['title']);
+            setBookCount(dataArr.length);
+            setBestCategory(GetDetailedName(Object.entries(CategoryObj).sort((a, b) => b[1] - a[1])[0][0]));
           }
         });
-
-        setBestBook(dataArr[0][1]['title']);
-        setBookCount(dataArr.length);
-        setBestCategory(GetDetailedName(Object.entries(CategoryObj).sort((a, b) => b[1] - a[1])[0][0]));
       }
-    });
-    setLoadNum((prev) => prev + 1);
-  }, [setLoadNum]);
+      setLoadNum((prev) => prev + 1);
+    },
+    [setLoadNum],
+  );
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
-      if (user) {
-        getMyInfo();
-      }
+      getMyInfo(user);
     });
   }, [getMyInfo, setLoadNum]);
 
@@ -50,7 +53,7 @@ function MyInfo({ loading, setLoadNum }) {
           src="https://user-images.githubusercontent.com/79993356/154531958-e0068ede-1ae9-4b44-8522-2676c4b8d3ef.png"
           alt="null"
         />
-        <Header />
+        <Header isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin} setShowLoginModal={setShowLoginModal} />
         <TitleBox>
           <p className="title" style={{}}>
             My Book Collection

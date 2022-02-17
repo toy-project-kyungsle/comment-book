@@ -36,7 +36,6 @@ export const RightSection = styled.div`
     flex-direction: column;
     justify-content: center;
   }
-  & a,
   & p {
     font-size: 15px;
   }
@@ -61,8 +60,7 @@ export const RightSection = styled.div`
   }
 
   .auth {
-    & p:hover,
-    & a:hover {
+    & p:hover {
       cursor: pointer;
       color: #aca7cb;
     }
