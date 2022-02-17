@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
-const PictureWidth = '210px';
-const PictureHeight = '308.3px';
-const Margin_Small = `${160 / 6}px`;
-const Padding_Small = '20px';
+const PictureWidth = '205px';
+const PictureHeight = '300.96px';
+const Margin_Small = `${180 / 6}px`;
+const Padding_Small = '30px';
 
 export const BookContainer = styled.div`
   width: ${PictureWidth};

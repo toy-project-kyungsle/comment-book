@@ -8,7 +8,7 @@ import {
   ImgWidth,
   ImgLeftRighMargin,
   TopBox,
-  SlidesContainer,
+  SlidesBackground,
 } from './styles';
 import MyBookImg from '@components/MyBookImg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -185,32 +185,34 @@ function MybooksSlider() {
         ) : null}
       </TopBox>
 
-      <SlidesContainer>
-        <SlidesViewer>
-          <Slides trans={trans} bookCount={mybooks.length}>
-            {mybooks?.map((book) => {
-              return (
-                <MyBookImg
-                  key={book.id}
-                  title={book.title}
-                  coverImg={book.coverLargeUrl}
-                  isbn={book.isbn}
-                  shortcomment={book.shortComment}
-                  rating={book.rating}
-                />
-              );
-            })}
-          </Slides>
-        </SlidesViewer>
-        <Controller>
-          <button className="Left" onClick={onClickL}>
-            <FontAwesomeIcon icon={faChevronLeft} />
-          </button>
-          <button className="Right" onClick={onClickR}>
-            <FontAwesomeIcon icon={faChevronRight} />
-          </button>
-        </Controller>
-      </SlidesContainer>
+      <SlidesBackground>
+        <div className="container">
+          <SlidesViewer>
+            <Slides trans={trans} bookCount={mybooks.length}>
+              {mybooks?.map((book) => {
+                return (
+                  <MyBookImg
+                    key={book.id}
+                    title={book.title}
+                    coverImg={book.coverLargeUrl}
+                    isbn={book.isbn}
+                    shortcomment={book.shortComment}
+                    rating={book.rating}
+                  />
+                );
+              })}
+            </Slides>
+          </SlidesViewer>
+          <Controller>
+            <button className="Left" onClick={onClickL}>
+              <FontAwesomeIcon icon={faChevronLeft} />
+            </button>
+            <button className="Right" onClick={onClickR}>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </button>
+          </Controller>
+        </div>
+      </SlidesBackground>
     </>
   );
 }

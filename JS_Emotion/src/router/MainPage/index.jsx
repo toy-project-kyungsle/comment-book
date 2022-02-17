@@ -1,17 +1,15 @@
 import React from 'react';
-import { Container, Footer } from './styles';
 import MybooksSlider from '@components/MybooksSlider';
 import MyInfo from '@components/MyInfo';
+import Footer from '@components/Footer';
 
 function MainPage() {
   return (
-    <Container>
+    <>
       <MyInfo />
       <MybooksSlider />
-      <Footer>
-        <div className="Copyright">Copyright to Kyungsle</div>
-      </Footer>
-    </Container>
+      <Footer />
+    </>
   );
 }
 

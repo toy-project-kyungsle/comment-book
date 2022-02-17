@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
-const ImgWidth = 210;
-const ImgHeight = 308.3;
-const ImgLeftRighMargin = 160 / 6;
+const ImgWidth = 205;
+const ImgHeight = 300.96;
+const ImgLeftRighMargin = 180 / 6;
 
 export const TopBox = styled.div`
   position: relative;
@@ -65,9 +65,15 @@ export const TopBox = styled.div`
   }
 `;
 
-export const SlidesContainer = styled.div`
+export const SlidesBackground = styled.div`
   position: relative;
   margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  .container {
+    position: relative;
+    width: 1400px;
+  }
 `;
 
 export const SlidesViewer = styled.div`
@@ -105,7 +111,7 @@ export const Controller = styled.div`
   .Left,
   .Right {
     position: absolute;
-    top: 41%;
+    top: 47%;
     background-color: transparent;
     border: none;
     outline: none;
@@ -119,11 +125,11 @@ export const Controller = styled.div`
     transform: scale(1.1);
   }
   .Left {
-    left: 80px;
+    left: 6%;
   }
 
   .Right {
-    right: 80px;
+    right: 6%;
   }
 `;
 
