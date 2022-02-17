@@ -28,12 +28,19 @@ export const Wrap = styled.div`
   width: ${PictureWidth};
   height: ${PictureHeight};
   padding: ${Padding_Small};
-  display: ${(props) => props.wrapDisplay};
+  opacity: 0;
   position: absolute;
   top: 0;
+  transition: all 0.3s;
 
   color: whitesmoke;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(179, 182, 183);
+  border-radius: 5px;
+
+  &:hover {
+    opacity: 1;
+  }
+
   .comment {
     line-height: 300%;
   }
@@ -48,4 +55,13 @@ export const Wrap = styled.div`
       text-align: center;
     }
   }
+
+  /* @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  } */
 `;

@@ -1,10 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
-  Container,
   Controller,
   Slides,
   SlidesViewer,
-  Background,
   ImgWidth,
   ImgLeftRighMargin,
   TopBox,
@@ -18,15 +16,15 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { dbService, authService } from '@utils/fbase';
 import { getDoc, doc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
+// @ts-ignore
 import Xmark from './xmark.png';
 
 const ratingSection = ['0~1', '1~2', '2~3', '3~4', '4~5'];
 
-function MybooksSlider() {
+function MybooksSlider({ loading, setLoadNum }) {
   const [trans, setTrans] = useState(0);
   const [mybooks, setMybooks] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [categoryList, setCategoryList] = useState([]);
   const [editYearList, setEditYearList] = useState([]);
 
@@ -58,15 +56,13 @@ function MybooksSlider() {
   const getCategoryList = async () => {
     const CTBooks = await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid));
 
-    // console.log(Object.values(CTBooks?.data()));
-
     setCategoryList(
       deleteSameElem(Object.values(CTBooks?.data())?.map((e) => e['categoryId']))
         .map((e) => GetDetailedName(e))
         .filter((e) => e !== '')
         .sort((a, b) => (a < b ? -1 : a === b ? 0 : 1)),
     );
-    setLoading(false);
+    setLoadNum((prev) => prev + 1);
   };
 
   const onClickCateorySort = useCallback((e) => {
@@ -119,7 +115,6 @@ function MybooksSlider() {
   }, []);
 
   useEffect(() => {
-    setLoading(true);
     authService.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedIn(true);
@@ -142,8 +137,6 @@ function MybooksSlider() {
       });
     }
   }, [editYearList, mybooks]);
-
-  console.log(categoryList);
 
   return loading ? (
     <div>loading..</div>

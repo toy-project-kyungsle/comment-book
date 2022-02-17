@@ -1,58 +1,55 @@
-import { InfoBox, Background, BackgroundImg, TitleBox, Container } from './styles';
-import React, { useEffect, useState } from 'react';
+import { InfoBox, Background, BackgroundImg, TitleBox } from './styles';
+import React, { useCallback, useEffect, useState } from 'react';
 import { dbService, authService } from '@utils/fbase';
 import { collection, query, onSnapshot } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
-// @ts-ignore
-import backImg from './bookImg.png';
 import Header from '@components/Header';
 
-function MyInfo() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [laoding, setLoading] = useState(true);
+function MyInfo({ loading, setLoadNum }) {
   const [bookCount, setBookCount] = useState(0);
-  const [bestBook, setBestBook] = useState('인생책이 아직 없습니다..');
-  const [bestCategory, setBestCategory] = useState('얘도 없어요..');
+  const [bestBook, setBestBook] = useState("There's no favorite book");
+  const [bestCategory, setBestCategory] = useState("There's no favorite category");
 
-  useEffect(() => {
-    setLoading(true);
-    authService.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-      if (isLoggedIn) {
-        const q = query(collection(dbService, `UserEval`));
-        onSnapshot(q, (snapshot) => {
-          let dataArr = Object.entries(snapshot.docs[0]?.data());
-          if (dataArr.length > 0) {
-            dataArr.sort((a, b) => b[1]['rating'] - a[1]['rating']);
-            let CategoryObj = {};
-            dataArr?.forEach((elem) => {
-              if (GetDetailedName(elem[1]['categoryId']) !== '') {
-                CategoryObj[elem[1]['categoryId']]
-                  ? (CategoryObj[elem[1]['categoryId']] += 1)
-                  : (CategoryObj[elem[1]['categoryId']] = 1);
-              }
-            });
-
-            setBestBook(dataArr[0][1]['title']);
-            setBookCount(dataArr.length);
-            setBestCategory(GetDetailedName(Object.entries(CategoryObj).sort((a, b) => b[1] - a[1])[0][0]));
+  const getMyInfo = useCallback(async () => {
+    const q = query(collection(dbService, `UserEval`));
+    await onSnapshot(q, (snapshot) => {
+      let dataArr = Object.entries(snapshot.docs[0]?.data());
+      if (dataArr.length > 0) {
+        dataArr.sort((a, b) => b[1]['rating'] - a[1]['rating']);
+        let CategoryObj = {};
+        dataArr?.forEach((elem) => {
+          if (GetDetailedName(elem[1]['categoryId']) !== '') {
+            CategoryObj[elem[1]['categoryId']]
+              ? (CategoryObj[elem[1]['categoryId']] += 1)
+              : (CategoryObj[elem[1]['categoryId']] = 1);
           }
         });
-        setLoading(false);
+
+        setBestBook(dataArr[0][1]['title']);
+        setBookCount(dataArr.length);
+        setBestCategory(GetDetailedName(Object.entries(CategoryObj).sort((a, b) => b[1] - a[1])[0][0]));
       }
     });
-  }, [isLoggedIn]);
+    setLoadNum((prev) => prev + 1);
+  }, [setLoadNum]);
 
-  return laoding ? (
+  useEffect(() => {
+    authService.onAuthStateChanged((user) => {
+      if (user) {
+        getMyInfo();
+      }
+    });
+  }, [getMyInfo, setLoadNum]);
+
+  return loading ? (
     <div>loading..</div>
   ) : (
     <>
       <Background>
-        <BackgroundImg src={backImg} alt="null" />
+        <BackgroundImg
+          src="https://user-images.githubusercontent.com/79993356/154531958-e0068ede-1ae9-4b44-8522-2676c4b8d3ef.png"
+          alt="null"
+        />
         <Header />
         <TitleBox>
           <p className="title" style={{}}>
@@ -64,8 +61,8 @@ function MyInfo() {
           <p className="mentor">- Rene Descartes</p>
         </TitleBox>
         <InfoBox>
-          <div className="title">{'읽은 책수'}</div>
-          <div className="info">{bookCount}개의 책을 읽으셨습니다</div>
+          <div className="title">{'Read'}</div>
+          <div className="info">{bookCount}개 읽으셨습니다</div>
           <div className="title">{`Best Book`}</div>
           <div className="info">{bestBook}</div>
           <div className="title">{`Best Category`}</div>
