@@ -26,8 +26,6 @@ export const TopBox = styled.div`
 
     .classify > span:hover {
       cursor: pointer;
-      /* font-size: 20px; */
-      /* transform: scale(1.3); */
       color: wheat;
     }
   }

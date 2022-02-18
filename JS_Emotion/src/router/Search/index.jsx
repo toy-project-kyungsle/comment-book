@@ -1,25 +1,38 @@
-import React, { useEffect } from 'react';
-import { Books, Container, Empty, Footer, List, Ment } from './styles';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Container, Empty, Next, Header } from './styles';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import useInput from '@hooks/useinput';
 import SearchRender from '@components/SearchRender';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 function Search() {
-  const { search, display, start } = useParams();
+  const { search, display } = useParams();
   const [books, setBooks] = useInput([]);
   const [loading, setLoading] = useInput(false);
-  const List_arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const [lstNum, setLstNum] = useState(1);
+  const navigate = useNavigate();
+  const viewCount = [0, 1, 2, 3];
+
+  const onClickOutBtn = useCallback(() => {
+    navigate('/');
+  }, [navigate]);
+
+  const onClickNextBtn = useCallback(() => {
+    setLstNum((prev) => prev + 1);
+  }, []);
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:3085/search/${search}/${display}/${start}`).then((res) => {
+    axios.get(`http://localhost:3085/search/${search}/${display}/${lstNum}`).then((res) => {
       setBooks(res.data.items);
       // console.log(res.data.items);
       setLoading(false);
     });
-  }, [display, search, setBooks, setLoading, start]);
+  }, [display, lstNum, search, setBooks, setLoading]);
 
   return (
     <Container>
@@ -27,42 +40,35 @@ function Search() {
         <div>Loading</div>
       ) : (
         <>
-          <Ment>Click to add!</Ment>
-
-          {books.length > 0 ? (
-            <Books>
-              {books.map((book) => (
-                <SearchRender
-                  key={book.isbn}
-                  isbn={book.isbn}
-                  title={book.title}
-                  coverImg={book.coverLargeUrl}
-                  priceStandard={book.priceStandard}
-                  priceSales={book.priceSales}
-                  author={book.author}
-                  description={book.description}
-                  link={book.link}
-                  pubDate={book.pubDate}
-                />
-              ))}
-            </Books>
-          ) : (
-            <Empty>Noting Else...</Empty>
-          )}
-        </>
-      )}
-      {loading ? null : (
-        <Footer>
-          <List>
-            {List_arr.map((lst) => {
+          <Header>
+            <div className="topment" align="center">
+              <div className="topbtn">
+                <button onClick={onClickOutBtn}>
+                  <FontAwesomeIcon icon={faChevronCircleLeft} style={{ fontSize: '25px', color: '#D7DBDD' }} />
+                </button>
+              </div>
+              Click Picture you wanna comment
+            </div>
+          </Header>
+          {viewCount.map((e) => {
+            if (books.length >= e + 1) {
               return (
-                <Link key={lst} to={`/search/${search}/${display}/${lst}`}>
-                  {lst}
-                </Link>
+                <div>
+                  <SearchRender book={books[e]} viewNum={e + 1} EndNum={books.length}>
+                    <Next Left={e / 2 === 0 ? '750px' : '0'}>
+                      <div className="clickDiv" onClick={onClickNextBtn}>
+                        <span>next</span>
+                        <FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '15px' }} />
+                      </div>
+                    </Next>
+                  </SearchRender>
+                </div>
               );
-            })}
-          </List>
-        </Footer>
+            } else return null;
+          })}
+          {books.lenght === 0 ? <Empty>Noting Else...</Empty> : null}
+          <div style={{ height: '200px' }}></div>
+        </>
       )}
     </Container>
   );

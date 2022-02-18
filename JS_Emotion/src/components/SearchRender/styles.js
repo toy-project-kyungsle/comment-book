@@ -1,64 +1,58 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  margin: 30px auto;
-  & a {
-    color: black;
-    text-decoration: none;
-  }
+  position: relative;
+
+  width: 800px;
+  height: ${(props) => props.Height};
+
+  margin: 0 auto;
 `;
 
-export const Show = styled.div`
-  display: flex;
-  flex-direction: row;
-  background-color: #ececec;
-  transition: all 0.4s ease;
+export const SmallBackGround = styled.div`
+  position: absolute;
+  left: ${(props) => props.Left};
+  bottom: 0;
 
-  margin: 10px 10px;
-  padding: 10px;
-  width: 600px;
-  height: 300px;
-  border-radius: 10px;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3), 0px 2px 2px rgba(0, 0, 0, 0.22);
-  overflow: hidden;
+  background-color: #f0f0f0;
 
-  :hover {
-    transform: translateY(-10px);
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  }
+  height: ${(props) => props.Height};
+  width: ${(props) => props.Width};
 `;
 
 export const ImgDiv = styled.div`
-  float: left;
-  width: 230px;
-  height: 345px;
+  position: absolute;
+  left: ${(props) => props.Left};
+  bottom: ${(props) => props.Bottom};
+
+  width: 170px;
+
+  & img {
+    width: 170px;
+  }
+  & img:hover {
+    cursor: pointer;
+  }
 `;
 
-export const Letters = styled.div`
-  width: 350px;
-  height: 300px;
-  padding-left: 20px;
-  & h3,
-  p {
-    margin: 10px;
+export const LetterDiv = styled.div`
+  position: absolute;
+  left: ${(props) => props.Left};
+  bottom: ${(props) => props.Bottom};
+
+  font-family: 'Noto Sans KR', sans-serif;
+
+  .title {
+    color: rgb(75, 75, 75);
+    font-size: 14px;
   }
-  & li {
-    list-style-type: none;
+
+  .moreinfo {
+    color: #0000007b;
+    font-size: 13px;
   }
+
   & p {
-    word-break: break-all;
-    text-align: justify;
-  }
-`;
-
-export const Title = styled.div`
-  height: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  & a {
-    color: black;
-    text-decoration: none;
+    margin: 0;
   }
 `;

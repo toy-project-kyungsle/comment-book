@@ -19,7 +19,7 @@ function Header({ isLoggedin, setIsLoggedin, setShowLoginModal }) {
 
   const onKeyDown = useCallback(
     (e) => {
-      if (e.key === 'Enter') return navigate(`/search/${search}/10/1`);
+      if (e.key === 'Enter') return navigate(`/search/${search}/4`);
     },
     [navigate, search],
   );
@@ -29,7 +29,7 @@ function Header({ isLoggedin, setIsLoggedin, setShowLoginModal }) {
   }, [setShowLoginModal]);
 
   const onClickSearchBtn = useCallback(() => {
-    return navigate(`/search/${search}/10/1`);
+    return navigate(`/search/${search}/4`);
   }, [navigate, search]);
 
   return (

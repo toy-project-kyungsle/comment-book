@@ -1,22 +1,32 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
-  height: 100%;
-  margin-top: 30px;
-`;
+export const Container = styled.div``;
 
-export const Ment = styled.div`
-  font-size: 50px;
-  font-weight: bold;
-  width: 300px;
-  margin: 0 auto;
-  margin-bottom: 30px;
-`;
+export const Header = styled.div`
+  margin: 150px 0 200px 0;
 
-export const Books = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(600px, auto));
-  /* margin: */
+  font-family: 'Open Sans', sans-serif;
+  color: #3e4756;
+
+  .topment {
+    position: relative;
+
+    width: 300px;
+    margin: 0 auto;
+    .topbtn {
+      position: absolute;
+      left: -260px;
+      bottom: -3px;
+
+      & button {
+        border: none;
+        background-color: white;
+      }
+      & button:hover {
+        cursor: pointer;
+      }
+    }
+  }
 `;
 
 export const Empty = styled.div`
@@ -26,22 +36,21 @@ export const Empty = styled.div`
   margin: 0 auto;
 `;
 
-export const Footer = styled.div`
-  display: flex;
-  justify-content: center;
-  height: 100px;
-  margin-top: 20px;
-`;
+export const Next = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: ${(props) => props.Left};
 
-export const List = styled.div`
-  width: 40%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  & a {
-    color: black;
-    font-size: 20px;
-    text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  color: rgb(75, 75, 75);
+
+  .clickDiv {
+    & span {
+      margin-right: 10px;
+    }
+  }
+
+  .clickDiv:hover {
+    cursor: pointer;
   }
 `;

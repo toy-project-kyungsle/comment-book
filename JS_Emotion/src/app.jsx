@@ -12,7 +12,7 @@ const App = () => (
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/search/:search/:display/:start/*" element={<Search />} />
+        <Route path="/search/:search/:display/*" element={<Search />} />
         <Route path="/comment/:isbn" element={<DetailPage />} />
       </Routes>
     </Router>

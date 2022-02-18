@@ -11,7 +11,7 @@ export const BookContainer = styled.div`
   margin: 0 ${Margin_Small};
 
   border: none;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   overflow: hidden;
 
   & a {
@@ -35,7 +35,7 @@ export const Wrap = styled.div`
 
   color: whitesmoke;
   background-color: rgba(179, 182, 183);
-  border-radius: 5px;
+  /* border-radius: 5px; */
 
   &:hover {
     opacity: 1;

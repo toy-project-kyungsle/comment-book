@@ -27,7 +27,7 @@ function MainPage() {
     });
   }, []);
 
-  console.log(loadNum);
+  // console.log(loadNum);
 
   return (
     <>
