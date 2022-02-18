@@ -45,7 +45,7 @@ export const Wrap = styled.div`
     line-height: 300%;
   }
   .rating {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Roboto', serif;
     width: calc(${PictureWidth} - (2 * ${Padding_Small}));
     position: absolute;
     bottom: ${Margin_Small};

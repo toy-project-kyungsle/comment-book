@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Background = styled.div`
   position: relative;
 
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Roboto', serif;
 
   height: 150px;
   width: 1000px;

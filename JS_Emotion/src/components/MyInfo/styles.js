@@ -14,7 +14,7 @@ export const TitleBox = styled.div`
   left: 7%;
   bottom: 9%;
   width: 400px;
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Roboto', sans-serif;
 
   .title {
     font-size: 24px;
@@ -42,6 +42,8 @@ export const InfoBox = styled.div`
 
   .title {
     font-size: 14px;
+
+    font-family: 'Roboto', sans-serif;
 
     font-weight: 800;
     color: #0000007b;

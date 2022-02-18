@@ -8,7 +8,7 @@ export const TopBox = styled.div`
   position: relative;
   width: 1000px;
   margin: 100px auto 100px auto;
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Noto Sans KR', sans-serif;
 
   .upperContainer {
     display: flex;

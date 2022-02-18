@@ -11,6 +11,8 @@ export const Header = styled.div`
   .topment {
     position: relative;
 
+    font-family: 'Open Sans', sans-serif;
+
     width: 300px;
     margin: 0 auto;
     .topbtn {
@@ -45,6 +47,7 @@ export const Next = styled.div`
   color: rgb(75, 75, 75);
 
   .clickDiv {
+    width: 100px;
     & span {
       margin-right: 10px;
     }
