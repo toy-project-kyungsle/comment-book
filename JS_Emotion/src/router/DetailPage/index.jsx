@@ -3,13 +3,24 @@ import GetDetailedName from '@utils/GetDetailedName';
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { Container, ImgDiv, Letters, Background, OnelineTextArea, Description, BtnDiv } from './styles';
+import {
+  Container,
+  ImgDiv,
+  Letters,
+  Background,
+  OnelineTextArea,
+  Description,
+  BtnDiv,
+  LonglineTextArea,
+  RatingTextArea,
+} from './styles';
 import TextareaAutosize from 'react-textarea-autosize';
 import { dbService, authService } from '@utils/fbase';
 import { setDoc, doc, getDoc, deleteField, updateDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
+import GetDate from '@utils/GetDate';
 
 function DetailPage() {
   const { isbn } = useParams();
@@ -21,7 +32,7 @@ function DetailPage() {
   const [longComment, setLongComment, onCangeLongComment] = useInput('You have no commnet for this book');
   const [editMode, setEditMode] = useState(false);
   const [infoMode, setInfoMode] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(FbaseAuth);
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(FbaseAuth());
   const navigate = useNavigate();
 
   const onClickInfoBtn = useCallback(() => {
@@ -82,6 +93,7 @@ function DetailPage() {
     if (!dbBooks[bookIsbn] || !dbBooks) {
       setInfoMode(true);
     } else if (dbBooks) {
+      setInfoMode(false);
       setRating(dbBooks[bookIsbn].rating);
       setShortComment(dbBooks[bookIsbn].shortComment);
       setLongComment(dbBooks[bookIsbn].longComment);
@@ -99,7 +111,7 @@ function DetailPage() {
 
   useEffect(() => {
     if (isLoggedIn && Object.keys(book).length) getBookInfo();
-  }, [isLoggedIn, book, getBookInfo, setIsLoggedIn]);
+  }, [book, getBookInfo, isLoggedIn]);
 
   return loading ? (
     <div>Laoding...</div>
@@ -114,10 +126,11 @@ function DetailPage() {
         </p>
         <ImgDiv>
           <img src={book.coverLargeUrl} alt={book.title} />
+          <a href={book.link}>More Info?</a>
         </ImgDiv>
         <Letters>
           <p className="title">
-            <a href={book.link}>{book.title}</a>
+            <p>{book.title}</p>
           </p>
           {book.author ? (
             <div className="infoDiv">
@@ -134,14 +147,14 @@ function DetailPage() {
           {book.pubDate ? (
             <div className="infoDiv">
               <span className="tagName">출판일</span>
-              <span>{book.pubDate}</span>
+              <span>{GetDate(book.pubDate)}</span>
             </div>
           ) : null}
           {!infoMode ? (
             <div className="infoDiv">
               <span className="tagName">평점&emsp;</span>
               {editMode ? (
-                <OnelineTextArea onChange={onChangeRating} value={rating}></OnelineTextArea>
+                <RatingTextArea onChange={onChangeRating} value={rating}></RatingTextArea>
               ) : (
                 <span>{rating}</span>
               )}
@@ -151,7 +164,10 @@ function DetailPage() {
             <div className="infoDiv">
               <span className="tagName">한줄평</span>
               {editMode ? (
-                <OnelineTextArea onChange={onChangeShortComment} value={shortComment}></OnelineTextArea>
+                <OnelineTextArea
+                  onChange={onChangeShortComment}
+                  value={shortComment === "There's no comment" ? '' : shortComment}
+                ></OnelineTextArea>
               ) : (
                 <span>{shortComment}</span>
               )}
@@ -162,12 +178,7 @@ function DetailPage() {
 
           {editMode ? (
             <div style={{ minHeight: '180px' }}>
-              <TextareaAutosize
-                style={{ width: '100%', marginTop: '10px' }}
-                minRows={10}
-                value={longComment}
-                onChange={onCangeLongComment}
-              />
+              {LonglineTextArea(longComment, onCangeLongComment)}
               <BtnDiv>
                 <span onClick={onSubmit}>Finish</span>
                 <span onClick={onClickCancle}>Cancle</span>

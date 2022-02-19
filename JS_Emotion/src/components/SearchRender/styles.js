@@ -29,9 +29,11 @@ export const ImgDiv = styled.div`
 
   & img {
     width: 170px;
+    transition: 0.5s;
   }
   & img:hover {
     cursor: pointer;
+    transform: scale(1.05);
   }
 `;
 

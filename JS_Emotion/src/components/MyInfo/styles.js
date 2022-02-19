@@ -17,7 +17,7 @@ export const TitleBox = styled.div`
   font-family: 'Roboto', sans-serif;
 
   .title {
-    font-size: 24px;
+    font-size: 22px;
   }
   .goodMent,
   .mentor {

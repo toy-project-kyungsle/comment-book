@@ -26,6 +26,7 @@ export const Header = styled.div`
       }
       & button:hover {
         cursor: pointer;
+        transform: scale(1.1);
       }
     }
   }
@@ -55,5 +56,6 @@ export const Next = styled.div`
 
   .clickDiv:hover {
     cursor: pointer;
+    color: grey;
   }
 `;

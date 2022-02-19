@@ -34,7 +34,7 @@ function MybooksSlider({ loading, setLoadNum }) {
   const [ratingListOpen, setRatingListOpen] = useState(false);
   const [yearListOpen, setYearListOpen] = useState(false);
 
-  const isLoggedIn = useRecoilValue(FbaseAuth);
+  const isLoggedIn = useRecoilValue(FbaseAuth());
 
   const deleteSameElem = useCallback((arr) => {
     let result = [];

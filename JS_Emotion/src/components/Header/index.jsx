@@ -10,7 +10,7 @@ import { FbaseAuth } from '@atom/FbaseAuth';
 
 function Header({ setShowLoginModal }) {
   const [search, , onChangeSearch] = useInput('');
-  const [isLoggedIn, setisLoggedIn] = useRecoilState(FbaseAuth);
+  const [isLoggedIn, setisLoggedIn] = useRecoilState(FbaseAuth());
   let navigate = useNavigate();
 
   const onLogOutClick = () => {

@@ -1,3 +1,4 @@
+import GetDate from '@utils/GetDate';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, ImgDiv, LetterDiv, SmallBackGround } from './styles';
@@ -54,7 +55,9 @@ function SearchRender({ children, book, viewNum, EndNum }) {
           <p className="title">
             {book.title.length < 22 ? book.title : book.title.length >= 22 ? book.title.slice(0, 22) + '...' : null}
           </p>
-          <p className="moreinfo">{book.author ? book.author : book.pubDate ? book.pubDate : book.publisher}</p>
+          <p className="moreinfo">
+            {book.author ? book.author : book.pubDate ? GetDate(book.pubDate) : book.publisher}
+          </p>
         </LetterDiv>
       </SmallBackGround>
       {viewNum === EndNum ? children : null}

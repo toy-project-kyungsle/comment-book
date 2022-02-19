@@ -11,7 +11,7 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }) {
   const [bookCount, setBookCount] = useState(0);
   const [bestBook, setBestBook] = useState("There's no favorite book");
   const [bestCategory, setBestCategory] = useState("There's no favorite category");
-  const [isLoggedIn, setisLoggedIn] = useRecoilState(FbaseAuth);
+  const [isLoggedIn, setisLoggedIn] = useRecoilState(FbaseAuth());
 
   const getMyInfo = useCallback(
     async (user) => {

@@ -17,7 +17,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
   const [password, setPassword] = useState('');
   const [newAccount, setNewAccount] = useState(false);
   const [error, setError] = useState('');
-  const setIsLoggedIn = useSetRecoilState(FbaseAuth);
+  const setIsLoggedIn = useSetRecoilState(FbaseAuth());
 
   const onChange = (event) => {
     const {
@@ -38,8 +38,8 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
       } else {
         await signInWithEmailAndPassword(authService, email, password);
       }
-      setShowLoginModal(false);
       setIsLoggedIn(true);
+      setShowLoginModal(false);
     } catch (error) {
       setError(error.message);
     }

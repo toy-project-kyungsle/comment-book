@@ -1,4 +1,7 @@
 import styled from '@emotion/styled';
+import React from 'react';
+import TextareaAutosize from 'react-textarea-autosize';
+import { css } from '@emotion/css';
 
 export const Background = styled.div`
   position: relative;
@@ -38,12 +41,22 @@ export const Container = styled.div`
 `;
 
 export const ImgDiv = styled.div`
+  position: relative;
   height: 280px;
   float: left;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3), 0px 2px 2px rgba(0, 0, 0, 0.22);
 
-  & img {
-    /* width: 308.34px; */
+  & a {
+    position: absolute;
+    left: 0;
+    bottom: -20;
+    text-decoration: none;
+    font-size: 12px;
+    color: rgb(105, 105, 105);
+    width: 60px;
+  }
+  & a:hover {
+    color: black;
   }
 `;
 
@@ -51,15 +64,14 @@ export const Letters = styled.div`
   width: 100%;
   margin-left: 70px;
 
-  & a {
-    text-decoration: none;
-    font-size: 22px;
-    color: black;
-  }
-
   .title {
     margin: 0;
     margin-bottom: 20px;
+
+    & p {
+      font-size: 22px;
+      color: black;
+    }
   }
 
   .infoDiv {
@@ -82,9 +94,45 @@ export const Letters = styled.div`
   }
 `;
 
-export const OnelineTextArea = styled.textarea`
-  width: 100%;
+export const RatingTextArea = styled.textarea`
+  resize: none;
+  vertical-align: middle;
+  width: 10%;
+  height: 25px;
+
+  &:focus {
+    outline: none;
+  }
 `;
+
+export const OnelineTextArea = styled.textarea`
+  resize: none;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const LonglineTextArea = (longComment, onCangeLongComment) => {
+  let tagRef;
+  return (
+    <TextareaAutosize
+      className={css`
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+      `}
+      minRows={10}
+      placeholder=""
+      value={longComment === 'You have no commnet for this book' ? '' : longComment}
+      onChange={onCangeLongComment}
+    />
+  );
+};
+
+// export { TextareaAutosize };
 
 export const Description = styled.div`
   color: rgb(105, 105, 105);
