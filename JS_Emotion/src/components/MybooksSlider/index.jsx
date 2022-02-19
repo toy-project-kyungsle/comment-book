@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Controller,
   Slides,
@@ -11,13 +11,10 @@ import {
 } from './styles';
 import MyBookImg from '@components/MyBookImg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { dbService, authService } from '@utils/fbase';
 import { getDoc, doc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
-// @ts-ignore
-import Xmark from './xmark.png';
 import { useRecoilValue } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
 
@@ -26,13 +23,16 @@ const ratingSection = ['0~1', '1~2', '2~3', '3~4', '4~5'];
 function MybooksSlider({ loading, setLoadNum }) {
   const [trans, setTrans] = useState(0);
   const [mybooks, setMybooks] = useState([]);
-  // const [isLoggedIn, setisLoggedIn] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
   const [editYearList, setEditYearList] = useState([]);
 
   const [categoryListOpen, setCategoryListOpen] = useState(false);
   const [ratingListOpen, setRatingListOpen] = useState(false);
   const [yearListOpen, setYearListOpen] = useState(false);
+
+  const [categorySelected, setCategorySelected] = useState('');
+  const [ratingSelected, setRatingSelected] = useState('');
+  const [yearSelected, setYearSelected] = useState('');
 
   const isLoggedIn = useRecoilValue(FbaseAuth());
 
@@ -57,14 +57,6 @@ function MybooksSlider({ loading, setLoadNum }) {
     setTrans((current) => current - (ImgWidth * 4 + ImgLeftRighMargin * 6));
   };
 
-  const getBookInfo = useCallback(async () => {
-    if (isLoggedIn) {
-      const dbBooks = await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid));
-
-      setMybooks(Object.values(dbBooks.data()));
-    }
-  }, [isLoggedIn]);
-
   const getCategoryList = useCallback(async () => {
     if (isLoggedIn) {
       const CTBooks = await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid));
@@ -82,24 +74,46 @@ function MybooksSlider({ loading, setLoadNum }) {
     setLoadNum((prev) => prev + 1);
   }, [deleteSameElem, isLoggedIn, setLoadNum]);
 
-  const onClickCateorySort = useCallback((e) => {
-    // console.log(e.target.innerText);
-    setMybooks((prev) => prev.filter((elem) => GetDetailedName(elem.categoryId) === e.target.innerText));
-  }, []);
+  const getBookInfo = useCallback(async () => {
+    if (isLoggedIn) {
+      const dbBooks = Object.values((await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid))).data());
 
-  const onClickRatingSort = useCallback((e) => {
-    let tempArr = e.target.innerText?.match(/(.+)~(.+)/);
-    if (tempArr?.length > 2) {
-      setMybooks((prev) => prev.filter((elem) => elem.rating >= tempArr[1] && elem.rating <= tempArr[2]));
+      setMybooks(
+        dbBooks.filter((elem) => {
+          let result = [true, true, true];
+          if (categorySelected !== '') {
+            result[0] = GetDetailedName(elem.categoryId) === categorySelected;
+          }
+          if (ratingSelected !== '') {
+            let tempArr = ratingSelected.match(/(.+)~(.+)/);
+            result[1] = elem.rating >= tempArr[1] && elem.rating <= tempArr[2];
+          }
+          if (yearSelected !== '') {
+            result[2] = new Date(elem.editDate).getFullYear().toString() === yearSelected;
+          }
+
+          // console.log(result.find((e) => e === false));
+
+          return result.every((e) => e === true);
+        }),
+      );
     }
+  }, [categorySelected, isLoggedIn, ratingSelected, yearSelected]);
+
+  const onClickCateorySort = useCallback(async (e) => {
+    setCategorySelected(e.target.innerText);
+    // await getBookInfo();
   }, []);
 
-  const onClickYearSort = (e) => {
-    // console.log(e.target.innerText);
-    setMybooks((prev) =>
-      prev.filter((elem) => new Date(elem.editDate).getFullYear().toString() === e.target.innerText),
-    );
-  };
+  const onClickRatingSort = useCallback(async (e) => {
+    setRatingSelected(e.target.innerText);
+    // await getBookInfo();
+  }, []);
+
+  const onClickYearSort = useCallback(async (e) => {
+    setYearSelected(e.target.innerText);
+    // await getBookInfo();
+  }, []);
 
   const onClickCataoryToggle = useCallback(() => {
     setCategoryListOpen(true);
@@ -125,6 +139,16 @@ function MybooksSlider({ loading, setLoadNum }) {
     setRatingListOpen(false);
   }, []);
 
+  const onClickResetBtn = useCallback((e) => {
+    if (e.target.id === 'cg') {
+      setCategorySelected('');
+    } else if (e.target.id === 'rt') {
+      setRatingSelected('');
+    } else if (e.target.id === 'yr') {
+      setYearSelected('');
+    }
+  }, []);
+
   useEffect(() => {
     if (isLoggedIn) {
       getBookInfo();
@@ -144,9 +168,7 @@ function MybooksSlider({ loading, setLoadNum }) {
     }
   }, [editYearList, mybooks]);
 
-  return !isLoggedIn ? null : loading ? (
-    <div>loading..</div>
-  ) : (
+  return !isLoggedIn ? null : loading ? null : (
     <>
       <TopBox>
         <div className="upperContainer">
@@ -156,6 +178,24 @@ function MybooksSlider({ loading, setLoadNum }) {
             <span onClick={onClickRatingToggle}>Rating</span>
             <span onClick={onClickYearToggle}>Year</span>
           </div>
+        </div>
+        {/* SelectedCategory */}
+        <div className="selectedCgCon">
+          {categorySelected !== '' ? (
+            <div>
+              <span>{categorySelected}</span>
+            </div>
+          ) : null}
+          {ratingSelected !== '' ? (
+            <div>
+              <span>{ratingSelected}</span>
+            </div>
+          ) : null}
+          {yearSelected !== '' ? (
+            <div>
+              <span>{yearSelected}</span>
+            </div>
+          ) : null}
         </div>
         {/* category */}
         {categoryListOpen ? (
@@ -175,7 +215,17 @@ function MybooksSlider({ loading, setLoadNum }) {
             </div>
             <div>
               <button className="closeBtn" onClick={onClickCloseBtn}>
-                <img src={Xmark} alt="null"></img>
+                <img
+                  src="https://user-images.githubusercontent.com/79993356/154801650-d6a3e43d-4ba0-4107-a3c2-dfaeca5eb6af.png"
+                  alt="null"
+                ></img>
+              </button>
+              <button className="resetBtn" onClick={onClickResetBtn}>
+                <img
+                  src="https://user-images.githubusercontent.com/79993356/154805451-4852137e-f850-49f9-814e-6cfc937494ae.svg"
+                  alt="null"
+                  id="cg"
+                ></img>
               </button>
             </div>
           </ClassifyingModal>
@@ -194,7 +244,17 @@ function MybooksSlider({ loading, setLoadNum }) {
             </div>
             <div>
               <button className="closeBtn" onClick={onClickCloseBtn}>
-                <img src={Xmark} alt="null"></img>
+                <img
+                  src="https://user-images.githubusercontent.com/79993356/154801650-d6a3e43d-4ba0-4107-a3c2-dfaeca5eb6af.png"
+                  alt="null"
+                ></img>
+              </button>
+              <button className="resetBtn" onClick={onClickResetBtn}>
+                <img
+                  src="https://user-images.githubusercontent.com/79993356/154805451-4852137e-f850-49f9-814e-6cfc937494ae.svg"
+                  alt="null"
+                  id="rt"
+                ></img>
               </button>
             </div>
           </ClassifyingModal>
@@ -215,7 +275,17 @@ function MybooksSlider({ loading, setLoadNum }) {
             </div>
             <div>
               <button className="closeBtn" onClick={onClickCloseBtn}>
-                <img src={Xmark} alt="null"></img>
+                <img
+                  src="https://user-images.githubusercontent.com/79993356/154801650-d6a3e43d-4ba0-4107-a3c2-dfaeca5eb6af.png"
+                  alt="null"
+                ></img>
+              </button>
+              <button className="resetBtn" onClick={onClickResetBtn}>
+                <img
+                  src="https://user-images.githubusercontent.com/79993356/154805451-4852137e-f850-49f9-814e-6cfc937494ae.svg"
+                  alt="null"
+                  id="yr"
+                ></img>
               </button>
             </div>
           </ClassifyingModal>

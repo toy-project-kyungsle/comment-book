@@ -97,8 +97,10 @@ export const Letters = styled.div`
 export const RatingTextArea = styled.textarea`
   resize: none;
   vertical-align: middle;
-  width: 10%;
+
+  width: 50px;
   height: 25px;
+  padding-left: 10px;
 
   &:focus {
     outline: none;
@@ -107,7 +109,11 @@ export const RatingTextArea = styled.textarea`
 
 export const OnelineTextArea = styled.textarea`
   resize: none;
-  width: 100%;
+  vertical-align: middle;
+
+  width: 424px;
+  height: 55px;
+  padding: 10px;
 
   &:focus {
     outline: none;
@@ -115,11 +121,11 @@ export const OnelineTextArea = styled.textarea`
 `;
 
 export const LonglineTextArea = (longComment, onCangeLongComment) => {
-  let tagRef;
   return (
     <TextareaAutosize
       className={css`
         width: 100%;
+        padding: 10px;
         &:focus {
           outline: none;
         }

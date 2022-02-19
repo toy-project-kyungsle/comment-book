@@ -1,8 +1,8 @@
 import React from 'react';
 import { Background, Container, Alert, Mysns, Copyright } from './styles';
 
-function Footer() {
-  return (
+function Footer({ loading }) {
+  return loading ? null : (
     <Background>
       <Container>
         <Alert>

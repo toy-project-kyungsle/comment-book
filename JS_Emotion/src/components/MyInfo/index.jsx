@@ -47,9 +47,7 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }) {
     });
   }, [getMyInfo, setLoadNum]);
 
-  return loading ? (
-    <div>loading..</div>
-  ) : (
+  return loading ? null : (
     <>
       <Background>
         <BackgroundImg

@@ -20,9 +20,10 @@ function MainPage() {
   return (
     <>
       {showLoginModal ? <Auth showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} /> : null}
+      {loading ? <div>Loading</div> : null}
       <MyInfo loading={loading} setLoadNum={setLoadNum} setShowLoginModal={setShowLoginModal} />
       <MybooksSlider loading={loading} setLoadNum={setLoadNum} />
-      <Footer />
+      <Footer loading={loading} />
     </>
   );
 }

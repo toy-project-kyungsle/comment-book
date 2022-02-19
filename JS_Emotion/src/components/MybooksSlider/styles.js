@@ -29,14 +29,33 @@ export const TopBox = styled.div`
       color: wheat;
     }
   }
+
+  .selectedCgCon {
+    position: absolute;
+    left: 0;
+    top: 50;
+
+    color: #00000096;
+    font-size: 14px;
+
+    display: flex;
+
+    & div {
+      margin-right: 15px;
+      padding-bottom: 5;
+
+      border-bottom: 1px solid #00000030;
+    }
+  }
 `;
 
 export const ClassifyingModal = styled.div`
-  background-color: #ececec;
-  z-index: 3;
   position: absolute;
   right: 0;
   top: 30px;
+
+  background-color: #ececec;
+  z-index: 3;
 
   display: flex;
 
@@ -81,6 +100,22 @@ export const ClassifyingModal = styled.div`
     & img {
       height: 13px;
       width: 13px;
+    }
+    & img:hover {
+      cursor: pointer;
+    }
+  }
+
+  .resetBtn {
+    position: absolute;
+    right: 8px;
+    bottom: 10px;
+
+    border: none;
+    background-color: none;
+
+    & img {
+      height: 15px;
     }
     & img:hover {
       cursor: pointer;

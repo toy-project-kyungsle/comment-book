@@ -48,7 +48,7 @@ function DetailPage() {
   }, []);
 
   const onClickTopBtn = useCallback(() => {
-    navigate('/');
+    navigate(-1);
   }, [navigate]);
 
   const onClickDelete = useCallback(async () => {
@@ -90,6 +90,7 @@ function DetailPage() {
 
   const getBookInfo = useCallback(async () => {
     const dbBooks = await (await getDoc(doc(dbService, `UserEval`, authService.currentUser.uid))).data();
+    // console.log(dbBooks);
     if (!dbBooks[bookIsbn] || !dbBooks) {
       setInfoMode(true);
     } else if (dbBooks) {
