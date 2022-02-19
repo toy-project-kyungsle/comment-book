@@ -18,19 +18,23 @@ import { getDoc, doc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
 // @ts-ignore
 import Xmark from './xmark.png';
+import { useRecoilValue } from 'recoil';
+import { FbaseAuth } from '@atom/FbaseAuth';
 
 const ratingSection = ['0~1', '1~2', '2~3', '3~4', '4~5'];
 
-function MybooksSlider({ loading, setLoadNum, isLoggedin }) {
+function MybooksSlider({ loading, setLoadNum }) {
   const [trans, setTrans] = useState(0);
   const [mybooks, setMybooks] = useState([]);
-  // const [isLoggedIn, setIsLoggedin] = useState(false);
+  // const [isLoggedIn, setisLoggedIn] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
   const [editYearList, setEditYearList] = useState([]);
 
   const [categoryListOpen, setCategoryListOpen] = useState(false);
   const [ratingListOpen, setRatingListOpen] = useState(false);
   const [yearListOpen, setYearListOpen] = useState(false);
+
+  const isLoggedIn = useRecoilValue(FbaseAuth);
 
   const deleteSameElem = useCallback((arr) => {
     let result = [];
@@ -54,15 +58,15 @@ function MybooksSlider({ loading, setLoadNum, isLoggedin }) {
   };
 
   const getBookInfo = useCallback(async () => {
-    if (isLoggedin) {
+    if (isLoggedIn) {
       const dbBooks = await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid));
 
       setMybooks(Object.values(dbBooks.data()));
     }
-  }, [isLoggedin]);
+  }, [isLoggedIn]);
 
   const getCategoryList = useCallback(async () => {
-    if (isLoggedin) {
+    if (isLoggedIn) {
       const CTBooks = await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid));
 
       if (CTBooks) {
@@ -76,7 +80,7 @@ function MybooksSlider({ loading, setLoadNum, isLoggedin }) {
     }
 
     setLoadNum((prev) => prev + 1);
-  }, [deleteSameElem, isLoggedin, setLoadNum]);
+  }, [deleteSameElem, isLoggedIn, setLoadNum]);
 
   const onClickCateorySort = useCallback((e) => {
     // console.log(e.target.innerText);
@@ -122,13 +126,13 @@ function MybooksSlider({ loading, setLoadNum, isLoggedin }) {
   }, []);
 
   useEffect(() => {
-    if (isLoggedin) {
+    if (isLoggedIn) {
       getBookInfo();
       getCategoryList();
     } else {
       setLoadNum((prev) => prev + 1);
     }
-  }, [getBookInfo, getCategoryList, isLoggedin, setLoadNum]);
+  }, [getBookInfo, getCategoryList, isLoggedIn, setLoadNum]);
 
   useEffect(() => {
     if (mybooks.length > 0) {
@@ -140,7 +144,7 @@ function MybooksSlider({ loading, setLoadNum, isLoggedin }) {
     }
   }, [editYearList, mybooks]);
 
-  return !isLoggedin ? null : loading ? (
+  return !isLoggedIn ? null : loading ? (
     <div>loading..</div>
   ) : (
     <>

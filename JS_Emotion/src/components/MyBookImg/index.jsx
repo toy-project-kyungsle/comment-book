@@ -11,7 +11,7 @@ function MyBookImg({ coverImg, title, isbn, shortcomment, rating }) {
           <p className="comment">{shortcomment}</p>
           <div className="rating">
             <hr />
-            <p>{rating ? `Rating : ${rating} / 5` : 'Please Eval 🙈'}</p>
+            <p>{rating ? `Rating : ${rating} / 5` : 'Please Eval'}</p>
           </div>
         </Wrap>
       </Link>

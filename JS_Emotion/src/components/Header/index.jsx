@@ -1,18 +1,20 @@
 import useInput from '@hooks/useinput';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, LeftSection, RightSection } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { authService } from '@utils/fbase';
+import { useRecoilState } from 'recoil';
+import { FbaseAuth } from '@atom/FbaseAuth';
 
-function Header({ isLoggedin, setIsLoggedin, setShowLoginModal }) {
+function Header({ setShowLoginModal }) {
   const [search, , onChangeSearch] = useInput('');
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setisLoggedIn] = useRecoilState(FbaseAuth);
   let navigate = useNavigate();
 
   const onLogOutClick = () => {
-    setIsLoggedin(false);
+    setisLoggedIn(false);
     authService.signOut();
     alert('로그아웃 되셨습니다!');
   };
@@ -55,7 +57,7 @@ function Header({ isLoggedin, setIsLoggedin, setShowLoginModal }) {
           </span>
         </div>
         <div className="auth">
-          {isLoggedin ? <p onClick={onLogOutClick}>Logout</p> : <p onClick={onClickLogin}>Login</p>}
+          {isLoggedIn ? <p onClick={onLogOutClick}>Logout</p> : <p onClick={onClickLogin}>Login</p>}
         </div>
       </RightSection>
     </Container>

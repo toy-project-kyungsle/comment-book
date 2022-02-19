@@ -8,6 +8,8 @@ import TextareaAutosize from 'react-textarea-autosize';
 import { dbService, authService } from '@utils/fbase';
 import { setDoc, doc, getDoc, deleteField, updateDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { FbaseAuth } from '@atom/FbaseAuth';
 
 function DetailPage() {
   const { isbn } = useParams();
@@ -19,7 +21,7 @@ function DetailPage() {
   const [longComment, setLongComment, onCangeLongComment] = useInput('You have no commnet for this book');
   const [editMode, setEditMode] = useState(false);
   const [infoMode, setInfoMode] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useRecoilState(FbaseAuth);
   const navigate = useNavigate();
 
   const onClickInfoBtn = useCallback(() => {
@@ -96,15 +98,8 @@ function DetailPage() {
   }, [isbn, setBook, setLoading]);
 
   useEffect(() => {
-    authService.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-      if (isLoggedIn && Object.keys(book).length) getBookInfo();
-    });
-  }, [isLoggedIn, book, getBookInfo]);
+    if (isLoggedIn && Object.keys(book).length) getBookInfo();
+  }, [isLoggedIn, book, getBookInfo, setIsLoggedIn]);
 
   return loading ? (
     <div>Laoding...</div>

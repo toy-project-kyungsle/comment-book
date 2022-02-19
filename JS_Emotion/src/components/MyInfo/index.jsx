@@ -4,11 +4,14 @@ import { dbService, authService } from '@utils/fbase';
 import { collection, query, onSnapshot } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
 import Header from '@components/Header';
+import { useRecoilState } from 'recoil';
+import { FbaseAuth } from '@atom/FbaseAuth';
 
-function MyInfo({ loading, setLoadNum, isLoggedin, setIsLoggedin, setShowLoginModal }) {
+function MyInfo({ loading, setLoadNum, setShowLoginModal }) {
   const [bookCount, setBookCount] = useState(0);
   const [bestBook, setBestBook] = useState("There's no favorite book");
   const [bestCategory, setBestCategory] = useState("There's no favorite category");
+  const [isLoggedIn, setisLoggedIn] = useRecoilState(FbaseAuth);
 
   const getMyInfo = useCallback(
     async (user) => {
@@ -53,7 +56,7 @@ function MyInfo({ loading, setLoadNum, isLoggedin, setIsLoggedin, setShowLoginMo
           src="https://user-images.githubusercontent.com/79993356/154531958-e0068ede-1ae9-4b44-8522-2676c4b8d3ef.png"
           alt="null"
         />
-        <Header isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin} setShowLoginModal={setShowLoginModal} />
+        <Header isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} setShowLoginModal={setShowLoginModal} />
         <TitleBox>
           <p className="title" style={{}}>
             My Book Collection

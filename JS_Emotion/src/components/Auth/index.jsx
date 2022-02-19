@@ -9,12 +9,15 @@ import {
 import '@utils/fbase';
 import { authService } from '@utils/fbase';
 import { Background, BtnContainer, Container, EnterContainer, SignUpOrLogin, SosialLogin } from './styles';
+import { useSetRecoilState } from 'recoil';
+import { FbaseAuth } from '@atom/FbaseAuth';
 
 const Auth = ({ setShowLoginModal, showLoginModal }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [newAccount, setNewAccount] = useState(false);
   const [error, setError] = useState('');
+  const setIsLoggedIn = useSetRecoilState(FbaseAuth);
 
   const onChange = (event) => {
     const {
@@ -36,6 +39,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
         await signInWithEmailAndPassword(authService, email, password);
       }
       setShowLoginModal(false);
+      setIsLoggedIn(true);
     } catch (error) {
       setError(error.message);
     }
@@ -50,6 +54,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
       provider = new GithubAuthProvider();
     }
     await signInWithPopup(authService, provider);
+    setIsLoggedIn(true);
   };
 
   const closeLoginModal = useCallback(() => {
