@@ -90,7 +90,6 @@ function DetailPage() {
 
   const getBookInfo = useCallback(async () => {
     const dbBooks = await (await getDoc(doc(dbService, `UserEval`, authService.currentUser.uid))).data();
-    // console.log(dbBooks);
     if (!dbBooks[bookIsbn] || !dbBooks) {
       setInfoMode(true);
     } else if (dbBooks) {
@@ -127,7 +126,9 @@ function DetailPage() {
         </p>
         <ImgDiv>
           <img src={book.coverLargeUrl} alt={book.title} />
-          <a href={book.link}>More Info?</a>
+          <a href={book.link} target="_blank">
+            More Info?
+          </a>
         </ImgDiv>
         <Letters>
           <p className="title">
@@ -155,7 +156,10 @@ function DetailPage() {
             <div className="infoDiv">
               <span className="tagName">평점&emsp;</span>
               {editMode ? (
-                <RatingTextArea onChange={onChangeRating} value={rating}></RatingTextArea>
+                <>
+                  <RatingTextArea onChange={onChangeRating} value={rating} />
+                  <span className="rtcomment">5점이 만점입니다.</span>
+                </>
               ) : (
                 <span>{rating}</span>
               )}
@@ -168,7 +172,8 @@ function DetailPage() {
                 <OnelineTextArea
                   onChange={onChangeShortComment}
                   value={shortComment === "There's no comment" ? '' : shortComment}
-                ></OnelineTextArea>
+                  maxLength={34}
+                />
               ) : (
                 <span>{shortComment}</span>
               )}

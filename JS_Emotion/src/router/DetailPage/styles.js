@@ -69,6 +69,7 @@ export const Letters = styled.div`
     margin-bottom: 20px;
 
     & p {
+      margin: 0;
       font-size: 22px;
       color: black;
     }
@@ -78,6 +79,11 @@ export const Letters = styled.div`
     color: rgb(105, 105, 105);
 
     margin: 7px 0;
+
+    .rtcomment {
+      font-size: 12px;
+      margin-left: 10px;
+    }
   }
 
   .tagName {
@@ -111,7 +117,7 @@ export const OnelineTextArea = styled.textarea`
   resize: none;
   vertical-align: middle;
 
-  width: 424px;
+  width: 420px;
   height: 55px;
   padding: 10px;
 
