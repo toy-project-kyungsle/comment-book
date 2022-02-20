@@ -37,7 +37,7 @@ function Header({ setShowLoginModal }) {
   return (
     <Container>
       <LeftSection>
-        <Link to={`/`}>Favorites</Link>
+        <Link to={`/`}>Book Comment</Link>
       </LeftSection>
       <RightSection>
         <div>

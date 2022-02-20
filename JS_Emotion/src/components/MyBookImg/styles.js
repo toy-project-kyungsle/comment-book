@@ -35,7 +35,6 @@ export const Wrap = styled.div`
 
   color: whitesmoke;
   background-color: rgba(179, 182, 183);
-  /* border-radius: 5px; */
 
   &:hover {
     opacity: 1;
@@ -57,13 +56,4 @@ export const Wrap = styled.div`
       text-align: center;
     }
   }
-
-  /* @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  } */
 `;

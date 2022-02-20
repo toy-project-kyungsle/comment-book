@@ -14,7 +14,6 @@ import {
   LonglineTextArea,
   RatingTextArea,
 } from './styles';
-import TextareaAutosize from 'react-textarea-autosize';
 import { dbService, authService } from '@utils/fbase';
 import { setDoc, doc, getDoc, deleteField, updateDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';

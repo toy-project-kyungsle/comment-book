@@ -22,7 +22,7 @@ export const LeftSection = styled.div`
   & a {
     margin: auto 0;
     color: #050505d3;
-    font-size: 18px;
+    font-size: 22px;
   }
   & a:hover {
     color: #aca7cb;

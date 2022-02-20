@@ -13,15 +13,15 @@ export const TitleBox = styled.div`
   position: absolute;
   left: 7%;
   bottom: 9%;
-  width: 400px;
+  width: 380px;
   font-family: 'Roboto', sans-serif;
 
   .title {
-    font-size: 22px;
+    font-size: 20px;
   }
   .goodMent,
   .mentor {
-    font-size: 14px;
+    font-size: 16px;
     color: #0000007b;
   }
 `;
@@ -37,11 +37,11 @@ export const InfoBox = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
 
   display: grid;
-  grid-template-columns: 150px 250px;
+  grid-template-columns: 150px 230px;
   grid-template-rows: ${100 / 3}% ${100 / 3}% ${100 / 3}%;
 
   .title {
-    font-size: 14px;
+    font-size: 16px;
 
     font-family: 'Roboto', sans-serif;
 
@@ -50,7 +50,7 @@ export const InfoBox = styled.div`
   }
 
   .info {
-    font-size: 13px;
+    font-size: 14px;
     color: #3e4756;
   }
 `;

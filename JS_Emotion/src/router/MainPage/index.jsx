@@ -3,6 +3,7 @@ import MybooksSlider from '@components/MybooksSlider';
 import MyInfo from '@components/MyInfo';
 import Footer from '@components/Footer';
 import Auth from '@components/Auth';
+import { Loading } from './styles';
 
 function MainPage() {
   const [loadNum, setLoadNum] = useState(0);
@@ -20,7 +21,16 @@ function MainPage() {
   return (
     <>
       {showLoginModal ? <Auth showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} /> : null}
-      {loading ? <div>Loading</div> : null}
+      <Loading mode={loading ? 'doing' : 'done'}>
+        <div className="container">
+          <span>Book Comment</span>
+          <div className="loadContainer">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </Loading>
       <MyInfo loading={loading} setLoadNum={setLoadNum} setShowLoginModal={setShowLoginModal} />
       <MybooksSlider loading={loading} setLoadNum={setLoadNum} />
       <Footer loading={loading} />
