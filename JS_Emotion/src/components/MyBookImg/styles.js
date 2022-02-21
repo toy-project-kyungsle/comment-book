@@ -11,17 +11,32 @@ export const BookContainer = styled.div`
   margin: 0 ${Margin_Small};
 
   border: none;
-  /* border-radius: 5px; */
-  overflow: hidden;
 
   & a {
     width: ${PictureWidth};
+    height: 0;
+  }
+
+  ${(props) => (props.mode === 'doing' ? { animation: 'tutsFade 1s ease-in' } : null)};
+
+  @keyframes tutsFade {
+    from {
+      position: relative;
+      bottom: -50px;
+      opacity: 0;
+    }
+    to {
+      position: relative;
+      bottom: 0px;
+      opacity: 1;
+    }
   }
 `;
 
 export const BookImg = styled.img`
   width: ${PictureWidth};
   height: ${PictureHeight};
+  z-index: 100;
 `;
 
 export const Wrap = styled.div`

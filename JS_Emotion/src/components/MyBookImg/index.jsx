@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BookContainer, BookImg, Wrap } from './styles';
 
-function MyBookImg({ coverImg, title, isbn, shortcomment, rating }) {
+function MyBookImg({ coverImg, title, isbn, shortcomment, rating, bookState }) {
+  const [reload, setReload] = useState('doing');
+
+  useEffect(() => {
+    setReload('doing');
+    setTimeout(() => {
+      setReload('done');
+    }, 1000);
+  }, [bookState]);
+
   return (
-    <BookContainer>
+    <BookContainer mode={reload}>
       <Link to={`/comment/${isbn}`}>
         <BookImg src={coverImg} alt={title} />
         <Wrap>

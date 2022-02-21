@@ -305,6 +305,7 @@ function MybooksSlider({ loading, setLoadNum }) {
                     isbn={book.isbn}
                     shortcomment={book.shortComment}
                     rating={book.rating}
+                    bookState={mybooks}
                   />
                 );
               })}

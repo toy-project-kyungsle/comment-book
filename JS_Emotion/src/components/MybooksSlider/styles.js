@@ -138,32 +138,31 @@ export const SlidesViewer = styled.div`
   position: relative;
   margin: 0 auto;
   width: ${ImgWidth * 4 + ImgLeftRighMargin * (3 * 2)}px;
-  height: ${ImgHeight}px;
-  overflow: hidden;
+  height: ${ImgHeight + 50}px;
+  overflow-x: hidden;
 `;
 
-export const Slides = styled.div(
-  {
-    position: `absolute`,
-    left: `0`,
-    top: `0`,
-    height: `345px`,
-    display: `flex`,
+export const Slides = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
 
-    transition: `0.5s`,
+  margin: 0;
+  height: ${ImgHeight}px;
+  width: ${(props) => (ImgWidth + ImgLeftRighMargin * 2) * props.bookCount};
+  transform: ${(props) => `translateX(${props.trans}px)`};
 
-    'div:nth-child(4n+1)': {
-      'margin-left': '0',
-    },
-    'div:nth-child(4n)': {
-      'margin-right': '0',
-    },
-  },
-  (props) => ({
-    width: (ImgWidth + ImgLeftRighMargin * 2) * props.bookCount,
-    transform: `translateX(${props.trans}px)`,
-  }),
-);
+  transition: 0.5s;
+
+  & div:nth-child(4n + 1) {
+    margin-left: 0;
+  }
+
+  & div:nth-child(4n) {
+    margin-right: 0;
+  }
+`;
 
 export const Controller = styled.div`
   .Left,

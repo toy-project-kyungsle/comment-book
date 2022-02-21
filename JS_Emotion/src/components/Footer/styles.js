@@ -7,7 +7,7 @@ export const Background = styled.div`
 
   height: 150px;
   width: 1000px;
-  margin: 150px auto;
+  margin: 100px auto 150px auto;
   padding-bottom: 200px;
 `;
 
