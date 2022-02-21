@@ -40,6 +40,7 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }) {
 
   useEffect(() => {
     if (isLoggedIn) getMyInfo();
+    else setLoadNum((prev) => prev + 1);
   }, [getMyInfo, isLoggedIn, setLoadNum]);
 
   return loading ? null : (

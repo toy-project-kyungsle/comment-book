@@ -20,6 +20,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
 import GetDate from '@utils/GetDate';
+import Loading from '@components/Loading';
 
 function DetailPage() {
   const { isbn } = useParams();
@@ -102,7 +103,7 @@ function DetailPage() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://localhost:3085/isbnsearch/${isbn}`).then((res) => {
+    axios.get(`http://34.83.61.147:3085/isbnsearch/${isbn}`).then((res) => {
       setBook(res.data.items[0]);
       setBookIsbn(res.data.items[0].isbn);
     });
@@ -112,105 +113,106 @@ function DetailPage() {
     if (isLoggedIn && Object.keys(book).length) getBookInfo();
   }, [book, getBookInfo, isLoggedIn]);
 
-  return loading ? (
-    <div>Laoding...</div>
-  ) : (
-    <Background>
-      <Container>
-        <p className="topBtn" onClick={onClickTopBtn}>
-          <img
-            src="https://user-images.githubusercontent.com/79993356/154732530-9f85dfa4-e9f8-484a-acdf-6371eb981bc5.png"
-            alt="null"
-          />
-        </p>
-        <ImgDiv>
-          <img src={book.coverLargeUrl} alt={book.title} />
-          <a href={book.link} target="_blank">
-            More Info?
-          </a>
-        </ImgDiv>
-        <Letters>
-          <p className="title">
-            <p>{book.title}</p>
+  return (
+    <>
+      <Loading loading={loading} />
+      <Background>
+        <Container>
+          <p className="topBtn" onClick={onClickTopBtn}>
+            <img
+              src="https://user-images.githubusercontent.com/79993356/154732530-9f85dfa4-e9f8-484a-acdf-6371eb981bc5.png"
+              alt="null"
+            />
           </p>
-          {book.author ? (
-            <div className="infoDiv">
-              <span className="tagName">작가&emsp;</span>
-              <span>{book.author}</span>
-            </div>
-          ) : null}
-          {book.categoryId ? (
-            <div className="infoDiv">
-              <span className="tagName">장르&emsp;</span>
-              <span>{GetDetailedName(book.categoryId)}</span>
-            </div>
-          ) : null}
-          {book.pubDate ? (
-            <div className="infoDiv">
-              <span className="tagName">출판일</span>
-              <span>{GetDate(book.pubDate)}</span>
-            </div>
-          ) : null}
-          {!infoMode ? (
-            <div className="infoDiv">
-              <span className="tagName">평점&emsp;</span>
-              {editMode ? (
-                <>
-                  <RatingTextArea onChange={onChangeRating} value={rating} />
-                  <span className="rtcomment">5점이 만점입니다.</span>
-                </>
-              ) : (
-                <span>{rating}</span>
-              )}
-            </div>
-          ) : null}
-          {!infoMode ? (
-            <div className="infoDiv">
-              <span className="tagName">한줄평</span>
-              {editMode ? (
-                <OnelineTextArea
-                  onChange={onChangeShortComment}
-                  value={shortComment === "There's no comment" ? '' : shortComment}
-                  maxLength={34}
-                />
-              ) : (
-                <span>{shortComment}</span>
-              )}
-            </div>
-          ) : null}
+          <ImgDiv>
+            <img src={book.coverLargeUrl} alt={book.title} />
+            <a href={book.link} target="_blank">
+              More Info?
+            </a>
+          </ImgDiv>
+          <Letters>
+            <p className="title">
+              <p>{book.title}</p>
+            </p>
+            {book.author ? (
+              <div className="infoDiv">
+                <span className="tagName">작가&emsp;</span>
+                <span>{book.author}</span>
+              </div>
+            ) : null}
+            {book.categoryId ? (
+              <div className="infoDiv">
+                <span className="tagName">장르&emsp;</span>
+                <span>{GetDetailedName(book.categoryId)}</span>
+              </div>
+            ) : null}
+            {book.pubDate ? (
+              <div className="infoDiv">
+                <span className="tagName">출판일</span>
+                <span>{GetDate(book.pubDate)}</span>
+              </div>
+            ) : null}
+            {!infoMode ? (
+              <div className="infoDiv">
+                <span className="tagName">평점&emsp;</span>
+                {editMode ? (
+                  <>
+                    <RatingTextArea onChange={onChangeRating} value={rating} />
+                    <span className="rtcomment">5점이 만점입니다.</span>
+                  </>
+                ) : (
+                  <span>{rating}</span>
+                )}
+              </div>
+            ) : null}
+            {!infoMode ? (
+              <div className="infoDiv">
+                <span className="tagName">한줄평</span>
+                {editMode ? (
+                  <OnelineTextArea
+                    onChange={onChangeShortComment}
+                    value={shortComment === "There's no comment" ? '' : shortComment}
+                    maxLength={34}
+                  />
+                ) : (
+                  <span>{shortComment}</span>
+                )}
+              </div>
+            ) : null}
 
-          <hr />
+            <hr />
 
-          {editMode ? (
-            <div style={{ minHeight: '180px' }}>
-              {LonglineTextArea(longComment, onCangeLongComment)}
-              <BtnDiv>
-                <span onClick={onSubmit}>Finish</span>
-                <span onClick={onClickCancle}>Cancle</span>
-              </BtnDiv>
-            </div>
-          ) : infoMode ? (
-            <>
-              <Description>
-                <p>{book.description}</p>
-              </Description>
-              <BtnDiv>
-                <span onClick={onClickInfoBtn}>Comment</span>
-              </BtnDiv>
-            </>
-          ) : (
-            <>
-              <p className="longComment">{longComment}</p>
-              <BtnDiv>
-                <span onClick={onClickInfoBtn}>Info</span>
-                <span onClick={onClickAddEditBtn}>Comment</span>
-                <span onClick={onClickDelete}>Delete</span>
-              </BtnDiv>
-            </>
-          )}
-        </Letters>
-      </Container>
-    </Background>
+            {editMode ? (
+              <div style={{ minHeight: '180px' }}>
+                {LonglineTextArea(longComment, onCangeLongComment)}
+                <BtnDiv>
+                  <span onClick={onSubmit}>Finish</span>
+                  <span onClick={onClickCancle}>Cancle</span>
+                </BtnDiv>
+              </div>
+            ) : infoMode ? (
+              <>
+                <Description>
+                  <p>{book.description}</p>
+                </Description>
+                <BtnDiv>
+                  <span onClick={onClickInfoBtn}>Comment</span>
+                </BtnDiv>
+              </>
+            ) : (
+              <>
+                <p className="longComment">{longComment}</p>
+                <BtnDiv>
+                  <span onClick={onClickInfoBtn}>Info</span>
+                  <span onClick={onClickAddEditBtn}>Comment</span>
+                  <span onClick={onClickDelete}>Delete</span>
+                </BtnDiv>
+              </>
+            )}
+          </Letters>
+        </Container>
+      </Background>
+    </>
   );
 }
 

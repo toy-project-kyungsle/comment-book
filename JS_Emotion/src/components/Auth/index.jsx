@@ -41,7 +41,9 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
       setIsLoggedIn(true);
       setShowLoginModal(false);
     } catch (error) {
-      setError(error.message);
+      console.log(Object.keys(error));
+      console.log(Object.values(error));
+      setError(error.code);
     }
   };
 
@@ -99,7 +101,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
               </div>
             </BtnContainer>
           </div>
-          {error}
+          <p className="error">{error}</p>
         </form>
         <SignUpOrLogin>
           {newAccount ? null : (

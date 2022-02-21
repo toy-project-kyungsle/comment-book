@@ -10,6 +10,21 @@ export const TopBox = styled.div`
   margin: 100px auto 100px auto;
   font-family: 'Noto Sans KR', sans-serif;
 
+  animation: smoothShow 1s;
+
+  @keyframes smoothShow {
+    from {
+      position: relative;
+      bottom: -50px;
+      opacity: 0;
+    }
+    to {
+      position: relative;
+      bottom: 0px;
+      opacity: 1;
+    }
+  }
+
   .upperContainer {
     display: flex;
     flex-direction: row;
@@ -138,7 +153,7 @@ export const SlidesViewer = styled.div`
   position: relative;
   margin: 0 auto;
   width: ${ImgWidth * 4 + ImgLeftRighMargin * (3 * 2)}px;
-  height: ${ImgHeight + 50}px;
+  height: ${ImgHeight + 55}px;
   overflow-x: hidden;
 `;
 

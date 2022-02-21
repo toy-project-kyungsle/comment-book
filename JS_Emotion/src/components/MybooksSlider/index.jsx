@@ -35,6 +35,7 @@ function MybooksSlider({ loading, setLoadNum }) {
   const [yearSelected, setYearSelected] = useState('');
 
   const isLoggedIn = useRecoilValue(FbaseAuth());
+  // const [isNewUser, setIsNewUser] = useState(true);
 
   const deleteSameElem = useCallback((arr) => {
     let result = [];
@@ -59,27 +60,27 @@ function MybooksSlider({ loading, setLoadNum }) {
 
   const getCategoryList = useCallback(async () => {
     if (isLoggedIn) {
-      const CTBooks = await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid));
+      const CTBooks = await (await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid))).data();
+      const CTBooksArr = CTBooks ? Object.values(CTBooks) : [];
 
-      if (CTBooks) {
-        setCategoryList(
-          deleteSameElem(Object.values(CTBooks?.data())?.map((e) => e['categoryId']))
-            .map((e) => GetDetailedName(e))
-            .filter((e) => e !== '')
-            .sort((a, b) => (a < b ? -1 : a === b ? 0 : 1)),
-        );
-      }
+      setCategoryList(
+        deleteSameElem(CTBooksArr?.map((e) => e['categoryId']))
+          ?.map((e) => GetDetailedName(e))
+          ?.filter((e) => e !== '')
+          ?.sort((a, b) => (a < b ? -1 : a === b ? 0 : 1)),
+      );
+      // if (CTBooksArr.length !== 0) setIsNewUser(false);
     }
-
     setLoadNum((prev) => prev + 1);
   }, [deleteSameElem, isLoggedIn, setLoadNum]);
 
   const getBookInfo = useCallback(async () => {
     if (isLoggedIn) {
-      const dbBooks = Object.values((await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid))).data());
+      const dbBooks = (await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid)))?.data();
+      const dbBooksArr = dbBooks ? Object.values(dbBooks) : [];
 
       setMybooks(
-        dbBooks.filter((elem) => {
+        dbBooksArr.filter((elem) => {
           let result = [true, true, true];
           if (categorySelected !== '') {
             result[0] = GetDetailedName(elem.categoryId) === categorySelected;
@@ -92,8 +93,6 @@ function MybooksSlider({ loading, setLoadNum }) {
             result[2] = new Date(elem.editDate).getFullYear().toString() === yearSelected;
           }
 
-          // console.log(result.find((e) => e === false));
-
           return result.every((e) => e === true);
         }),
       );
@@ -102,16 +101,19 @@ function MybooksSlider({ loading, setLoadNum }) {
 
   const onClickCateorySort = useCallback(async (e) => {
     setCategorySelected(e.target.innerText);
+    setTrans(0);
     // await getBookInfo();
   }, []);
 
   const onClickRatingSort = useCallback(async (e) => {
     setRatingSelected(e.target.innerText);
+    setTrans(0);
     // await getBookInfo();
   }, []);
 
   const onClickYearSort = useCallback(async (e) => {
     setYearSelected(e.target.innerText);
+    setTrans(0);
     // await getBookInfo();
   }, []);
 

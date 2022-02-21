@@ -17,9 +17,9 @@ export const BookContainer = styled.div`
     height: 0;
   }
 
-  ${(props) => (props.mode === 'doing' ? { animation: 'tutsFade 1s ease-in' } : null)};
+  ${(props) => (props.mode === 'doing' ? { animation: 'smoothShow 1s ease-in' } : null)};
 
-  @keyframes tutsFade {
+  @keyframes smoothShow {
     from {
       position: relative;
       bottom: -50px;

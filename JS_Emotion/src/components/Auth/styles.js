@@ -23,11 +23,16 @@ export const Container = styled.div`
 
   border: 3px solid #979a9a;
 
-  padding-left: 10px;
-
   .inner {
     padding: 0 80px;
     margin-top: 60px;
+  }
+
+  .error {
+    color: #ff0000c7;
+    margin: 0;
+    margin-left: 96px;
+    margin-top: 30px;
   }
 `;
 
