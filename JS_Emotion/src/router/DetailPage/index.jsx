@@ -103,7 +103,7 @@ function DetailPage() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://34.83.61.147:3085/isbnsearch/${isbn}`).then((res) => {
+    axios.get(`https://www.interbookserver.kro.kr:3085/isbnsearch/${isbn}`).then((res) => {
       setBook(res.data.items[0]);
       setBookIsbn(res.data.items[0].isbn);
     });

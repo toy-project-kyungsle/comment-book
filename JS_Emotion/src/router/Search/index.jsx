@@ -28,7 +28,7 @@ function Search() {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`http://34.83.61.147:3085/search/${search}/${display}/${lstNum}`).then((res) => {
+    axios.get(`https://www.interbookserver.kro.kr:3085/search/${search}/${display}/${lstNum}`).then((res) => {
       setBooks(res.data.items);
       // console.log(res.data.items);
       setLoading(false);

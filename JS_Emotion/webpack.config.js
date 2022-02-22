@@ -4,6 +4,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const projectName = 'Book_Helper';
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 const config = {
@@ -42,10 +43,10 @@ const config = {
           ],
           env: {
             development: {
-              plugins: [['@emotion', { sourceMap: true }], require.resolve('react-refresh/babel')],
+              plugins: [['@emotion/babel-plugin', { sourceMap: true }], require.resolve('react-refresh/babel')],
             },
             production: {
-              plugins: ['@emotion'],
+              plugins: ['@emotion/babel-plugin'],
             },
           },
         },
@@ -69,13 +70,13 @@ const config = {
     new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? 'development' : 'production' }),
     new Dotenv(),
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: './src/index.html',
     }),
   ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
-    publicPath: './',
+    publicPath: isDevelopment ? '/dist/' : `/${projectName}/`,
   },
   devServer: {
     historyApiFallback: true,

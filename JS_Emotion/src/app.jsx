@@ -7,9 +7,17 @@ const MainPage = loadable(() => import('@router/MainPage'));
 const Search = loadable(() => import('@router/Search'));
 const DetailPage = loadable(() => import('@router/DetailPage'));
 
+let mode;
+
+if (process.env.NODE_ENV === 'production') {
+  mode = 'Book_Helper';
+} else {
+  mode = '';
+}
+
 const App = () => (
   <RecoilRoot>
-    <Router>
+    <Router basename={mode}>
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/search/:search/:display/*" element={<Search />} />
