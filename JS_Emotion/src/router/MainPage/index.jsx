@@ -16,8 +16,6 @@ function MainPage() {
     }
   }, [loadNum]);
 
-  // console.log(loadNum);
-
   return (
     <div className="test">
       {showLoginModal ? <Auth showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} /> : null}

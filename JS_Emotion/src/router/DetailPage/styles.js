@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import styled from '@emotion/styled';
 import React from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -65,32 +64,6 @@ export const Letters = styled.div`
   width: 100%;
   margin-left: 70px;
 
-  .title {
-    margin: 0;
-    margin-bottom: 20px;
-
-    & p {
-      margin: 0;
-      font-size: 22px;
-      color: black;
-    }
-  }
-
-  .infoDiv {
-    color: rgb(105, 105, 105);
-
-    margin: 7px 0;
-
-    .rtcomment {
-      font-size: 12px;
-      margin-left: 10px;
-    }
-  }
-
-  .tagName {
-    margin-right: 65px;
-  }
-
   & hr {
     margin: 20px 0;
     border: 2px solid rgb(230, 230, 230);
@@ -98,32 +71,6 @@ export const Letters = styled.div`
 
   .longComment {
     color: rgb(105, 105, 105);
-  }
-`;
-
-export const RatingTextArea = styled.textarea`
-  resize: none;
-  vertical-align: middle;
-
-  width: 50px;
-  height: 25px;
-  padding-left: 10px;
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const OnelineTextArea = styled.textarea`
-  resize: none;
-  vertical-align: middle;
-
-  width: 420px;
-  height: 55px;
-  padding: 10px;
-
-  &:focus {
-    outline: none;
   }
 `;
 

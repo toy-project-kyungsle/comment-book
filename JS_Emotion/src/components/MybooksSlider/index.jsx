@@ -1,14 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import {
-  Controller,
-  Slides,
-  SlidesViewer,
-  ImgWidth,
-  ImgLeftRighMargin,
-  TopBox,
-  SlidesBackground,
-  ClassifyingModal,
-} from './styles';
+import { Controller, Slides, SlidesViewer, ImgWidth, ImgLeftRighMargin, TopBox, SlidesBackground } from './styles';
 import MyBookImg from '@components/MyBookImg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -17,8 +8,8 @@ import { getDoc, doc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
 import { useRecoilValue } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
-
-const ratingSection = ['0~1', '1~2', '2~3', '3~4', '4~5'];
+import SliderModal from '@components/SliderModal';
+import DeleteSameElem from '@utils/DeleteSameElem';
 
 function MybooksSlider({ loading, setLoadNum }) {
   const [trans, setTrans] = useState(0);
@@ -35,13 +26,6 @@ function MybooksSlider({ loading, setLoadNum }) {
   const [yearSelected, setYearSelected] = useState('');
 
   const isLoggedIn = useRecoilValue(FbaseAuth());
-  // const [isNewUser, setIsNewUser] = useState(true);
-
-  const deleteSameElem = useCallback((arr) => {
-    let result = [];
-    new Set(arr).forEach((e) => result.push(e));
-    return result;
-  }, []);
 
   const onClickL = () => {
     if (trans >= 0) {
@@ -64,15 +48,14 @@ function MybooksSlider({ loading, setLoadNum }) {
       const CTBooksArr = CTBooks ? Object.values(CTBooks) : [];
 
       setCategoryList(
-        deleteSameElem(CTBooksArr?.map((e) => e['categoryId']))
+        DeleteSameElem(CTBooksArr?.map((e) => e['categoryId']))
           ?.map((e) => GetDetailedName(e))
           ?.filter((e) => e !== '')
           ?.sort((a, b) => (a < b ? -1 : a === b ? 0 : 1)),
       );
-      // if (CTBooksArr.length !== 0) setIsNewUser(false);
     }
     setLoadNum((prev) => prev + 1);
-  }, [deleteSameElem, isLoggedIn, setLoadNum]);
+  }, [isLoggedIn, setLoadNum]);
 
   const getBookInfo = useCallback(async () => {
     if (isLoggedIn) {
@@ -200,98 +183,18 @@ function MybooksSlider({ loading, setLoadNum }) {
           ) : null}
         </div>
         {/* category */}
-        {categoryListOpen ? (
-          <ClassifyingModal>
-            <div className="modal_grid">
-              {categoryList
-                ? categoryList.map((name) => {
-                    return (
-                      <div className="content" onClick={onClickCateorySort}>
-                        <div className="contentInner">
-                          <div>{name}</div>
-                        </div>
-                      </div>
-                    );
-                  })
-                : null}
-            </div>
-            <div>
-              <button className="closeBtn" onClick={onClickCloseBtn}>
-                <img
-                  src="https://user-images.githubusercontent.com/79993356/154801650-d6a3e43d-4ba0-4107-a3c2-dfaeca5eb6af.png"
-                  alt="null"
-                ></img>
-              </button>
-              <button className="resetBtn" onClick={onClickResetBtn}>
-                <img
-                  src="https://user-images.githubusercontent.com/79993356/154805451-4852137e-f850-49f9-814e-6cfc937494ae.svg"
-                  alt="null"
-                  id="cg"
-                ></img>
-              </button>
-            </div>
-          </ClassifyingModal>
-        ) : ratingListOpen ? (
-          <ClassifyingModal>
-            <div className="modal_grid">
-              {ratingSection.map((elem) => {
-                return (
-                  <div className="content" onClick={onClickRatingSort}>
-                    <div className="contentInner">
-                      <div>{elem}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            <div>
-              <button className="closeBtn" onClick={onClickCloseBtn}>
-                <img
-                  src="https://user-images.githubusercontent.com/79993356/154801650-d6a3e43d-4ba0-4107-a3c2-dfaeca5eb6af.png"
-                  alt="null"
-                ></img>
-              </button>
-              <button className="resetBtn" onClick={onClickResetBtn}>
-                <img
-                  src="https://user-images.githubusercontent.com/79993356/154805451-4852137e-f850-49f9-814e-6cfc937494ae.svg"
-                  alt="null"
-                  id="rt"
-                ></img>
-              </button>
-            </div>
-          </ClassifyingModal>
-        ) : yearListOpen ? (
-          <ClassifyingModal>
-            <div className="modal_grid">
-              {deleteSameElem(editYearList)
-                ?.sort((a, b) => b - a)
-                ?.map((year) => {
-                  return (
-                    <div className="content" onClick={onClickYearSort}>
-                      <div className="contentInner">
-                        <div>{year}</div>
-                      </div>
-                    </div>
-                  );
-                })}
-            </div>
-            <div>
-              <button className="closeBtn" onClick={onClickCloseBtn}>
-                <img
-                  src="https://user-images.githubusercontent.com/79993356/154801650-d6a3e43d-4ba0-4107-a3c2-dfaeca5eb6af.png"
-                  alt="null"
-                ></img>
-              </button>
-              <button className="resetBtn" onClick={onClickResetBtn}>
-                <img
-                  src="https://user-images.githubusercontent.com/79993356/154805451-4852137e-f850-49f9-814e-6cfc937494ae.svg"
-                  alt="null"
-                  id="yr"
-                ></img>
-              </button>
-            </div>
-          </ClassifyingModal>
-        ) : null}
+        <SliderModal
+          categoryList={categoryList}
+          editYearList={editYearList}
+          onClickCloseBtn={onClickCloseBtn}
+          onClickResetBtn={onClickResetBtn}
+          categoryListOpen={categoryListOpen}
+          ratingListOpen={ratingListOpen}
+          yearListOpen={yearListOpen}
+          onClickCateorySort={onClickCateorySort}
+          onClickRatingSort={onClickRatingSort}
+          onClickYearSort={onClickYearSort}
+        />
       </TopBox>
 
       <SlidesBackground>
