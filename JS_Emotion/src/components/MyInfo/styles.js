@@ -2,25 +2,47 @@ import styled from '@emotion/styled';
 
 export const Background = styled.div`
   position: relative;
+
+  width: 100%;
+  overflow-x: hidden;
+
+  display: flex;
+  justify-content: center;
+
+  .positionDiv {
+    position: relative;
+    width: 1000px;
+    height: 760px;
+  }
 `;
 
 export const BackgroundImg = styled.img`
+  position: absolute;
   z-index: -1;
-  width: 100%;
+  width: 1665px;
+  height: 760px;
 `;
 
 export const TitleBox = styled.div`
   position: absolute;
-  left: 7%;
-  bottom: 9%;
+  left: 0;
+  bottom: 60px;
   width: 380px;
   font-family: 'Roboto', sans-serif;
 
   .title {
     font-size: 20px;
+    color: #000000d3;
   }
-  .goodMent,
+  .goodMent {
+    font-size: 16px;
+    color: #0000007b;
+  }
   .mentor {
+    font-size: 14px;
+    color: #0000007b;
+  }
+  .guide {
     font-size: 16px;
     color: #0000007b;
   }
@@ -28,11 +50,9 @@ export const TitleBox = styled.div`
 
 export const InfoBox = styled.div`
   position: absolute;
-  right: 5%;
-  bottom: 10.2%;
+  right: 0;
+  bottom: 60px;
   height: 15%;
-
-  width: 300px;
 
   font-family: 'Noto Sans KR', sans-serif;
 
@@ -52,5 +72,6 @@ export const InfoBox = styled.div`
   .info {
     font-size: 14px;
     color: #3e4756;
+    text-align: right;
   }
 `;

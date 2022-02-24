@@ -78,14 +78,18 @@ function DetailPage() {
   );
 
   const getBookInfo = useCallback(async () => {
-    const dbBooks = await (await getDoc(doc(dbService, `UserEval`, authService.currentUser.uid))).data();
-    if (!dbBooks[bookIsbn] || !dbBooks) {
+    if (isLoggedIn) {
+      const dbBooks = await (await getDoc(doc(dbService, `UserEval`, authService.currentUser.uid))).data();
+      if (!dbBooks[bookIsbn] || !dbBooks) {
+        setInfoMode(true);
+      } else if (dbBooks) {
+        setInfoMode(false);
+        setRating(dbBooks[bookIsbn].rating);
+        setShortComment(dbBooks[bookIsbn].shortComment);
+        setLongComment(dbBooks[bookIsbn].longComment);
+      }
+    } else {
       setInfoMode(true);
-    } else if (dbBooks) {
-      setInfoMode(false);
-      setRating(dbBooks[bookIsbn].rating);
-      setShortComment(dbBooks[bookIsbn].shortComment);
-      setLongComment(dbBooks[bookIsbn].longComment);
     }
     setLoading(false);
   }, [bookIsbn, setLongComment, setRating, setShortComment]);
@@ -99,7 +103,7 @@ function DetailPage() {
   }, [isbn, setBook, setLoading]);
 
   useEffect(() => {
-    if (isLoggedIn && Object.keys(book).length) getBookInfo();
+    if (Object.keys(book).length) getBookInfo();
   }, [book, getBookInfo, isLoggedIn]);
 
   return (

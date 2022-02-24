@@ -43,22 +43,24 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
       setIsLoggedIn(true);
       setShowLoginModal(false);
     } catch (error) {
-      console.log(Object.keys(error));
-      console.log(Object.values(error));
+      // console.log(Object.keys(error));
+      // console.log(Object.values(error));
       setError(error.code);
     }
   };
 
   const onSocialClick = async (event) => {
-    const name = event.target.name;
+    const name = event.target.innerText;
     let provider;
-    if (name === 'google') {
+    console.log(event.target.innerText);
+    if (name === 'Google') {
       provider = new GoogleAuthProvider();
-    } else if (name === 'github') {
+    } else if (name === 'Github') {
       provider = new GithubAuthProvider();
     }
     await signInWithPopup(authService, provider);
     setIsLoggedIn(true);
+    setShowLoginModal(false);
   };
 
   const closeLoginModal = useCallback(() => {

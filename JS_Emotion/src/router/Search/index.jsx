@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Container, Empty, Next, Header } from './styles';
+import { Empty, Next, Header } from './styles';
 import { useParams } from 'react-router';
 import axios from 'axios';
 import useInput from '@hooks/useinput';
@@ -38,34 +38,38 @@ function Search() {
   return (
     <>
       <Loading loading={loading} />
-      <Header>
-        <div className="topment" align="center">
-          <div className="topbtn">
-            <button onClick={onClickOutBtn}>
-              <FontAwesomeIcon icon={faChevronCircleLeft} style={{ fontSize: '25px', color: '#D7DBDD' }} />
-            </button>
-          </div>
-          Click Picture you wanna comment
-        </div>
-      </Header>
-      {viewCount.map((e) => {
-        if (books.length >= e + 1) {
-          return (
-            <div>
-              <SearchRender book={books[e]} viewNum={e + 1} EndNum={books.length}>
-                <Next Left={e / 2 === 0 ? '750px' : '0'}>
-                  <div className="clickDiv" onClick={onClickNextBtn}>
-                    <span>next</span>
-                    <FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '15px' }} />
-                  </div>
-                </Next>
-              </SearchRender>
+      {loading ? null : (
+        <>
+          <Header>
+            <div className="topment" align="center">
+              <div className="topbtn">
+                <button onClick={onClickOutBtn}>
+                  <FontAwesomeIcon icon={faChevronCircleLeft} style={{ fontSize: '25px', color: '#D7DBDD' }} />
+                </button>
+              </div>
+              Click Picture you wanna comment
             </div>
-          );
-        } else return null;
-      })}
-      {books.lenght === 0 ? <Empty>Noting Else...</Empty> : null}
-      <div style={{ height: '200px' }}></div>
+          </Header>
+          {viewCount.map((e) => {
+            if (books.length >= e + 1) {
+              return (
+                <div key={books.title}>
+                  <SearchRender book={books[e]} viewNum={e + 1} EndNum={books.length}>
+                    <Next Left={e / 2 === 0 ? '750px' : '0'}>
+                      <div className="clickDiv" onClick={onClickNextBtn}>
+                        <span>next</span>
+                        <FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '15px' }} />
+                      </div>
+                    </Next>
+                  </SearchRender>
+                </div>
+              );
+            } else return null;
+          })}
+          {books.lenght === 0 ? <Empty>Noting Else...</Empty> : null}
+          <div style={{ height: '200px' }}></div>
+        </>
+      )}
     </>
   );
 }

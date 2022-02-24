@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   position: absolute;
-  top: 10%;
-  right: 7%;
-  left: 7%;
+  top: 110px;
+  right: 0;
+  left: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -22,7 +22,7 @@ export const LeftSection = styled.div`
   & a {
     margin: auto 0;
     color: #050505d3;
-    font-size: 22px;
+    font-size: 20px;
   }
   & a:hover {
     color: #aca7cb;

@@ -40,7 +40,12 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }) {
 
   useEffect(() => {
     if (isLoggedIn) getMyInfo();
-    else setLoadNum((prev) => prev + 1);
+    else {
+      setBookCount(0);
+      setBestBook('No book');
+      setBestCategory('No category');
+      setLoadNum((prev) => prev + 1);
+    }
   }, [getMyInfo, isLoggedIn, setLoadNum]);
 
   return loading ? null : (
@@ -50,24 +55,28 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }) {
           src="https://user-images.githubusercontent.com/79993356/154531958-e0068ede-1ae9-4b44-8522-2676c4b8d3ef.png"
           alt="null"
         />
-        <Header isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} setShowLoginModal={setShowLoginModal} />
-        <TitleBox>
-          <p className="title" style={{}}>
-            Reading Book is..
-          </p>
-          <p className="goodMent">
-            The reading of all good books is like conversation with the finest men of past Centuries
-          </p>
-          <p className="mentor">- Rene Descartes</p>
-        </TitleBox>
-        <InfoBox>
-          <div className="title">{'Read'}</div>
-          <div className="info">{bookCount}개 읽으셨습니다</div>
-          <div className="title">{`Best Book`}</div>
-          <div className="info">{bestBook}</div>
-          <div className="title">{`Best Category`}</div>
-          <div className="info">{bestCategory}</div>
-        </InfoBox>
+        <div className="positionDiv">
+          <Header isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} setShowLoginModal={setShowLoginModal} />
+          <TitleBox>
+            <p className="title" style={{}}>
+              Reading Book is..
+            </p>
+            <p className="goodMent">
+              The reading of all good books is like conversation with the finest men of past Centuries.
+            </p>
+            <p className="mentor">- Rene Descartes (important scientific thinker)</p>
+            <p className="guide">Enjoy reading time with favorite books.</p>
+            {/* <p className="mentor">- Garrison Keillor (host of A Prairie Home Companion)</p> */}
+          </TitleBox>
+          <InfoBox>
+            <div className="title">{'Read'}</div>
+            <div className="info">{bookCount}개 읽으셨습니다</div>
+            <div className="title">{`Best Book`}</div>
+            <div className="info">{bestBook}</div>
+            <div className="title">{`Best Category`}</div>
+            <div className="info">{bestCategory}</div>
+          </InfoBox>
+        </div>
       </Background>
     </>
   );
