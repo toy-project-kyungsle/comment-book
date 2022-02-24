@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Controller, Slides, SlidesViewer, ImgWidth, ImgLeftRighMargin, TopBox, SlidesBackground } from './styles';
+import { Controller, Slides, SlidesViewer, ImgWidth, ImgLeftRighMargin, SlidesBackground } from './styles';
 import MyBookImg from '@components/MyBookImg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +15,6 @@ function MybooksSlider({ loading, setLoadNum }) {
   const [trans, setTrans] = useState(0);
   const [mybooks, setMybooks] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
-
   const isLoggedIn = useRecoilValue(FbaseAuth());
 
   const getCategoryList = useCallback(async () => {
@@ -87,13 +86,7 @@ function MybooksSlider({ loading, setLoadNum }) {
 
   return !isLoggedIn ? null : loading ? null : (
     <>
-      <SliderTopBox
-        mybooks={mybooks}
-        setMybooks={setMybooks}
-        getBookInfo={getBookInfo}
-        setTrans={setTrans}
-        categoryList={categoryList}
-      />
+      <SliderTopBox mybooks={mybooks} getBookInfo={getBookInfo} setTrans={setTrans} categoryList={categoryList} />
 
       <SlidesBackground>
         <div className="container">

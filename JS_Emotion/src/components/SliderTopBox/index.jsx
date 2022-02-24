@@ -4,7 +4,6 @@ import { TopBox } from './styles';
 
 function SliderTopBox({
   mybooks,
-  setMybooks,
   getBookInfo,
   setTrans,
 
@@ -86,7 +85,7 @@ function SliderTopBox({
 
   useEffect(() => {
     getBookInfo(categorySelected, ratingSelected, yearSelected);
-  }, [categorySelected, getBookInfo, mybooks.length, ratingSelected, setMybooks, yearSelected]);
+  }, [categorySelected, getBookInfo, ratingSelected, yearSelected]);
 
   useEffect(() => {
     if (mybooks.length > 0) {
