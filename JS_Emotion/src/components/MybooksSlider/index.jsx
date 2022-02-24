@@ -8,39 +8,15 @@ import { getDoc, doc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
 import { useRecoilValue } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
-import SliderModal from '@components/SliderModal';
 import DeleteSameElem from '@utils/DeleteSameElem';
+import SliderTopBox from '@components/SliderTopBox';
 
 function MybooksSlider({ loading, setLoadNum }) {
   const [trans, setTrans] = useState(0);
   const [mybooks, setMybooks] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
-  const [editYearList, setEditYearList] = useState([]);
-
-  const [categoryListOpen, setCategoryListOpen] = useState(false);
-  const [ratingListOpen, setRatingListOpen] = useState(false);
-  const [yearListOpen, setYearListOpen] = useState(false);
-
-  const [categorySelected, setCategorySelected] = useState('');
-  const [ratingSelected, setRatingSelected] = useState('');
-  const [yearSelected, setYearSelected] = useState('');
 
   const isLoggedIn = useRecoilValue(FbaseAuth());
-
-  const onClickL = () => {
-    if (trans >= 0) {
-      return;
-    }
-    setTrans((current) => current + (ImgWidth * 4 + ImgLeftRighMargin * 6));
-    console.log(ImgLeftRighMargin, ImgWidth);
-  };
-
-  const onClickR = () => {
-    if (trans <= -(((mybooks.length - 4) / 4) * (ImgWidth * 4 + ImgLeftRighMargin * 6))) {
-      return;
-    }
-    setTrans((current) => current - (ImgWidth * 4 + ImgLeftRighMargin * 6));
-  };
 
   const getCategoryList = useCallback(async () => {
     if (isLoggedIn) {
@@ -57,145 +33,67 @@ function MybooksSlider({ loading, setLoadNum }) {
     setLoadNum((prev) => prev + 1);
   }, [isLoggedIn, setLoadNum]);
 
-  const getBookInfo = useCallback(async () => {
-    if (isLoggedIn) {
-      const dbBooks = (await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid)))?.data();
-      const dbBooksArr = dbBooks ? Object.values(dbBooks) : [];
+  const getBookInfo = useCallback(
+    async (categorySelected, ratingSelected, yearSelected) => {
+      if (isLoggedIn) {
+        const dbBooks = (await getDoc(doc(dbService, 'UserEval', authService?.currentUser?.uid)))?.data();
+        const dbBooksArr = dbBooks ? Object.values(dbBooks) : [];
 
-      setMybooks(
-        dbBooksArr.filter((elem) => {
-          let result = [true, true, true];
-          if (categorySelected !== '') {
-            result[0] = GetDetailedName(elem.categoryId) === categorySelected;
-          }
-          if (ratingSelected !== '') {
-            let tempArr = ratingSelected.match(/(.+)~(.+)/);
-            result[1] = elem.rating >= tempArr[1] && elem.rating <= tempArr[2];
-          }
-          if (yearSelected !== '') {
-            result[2] = new Date(elem.editDate).getFullYear().toString() === yearSelected;
-          }
+        setMybooks(
+          dbBooksArr.filter((elem) => {
+            let result = [true, true, true];
+            if (categorySelected !== '') {
+              result[0] = GetDetailedName(elem.categoryId) === categorySelected;
+            }
+            if (ratingSelected !== '') {
+              let tempArr = ratingSelected.match(/(.+)~(.+)/);
+              result[1] = elem.rating >= tempArr[1] && elem.rating <= tempArr[2];
+            }
+            if (yearSelected !== '') {
+              result[2] = new Date(elem.editDate).getFullYear().toString() === yearSelected;
+            }
 
-          return result.every((e) => e === true);
-        }),
-      );
+            return result.every((e) => e === true);
+          }),
+        );
+      }
+    },
+    [isLoggedIn],
+  );
+
+  const onClickL = () => {
+    if (trans >= 0) {
+      return;
     }
-  }, [categorySelected, isLoggedIn, ratingSelected, yearSelected]);
+    setTrans((current) => current + (ImgWidth * 4 + ImgLeftRighMargin * 6));
+    console.log(ImgLeftRighMargin, ImgWidth);
+  };
 
-  const onClickCateorySort = useCallback(async (e) => {
-    setCategorySelected(e.target.innerText);
-    setTrans(0);
-    // await getBookInfo();
-  }, []);
-
-  const onClickRatingSort = useCallback(async (e) => {
-    setRatingSelected(e.target.innerText);
-    setTrans(0);
-    // await getBookInfo();
-  }, []);
-
-  const onClickYearSort = useCallback(async (e) => {
-    setYearSelected(e.target.innerText);
-    setTrans(0);
-    // await getBookInfo();
-  }, []);
-
-  const onClickCataoryToggle = useCallback(() => {
-    setCategoryListOpen(true);
-    setRatingListOpen(false);
-    setYearListOpen(false);
-  }, []);
-
-  const onClickRatingToggle = useCallback(() => {
-    setRatingListOpen(true);
-    setCategoryListOpen(false);
-    setYearListOpen(false);
-  }, []);
-
-  const onClickYearToggle = useCallback(() => {
-    setYearListOpen(true);
-    setCategoryListOpen(false);
-    setRatingListOpen(false);
-  }, []);
-
-  const onClickCloseBtn = useCallback(() => {
-    setYearListOpen(false);
-    setCategoryListOpen(false);
-    setRatingListOpen(false);
-  }, []);
-
-  const onClickResetBtn = useCallback((e) => {
-    if (e.target.id === 'cg') {
-      setCategorySelected('');
-    } else if (e.target.id === 'rt') {
-      setRatingSelected('');
-    } else if (e.target.id === 'yr') {
-      setYearSelected('');
+  const onClickR = () => {
+    if (trans <= -(((mybooks.length - 4) / 4) * (ImgWidth * 4 + ImgLeftRighMargin * 6))) {
+      return;
     }
-  }, []);
+    setTrans((current) => current - (ImgWidth * 4 + ImgLeftRighMargin * 6));
+  };
 
   useEffect(() => {
     if (isLoggedIn) {
-      getBookInfo();
+      getBookInfo('', '', '');
       getCategoryList();
     } else {
       setLoadNum((prev) => prev + 1);
     }
   }, [getBookInfo, getCategoryList, isLoggedIn, setLoadNum]);
 
-  useEffect(() => {
-    if (mybooks.length > 0) {
-      mybooks.forEach((elem) => {
-        if (!editYearList.includes(new Date(elem.editDate).getFullYear())) {
-          setEditYearList((prev) => [new Date(elem.editDate).getFullYear(), ...prev]);
-        }
-      });
-    }
-  }, [editYearList, mybooks]);
-
   return !isLoggedIn ? null : loading ? null : (
     <>
-      <TopBox>
-        <div className="upperContainer">
-          <div className="title">My books</div>
-          <div className="classify">
-            <span onClick={onClickCataoryToggle}>Category</span>
-            <span onClick={onClickRatingToggle}>Rating</span>
-            <span onClick={onClickYearToggle}>Year</span>
-          </div>
-        </div>
-        {/* SelectedCategory */}
-        <div className="selectedCgCon">
-          {categorySelected !== '' ? (
-            <div>
-              <span>{categorySelected}</span>
-            </div>
-          ) : null}
-          {ratingSelected !== '' ? (
-            <div>
-              <span>{ratingSelected}</span>
-            </div>
-          ) : null}
-          {yearSelected !== '' ? (
-            <div>
-              <span>{yearSelected}</span>
-            </div>
-          ) : null}
-        </div>
-        {/* category */}
-        <SliderModal
-          categoryList={categoryList}
-          editYearList={editYearList}
-          onClickCloseBtn={onClickCloseBtn}
-          onClickResetBtn={onClickResetBtn}
-          categoryListOpen={categoryListOpen}
-          ratingListOpen={ratingListOpen}
-          yearListOpen={yearListOpen}
-          onClickCateorySort={onClickCateorySort}
-          onClickRatingSort={onClickRatingSort}
-          onClickYearSort={onClickYearSort}
-        />
-      </TopBox>
+      <SliderTopBox
+        mybooks={mybooks}
+        setMybooks={setMybooks}
+        getBookInfo={getBookInfo}
+        setTrans={setTrans}
+        categoryList={categoryList}
+      />
 
       <SlidesBackground>
         <div className="container">
