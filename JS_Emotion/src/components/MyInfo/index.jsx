@@ -9,8 +9,8 @@ import { FbaseAuth } from '@atom/FbaseAuth';
 
 function MyInfo({ loading, setLoadNum, setShowLoginModal }) {
   const [bookCount, setBookCount] = useState(0);
-  const [bestBook, setBestBook] = useState("There's no favorite book");
-  const [bestCategory, setBestCategory] = useState("There's no favorite category");
+  const [bestBook, setBestBook] = useState('No book');
+  const [bestCategory, setBestCategory] = useState('No category');
   const [isLoggedIn, setisLoggedIn] = useRecoilState(FbaseAuth());
   const [infoLoading, setInfoLoading] = useState(true);
 

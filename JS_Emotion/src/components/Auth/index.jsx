@@ -8,9 +8,11 @@ import {
 } from 'firebase/auth';
 import '@utils/fbase';
 import { authService } from '@utils/fbase';
-import { Background, BtnContainer, Container, EnterContainer, SignUpOrLogin, SosialLogin } from './styles';
+import { Background, BtnContainer, Container, SignUpOrLogin } from './styles';
 import { useSetRecoilState } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
+import AuthTextArea from '@components/AuthTextArea';
+import AuthSocialLogin from '@components/AuthSocialLogin';
 
 const Auth = ({ setShowLoginModal, showLoginModal }) => {
   const [email, setEmail] = useState('');
@@ -74,27 +76,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
       <Container onClick={stopPropagation}>
         <form onSubmit={onSubmit}>
           <div className="inner">
-            <EnterContainer>
-              <div>
-                <div className="inputTag" align="center">
-                  Email
-                </div>
-                <input className="email" name="email" type="text" required value={email} onChange={onChange} />
-              </div>
-              <div>
-                <div className="inputTag" align="center">
-                  Password
-                </div>
-                <input
-                  className="password"
-                  name="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={onChange}
-                />
-              </div>
-            </EnterContainer>
+            <AuthTextArea email={email} password={password} onChange={onChange} />
             <BtnContainer>
               <div>
                 <input type="submit" value={newAccount ? 'Sign up' : 'Log In'} />
@@ -113,34 +95,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
             </>
           )}
         </SignUpOrLogin>
-        <SosialLogin>
-          <div>or Social Login</div>
-          <div className="innerSocial">
-            <div className="forflex">
-              <div>
-                <img
-                  src="https://user-images.githubusercontent.com/79993356/154572449-3850b95d-9b30-4ac5-a894-743c9d3d77f8.png"
-                  alt="null"
-                ></img>
-              </div>
-              <div id="google" onClick={onSocialClick}>
-                <div>Google</div>
-              </div>
-            </div>
-
-            <div className="forflex">
-              <div>
-                <img
-                  src="https://user-images.githubusercontent.com/79993356/154572455-82bfef3f-431c-43ec-b2b8-136e4a287517.png"
-                  alt="null"
-                ></img>
-              </div>
-              <div id="github" onClick={onSocialClick}>
-                <div>Github</div>
-              </div>
-            </div>
-          </div>
-        </SosialLogin>
+        <AuthSocialLogin onSocialClick={onSocialClick} />
       </Container>
     </Background>
   ) : null;

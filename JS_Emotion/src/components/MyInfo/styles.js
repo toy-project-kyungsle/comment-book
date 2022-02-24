@@ -37,7 +37,7 @@ export const InfoBox = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
 
   display: grid;
-  grid-template-columns: 150px 230px;
+  grid-template-columns: 150px 120px;
   grid-template-rows: ${100 / 3}% ${100 / 3}% ${100 / 3}%;
 
   .title {
