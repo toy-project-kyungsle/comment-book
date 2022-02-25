@@ -19,7 +19,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
   const [password, setPassword] = useState('');
   const [newAccount, setNewAccount] = useState(false);
   const [error, setError] = useState('');
-  const setIsLoggedIn = useSetRecoilState(FbaseAuth());
+  const setIsLoggedIn = useSetRecoilState(FbaseAuth('auth'));
 
   const onChange = (event) => {
     const {
@@ -43,8 +43,6 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
       setIsLoggedIn(true);
       setShowLoginModal(false);
     } catch (error) {
-      // console.log(Object.keys(error));
-      // console.log(Object.values(error));
       setError(error.code);
     }
   };

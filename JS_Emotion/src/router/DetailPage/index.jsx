@@ -21,7 +21,7 @@ function DetailPage() {
   const [longComment, setLongComment, onCangeLongComment] = useInput('You have no commnet for this book');
   const [editMode, setEditMode] = useState(false);
   const [infoMode, setInfoMode] = useState(false);
-  const isLoggedIn = useRecoilValue(FbaseAuth());
+  const isLoggedIn = useRecoilValue(FbaseAuth('detailpage'));
   const navigate = useNavigate();
 
   const onClickInfoBtn = useCallback(() => {
@@ -90,9 +90,12 @@ function DetailPage() {
       }
     } else {
       setInfoMode(true);
+      setRating(0);
+      setShortComment("There's no comment");
+      setLongComment('You have no commnet for this book');
     }
     setLoading(false);
-  }, [bookIsbn, setLongComment, setRating, setShortComment]);
+  }, [bookIsbn, isLoggedIn, setLongComment, setRating, setShortComment]);
 
   useEffect(() => {
     setLoading(true);

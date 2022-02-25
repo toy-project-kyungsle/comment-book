@@ -96,11 +96,11 @@ export const Slides = styled.div`
 
   transition: 0.5s;
 
-  & div:nth-child(4n + 1) {
+  & div:nth-of-type(4n + 1) {
     margin-left: 0;
   }
 
-  & div:nth-child(4n) {
+  & div:nth-of-type(4n) {
     margin-right: 0;
   }
 `;

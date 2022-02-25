@@ -15,7 +15,7 @@ function MybooksSlider({ loading, setLoadNum }) {
   const [trans, setTrans] = useState(0);
   const [mybooks, setMybooks] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
-  const isLoggedIn = useRecoilValue(FbaseAuth());
+  const isLoggedIn = useRecoilValue(FbaseAuth('slider'));
 
   const getCategoryList = useCallback(async () => {
     if (isLoggedIn) {
@@ -95,7 +95,7 @@ function MybooksSlider({ loading, setLoadNum }) {
               {mybooks?.map((book) => {
                 return (
                   <MyBookImg
-                    key={book.id}
+                    key={book.isbn}
                     title={book.title}
                     coverImg={book.coverLargeUrl}
                     isbn={book.isbn}

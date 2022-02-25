@@ -11,7 +11,7 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }) {
   const [bookCount, setBookCount] = useState(0);
   const [bestBook, setBestBook] = useState('No book');
   const [bestCategory, setBestCategory] = useState('No category');
-  const [isLoggedIn, setisLoggedIn] = useRecoilState(FbaseAuth());
+  const [isLoggedIn, setisLoggedIn] = useRecoilState(FbaseAuth('myinfo'));
   const [infoLoading, setInfoLoading] = useState(true);
 
   const getMyInfo = useCallback(async () => {
@@ -56,7 +56,7 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }) {
           alt="null"
         />
         <div className="positionDiv">
-          <Header isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} setShowLoginModal={setShowLoginModal} />
+          <Header setShowLoginModal={setShowLoginModal} />
           <TitleBox>
             <p className="title" style={{}}>
               Reading Book is..

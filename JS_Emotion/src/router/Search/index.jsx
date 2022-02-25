@@ -53,7 +53,7 @@ function Search() {
           {viewCount.map((e) => {
             if (books.length >= e + 1) {
               return (
-                <div key={books.title}>
+                <div key={e}>
                   <SearchRender book={books[e]} viewNum={e + 1} EndNum={books.length}>
                     <Next Left={e / 2 === 0 ? '750px' : '0'}>
                       <div className="clickDiv" onClick={onClickNextBtn}>

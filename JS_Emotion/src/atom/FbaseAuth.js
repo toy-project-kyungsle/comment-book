@@ -1,8 +1,9 @@
 import { atom } from 'recoil';
 import { authService } from '@utils/fbase';
 import { useState } from 'react';
+import { v1 } from 'uuid';
 
-function FbaseAuth() {
+function FbaseAuth(name) {
   const [authResult, setAuthResult] = useState(false);
 
   authService.onAuthStateChanged((user) => {
@@ -13,8 +14,10 @@ function FbaseAuth() {
     }
   });
 
+  // console.log(v1());
+
   return atom({
-    key: 'firebase/login',
+    key: `firebase/${name}/${v1()}`,
     default: authResult,
   });
 }
