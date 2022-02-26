@@ -12,15 +12,13 @@
     "target": "es5",
     "resolveJsonModule": true,
     "baseUrl": ".",
+    "allowJS": true,
     "paths": {
       "@hooks/*": [
         "src/hooks/*"
       ],
       "@components/*": [
         "src/components/*"
-      ],
-      "@render/*": [
-        "src/render/*"
       ],
       "@router/*": [
         "src/router/*"

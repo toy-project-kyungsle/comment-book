@@ -12,7 +12,7 @@ const config = {
   mode: isDevelopment ? 'development' : 'production',
   devtool: !isDevelopment ? 'hidden-source-map' : 'eval',
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
       '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@components': path.resolve(__dirname, 'src/components'),
@@ -28,7 +28,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         loader: 'babel-loader',
         options: {
           presets: [
@@ -40,6 +40,7 @@ const config = {
               },
             ],
             '@babel/preset-react',
+            '@babel/preset-typescript',
           ],
           env: {
             development: {
