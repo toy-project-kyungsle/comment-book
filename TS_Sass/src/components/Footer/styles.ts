@@ -26,6 +26,7 @@ export const Alert = styled.div`
     font-size: 14px;
     color: grey;
     margin: 0;
+    text-align: right;
   }
 `;
 
@@ -48,5 +49,6 @@ export const Copyright = styled.div`
     font-size: 14px;
     color: #3e4756;
     margin: 0;
+    text-align: right;
   }
 `;

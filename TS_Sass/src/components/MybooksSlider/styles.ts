@@ -91,8 +91,8 @@ export const Slides = styled.div`
 
   margin: 0;
   height: ${ImgHeight}px;
-  width: ${(props) => (ImgWidth + ImgLeftRighMargin * 2) * props.bookCount};
-  transform: ${(props) => `translateX(${props.trans}px)`};
+  width: ${(props) => (ImgWidth + ImgLeftRighMargin * 2) * props['data-bookCount']};
+  transform: ${(props) => `translateX(${props['data-trans']}px)`};
 
   transition: 0.5s;
 

@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BookContainer, BookImg, Wrap } from './styles';
+import { FbookData } from '@utils/types';
 
-function MyBookImg({ coverImg, title, isbn, shortcomment, rating, bookState }) {
+interface Props {
+  coverImg: string;
+  title: string;
+  isbn: string;
+  shortcomment: string;
+  rating: number;
+  bookState: FbookData;
+}
+
+function MyBookImg({ coverImg, title, isbn, shortcomment, rating, bookState }: Props) {
   const [reload, setReload] = useState('doing');
 
   useEffect(() => {
@@ -13,7 +23,7 @@ function MyBookImg({ coverImg, title, isbn, shortcomment, rating, bookState }) {
   }, [bookState]);
 
   return (
-    <BookContainer mode={reload}>
+    <BookContainer data-mode={reload}>
       <Link to={`/comment/${isbn}`}>
         <BookImg src={coverImg} alt={title} />
         <Wrap>

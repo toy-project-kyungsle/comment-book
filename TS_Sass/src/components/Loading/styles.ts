@@ -23,7 +23,7 @@ export const Container = styled.div`
   transition-duration: 1.5s;
 
   ${(props) =>
-    props.mode === 'doing' ? { opacity: '1' } : props.mode === 'done' ? { opacity: '0', visibility: 'hidden' } : null}
+    props['data-mode'] === 'doing' ? { opacity: '1' } : props['data-mode'] === 'done' ? { opacity: '0', visibility: 'hidden' } : null}
 
   .container {
     position: relative;

@@ -1,4 +1,3 @@
-/** @jsx jsx */
 import styled from '@emotion/styled';
 
 export const Header = styled.div`
@@ -41,7 +40,7 @@ export const Empty = styled.div`
 export const Next = styled.div`
   position: absolute;
   bottom: 0;
-  left: ${(props) => props.Left};
+  left: ${(props) => props['data-Left']};
 
   font-family: 'Open Sans', sans-serif;
   color: rgb(75, 75, 75);

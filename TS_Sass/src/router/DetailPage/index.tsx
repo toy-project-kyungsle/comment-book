@@ -2,7 +2,7 @@ import useInput from '@hooks/useinput';
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { Container, ImgDiv, Letters, Background, Description, BtnDiv, LonglineTextArea } from './styles';
+import { Container, ImgDiv, Letters, Description, BtnDiv, LonglineTextArea, Background } from './styles';
 import { dbService, authService } from '@utils/fbase';
 import { setDoc, doc, getDoc, deleteField, updateDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
@@ -10,12 +10,14 @@ import { useRecoilValue } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
 import Loading from '@components/Loading';
 import DetailLetters from '@components/DetailLetters';
+import { BookData } from '@utils/types.ts';
 
 function DetailPage() {
   const { isbn } = useParams();
-  const [book, setBook] = useState({});
+  const [book, setBook] = useState<BookData | {}>({});
   const [bookIsbn, setBookIsbn] = useState(0);
   const [loading, setLoading] = useState(false);
+
   const [rating, setRating, onChangeRating] = useInput(0);
   const [shortComment, setShortComment, onChangeShortComment] = useInput("There's no comment");
   const [longComment, setLongComment, onCangeLongComment] = useInput('You have no commnet for this book');
@@ -63,7 +65,7 @@ function DetailPage() {
               rating,
               shortComment,
               longComment,
-              editDate: Date(),
+              editDate: new Date(),
             }),
           },
           { merge: true },
@@ -112,63 +114,64 @@ function DetailPage() {
   return (
     <>
       <Loading loading={loading} />
-      <Background>
-        <Container>
-          <p className="topBtn" onClick={onClickTopBtn}>
-            <img
-              src="https://user-images.githubusercontent.com/79993356/154732530-9f85dfa4-e9f8-484a-acdf-6371eb981bc5.png"
-              alt="null"
-            />
-          </p>
-          <ImgDiv>
-            <img src={book.coverLargeUrl} alt={book.title} />
-            <a href={book.link} target="_blank">
-              More Info?
+      {loading ? null :
+        <Background>
+          <Container>
+            <p className="topBtn" onClick={onClickTopBtn}>
+              <img
+                src="https://user-images.githubusercontent.com/79993356/154732530-9f85dfa4-e9f8-484a-acdf-6371eb981bc5.png"
+                alt="null"
+              />
+            </p>
+            <ImgDiv>
+              <img src={(book as BookData).coverLargeUrl} alt={(book as BookData).title} />
+              <a href={(book as BookData).link} target="_blank">
+                More Info?
             </a>
-          </ImgDiv>
-          <Letters>
-            <DetailLetters
-              book={book}
-              infoMode={infoMode}
-              editMode={editMode}
-              rating={rating}
-              onChangeRating={onChangeRating}
-              onChangeShortComment={onChangeShortComment}
-              shortComment={shortComment}
-            />
+            </ImgDiv>
+            <Letters>
+              <DetailLetters
+                book={book}
+                infoMode={infoMode}
+                editMode={editMode}
+                rating={rating}
+                onChangeRating={onChangeRating}
+                onChangeShortComment={onChangeShortComment}
+                shortComment={shortComment}
+              />
 
-            <hr />
+              <hr />
 
-            {editMode ? (
-              <div style={{ minHeight: '180px' }}>
-                {LonglineTextArea(longComment, onCangeLongComment)}
-                <BtnDiv>
-                  <span onClick={onSubmit}>Finish</span>
-                  <span onClick={onClickCancle}>Cancle</span>
-                </BtnDiv>
-              </div>
-            ) : infoMode ? (
-              <>
-                <Description>
-                  <p>{book.description}</p>
-                </Description>
-                <BtnDiv>
-                  <span onClick={onClickInfoBtn}>Comment</span>
-                </BtnDiv>
-              </>
-            ) : (
-              <>
-                <p className="longComment">{longComment}</p>
-                <BtnDiv>
-                  <span onClick={onClickInfoBtn}>Info</span>
-                  <span onClick={onClickAddEditBtn}>Comment</span>
-                  <span onClick={onClickDelete}>Delete</span>
-                </BtnDiv>
-              </>
-            )}
-          </Letters>
-        </Container>
-      </Background>
+              {editMode ? (
+                <div style={{ minHeight: '180px' }}>
+                  {LonglineTextArea(longComment, onCangeLongComment)}
+                  <BtnDiv>
+                    <span onClick={onSubmit}>Finish</span>
+                    <span onClick={onClickCancle}>Cancle</span>
+                  </BtnDiv>
+                </div>
+              ) : infoMode ? (
+                <>
+                  <Description>
+                    <p>{(book as BookData).description}</p>
+                  </Description>
+                  <BtnDiv>
+                    <span onClick={onClickInfoBtn}>Comment</span>
+                  </BtnDiv>
+                </>
+              ) : (
+                    <>
+                      <p className="longComment">{longComment}</p>
+                      <BtnDiv>
+                        <span onClick={onClickInfoBtn}>Info</span>
+                        <span onClick={onClickAddEditBtn}>Comment</span>
+                        <span onClick={onClickDelete}>Delete</span>
+                      </BtnDiv>
+                    </>
+                  )}
+            </Letters>
+          </Container>
+        </Background>}
     </>
   );
 }

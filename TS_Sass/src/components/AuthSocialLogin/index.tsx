@@ -1,7 +1,11 @@
 import React from 'react';
 import { SosialLogin } from './styles';
 
-function AuthSocialLogin({ onSocialClick }) {
+interface Props {
+  onSocialClick: (event: any) => void;
+}
+
+function AuthSocialLogin({ onSocialClick }: Props) {
   return (
     <SosialLogin>
       <div>or Social Login</div>

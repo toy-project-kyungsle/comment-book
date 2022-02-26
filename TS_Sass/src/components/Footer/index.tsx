@@ -1,13 +1,17 @@
 import React from 'react';
 import { Background, Container, Alert, Mysns, Copyright } from './styles';
 
-function Footer({ loading }) {
+interface Props {
+  loading: boolean;
+}
+
+function Footer({ loading }: Props) {
   return loading ? null : (
     <Background>
       <Container>
         <Alert>
-          <p align="right">All designs and animations were made by the author himself.</p>
-          <p align="right">So unauthorized distribution is prohibited.</p>
+          <p>All designs and animations were made by the author himself.</p>
+          <p>So unauthorized distribution is prohibited.</p>
         </Alert>
         <Mysns>
           <div className="mysns_container">
@@ -26,7 +30,7 @@ function Footer({ loading }) {
           </div>
         </Mysns>
         <Copyright>
-          <p align="right">@ 2022 BookComment from Kyungsle</p>
+          <p>@ 2022 BookComment from Kyungsle</p>
         </Copyright>
       </Container>
     </Background>

@@ -1,9 +1,13 @@
 import React from 'react';
 import { Container } from './styles';
 
-function Loading({ loading }) {
+interface Props {
+  loading: boolean;
+}
+
+function Loading({ loading }: Props) {
   return (
-    <Container mode={loading ? 'doing' : 'done'}>
+    <Container data-mode={loading ? 'doing' : 'done'}>
       <div className="container">
         <span>Book Comment</span>
         <div className="loadContainer">

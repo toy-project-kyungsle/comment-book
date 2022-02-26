@@ -17,7 +17,7 @@ export const BookContainer = styled.div`
     height: 0;
   }
 
-  ${(props) => (props.mode === 'doing' ? { animation: 'smoothShow 1s ease-in' } : null)};
+  ${(props) => (props['data-mode'] === 'doing' ? { animation: 'smoothShow 1s ease-in' } : null)};
 
   @keyframes smoothShow {
     from {

@@ -92,8 +92,6 @@ export const LonglineTextArea = (longComment, onCangeLongComment) => {
   );
 };
 
-// export { TextareaAutosize };
-
 export const Description = styled.div`
   color: rgb(105, 105, 105);
 

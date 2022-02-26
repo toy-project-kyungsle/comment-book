@@ -9,10 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Loading from '@components/Loading';
+import { BookData } from '@utils/types';
 
 function Search() {
   const { search, display } = useParams();
-  const [books, setBooks] = useInput([]);
+  const [books, setBooks] = useInput<BookData[] | []>([]);
   const [loading, setLoading] = useInput(false);
   const [lstNum, setLstNum] = useState(1);
   const navigate = useNavigate();
@@ -30,7 +31,6 @@ function Search() {
     setLoading(true);
     axios.get(`https://www.interbookserver.kro.kr:3085/search/${search}/${display}/${lstNum}`).then((res) => {
       setBooks(res.data.items);
-      // console.log(res.data.items);
       setLoading(false);
     });
   }, [display, lstNum, search, setBooks, setLoading]);
@@ -41,7 +41,7 @@ function Search() {
       {loading ? null : (
         <>
           <Header>
-            <div className="topment" align="center">
+            <div className="topment">
               <div className="topbtn">
                 <button onClick={onClickOutBtn}>
                   <FontAwesomeIcon icon={faChevronCircleLeft} style={{ fontSize: '25px', color: '#D7DBDD' }} />
@@ -55,7 +55,7 @@ function Search() {
               return (
                 <div key={e}>
                   <SearchRender book={books[e]} viewNum={e + 1} EndNum={books.length}>
-                    <Next Left={e / 2 === 0 ? '750px' : '0'}>
+                    <Next data-Left={e / 2 === 0 ? '750px' : '0'}>
                       <div className="clickDiv" onClick={onClickNextBtn}>
                         <span>next</span>
                         <FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '15px' }} />

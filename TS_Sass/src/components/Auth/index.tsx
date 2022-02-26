@@ -21,7 +21,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
   const [error, setError] = useState('');
   const setIsLoggedIn = useSetRecoilState(FbaseAuth('auth'));
 
-  const onChange = (event) => {
+  const onChange = (event: { target: { name: string; value: string; }; }) => {
     const {
       target: { name, value },
     } = event;
@@ -32,7 +32,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
     }
   };
 
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     try {
       if (newAccount) {
@@ -47,10 +47,9 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
     }
   };
 
-  const onSocialClick = async (event) => {
-    const name = event.target.innerText;
-    let provider;
-    console.log(event.target.innerText);
+  const onSocialClick = async (event: { target: { innerText: string; }; }) => {
+    const name: string = event.target.innerText;
+    let provider: GoogleAuthProvider;
     if (name === 'Google') {
       provider = new GoogleAuthProvider();
     } else if (name === 'Github') {

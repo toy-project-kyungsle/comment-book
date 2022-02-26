@@ -25,7 +25,6 @@ export const Container = styled.div`
   border: 3px solid #979a9a;
 
   .inner {
-    /* width: 310px; */
     padding: 0 80px;
     margin-top: 60px;
   }

@@ -41,7 +41,7 @@ function Search() {
       {loading ? null : (
         <>
           <Header>
-            <div className="topment" align="center">
+            <div className="topment">
               <div className="topbtn">
                 <button onClick={onClickOutBtn}>
                   <FontAwesomeIcon icon={faChevronCircleLeft} style={{ fontSize: '25px', color: '#D7DBDD' }} />
@@ -55,7 +55,7 @@ function Search() {
               return (
                 <div key={e}>
                   <SearchRender book={books[e]} viewNum={e + 1} EndNum={books.length}>
-                    <Next Left={e / 2 === 0 ? '750px' : '0'}>
+                    <Next data-Left={e / 2 === 0 ? '750px' : '0'}>
                       <div className="clickDiv" onClick={onClickNextBtn}>
                         <span>next</span>
                         <FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '15px' }} />

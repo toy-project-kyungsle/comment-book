@@ -10,16 +10,23 @@ import { useRecoilValue } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
 import DeleteSameElem from '@utils/DeleteSameElem';
 import SliderTopBox from '@components/SliderTopBox';
+import { FbookData } from '@utils/types';
 
-function MybooksSlider({ loading, setLoadNum }) {
+interface Props {
+  loading: boolean;
+  setLoadNum: React.Dispatch<React.SetStateAction<number>>;
+}
+
+function MybooksSlider({ loading, setLoadNum }: Props) {
   const [trans, setTrans] = useState(0);
-  const [mybooks, setMybooks] = useState([]);
+  const [mybooks, setMybooks] = useState<FbookData[]>([]);
   const [categoryList, setCategoryList] = useState([]);
   const isLoggedIn = useRecoilValue(FbaseAuth('slider'));
 
   const getCategoryList = useCallback(async () => {
     if (isLoggedIn) {
-      const CTBooks = await (await getDoc(doc(dbService, 'UserEval', authService ?.currentUser ?.uid))).data();
+      if (authService.currentUser)
+        const CTBooks = (await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid))).data();
       const CTBooksArr = CTBooks ? Object.values(CTBooks) : [];
 
       setCategoryList(
@@ -35,21 +42,22 @@ function MybooksSlider({ loading, setLoadNum }) {
   const getBookInfo = useCallback(
     async (categorySelected, ratingSelected, yearSelected) => {
       if (isLoggedIn) {
-        const dbBooks = (await getDoc(doc(dbService, 'UserEval', authService ?.currentUser ?.uid))) ?.data();
+        if (authService.currentUser)
+          const dbBooks = (await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid))).data();
         const dbBooksArr = dbBooks ? Object.values(dbBooks) : [];
 
         setMybooks(
           dbBooksArr.filter((elem) => {
             let result = [true, true, true];
             if (categorySelected !== '') {
-              result[0] = GetDetailedName(elem.categoryId) === categorySelected;
+              result[0] = GetDetailedName((elem as FbookData).categoryId) === categorySelected;
             }
             if (ratingSelected !== '') {
               let tempArr = ratingSelected.match(/(.+)~(.+)/);
-              result[1] = elem.rating >= tempArr[1] && elem.rating <= tempArr[2];
+              result[1] = (elem as FbookData).rating >= tempArr[1] && (elem as FbookData).rating <= tempArr[2];
             }
             if (yearSelected !== '') {
-              result[2] = new Date(elem.editDate).getFullYear().toString() === yearSelected;
+              result[2] = new Date((elem as FbookData).editDate).getFullYear().toString() === yearSelected;
             }
 
             return result.every((e) => e === true);
@@ -91,7 +99,7 @@ function MybooksSlider({ loading, setLoadNum }) {
       <SlidesBackground>
         <div className="container">
           <SlidesViewer>
-            <Slides trans={trans} bookCount={mybooks.length}>
+            <Slides data-trans={trans} data-bookCount={mybooks.length}>
               {mybooks ?.map((book) => {
                 return (
                   <MyBookImg

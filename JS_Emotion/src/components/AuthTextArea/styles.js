@@ -21,6 +21,7 @@ export const EnterContainer = styled.div`
   .inputTag {
     width: 100px;
     display: inline-block;
+    text-align: center;
   }
   .password {
     border: none;

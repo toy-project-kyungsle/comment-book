@@ -2,8 +2,19 @@ import GetDate from '@utils/GetDate';
 import GetDetailedName from '@utils/GetDetailedName';
 import React from 'react';
 import { Container, OnelineTextArea, RatingTextArea } from './styles';
+import { BookData } from '@utils/types';
 
-function DetailLetters({ book, infoMode, editMode, rating, onChangeRating, onChangeShortComment, shortComment }) {
+interface Props {
+  book: BookData;
+  infoMode: boolean;
+  editMode: boolean;
+  rating: number;
+  onChangeRating: (e: any) => void;
+  onChangeShortComment: (e: any) => void;
+  shortComment: string;
+}
+
+function DetailLetters({ book, infoMode, editMode, rating, onChangeRating, onChangeShortComment, shortComment }: Props) {
   return (
     <Container>
       <p className="title">{book.title} </p>
@@ -34,8 +45,8 @@ function DetailLetters({ book, infoMode, editMode, rating, onChangeRating, onCha
               <span className="rtcomment">5점이 만점입니다.</span>
             </>
           ) : (
-            <span>{rating}</span>
-          )}
+              <span>{rating}</span>
+            )}
         </div>
       ) : null}
       {!infoMode ? (
@@ -48,8 +59,8 @@ function DetailLetters({ book, infoMode, editMode, rating, onChangeRating, onCha
               maxLength={34}
             />
           ) : (
-            <span>{shortComment}</span>
-          )}
+              <span>{shortComment}</span>
+            )}
         </div>
       ) : null}
     </Container>

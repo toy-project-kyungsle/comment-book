@@ -20,9 +20,6 @@
       "@components/*": [
         "src/components/*"
       ],
-      "@render/*": [
-        "src/render/*"
-      ],
       "@router/*": [
         "src/router/*"
       ],
