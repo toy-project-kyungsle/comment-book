@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Empty, Next, Header } from './styles';
 import { useParams } from 'react-router';
 import axios from 'axios';
-import useInput from '@hooks/useinput';
 import SearchRender from '@components/SearchRender';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,8 +12,8 @@ import { BookData } from '@utils/types';
 
 function Search() {
   const { search, display } = useParams();
-  const [books, setBooks] = useInput<BookData[] | []>([]);
-  const [loading, setLoading] = useInput(false);
+  const [books, setBooks] = useState<BookData[] | []>([]);
+  const [loading, setLoading] = useState(false);
   const [lstNum, setLstNum] = useState(1);
   const navigate = useNavigate();
   const viewCount = [0, 1, 2, 3];

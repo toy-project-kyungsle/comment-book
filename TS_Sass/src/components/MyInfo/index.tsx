@@ -4,23 +4,29 @@ import { dbService } from '@utils/fbase';
 import { collection, query, onSnapshot } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
 import Header from '@components/Header';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
 
-function MyInfo({ loading, setLoadNum, setShowLoginModal }) {
+interface Props {
+  loading: boolean;
+  setLoadNum: React.Dispatch<React.SetStateAction<number>>;
+  setShowLoginModal: boolean;
+}
+
+function MyInfo({ loading, setLoadNum, setShowLoginModal }: Props) {
   const [bookCount, setBookCount] = useState(0);
   const [bestBook, setBestBook] = useState('No book');
   const [bestCategory, setBestCategory] = useState('No category');
-  const [isLoggedIn, setisLoggedIn] = useRecoilState(FbaseAuth('myinfo'));
+  const isLoggedIn = useRecoilValue(FbaseAuth('myinfo'));
   const [infoLoading, setInfoLoading] = useState(true);
 
   const getMyInfo = useCallback(async () => {
     const q = query(collection(dbService, `UserEval`));
-    await onSnapshot(q, (snapshot) => {
-      let dataArr = Object.entries(snapshot.docs[0]?.data());
+    onSnapshot(q, (snapshot) => {
+      let dataArr: any[] = Object.entries(snapshot.docs[0]?.data());
       if (dataArr.length > 0) {
         dataArr.sort((a, b) => b[1]['rating'] - a[1]['rating']);
-        let CategoryObj = {};
+        let CategoryObj: any = {};
         dataArr?.forEach((elem) => {
           if (GetDetailedName(elem[1]['categoryId']) !== '') {
             CategoryObj[elem[1]['categoryId']]
@@ -31,7 +37,9 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }) {
 
         setBestBook(dataArr[0][1]['title']);
         setBookCount(dataArr.length);
-        setBestCategory(GetDetailedName(Object.entries(CategoryObj).sort((a, b) => b[1] - a[1])[0][0]));
+        setBestCategory(
+          GetDetailedName(Number(Object.entries(CategoryObj).sort((a: any, b: any) => b[1] - a[1])[0][0])),
+        );
         setInfoLoading(false);
       }
     });

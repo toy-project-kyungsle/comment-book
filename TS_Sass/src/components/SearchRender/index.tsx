@@ -1,9 +1,17 @@
 import GetDate from '@utils/GetDate';
+import { BookData } from '@utils/types';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, ImgDiv, LetterDiv, SmallBackGround } from './styles';
 
-function SearchRender({ children, book, viewNum, EndNum }) {
+interface Props {
+  children: any;
+  book: BookData;
+  viewNum: number;
+  EndNum: number;
+}
+
+function SearchRender({ children, book, viewNum, EndNum }: Props) {
   const navigate = useNavigate();
   const [conHeight, setConHeight] = useState('0');
   const [sBackLeft, setSBackLeft] = useState('0');
@@ -46,12 +54,12 @@ function SearchRender({ children, book, viewNum, EndNum }) {
   }, [viewNum]);
 
   return (
-    <Container Height={conHeight}>
-      <SmallBackGround Height={sBackHeight} Width={sBackWidth} Left={sBackLeft}>
-        <ImgDiv Left={imgLeft} Bottom={imgBottom}>
+    <Container data-Height={conHeight}>
+      <SmallBackGround data-Height={sBackHeight} data-Width={sBackWidth} data-Left={sBackLeft}>
+        <ImgDiv data-Left={imgLeft} data-Bottom={imgBottom}>
           <img src={book.coverLargeUrl} alt={book.title} onClick={onClickImg} />
         </ImgDiv>
-        <LetterDiv Left={letterLeft} Bottom={letterBottom}>
+        <LetterDiv data-Left={letterLeft} data-Bottom={letterBottom}>
           <p className="title">
             {book.title.length < 22 ? book.title : book.title.length >= 22 ? book.title.slice(0, 22) + '...' : null}
           </p>

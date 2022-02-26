@@ -12,7 +12,7 @@
     "target": "es5",
     "resolveJsonModule": true,
     "baseUrl": ".",
-    "allowJS": true,
+    "allowJs": true,
     "paths": {
       "@hooks/*": [
         "src/hooks/*"

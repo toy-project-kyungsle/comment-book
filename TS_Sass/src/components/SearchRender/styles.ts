@@ -4,26 +4,26 @@ export const Container = styled.div`
   position: relative;
 
   width: 800px;
-  height: ${(props) => props.Height};
+  height: ${(props) => props['data-Height']};
 
   margin: 0 auto;
 `;
 
 export const SmallBackGround = styled.div`
   position: absolute;
-  left: ${(props) => props.Left};
+  left: ${(props) => props['data-Left']};
   bottom: 0;
 
   background-color: #f0f0f0;
 
-  height: ${(props) => props.Height};
-  width: ${(props) => props.Width};
+  height: ${(props) => props['data-Height']};
+  width: ${(props) => props['data-Width']};
 `;
 
 export const ImgDiv = styled.div`
   position: absolute;
-  left: ${(props) => props.Left};
-  bottom: ${(props) => props.Bottom};
+  left: ${(props) => props['data-Left']};
+  bottom: ${(props) => props['data-Bottom']};
 
   width: 170px;
 
@@ -39,8 +39,8 @@ export const ImgDiv = styled.div`
 
 export const LetterDiv = styled.div`
   position: absolute;
-  left: ${(props) => props.Left};
-  bottom: ${(props) => props.Bottom};
+  left: ${(props) => props['data-Left']};
+  bottom: ${(props) => props['data-Bottom']};
 
   font-family: 'Noto Sans KR', sans-serif;
 
