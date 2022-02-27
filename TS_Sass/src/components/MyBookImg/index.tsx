@@ -9,10 +9,9 @@ interface Props {
   isbn: string;
   shortcomment: string;
   rating: number;
-  bookState: FbookData;
 }
 
-function MyBookImg({ coverImg, title, isbn, shortcomment, rating, bookState }: Props) {
+function MyBookImg({ coverImg, title, isbn, shortcomment, rating }: Props) {
   const [reload, setReload] = useState('doing');
 
   useEffect(() => {
@@ -20,7 +19,7 @@ function MyBookImg({ coverImg, title, isbn, shortcomment, rating, bookState }: P
     setTimeout(() => {
       setReload('done');
     }, 1000);
-  }, [bookState]);
+  }, [isbn]);
 
   return (
     <BookContainer data-mode={reload}>

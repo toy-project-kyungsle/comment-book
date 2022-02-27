@@ -1,7 +1,7 @@
 import { InfoBox, Background, BackgroundImg, TitleBox } from './styles';
 import React, { useCallback, useEffect, useState } from 'react';
 import { dbService } from '@utils/fbase';
-import { collection, query, onSnapshot } from 'firebase/firestore';
+import { collection, query, onSnapshot, DocumentData, Query } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
 import Header from '@components/Header';
 import { useRecoilValue } from 'recoil';
@@ -21,7 +21,7 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }: Props) {
   const [infoLoading, setInfoLoading] = useState(true);
 
   const getMyInfo = useCallback(async () => {
-    const q = query(collection(dbService, `UserEval`));
+    const q: Query<DocumentData> = query(collection(dbService, `UserEval`));
     onSnapshot(q, (snapshot) => {
       let dataArr: any[] = Object.entries(snapshot.docs[0]?.data());
       if (dataArr.length > 0) {
@@ -74,7 +74,6 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }: Props) {
             </p>
             <p className="mentor">- Rene Descartes (important scientific thinker)</p>
             <p className="guide">Enjoy reading time with favorite books.</p>
-            {/* <p className="mentor">- Garrison Keillor (host of A Prairie Home Companion)</p> */}
           </TitleBox>
           <InfoBox>
             <div className="title">{'Read'}</div>

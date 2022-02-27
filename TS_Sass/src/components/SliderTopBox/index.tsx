@@ -1,14 +1,16 @@
 import SliderModal from '@components/SliderModal';
+import { FbookData } from '@utils/types';
 import React, { useCallback, useEffect, useState } from 'react';
 import { TopBox } from './styles';
 
-function SliderTopBox({
-  mybooks,
-  getBookInfo,
-  setTrans,
+interface Props {
+  mybooks: FbookData[];
+  getBookInfo: (categorySelected: string, ratingSelected: string, yearSelected: string) => void;
+  setTrans: React.Dispatch<React.SetStateAction<number>>;
+  categoryList: string[];
+}
 
-  categoryList,
-}) {
+function SliderTopBox({ mybooks, getBookInfo, setTrans, categoryList }: Props) {
   const [categorySelected, setCategorySelected] = useState('');
   const [ratingSelected, setRatingSelected] = useState('');
   const [yearSelected, setYearSelected] = useState('');
@@ -17,7 +19,7 @@ function SliderTopBox({
   const [ratingListOpen, setRatingListOpen] = useState(false);
   const [yearListOpen, setYearListOpen] = useState(false);
 
-  const [editYearList, setEditYearList] = useState([]);
+  const [editYearList, setEditYearList] = useState<number[]>([]);
 
   const onClickCateorySort = useCallback(
     async (e) => {
@@ -124,7 +126,6 @@ function SliderTopBox({
           </div>
         ) : null}
       </div>
-      {/* category */}
       <SliderModal
         categoryList={categoryList}
         editYearList={editYearList}

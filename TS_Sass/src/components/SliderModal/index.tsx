@@ -2,25 +2,38 @@ import DeleteSameElem from '@utils/DeleteSameElem';
 import React from 'react';
 import { ClassifyingModal } from './styles';
 
+interface Props {
+  categoryList: string[];
+  editYearList: number[];
+  categoryListOpen: boolean;
+  ratingListOpen: boolean;
+  yearListOpen: boolean;
+  onClickCateorySort: (e: any) => void;
+  onClickRatingSort: (e: any) => void;
+  onClickYearSort: (e: any) => void;
+  onClickCloseBtn: (e: any) => void;
+  onClickResetBtn: (e: any) => void;
+}
+
 function SliderModal({
-  categoryListOpen,
   categoryList,
-  onClickCateorySort,
-  onClickCloseBtn,
-  onClickResetBtn,
+  editYearList,
+  categoryListOpen,
   ratingListOpen,
   yearListOpen,
+  onClickCateorySort,
   onClickRatingSort,
-  editYearList,
   onClickYearSort,
-}) {
+  onClickCloseBtn,
+  onClickResetBtn,
+}: Props) {
   const ratingSection = ['0~1', '1~2', '2~3', '3~4', '4~5'];
 
   return categoryListOpen || ratingListOpen || yearListOpen ? (
     <ClassifyingModal>
       <div className="modal_grid">
         {categoryList && categoryListOpen
-          ? categoryList.map((name) => {
+          ? categoryList.map((name: string) => {
               return (
                 <div className="content" onClick={onClickCateorySort}>
                   <div className="contentInner">
@@ -41,7 +54,7 @@ function SliderModal({
               );
             })
           : null}
-        {yearListOpen
+        {yearListOpen && editYearList
           ? DeleteSameElem(editYearList)
               ?.sort((a, b) => b - a)
               ?.map((year) => {

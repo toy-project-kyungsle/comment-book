@@ -2,15 +2,16 @@ import useInput from '@hooks/useinput';
 import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { Container, ImgDiv, Letters, Description, BtnDiv, LonglineTextArea, Background } from './styles';
+import { Container, ImgDiv, Letters, Background } from './styles';
 import { dbService, authService } from '@utils/fbase';
-import { setDoc, doc, getDoc, deleteField, updateDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
 import Loading from '@components/Loading';
 import DetailLetters from '@components/DetailLetters';
-import { BookData } from '@utils/types.ts';
+import { BookData } from '@utils/types';
+import DetailComment from '@components/DetailComment';
 
 function DetailPage() {
   const { isbn } = useParams();
@@ -26,58 +27,9 @@ function DetailPage() {
   const isLoggedIn = useRecoilValue(FbaseAuth('detailpage'));
   const navigate = useNavigate();
 
-  const onClickInfoBtn = useCallback(() => {
-    setInfoMode((prev) => !prev);
-  }, []);
-
-  const onClickAddEditBtn = useCallback(() => {
-    setEditMode((prev) => !prev);
-  }, []);
-
-  const onClickCancle = useCallback(() => {
-    setEditMode(false);
-  }, []);
-
   const onClickTopBtn = useCallback(() => {
     navigate(-1);
   }, [navigate]);
-
-  const onClickDelete = useCallback(async () => {
-    const ok = window.confirm('정말로 이 후기를 지우시겠습니까?');
-    if (ok) {
-      const commentRef = doc(dbService, 'UserEval', authService.currentUser.uid);
-      await updateDoc(commentRef, {
-        [bookIsbn]: deleteField(),
-      })
-        .then(() => window.alert('삭제 완료'))
-        .catch((err) => console.log(err));
-    }
-  }, [bookIsbn]);
-
-  const onSubmit = useCallback(
-    async (event) => {
-      event.preventDefault();
-      try {
-        await setDoc(
-          doc(dbService, `UserEval`, authService.currentUser.uid),
-          {
-            [bookIsbn]: Object.assign({}, book, {
-              rating,
-              shortComment,
-              longComment,
-              editDate: new Date(),
-            }),
-          },
-          { merge: true },
-        );
-      } catch (error) {
-        console.log(error);
-      }
-      setEditMode(false);
-      setInfoMode(false);
-    },
-    [book, bookIsbn, longComment, rating, shortComment],
-  );
 
   const getBookInfo = useCallback(async () => {
     if (isLoggedIn) {
@@ -114,7 +66,7 @@ function DetailPage() {
   return (
     <>
       <Loading loading={loading} />
-      {loading ? null :
+      {loading ? null : (
         <Background>
           <Container>
             <p className="topBtn" onClick={onClickTopBtn}>
@@ -125,13 +77,13 @@ function DetailPage() {
             </p>
             <ImgDiv>
               <img src={(book as BookData).coverLargeUrl} alt={(book as BookData).title} />
-              <a href={(book as BookData).link} target="_blank">
+              <a href={(book as BookData).link} target="_blank" rel="noreferrer">
                 More Info?
-            </a>
+              </a>
             </ImgDiv>
             <Letters>
               <DetailLetters
-                book={book}
+                book={book as BookData}
                 infoMode={infoMode}
                 editMode={editMode}
                 rating={rating}
@@ -142,36 +94,22 @@ function DetailPage() {
 
               <hr />
 
-              {editMode ? (
-                <div style={{ minHeight: '180px' }}>
-                  {LonglineTextArea(longComment, onCangeLongComment)}
-                  <BtnDiv>
-                    <span onClick={onSubmit}>Finish</span>
-                    <span onClick={onClickCancle}>Cancle</span>
-                  </BtnDiv>
-                </div>
-              ) : infoMode ? (
-                <>
-                  <Description>
-                    <p>{(book as BookData).description}</p>
-                  </Description>
-                  <BtnDiv>
-                    <span onClick={onClickInfoBtn}>Comment</span>
-                  </BtnDiv>
-                </>
-              ) : (
-                    <>
-                      <p className="longComment">{longComment}</p>
-                      <BtnDiv>
-                        <span onClick={onClickInfoBtn}>Info</span>
-                        <span onClick={onClickAddEditBtn}>Comment</span>
-                        <span onClick={onClickDelete}>Delete</span>
-                      </BtnDiv>
-                    </>
-                  )}
+              <DetailComment
+                shortComment={shortComment}
+                longComment={longComment}
+                onCangeLongComment={onCangeLongComment}
+                book={book as BookData}
+                rating={rating}
+                bookIsbn={bookIsbn}
+                editMode={editMode}
+                setEditMode={setEditMode}
+                infoMode={infoMode}
+                setInfoMode={setInfoMode}
+              />
             </Letters>
           </Container>
-        </Background>}
+        </Background>
+      )}
     </>
   );
 }

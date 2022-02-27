@@ -20,41 +20,44 @@ interface Props {
 function MybooksSlider({ loading, setLoadNum }: Props) {
   const [trans, setTrans] = useState(0);
   const [mybooks, setMybooks] = useState<FbookData[]>([]);
-  const [categoryList, setCategoryList] = useState([]);
+  const [categoryList, setCategoryList] = useState<string[]>([]);
   const isLoggedIn = useRecoilValue(FbaseAuth('slider'));
 
   const getCategoryList = useCallback(async () => {
     if (isLoggedIn) {
+      let CTBooks: any = null;
       if (authService.currentUser)
-        const CTBooks = (await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid))).data();
-      const CTBooksArr = CTBooks ? Object.values(CTBooks) : [];
+        CTBooks = (await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid))).data();
+      const CTBooksArr: FbookData[] | [] = CTBooks ? Object.values(CTBooks) : [];
 
       setCategoryList(
-        DeleteSameElem(CTBooksArr ?.map((e) => e['categoryId']))
-          ?.map((e) => GetDetailedName(e))
-            ?.filter((e) => e !== '')
-              ?.sort((a, b) => (a < b ? -1 : a === b ? 0 : 1)),
+        DeleteSameElem(CTBooksArr.map((e) => e['categoryId']))
+          .map((e) => GetDetailedName(e))
+          .filter((e) => e !== '')
+          .sort((a, b) => (a < b ? -1 : a === b ? 0 : 1)),
       );
     }
     setLoadNum((prev) => prev + 1);
   }, [isLoggedIn, setLoadNum]);
 
   const getBookInfo = useCallback(
-    async (categorySelected, ratingSelected, yearSelected) => {
+    async (categorySelected: string, ratingSelected: string, yearSelected: string) => {
       if (isLoggedIn) {
+        let dbBooks: any = null;
         if (authService.currentUser)
-          const dbBooks = (await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid))).data();
-        const dbBooksArr = dbBooks ? Object.values(dbBooks) : [];
+          dbBooks = (await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid))).data();
+        const dbBooksArr: FbookData[] | [] = dbBooks ? Object.values(dbBooks) : [];
 
         setMybooks(
-          dbBooksArr.filter((elem) => {
+          dbBooksArr.filter((elem: FbookData | undefined) => {
             let result = [true, true, true];
             if (categorySelected !== '') {
               result[0] = GetDetailedName((elem as FbookData).categoryId) === categorySelected;
             }
             if (ratingSelected !== '') {
               let tempArr = ratingSelected.match(/(.+)~(.+)/);
-              result[1] = (elem as FbookData).rating >= tempArr[1] && (elem as FbookData).rating <= tempArr[2];
+              result[1] =
+                (elem as FbookData).rating >= Number(tempArr[1]) && (elem as FbookData).rating <= Number(tempArr[2]);
             }
             if (yearSelected !== '') {
               result[2] = new Date((elem as FbookData).editDate).getFullYear().toString() === yearSelected;
@@ -73,7 +76,6 @@ function MybooksSlider({ loading, setLoadNum }: Props) {
       return;
     }
     setTrans((current) => current + (ImgWidth * 4 + ImgLeftRighMargin * 6));
-    console.log(ImgLeftRighMargin, ImgWidth);
   };
 
   const onClickR = () => {
@@ -100,7 +102,7 @@ function MybooksSlider({ loading, setLoadNum }: Props) {
         <div className="container">
           <SlidesViewer>
             <Slides data-trans={trans} data-bookCount={mybooks.length}>
-              {mybooks ?.map((book) => {
+              {mybooks?.map((book) => {
                 return (
                   <MyBookImg
                     key={book.isbn}
@@ -109,7 +111,6 @@ function MybooksSlider({ loading, setLoadNum }: Props) {
                     isbn={book.isbn}
                     shortcomment={book.shortComment}
                     rating={book.rating}
-                    bookState={mybooks}
                   />
                 );
               })}

@@ -3,7 +3,7 @@ import { authService } from '@utils/fbase';
 import { useState } from 'react';
 import { v1 } from 'uuid';
 
-function FbaseAuth(name) {
+function FbaseAuth(name: string) {
   const [authResult, setAuthResult] = useState(false);
 
   authService.onAuthStateChanged((user) => {
@@ -13,8 +13,6 @@ function FbaseAuth(name) {
       setAuthResult(false);
     }
   });
-
-  // console.log(v1());
 
   return atom({
     key: `firebase/${name}/${v1()}`,

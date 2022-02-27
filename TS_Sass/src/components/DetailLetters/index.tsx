@@ -14,7 +14,15 @@ interface Props {
   shortComment: string;
 }
 
-function DetailLetters({ book, infoMode, editMode, rating, onChangeRating, onChangeShortComment, shortComment }: Props) {
+function DetailLetters({
+  book,
+  infoMode,
+  editMode,
+  rating,
+  onChangeRating,
+  onChangeShortComment,
+  shortComment,
+}: Props) {
   return (
     <Container>
       <p className="title">{book.title} </p>
@@ -45,8 +53,8 @@ function DetailLetters({ book, infoMode, editMode, rating, onChangeRating, onCha
               <span className="rtcomment">5점이 만점입니다.</span>
             </>
           ) : (
-              <span>{rating}</span>
-            )}
+            <span>{rating}</span>
+          )}
         </div>
       ) : null}
       {!infoMode ? (
@@ -59,8 +67,8 @@ function DetailLetters({ book, infoMode, editMode, rating, onChangeRating, onCha
               maxLength={34}
             />
           ) : (
-              <span>{shortComment}</span>
-            )}
+            <span>{shortComment}</span>
+          )}
         </div>
       ) : null}
     </Container>
