@@ -1,4 +1,4 @@
-import { InfoBox, Background, BackgroundImg, TitleBox } from './styles';
+import { InfoBox, Background, BackgroundImg, TitleBox, MoreBackgroundImg } from './styles';
 import React, { useCallback, useEffect, useState } from 'react';
 import { dbService } from '@utils/fbase';
 import { collection, query, onSnapshot, DocumentData, Query } from 'firebase/firestore';
@@ -59,10 +59,8 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }: Props) {
   return loading ? null : (
     <>
       <Background>
-        <BackgroundImg
-          src="https://user-images.githubusercontent.com/79993356/154531958-e0068ede-1ae9-4b44-8522-2676c4b8d3ef.png"
-          alt="null"
-        />
+        <MoreBackgroundImg />
+        <BackgroundImg />
         <div className="positionDiv">
           <Header setShowLoginModal={setShowLoginModal} />
           <TitleBox>
