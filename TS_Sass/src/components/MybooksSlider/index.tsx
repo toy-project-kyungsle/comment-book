@@ -10,7 +10,7 @@ import { useRecoilValue } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
 import DeleteSameElem from '@utils/DeleteSameElem';
 import SliderTopBox from '@components/SliderTopBox';
-import { FbookData } from '@utils/types';
+import { IFbookData } from '@utils/types';
 
 interface Props {
   loading: boolean;
@@ -19,7 +19,7 @@ interface Props {
 
 function MybooksSlider({ loading, setLoadNum }: Props) {
   const [trans, setTrans] = useState(0);
-  const [mybooks, setMybooks] = useState<FbookData[]>([]);
+  const [mybooks, setMybooks] = useState<IFbookData[]>([]);
   const [categoryList, setCategoryList] = useState<string[]>([]);
   const isLoggedIn = useRecoilValue(FbaseAuth('slider'));
 
@@ -28,7 +28,7 @@ function MybooksSlider({ loading, setLoadNum }: Props) {
       let CTBooks: any = null;
       if (authService.currentUser)
         CTBooks = (await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid))).data();
-      const CTBooksArr: FbookData[] | [] = CTBooks ? Object.values(CTBooks) : [];
+      const CTBooksArr: IFbookData[] | [] = CTBooks ? Object.values(CTBooks) : [];
 
       setCategoryList(
         DeleteSameElem(CTBooksArr.map((e) => e['categoryId']))
@@ -46,21 +46,21 @@ function MybooksSlider({ loading, setLoadNum }: Props) {
         let dbBooks: any = null;
         if (authService.currentUser)
           dbBooks = (await getDoc(doc(dbService, 'UserEval', authService.currentUser.uid))).data();
-        const dbBooksArr: FbookData[] | [] = dbBooks ? Object.values(dbBooks) : [];
+        const dbBooksArr: IFbookData[] | [] = dbBooks ? Object.values(dbBooks) : [];
 
         setMybooks(
-          dbBooksArr.filter((elem: FbookData | undefined) => {
+          dbBooksArr.filter((elem: IFbookData | undefined) => {
             let result = [true, true, true];
             if (categorySelected !== '') {
-              result[0] = GetDetailedName((elem as FbookData).categoryId) === categorySelected;
+              result[0] = GetDetailedName((elem as IFbookData).categoryId) === categorySelected;
             }
             if (ratingSelected !== '') {
               let tempArr = ratingSelected.match(/(.+)~(.+)/);
               result[1] =
-                (elem as FbookData).rating >= Number(tempArr[1]) && (elem as FbookData).rating <= Number(tempArr[2]);
+                (elem as IFbookData).rating >= Number(tempArr[1]) && (elem as IFbookData).rating <= Number(tempArr[2]);
             }
             if (yearSelected !== '') {
-              result[2] = new Date((elem as FbookData).editDate).getFullYear().toString() === yearSelected;
+              result[2] = new Date((elem as IFbookData).editDate).getFullYear().toString() === yearSelected;
             }
 
             return result.every((e) => e === true);

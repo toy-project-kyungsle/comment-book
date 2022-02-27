@@ -2,13 +2,13 @@ import React, { useCallback } from 'react';
 import { BtnDiv, Description, LonglineTextArea } from './styles';
 import { dbService, authService } from '@utils/fbase';
 import { deleteField, doc, setDoc, updateDoc } from 'firebase/firestore';
-import { BookData } from '@utils/types';
+import { IbookData } from '@utils/types';
 
 interface Props {
   shortComment: string;
   longComment: string;
   onCangeLongComment: (e: any) => void;
-  book: BookData;
+  book: IbookData;
   rating: number;
   bookIsbn: number;
   editMode: boolean;
@@ -89,7 +89,7 @@ function DetailComment({
   ) : infoMode ? (
     <>
       <Description>
-        <p>{(book as BookData).description}</p>
+        <p>{(book as IbookData).description}</p>
       </Description>
       <BtnDiv>
         <span onClick={onClickInfoBtn}>Comment</span>

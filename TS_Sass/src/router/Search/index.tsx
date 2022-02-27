@@ -8,11 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Loading from '@components/Loading';
-import { BookData } from '@utils/types';
+import { IbookData } from '@utils/types';
 
 function Search() {
   const { search, display } = useParams();
-  const [books, setBooks] = useState<BookData[] | []>([]);
+  const [books, setBooks] = useState<IbookData[] | []>([]);
   const [loading, setLoading] = useState(false);
   const [lstNum, setLstNum] = useState(1);
   const navigate = useNavigate();

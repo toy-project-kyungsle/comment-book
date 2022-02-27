@@ -10,12 +10,12 @@ import { useRecoilValue } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
 import Loading from '@components/Loading';
 import DetailLetters from '@components/DetailLetters';
-import { BookData } from '@utils/types';
+import { IbookData } from '@utils/types';
 import DetailComment from '@components/DetailComment';
 
 function DetailPage() {
   const { isbn } = useParams();
-  const [book, setBook] = useState<BookData | {}>({});
+  const [book, setBook] = useState<IbookData | {}>({});
   const [bookIsbn, setBookIsbn] = useState(0);
   const [loading, setLoading] = useState(false);
 
@@ -76,14 +76,14 @@ function DetailPage() {
               />
             </p>
             <ImgDiv>
-              <img src={(book as BookData).coverLargeUrl} alt={(book as BookData).title} />
-              <a href={(book as BookData).link} target="_blank" rel="noreferrer">
+              <img src={(book as IbookData).coverLargeUrl} alt={(book as IbookData).title} />
+              <a href={(book as IbookData).link} target="_blank" rel="noreferrer">
                 More Info?
               </a>
             </ImgDiv>
             <Letters>
               <DetailLetters
-                book={book as BookData}
+                book={book as IbookData}
                 infoMode={infoMode}
                 editMode={editMode}
                 rating={rating}
@@ -98,7 +98,7 @@ function DetailPage() {
                 shortComment={shortComment}
                 longComment={longComment}
                 onCangeLongComment={onCangeLongComment}
-                book={book as BookData}
+                book={book as IbookData}
                 rating={rating}
                 bookIsbn={bookIsbn}
                 editMode={editMode}

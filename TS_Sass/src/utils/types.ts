@@ -1,4 +1,4 @@
-export interface BookData {
+export interface IbookData {
   title: string;
   link: string;
   imageUrl: string;
@@ -33,7 +33,7 @@ export interface BookData {
   pubDate: string;
 }
 
-export interface FbookData extends BookData {
+export interface IFbookData extends IbookData {
   rating: number;
   editDate: Date;
   shortComment: string;

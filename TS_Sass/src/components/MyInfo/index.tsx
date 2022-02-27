@@ -10,7 +10,7 @@ import { FbaseAuth } from '@atom/FbaseAuth';
 interface Props {
   loading: boolean;
   setLoadNum: React.Dispatch<React.SetStateAction<number>>;
-  setShowLoginModal: boolean;
+  setShowLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function MyInfo({ loading, setLoadNum, setShowLoginModal }: Props) {

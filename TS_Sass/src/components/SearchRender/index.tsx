@@ -1,12 +1,12 @@
 import GetDate from '@utils/GetDate';
-import { BookData } from '@utils/types';
+import { IbookData } from '@utils/types';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, ImgDiv, LetterDiv, SmallBackGround } from './styles';
 
 interface Props {
   children: any;
-  book: BookData;
+  book: IbookData;
   viewNum: number;
   EndNum: number;
 }

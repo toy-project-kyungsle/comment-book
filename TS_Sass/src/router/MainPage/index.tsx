@@ -17,7 +17,7 @@ function MainPage() {
   }, [loadNum]);
 
   return (
-    <div className="test">
+    <div>
       {showLoginModal ? <Auth showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} /> : null}
       <Loading loading={loading} />
       <MyInfo loading={loading} setLoadNum={setLoadNum} setShowLoginModal={setShowLoginModal} />

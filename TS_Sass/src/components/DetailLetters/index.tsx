@@ -2,10 +2,10 @@ import GetDate from '@utils/GetDate';
 import GetDetailedName from '@utils/GetDetailedName';
 import React from 'react';
 import { Container, OnelineTextArea, RatingTextArea } from './styles';
-import { BookData } from '@utils/types';
+import { IbookData } from '@utils/types';
 
 interface Props {
-  book: BookData;
+  book: IbookData;
   infoMode: boolean;
   editMode: boolean;
   rating: number;

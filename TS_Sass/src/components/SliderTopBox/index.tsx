@@ -1,10 +1,10 @@
 import SliderModal from '@components/SliderModal';
-import { FbookData } from '@utils/types';
+import { IFbookData } from '@utils/types';
 import React, { useCallback, useEffect, useState } from 'react';
 import { TopBox } from './styles';
 
 interface Props {
-  mybooks: FbookData[];
+  mybooks: IFbookData[];
   getBookInfo: (categorySelected: string, ratingSelected: string, yearSelected: string) => void;
   setTrans: React.Dispatch<React.SetStateAction<number>>;
   categoryList: string[];

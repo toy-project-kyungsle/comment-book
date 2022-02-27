@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BookContainer, BookImg, Wrap } from './styles';
-import { FbookData } from '@utils/types';
 
 interface Props {
   coverImg: string;
