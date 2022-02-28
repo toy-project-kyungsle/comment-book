@@ -46,7 +46,10 @@ function Search() {
                   <FontAwesomeIcon icon={faChevronCircleLeft} style={{ fontSize: '25px', color: '#D7DBDD' }} />
                 </button>
               </div>
-              Click Picture you wanna comment
+              <div>
+                <span className="underlined">Click Picture</span>
+                <span> you wanna comment</span>
+              </div>
             </div>
           </Header>
           {viewCount.map((e) => {

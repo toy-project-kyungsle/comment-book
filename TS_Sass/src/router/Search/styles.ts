@@ -10,9 +10,11 @@ export const Header = styled.div`
     position: relative;
 
     font-family: 'Open Sans', sans-serif;
+    text-align: center;
 
     width: 300px;
     margin: 0 auto;
+
     .topbtn {
       position: absolute;
       left: -260px;
@@ -26,6 +28,30 @@ export const Header = styled.div`
         cursor: pointer;
         transform: scale(1.1);
       }
+    }
+  }
+
+  .underlined {
+    background-image: linear-gradient(to right, #74869d 0, #74869d 100%);
+    background-repeat: no-repeat;
+    transition: background 0.5s;
+    color: white;
+
+    padding: 0 4px;
+
+    animation: underLine 1s;
+  }
+
+  @keyframes underLine {
+    from {
+      color: #3e4756;
+      background-size: 0%;
+      background-position: 0 1.2em;
+    }
+    to {
+      color: white;
+      background-size: 100%;
+      background-position: 0 0em;
     }
   }
 `;
