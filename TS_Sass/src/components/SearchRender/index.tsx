@@ -54,7 +54,7 @@ function SearchRender({ children, book, viewNum, EndNum }: Props) {
   }, [viewNum]);
 
   return (
-    <Container data-Height={conHeight}>
+    <Container data-Height={conHeight} data-num={viewNum}>
       <SmallBackGround data-Height={sBackHeight} data-Width={sBackWidth} data-Left={sBackLeft}>
         <ImgDiv data-Left={imgLeft} data-Bottom={imgBottom}>
           <img src={book.coverLargeUrl} alt={book.title} onClick={onClickImg} />
