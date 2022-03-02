@@ -79,7 +79,7 @@ function SliderModal({
           <img
             src="https://user-images.githubusercontent.com/79993356/154805451-4852137e-f850-49f9-814e-6cfc937494ae.svg"
             alt="null"
-            id="cg"
+            id={categoryListOpen ? 'cg' : ratingListOpen ? 'rt' : yearListOpen ? 'yr' : null}
           ></img>
         </button>
       </div>

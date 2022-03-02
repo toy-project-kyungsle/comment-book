@@ -100,7 +100,7 @@ function DetailComment({
       <p className="longComment">{longComment}</p>
       <BtnDiv>
         <span onClick={onClickInfoBtn}>Info</span>
-        <span onClick={onClickAddEditBtn}>Comment</span>
+        <span onClick={onClickAddEditBtn}>Edit</span>
         <span onClick={onClickDelete}>Delete</span>
       </BtnDiv>
     </>
