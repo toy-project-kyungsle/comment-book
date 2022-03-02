@@ -49,25 +49,27 @@ export const BackgroundImg = styled.div`
 export const TitleBox = styled.div`
   position: absolute;
   left: 0;
-  bottom: 40px;
-  width: 380px;
+  bottom: 53px;
+  width: 320px;
   font-family: 'Roboto', sans-serif;
 
   .title {
     font-size: 20px;
     color: #000000d3;
   }
-  .goodMent {
-    font-size: 16px;
-    color: #0000007b;
-  }
-  .mentor {
+  .hello {
+    font-family: 'Noto Sans KR', sans-serif;
     font-size: 14px;
     color: #0000007b;
+    margin: 0;
+    margin-bottom: 8px;
   }
   .guide {
-    font-size: 16px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
     color: #0000007b;
+    line-height: 36px;
+    margin: 0;
   }
 `;
 

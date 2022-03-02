@@ -65,13 +65,12 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }: Props) {
           <Header setShowLoginModal={setShowLoginModal} />
           <TitleBox>
             <p className="title" style={{}}>
-              Reading Book is..
+              How to use
             </p>
-            <p className="goodMent">
-              The reading of all good books is like conversation with the finest men of past Centuries.
+            <p className="hello">오늘도 Book Comment를 찾아주셔서 감사합니다.</p>
+            <p className="guide">
+              원하시는 책을 검색해 후기를 달아보세요. 내가 읽었던 책들도 보여준답니다. 책을 검색해보세요!
             </p>
-            <p className="mentor">- Rene Descartes (important scientific thinker)</p>
-            <p className="guide">Enjoy reading time with favorite books.</p>
           </TitleBox>
           <InfoBox>
             <div className="title">{'Read'}</div>
