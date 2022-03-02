@@ -33,8 +33,8 @@ function DetailPage() {
 
   const getBookInfo = useCallback(async () => {
     if (isLoggedIn) {
-      const dbBooks = await (await getDoc(doc(dbService, `UserEval`, authService.currentUser.uid))).data();
-      if (!dbBooks[bookIsbn] || !dbBooks) {
+      const dbBooks = (await getDoc(doc(dbService, `UserEval`, authService.currentUser.uid))).data();
+      if (!dbBooks || !dbBooks[bookIsbn]) {
         setInfoMode(true);
       } else if (dbBooks) {
         setInfoMode(false);
