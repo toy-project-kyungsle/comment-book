@@ -1,7 +1,7 @@
 import SliderModal from '@components/SliderModal';
 import { IFbookData } from '@utils/types';
 import React, { useCallback, useEffect, useState } from 'react';
-import { TopBox } from './styles';
+import { Background, TopBox } from './styles';
 
 interface Props {
   mybooks: IFbookData[];
@@ -100,45 +100,47 @@ function SliderTopBox({ mybooks, getBookInfo, setTrans, categoryList }: Props) {
   }, [editYearList, mybooks]);
 
   return (
-    <TopBox>
-      <div className="upperContainer">
-        <div className="title">My books</div>
-        <div className="classify">
-          <span onClick={onClickCataoryToggle}>Category</span>
-          <span onClick={onClickRatingToggle}>Rating</span>
-          <span onClick={onClickYearToggle}>Year</span>
+    <Background>
+      <TopBox>
+        <div className="upperContainer">
+          <div className="title">My books</div>
+          <div className="classify">
+            <span onClick={onClickCataoryToggle}>Category</span>
+            <span onClick={onClickRatingToggle}>Rating</span>
+            <span onClick={onClickYearToggle}>Year</span>
+          </div>
         </div>
-      </div>
-      <div className="selectedCgCon">
-        {categorySelected !== '' ? (
-          <div>
-            <span>{categorySelected}</span>
-          </div>
-        ) : null}
-        {ratingSelected !== '' ? (
-          <div>
-            <span>{ratingSelected}</span>
-          </div>
-        ) : null}
-        {yearSelected !== '' ? (
-          <div>
-            <span>{yearSelected}</span>
-          </div>
-        ) : null}
-      </div>
-      <SliderModal
-        categoryList={categoryList}
-        editYearList={editYearList}
-        onClickCloseBtn={onClickCloseBtn}
-        onClickResetBtn={onClickResetBtn}
-        categoryListOpen={categoryListOpen}
-        ratingListOpen={ratingListOpen}
-        yearListOpen={yearListOpen}
-        onClickCateorySort={onClickCateorySort}
-        onClickRatingSort={onClickRatingSort}
-        onClickYearSort={onClickYearSort}
-      />
-    </TopBox>
+        <div className="selectedCgCon">
+          {categorySelected !== '' ? (
+            <div>
+              <span>{categorySelected}</span>
+            </div>
+          ) : null}
+          {ratingSelected !== '' ? (
+            <div>
+              <span>{ratingSelected}</span>
+            </div>
+          ) : null}
+          {yearSelected !== '' ? (
+            <div>
+              <span>{yearSelected}</span>
+            </div>
+          ) : null}
+        </div>
+        <SliderModal
+          categoryList={categoryList}
+          editYearList={editYearList}
+          onClickCloseBtn={onClickCloseBtn}
+          onClickResetBtn={onClickResetBtn}
+          categoryListOpen={categoryListOpen}
+          ratingListOpen={ratingListOpen}
+          yearListOpen={yearListOpen}
+          onClickCateorySort={onClickCateorySort}
+          onClickRatingSort={onClickRatingSort}
+          onClickYearSort={onClickYearSort}
+        />
+      </TopBox>
+    </Background>
   );
 }
 

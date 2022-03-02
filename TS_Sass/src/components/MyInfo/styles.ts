@@ -49,7 +49,7 @@ export const BackgroundImg = styled.div`
 export const TitleBox = styled.div`
   position: absolute;
   left: 0;
-  bottom: 60px;
+  bottom: 40px;
   width: 380px;
   font-family: 'Roboto', sans-serif;
 
@@ -74,7 +74,7 @@ export const TitleBox = styled.div`
 export const InfoBox = styled.div`
   position: absolute;
   right: 0;
-  bottom: 60px;
+  bottom: 40px;
   height: 15%;
 
   font-family: 'Noto Sans KR', sans-serif;

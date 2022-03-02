@@ -1,9 +1,16 @@
 import styled from '@emotion/styled';
 
+export const Background = styled.div`
+  background-color: #f2f2f2;
+`;
+
 export const TopBox = styled.div`
+  background-color: #f2f2f2;
   position: relative;
   width: 1000px;
-  margin: 100px auto 100px auto;
+  margin: 0 auto;
+  padding-top: 60px;
+  padding-bottom: 100px;
   font-family: 'Noto Sans KR', sans-serif;
 
   animation: smoothShow 1s;
