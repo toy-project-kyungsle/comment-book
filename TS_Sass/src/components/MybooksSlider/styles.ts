@@ -7,8 +7,7 @@ const ImgLeftRighMargin = 180 / 6;
 export const SlidesBackground = styled.div`
   background-color: #f2f2f2;
   position: relative;
-  margin-bottom: 100px;
-  padding-bottom: 100px;
+  padding-bottom: 70px;
   display: flex;
   justify-content: center;
   .container {
@@ -51,7 +50,7 @@ export const Controller = styled.div`
   .Left,
   .Right {
     position: absolute;
-    top: 47%;
+    bottom: -10px;
     background-color: transparent;
     border: none;
     outline: none;
@@ -65,11 +64,11 @@ export const Controller = styled.div`
     transform: scale(1.1);
   }
   .Left {
-    left: 6%;
+    right: 230px;
   }
 
   .Right {
-    right: 6%;
+    right: 190px;
   }
 `;
 

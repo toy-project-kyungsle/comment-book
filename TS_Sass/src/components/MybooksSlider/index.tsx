@@ -118,10 +118,10 @@ function MybooksSlider({ loading, setLoadNum }: Props) {
           </SlidesViewer>
           <Controller>
             <button className="Left" onClick={onClickL}>
-              <FontAwesomeIcon icon={faChevronLeft} />
+              <FontAwesomeIcon icon={faChevronLeft} style={{ color: '#00000030' }} />
             </button>
             <button className="Right" onClick={onClickR}>
-              <FontAwesomeIcon icon={faChevronRight} />
+              <FontAwesomeIcon icon={faChevronRight} style={{ color: '#00000030' }} />
             </button>
           </Controller>
         </div>

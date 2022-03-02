@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const ClassifyingModal = styled.div`
   position: absolute;
   right: 0;
-  top: 95px;
+  top: 115px;
 
   background-color: #ececec;
   z-index: 3;

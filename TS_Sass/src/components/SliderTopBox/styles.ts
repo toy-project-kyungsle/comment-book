@@ -9,7 +9,7 @@ export const TopBox = styled.div`
   position: relative;
   width: 1000px;
   margin: 0 auto;
-  padding-top: 60px;
+  padding-top: 80px;
   padding-bottom: 100px;
   font-family: 'Noto Sans KR', sans-serif;
 

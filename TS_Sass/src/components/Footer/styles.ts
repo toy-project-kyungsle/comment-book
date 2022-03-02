@@ -7,7 +7,7 @@ export const Background = styled.div`
 
   height: 150px;
   width: 1000px;
-  margin: 100px auto 150px auto;
+  margin: 50px auto 150px auto;
   padding-bottom: 200px;
 `;
 
@@ -16,8 +16,6 @@ export const Container = styled.div`
   right: 0;
 
   width: 450px;
-
-  border-top: 1px solid grey;
 `;
 
 export const Alert = styled.div`
