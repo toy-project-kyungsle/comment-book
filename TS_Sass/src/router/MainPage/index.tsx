@@ -4,6 +4,7 @@ import MyInfo from '@components/MyInfo';
 import Footer from '@components/Footer';
 import Auth from '@components/Auth';
 import Loading from '@components/Loading';
+import MainSearch from '@components/MainSearch';
 
 function MainPage() {
   const [loadNum, setLoadNum] = useState(0);
@@ -21,6 +22,7 @@ function MainPage() {
       {showLoginModal ? <Auth showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} /> : null}
       <Loading loading={loading} />
       <MyInfo loading={loading} setLoadNum={setLoadNum} setShowLoginModal={setShowLoginModal} />
+      <MainSearch />
       <MybooksSlider loading={loading} setLoadNum={setLoadNum} />
       <Footer loading={loading} />
     </div>
