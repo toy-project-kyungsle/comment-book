@@ -74,7 +74,7 @@ export const Controller = styled.div`
 
 export const LoginGuide = styled.div`
   position: absolute;
-  top: -60px;
+  top: ${(props) => (props['data-mode'] === 'nologin' ? '-60px' : props['data-mode'] === 'nobook' ? '60px' : null)};
   width: 100%;
   text-align: center;
   background-color: #f2f2f2;

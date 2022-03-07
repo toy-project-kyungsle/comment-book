@@ -109,7 +109,7 @@ function MybooksSlider({ loading, setLoadNum }: Props) {
     <>
       <SliderTopBox mybooks={mybooks} getBookInfo={getBookInfo} setTrans={setTrans} categoryList={categoryList} />
 
-      {isLoggedIn ? (
+      {isLoggedIn && mybooks.length ? (
         <SlidesBackground>
           <div className="container">
             <SlidesViewer>
@@ -140,10 +140,19 @@ function MybooksSlider({ loading, setLoadNum }: Props) {
         </SlidesBackground>
       ) : (
         <div style={{ position: 'relative' }}>
-          <LoginGuide>로그인 하시면 사용 가능합니다</LoginGuide>
-          <GuideDiv>
-            <GuideImg src={guideGif} alt="null" />
-          </GuideDiv>
+          {isLoggedIn ? (
+            <>
+              <LoginGuide data-mode="nobook">이제 원하시는 책을 추가해주세요</LoginGuide>
+              <div style={{ height: '300px', backgroundColor: '#f2f2f2' }}></div>
+            </>
+          ) : (
+            <>
+              <LoginGuide data-mode="nologin">로그인 하시면 사용 가능합니다</LoginGuide>
+              <GuideDiv>
+                <GuideImg src={guideGif} alt="null" />
+              </GuideDiv>
+            </>
+          )}
         </div>
       )}
     </>
