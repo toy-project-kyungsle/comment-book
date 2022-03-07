@@ -56,6 +56,7 @@ export const TitleBox = styled.div`
   .title {
     font-size: 20px;
     color: #000000d3;
+    font-weight: bold;
   }
   .hello {
     font-family: 'Noto Sans KR', sans-serif;

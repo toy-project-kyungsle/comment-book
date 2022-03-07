@@ -72,4 +72,30 @@ export const Controller = styled.div`
   }
 `;
 
+export const LoginGuide = styled.div`
+  position: absolute;
+  top: -60px;
+  width: 100%;
+  text-align: center;
+  background-color: #f2f2f2;
+  color: #00000096;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+`;
+
+export const GuideDiv = styled.div`
+  height: 440px;
+  width: 100%;
+  text-align: center;
+  background-color: #f2f2f2;
+`;
+
+export const GuideImg = styled.img`
+  height: 420px;
+  width: 1000px;
+
+  & hover {
+  }
+`;
+
 export { ImgWidth, ImgLeftRighMargin };

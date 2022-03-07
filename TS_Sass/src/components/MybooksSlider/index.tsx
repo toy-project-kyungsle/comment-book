@@ -1,5 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Controller, Slides, SlidesViewer, ImgWidth, ImgLeftRighMargin, SlidesBackground } from './styles';
+import {
+  Controller,
+  Slides,
+  SlidesViewer,
+  ImgWidth,
+  ImgLeftRighMargin,
+  SlidesBackground,
+  GuideDiv,
+  GuideImg,
+  LoginGuide,
+} from './styles';
 import MyBookImg from '@components/MyBookImg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +21,7 @@ import { FbaseAuth } from '@atom/FbaseAuth';
 import DeleteSameElem from '@utils/DeleteSameElem';
 import SliderTopBox from '@components/SliderTopBox';
 import { IFbookData } from '@utils/types';
+import guideGif from './guideGif.gif';
 
 interface Props {
   loading: boolean;
@@ -94,38 +105,47 @@ function MybooksSlider({ loading, setLoadNum }: Props) {
     }
   }, [getBookInfo, getCategoryList, isLoggedIn, setLoadNum]);
 
-  return !isLoggedIn ? null : loading ? null : (
+  return loading ? null : (
     <>
       <SliderTopBox mybooks={mybooks} getBookInfo={getBookInfo} setTrans={setTrans} categoryList={categoryList} />
 
-      <SlidesBackground>
-        <div className="container">
-          <SlidesViewer>
-            <Slides data-trans={trans} data-bookCount={mybooks.length}>
-              {mybooks?.map((book) => {
-                return (
-                  <MyBookImg
-                    key={book.isbn}
-                    title={book.title}
-                    coverImg={book.coverLargeUrl}
-                    isbn={book.isbn}
-                    shortcomment={book.shortComment}
-                    rating={book.rating}
-                  />
-                );
-              })}
-            </Slides>
-          </SlidesViewer>
-          <Controller>
-            <button className="Left" onClick={onClickL}>
-              <FontAwesomeIcon icon={faChevronLeft} style={{ color: '#00000030' }} />
-            </button>
-            <button className="Right" onClick={onClickR}>
-              <FontAwesomeIcon icon={faChevronRight} style={{ color: '#00000030' }} />
-            </button>
-          </Controller>
+      {isLoggedIn ? (
+        <SlidesBackground>
+          <div className="container">
+            <SlidesViewer>
+              <Slides data-trans={trans} data-bookCount={mybooks.length}>
+                {mybooks?.map((book) => {
+                  return (
+                    <MyBookImg
+                      key={book.isbn}
+                      title={book.title}
+                      coverImg={book.coverLargeUrl}
+                      isbn={book.isbn}
+                      shortcomment={book.shortComment}
+                      rating={book.rating}
+                    />
+                  );
+                })}
+              </Slides>
+            </SlidesViewer>
+            <Controller>
+              <button className="Left" onClick={onClickL}>
+                <FontAwesomeIcon icon={faChevronLeft} style={{ color: '#00000030' }} />
+              </button>
+              <button className="Right" onClick={onClickR}>
+                <FontAwesomeIcon icon={faChevronRight} style={{ color: '#00000030' }} />
+              </button>
+            </Controller>
+          </div>
+        </SlidesBackground>
+      ) : (
+        <div style={{ position: 'relative' }}>
+          <LoginGuide>로그인 하시면 사용 가능합니다</LoginGuide>
+          <GuideDiv>
+            <GuideImg src={guideGif} alt="null" />
+          </GuideDiv>
         </div>
-      </SlidesBackground>
+      )}
     </>
   );
 }

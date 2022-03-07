@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Background = styled.div`
   /* background-color: grey; */
-  height: 400px;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -10,7 +10,7 @@ export const Background = styled.div`
 `;
 
 export const Container = styled.div`
-  height: 200px;
+  height: 500px;
   width: 800px;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,6 @@ export const Container = styled.div`
     font-size: 22px;
     font-weight: bold;
     text-align: center;
-    margin-top: 180px;
     margin-bottom: 80px;
   }
 `;
@@ -30,7 +29,6 @@ export const SearchBar = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* margin-bottom: 100px; */
   & div {
     display: flex;
     flex-direction: column;

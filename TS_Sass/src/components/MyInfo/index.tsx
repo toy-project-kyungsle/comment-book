@@ -1,7 +1,7 @@
 import { InfoBox, Background, BackgroundImg, TitleBox, MoreBackgroundImg } from './styles';
 import React, { useCallback, useEffect, useState } from 'react';
-import { dbService } from '@utils/fbase';
-import { collection, query, onSnapshot, DocumentData, Query } from 'firebase/firestore';
+import { authService, dbService } from '@utils/fbase';
+import { doc, getDoc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
 import Header from '@components/Header';
 import { useRecoilValue } from 'recoil';
@@ -21,28 +21,20 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }: Props) {
   const [infoLoading, setInfoLoading] = useState(true);
 
   const getMyInfo = useCallback(async () => {
-    const q: Query<DocumentData> = query(collection(dbService, `UserEval`));
-    onSnapshot(q, (snapshot) => {
-      let dataArr: any[] = Object.entries(snapshot.docs[0]?.data());
-      if (dataArr.length > 0) {
-        dataArr.sort((a, b) => b[1]['rating'] - a[1]['rating']);
-        let CategoryObj: any = {};
-        dataArr?.forEach((elem) => {
-          if (GetDetailedName(elem[1]['categoryId']) !== '') {
-            CategoryObj[elem[1]['categoryId']]
-              ? (CategoryObj[elem[1]['categoryId']] += 1)
-              : (CategoryObj[elem[1]['categoryId']] = 1);
-          }
-        });
-
-        setBestBook(dataArr[0][1]['title']);
-        setBookCount(dataArr.length);
-        setBestCategory(
-          GetDetailedName(Number(Object.entries(CategoryObj).sort((a: any, b: any) => b[1] - a[1])[0][0])),
-        );
-        setInfoLoading(false);
+    let dataArr = Object.entries((await getDoc(doc(dbService, `UserEval`, authService.currentUser.uid))).data());
+    dataArr.sort((a, b) => b[1]['rating'] - a[1]['rating']);
+    let CategoryObj: any = {};
+    dataArr?.forEach((elem) => {
+      if (GetDetailedName(elem[1]['categoryId']) !== '') {
+        CategoryObj[elem[1]['categoryId']]
+          ? (CategoryObj[elem[1]['categoryId']] += 1)
+          : (CategoryObj[elem[1]['categoryId']] = 1);
       }
     });
+    setBestBook(dataArr[0][1]['title']);
+    setBookCount(dataArr.length);
+    setBestCategory(GetDetailedName(Number(Object.entries(CategoryObj).sort((a: any, b: any) => b[1] - a[1])[0][0])));
+    setInfoLoading(false);
     if (!infoLoading) setLoadNum((prev) => prev + 1);
   }, [infoLoading, setLoadNum]);
 

@@ -34,6 +34,7 @@ function MainSearch() {
               value={search}
               onChange={onChangeSearch}
               onKeyDown={onKeyDown}
+              autoComplete
             ></input>
           </div>
           <div>
