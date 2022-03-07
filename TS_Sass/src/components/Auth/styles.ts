@@ -40,12 +40,12 @@ export const Container = styled.div`
 export const BtnContainer = styled.div`
   position: relative;
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
 
   /* display: -webkit-flex;
   -webkit-justify-content:right; */
 
-  margin-right: 23px;
+  margin-right: 33px;
   margin-top: 20px;
   & input {
     height: 25px;
