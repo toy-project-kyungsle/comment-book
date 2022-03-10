@@ -21,7 +21,6 @@ import { FbaseAuth } from '@atom/FbaseAuth';
 import DeleteSameElem from '@utils/DeleteSameElem';
 import SliderTopBox from '@components/SliderTopBox';
 import { IFbookData } from '@utils/types';
-import guideGif from './guideGif.gif';
 
 interface Props {
   loading: boolean;
@@ -149,7 +148,10 @@ function MybooksSlider({ loading, setLoadNum }: Props) {
             <>
               <LoginGuide data-mode="nologin">로그인 하시면 사용 가능합니다</LoginGuide>
               <GuideDiv>
-                <GuideImg src={guideGif} alt="null" />
+                <GuideImg
+                  src="https://user-images.githubusercontent.com/79993356/157588810-ec0405ad-e472-4226-ac87-6e2cb6f50b0e.gif"
+                  alt="null"
+                />
               </GuideDiv>
             </>
           )}

@@ -17,11 +17,11 @@ import AuthSocialLogin from '@components/AuthSocialLogin';
 const Auth = ({ setShowLoginModal, showLoginModal }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [newAccount, setNewAccount] = useState(false);
+  const [signUp, setSingUp] = useState(false);
   const [error, setError] = useState('');
   const setIsLoggedIn = useSetRecoilState(FbaseAuth('auth'));
 
-  const onChange = (event: { target: { name: string; value: string; }; }) => {
+  const onChange = (event: { target: { name: string; value: string } }) => {
     const {
       target: { name, value },
     } = event;
@@ -32,10 +32,10 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
     }
   };
 
-  const onSubmit = async (event: { preventDefault: () => void; }) => {
+  const onSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     try {
-      if (newAccount) {
+      if (signUp) {
         await createUserWithEmailAndPassword(authService, email, password);
       } else {
         await signInWithEmailAndPassword(authService, email, password);
@@ -47,7 +47,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
     }
   };
 
-  const onSocialClick = async (event: { target: { innerText: string; }; }) => {
+  const onSocialClick = async (event: { target: { innerText: string } }) => {
     const name: string = event.target.innerText;
     let provider: GoogleAuthProvider;
     if (name === 'Google') {
@@ -68,7 +68,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
     e.stopPropagation();
   }, []);
 
-  const toggleAccount = () => setNewAccount((prev) => !prev);
+  const onClickSignUp = () => setSingUp((prev) => !prev);
 
   return showLoginModal ? (
     <Background onClick={closeLoginModal}>
@@ -78,17 +78,24 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
             <AuthTextArea email={email} password={password} onChange={onChange} />
             <BtnContainer>
               <div>
-                <input type="submit" value={newAccount ? 'Sign up' : 'Log In'} />
+                <input type="submit" value={signUp ? 'Sign up' : 'Log In'} />
               </div>
             </BtnContainer>
           </div>
           <p className="error">{error}</p>
         </form>
         <SignUpOrLogin>
-          {newAccount ? null : (
+          {signUp ? (
             <>
-              <span>If you have no email?</span>
-              <span onClick={toggleAccount} className="signup">
+              <span className="guide">이미 계정이 있으신가요?</span>
+              <span onClick={onClickSignUp} className="signup">
+                Log in
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="guide">회원가입을 원하시나요?</span>
+              <span onClick={onClickSignUp} className="signup">
                 Sing up
               </span>
             </>

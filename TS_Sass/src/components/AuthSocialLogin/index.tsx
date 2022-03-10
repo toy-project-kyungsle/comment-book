@@ -1,5 +1,5 @@
 import React from 'react';
-import { SosialLogin } from './styles';
+import { InnerContainer, SosialLogin } from './styles';
 
 interface Props {
   onSocialClick: (event: any) => void;
@@ -8,8 +8,8 @@ interface Props {
 function AuthSocialLogin({ onSocialClick }: Props) {
   return (
     <SosialLogin>
-      <div>or Social Login</div>
-      <div className="innerSocial">
+      <div className="guide">소셜 로그인도 가능합니다</div>
+      <InnerContainer>
         <div className="forflex">
           <div>
             <img
@@ -33,7 +33,7 @@ function AuthSocialLogin({ onSocialClick }: Props) {
             <div>Github</div>
           </div>
         </div>
-      </div>
+      </InnerContainer>
     </SosialLogin>
   );
 }
