@@ -13,12 +13,14 @@ import { useSetRecoilState } from 'recoil';
 import { FbaseAuth } from '@atom/FbaseAuth';
 import AuthTextArea from '@components/AuthTextArea';
 import AuthSocialLogin from '@components/AuthSocialLogin';
+import useInput from '@hooks/useinput';
 
 const Auth = ({ setShowLoginModal, showLoginModal }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [signUp, setSingUp] = useState(false);
   const [error, setError] = useState('');
+  const [retype, , onChageRetype] = useInput('');
   const setIsLoggedIn = useSetRecoilState(FbaseAuth('auth'));
 
   const onChange = (event: { target: { name: string; value: string } }) => {
@@ -36,7 +38,13 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
     event.preventDefault();
     try {
       if (signUp) {
-        await createUserWithEmailAndPassword(authService, email, password);
+        if (password === retype) {
+          await createUserWithEmailAndPassword(authService, email, password);
+          setError('');
+        } else {
+          setError('비밀번호 확인이 다릅니다!');
+          return;
+        }
       } else {
         await signInWithEmailAndPassword(authService, email, password);
       }
@@ -68,42 +76,52 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
     e.stopPropagation();
   }, []);
 
-  const onClickSignUp = () => setSingUp((prev) => !prev);
+  const onClickSignUporLogin = () => setSingUp((prev) => !prev);
 
-  return showLoginModal ? (
-    <Background onClick={closeLoginModal}>
-      <Container onClick={stopPropagation}>
-        <form onSubmit={onSubmit}>
-          <div className="inner">
-            <AuthTextArea email={email} password={password} onChange={onChange} />
-            <BtnContainer>
-              <div>
-                <input type="submit" value={signUp ? 'Sign up' : 'Log In'} />
-              </div>
-            </BtnContainer>
-          </div>
-          <p className="error">{error}</p>
-        </form>
-        <SignUpOrLogin>
-          {signUp ? (
-            <>
-              <span className="guide">이미 계정이 있으신가요?</span>
-              <span onClick={onClickSignUp} className="signup">
-                Log in
-              </span>
-            </>
-          ) : (
-            <>
-              <span className="guide">회원가입을 원하시나요?</span>
-              <span onClick={onClickSignUp} className="signup">
-                Sing up
-              </span>
-            </>
-          )}
-        </SignUpOrLogin>
-        <AuthSocialLogin onSocialClick={onSocialClick} />
-      </Container>
-    </Background>
-  ) : null;
+  return (
+    showLoginModal && (
+      <Background onClick={closeLoginModal}>
+        <Container onClick={stopPropagation}>
+          <form onSubmit={onSubmit}>
+            <div className="inner">
+              <AuthTextArea
+                email={email}
+                password={password}
+                signUp={signUp}
+                retype={retype}
+                onChageRetype={onChageRetype}
+                onChange={onChange}
+              />
+              <BtnContainer>
+                <div>
+                  <input type="submit" value={signUp ? 'Sign up' : 'Log In'} />
+                </div>
+              </BtnContainer>
+            </div>
+            <p className="error">{error}</p>
+          </form>
+          <SignUpOrLogin>
+            {signUp ? (
+              <>
+                <span className="guide">이미 계정이 있으신가요?</span>
+                <span onClick={onClickSignUporLogin} className="signup">
+                  Log in
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="guide">회원가입을 원하시나요?</span>
+                <span onClick={onClickSignUporLogin} className="signup">
+                  Sing up
+                </span>
+              </>
+            )}
+          </SignUpOrLogin>
+          <AuthSocialLogin onSocialClick={onSocialClick} />
+        </Container>
+      </Background>
+    )
+  );
 };
+
 export default Auth;

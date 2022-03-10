@@ -22,7 +22,7 @@ export const Container = styled.div`
 
   background-color: white;
 
-  height: 400px;
+  height: 450px;
   width: 500px;
 
   border: 3px solid #979a9a;
@@ -33,10 +33,11 @@ export const Container = styled.div`
   }
 
   .error {
+    position: relative;
+    top: -23px;
     color: #ff0000c7;
     margin: 0;
     margin-left: 96px;
-    margin-top: 30px;
   }
 `;
 
@@ -45,8 +46,7 @@ export const BtnContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  /* display: -webkit-flex;
-  -webkit-justify-content:right; */
+  z-index: 3;
 
   margin-right: 33px;
   margin-top: 20px;
