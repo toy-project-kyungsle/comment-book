@@ -51,6 +51,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
       setIsLoggedIn(true);
       setShowLoginModal(false);
     } catch (error) {
+      console.dir(error);
       setError(error.code);
     }
   };
@@ -104,14 +105,14 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
             {signUp ? (
               <>
                 <span className="guide">이미 계정이 있으신가요?</span>
-                <span onClick={onClickSignUporLogin} className="signup">
+                <span onClick={onClickSignUporLogin} className="toggle">
                   Log in
                 </span>
               </>
             ) : (
               <>
                 <span className="guide">회원가입을 원하시나요?</span>
-                <span onClick={onClickSignUporLogin} className="signup">
+                <span onClick={onClickSignUporLogin} className="toggle">
                   Sing up
                 </span>
               </>

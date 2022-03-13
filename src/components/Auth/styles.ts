@@ -1,5 +1,8 @@
 import styled from '@emotion/styled';
 
+const engFont = "'Roboto', sans-serif";
+const korFont = "'Noto Sans KR', sans-serif";
+
 export const Background = styled.div`
   position: fixed;
   top: 0;
@@ -7,7 +10,7 @@ export const Background = styled.div`
   right: 0;
   bottom: 0;
   z-index: 10;
-  font-family: 'Roboto', sans-serif;
+  font-family: ${engFont};
 
   background-color: rgba(0, 0, 0, 0.4);
 `;
@@ -19,34 +22,33 @@ export const Container = styled.div`
 
   background-color: white;
 
-  height: 400px;
+  height: 450px;
   width: 500px;
 
   border: 3px solid #979a9a;
 
   .inner {
-    /* width: 310px; */
     padding: 0 80px;
     margin-top: 60px;
   }
 
   .error {
+    position: relative;
+    top: -23px;
     color: #ff0000c7;
     margin: 0;
     margin-left: 96px;
-    margin-top: 30px;
   }
 `;
 
 export const BtnContainer = styled.div`
   position: relative;
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
 
-  /* display: -webkit-flex;
-  -webkit-justify-content:right; */
+  z-index: 3;
 
-  margin-right: 23px;
+  margin-right: 33px;
   margin-top: 20px;
   & input {
     height: 25px;
@@ -60,8 +62,15 @@ export const BtnContainer = styled.div`
 
 export const SignUpOrLogin = styled.div`
   margin: 30px 0 0 97px;
-  .signup {
+  .guide {
+    font-family: ${korFont};
+    font-size: 14px;
+  }
+  .toggle {
     margin-left: 10px;
     color: #2980b9;
+  }
+  .toggle:hover {
+    cursor: pointer;
   }
 `;

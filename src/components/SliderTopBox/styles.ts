@@ -1,10 +1,20 @@
 import styled from '@emotion/styled';
 
+const engFont = "'Roboto', sans-serif";
+const korFont = "'Noto Sans KR', sans-serif";
+
+export const Background = styled.div`
+  background-color: #f2f2f2;
+`;
+
 export const TopBox = styled.div`
+  background-color: #f2f2f2;
   position: relative;
   width: 1000px;
-  margin: 100px auto 100px auto;
-  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0 auto;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  font-family: ${engFont}
 
   animation: smoothShow 1s;
 
@@ -42,9 +52,10 @@ export const TopBox = styled.div`
   }
 
   .selectedCgCon {
+    font-family: ${korFont} ;
     position: absolute;
     left: 0;
-    top: 50;
+    top: 130px;
 
     color: #00000096;
     font-size: 14px;
