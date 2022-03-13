@@ -1,3 +1,4 @@
+import React from 'react';
 import { authService } from '@utils/fbase';
 import { connect } from 'react-redux';
 import { setAuth } from '@redux/store';
@@ -10,11 +11,12 @@ function FbaseAuth({ storeAuth }) {
       storeAuth(false);
     }
   });
+  return <></>;
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any) {
   return {
-    storeAuth: (bool) => dispatch(setAuth(bool)),
+    storeAuth: (bool: boolean) => dispatch(setAuth(bool)),
   };
 }
 
