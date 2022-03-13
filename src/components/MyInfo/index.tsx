@@ -4,20 +4,22 @@ import { authService, dbService } from '@utils/fbase';
 import { doc, getDoc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
 import Header from '@components/Header';
-import { useRecoilValue } from 'recoil';
-import { FbaseAuth } from '@atom/FbaseAuth';
+// import { useRecoilValue } from 'recoil';
+// import { FbaseAuth } from '@atom/FbaseAuth';
+import { connect } from 'react-redux';
 
 interface Props {
   loading: boolean;
   setLoadNum: React.Dispatch<React.SetStateAction<number>>;
   setShowLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
+  isLoggedIn: boolean;
 }
 
-function MyInfo({ loading, setLoadNum, setShowLoginModal }: Props) {
+function MyInfo({ loading, setLoadNum, setShowLoginModal, isLoggedIn }: Props) {
   const [bookCount, setBookCount] = useState(0);
   const [bestBook, setBestBook] = useState('No book');
   const [bestCategory, setBestCategory] = useState('No category');
-  const isLoggedIn = useRecoilValue(FbaseAuth('myinfo'));
+  // const isLoggedIn = useRecoilValue(FbaseAuth('myinfo'));
   const [infoLoading, setInfoLoading] = useState(true);
 
   const getMyInfo = useCallback(async () => {
@@ -82,4 +84,8 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal }: Props) {
   );
 }
 
-export default MyInfo;
+function mapStateToProps(state) {
+  return { isLoggedIn: state };
+}
+
+export default connect(mapStateToProps)(MyInfo);

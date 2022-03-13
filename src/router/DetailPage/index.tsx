@@ -6,14 +6,15 @@ import { Container, ImgDiv, Letters, Background } from './styles';
 import { dbService, authService } from '@utils/fbase';
 import { doc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import { FbaseAuth } from '@atom/FbaseAuth';
+// import { useRecoilValue } from 'recoil';
+// import { FbaseAuth } from '@atom/FbaseAuth';
 import Loading from '@components/Loading';
 import DetailLetters from '@components/DetailLetters';
 import { IbookData } from '@utils/types';
 import DetailComment from '@components/DetailComment';
+import { connect } from 'react-redux';
 
-function DetailPage() {
+function DetailPage({ isLoggedIn }) {
   const { isbn } = useParams();
   const [book, setBook] = useState<IbookData | {}>({});
   const [bookIsbn, setBookIsbn] = useState(0);
@@ -24,7 +25,7 @@ function DetailPage() {
   const [longComment, setLongComment, onCangeLongComment] = useInput('You have no commnet for this book');
   const [editMode, setEditMode] = useState(false);
   const [infoMode, setInfoMode] = useState(false);
-  const isLoggedIn = useRecoilValue(FbaseAuth('detailpage'));
+  // const isLoggedIn = useRecoilValue(FbaseAuth('detailpage'));
   const navigate = useNavigate();
 
   const onClickTopBtn = useCallback(() => {
@@ -114,4 +115,8 @@ function DetailPage() {
   );
 }
 
-export default DetailPage;
+function mapStateToProps(state: boolean) {
+  return { isLoggedIn: state };
+}
+
+export default connect(mapStateToProps)(DetailPage);

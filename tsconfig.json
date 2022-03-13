@@ -29,6 +29,9 @@
       "@atom/*": [
         "src/atom/*"
       ],
+      "@redux/*": [
+        "src/redux/*"
+      ],
     }
   }
 }

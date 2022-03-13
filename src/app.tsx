@@ -1,7 +1,8 @@
 import loadable from '@loadable/component';
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import { RecoilRoot } from 'recoil';
+import { Provider } from 'react-redux';
+import store from '@redux/store';
 
 const MainPage = loadable(() => import('@router/MainPage'));
 const Search = loadable(() => import('@router/Search'));
@@ -16,7 +17,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const App = () => (
-  <RecoilRoot>
+  <Provider store={store}>
     <Router basename={mode}>
       <Routes>
         <Route path="/" element={<MainPage />} />
@@ -24,7 +25,7 @@ const App = () => (
         <Route path="/comment/:isbn" element={<DetailPage />} />
       </Routes>
     </Router>
-  </RecoilRoot>
+  </Provider>
 );
 
 export default App;

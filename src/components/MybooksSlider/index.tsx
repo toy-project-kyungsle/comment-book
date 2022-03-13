@@ -16,22 +16,24 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { dbService, authService } from '@utils/fbase';
 import { getDoc, doc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetDetailedName';
-import { useRecoilValue } from 'recoil';
-import { FbaseAuth } from '@atom/FbaseAuth';
+// import { useRecoilValue } from 'recoil';
+// import { FbaseAuth } from '@atom/FbaseAuth';
 import DeleteSameElem from '@utils/DeleteSameElem';
 import SliderTopBox from '@components/SliderTopBox';
 import { IFbookData } from '@utils/types';
+import { connect } from 'react-redux';
 
 interface Props {
   loading: boolean;
   setLoadNum: React.Dispatch<React.SetStateAction<number>>;
+  isLoggedIn: boolean;
 }
 
-function MybooksSlider({ loading, setLoadNum }: Props) {
+function MybooksSlider({ loading, setLoadNum, isLoggedIn }: Props) {
   const [trans, setTrans] = useState(0);
   const [mybooks, setMybooks] = useState<IFbookData[]>([]);
   const [categoryList, setCategoryList] = useState<string[]>([]);
-  const isLoggedIn = useRecoilValue(FbaseAuth('slider'));
+  // const isLoggedIn = useRecoilValue(FbaseAuth('slider'));
 
   const getCategoryList = useCallback(async () => {
     if (isLoggedIn) {
@@ -161,4 +163,8 @@ function MybooksSlider({ loading, setLoadNum }: Props) {
   );
 }
 
-export default MybooksSlider;
+function mapStateToProps(state) {
+  return { isLoggedIn: state };
+}
+
+export default connect(mapStateToProps)(MybooksSlider);

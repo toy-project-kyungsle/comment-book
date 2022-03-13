@@ -20,6 +20,7 @@ const config = {
       '@router': path.resolve(__dirname, 'src/router'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@atom': path.resolve(__dirname, 'src/atom'),
+      '@redux': path.resolve(__dirname, 'src/redux'),
     },
   },
   entry: {

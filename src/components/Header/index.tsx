@@ -5,12 +5,14 @@ import { Container, LeftSection, RightSection } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { authService } from '@utils/fbase';
-import { useRecoilState } from 'recoil';
-import { FbaseAuth } from '@atom/FbaseAuth';
+// import { useRecoilState } from 'recoil';
+// import { FbaseAuth } from '@atom/FbaseAuth';
+import { connect } from 'react-redux';
+import { setAuth } from '@redux/store';
 
-function Header({ setShowLoginModal }) {
+function Header({ setShowLoginModal, isLoggedIn, setisLoggedIn }) {
   const [search, , onChangeSearch] = useInput('');
-  const [isLoggedIn, setisLoggedIn] = useRecoilState(FbaseAuth('header'));
+  // const [isLoggedIn, setisLoggedIn] = useRecoilState(FbaseAuth('header'));
   let navigate = useNavigate();
 
   const onLogOutClick = () => {
@@ -64,4 +66,14 @@ function Header({ setShowLoginModal }) {
   );
 }
 
-export default Header;
+function mapStateToProps(state) {
+  return { isLoggedIn: state };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setisLoggedIn: (bool) => dispatch(setAuth(bool)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

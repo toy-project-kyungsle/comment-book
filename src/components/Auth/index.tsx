@@ -9,19 +9,21 @@ import {
 import '@utils/fbase';
 import { authService } from '@utils/fbase';
 import { Background, BtnContainer, Container, SignUpOrLogin } from './styles';
-import { useSetRecoilState } from 'recoil';
-import { FbaseAuth } from '@atom/FbaseAuth';
+// import { useSetRecoilState } from 'recoil';
+// import { FbaseAuth } from '@atom/FbaseAuth';
 import AuthTextArea from '@components/AuthTextArea';
 import AuthSocialLogin from '@components/AuthSocialLogin';
 import useInput from '@hooks/useinput';
+import { connect } from 'react-redux';
+import { setAuth } from '@redux/store';
 
-const Auth = ({ setShowLoginModal, showLoginModal }) => {
+const Auth = ({ setShowLoginModal, showLoginModal, setIsLoggedIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [signUp, setSingUp] = useState(false);
   const [error, setError] = useState('');
   const [retype, , onChageRetype] = useInput('');
-  const setIsLoggedIn = useSetRecoilState(FbaseAuth('auth'));
+  // const setIsLoggedIn = useSetRecoilState(FbaseAuth('auth'));
 
   const onChange = (event: { target: { name: string; value: string } }) => {
     const {
@@ -125,4 +127,10 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
   );
 };
 
-export default Auth;
+function mapDispatchToProps(dispatch) {
+  return {
+    setIsLoggedIn: (bool: boolean) => dispatch(setAuth(bool)),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Auth);
