@@ -13,9 +13,9 @@ import {
 import MyBookImg from '@components/MyBookImg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { dbService, authService } from '@utils/fbase';
+import { dbService, authService } from '@utils/fbaseApp';
 import { getDoc, doc } from 'firebase/firestore';
-import GetDetailedName from '@utils/GetDetailedName';
+import GetDetailedName from '@utils/GetCategoryName';
 // import { useRecoilValue } from 'recoil';
 // import { FbaseAuth } from '@atom/FbaseAuth';
 import DeleteSameElem from '@utils/DeleteSameElem';

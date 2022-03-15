@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Container, LeftSection, RightSection } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { authService } from '@utils/fbase';
+import { authService } from '@utils/fbaseApp';
 // import { useRecoilState } from 'recoil';
 // import { FbaseAuth } from '@atom/FbaseAuth';
 import { connect } from 'react-redux';

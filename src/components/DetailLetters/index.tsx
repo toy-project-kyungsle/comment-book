@@ -1,5 +1,5 @@
 import GetDate from '@utils/GetDate';
-import GetDetailedName from '@utils/GetDetailedName';
+import GetDetailedName from '@utils/GetCategoryName';
 import React from 'react';
 import { Container, OnelineTextArea, RatingTextArea } from './styles';
 import { IbookData } from '@utils/types';

@@ -1,8 +1,8 @@
 import { InfoBox, Background, BackgroundImg, TitleBox, MoreBackgroundImg } from './styles';
 import React, { useCallback, useEffect, useState } from 'react';
-import { authService, dbService } from '@utils/fbase';
+import { authService, dbService } from '@utils/fbaseApp';
 import { doc, getDoc } from 'firebase/firestore';
-import GetDetailedName from '@utils/GetDetailedName';
+import GetDetailedName from '@utils/GetCategoryName';
 import Header from '@components/Header';
 // import { useRecoilValue } from 'recoil';
 // import { FbaseAuth } from '@atom/FbaseAuth';

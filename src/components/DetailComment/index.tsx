@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { BtnDiv, Description, LonglineTextArea } from './styles';
-import { dbService, authService } from '@utils/fbase';
+import { dbService, authService } from '@utils/fbaseApp';
 import { deleteField, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { IbookData } from '@utils/types';
 

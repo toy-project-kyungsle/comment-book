@@ -6,13 +6,11 @@ import {
   GithubAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
-import '@utils/fbase';
-import { authService } from '@utils/fbase';
+import '@utils/fbaseApp';
+import { authService } from '@utils/fbaseApp';
 import { Background, BtnContainer, Container, SignUpOrLogin } from './styles';
-// import { useSetRecoilState } from 'recoil';
-// import { FbaseAuth } from '@atom/FbaseAuth';
 import AuthTextArea from '@components/AuthTextArea';
-import AuthSocialLogin from '@components/AuthSocialLogin';
+import AuthSocialLogin from '@components/organisms/AuthSocialLogin';
 import useInput from '@hooks/useinput';
 import { connect } from 'react-redux';
 import { setAuth } from '@redux/store';
@@ -23,7 +21,6 @@ const Auth = ({ setShowLoginModal, showLoginModal, setIsLoggedIn }) => {
   const [signUp, setSingUp] = useState(false);
   const [error, setError] = useState('');
   const [retype, , onChageRetype] = useInput('');
-  // const setIsLoggedIn = useSetRecoilState(FbaseAuth('auth'));
 
   const onChange = (event: { target: { name: string; value: string } }) => {
     const {

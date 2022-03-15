@@ -13,13 +13,6 @@ export const SosialLogin = styled.div`
     font-family: ${korFont};
     font-size: 14px;
   }
-
-  & img {
-    height: 20px;
-    width: 20px;
-
-    margin: 0 10px 3px 0;
-  }
 `;
 
 export const InnerContainer = styled.div`
@@ -30,21 +23,5 @@ export const InnerContainer = styled.div`
 
   & img:hover {
     cursor: pointer;
-  }
-
-  .forflex {
-    display: flex;
-  }
-  #google,
-  #github {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  #google:hover,
-  #github:hover {
-    & div {
-      cursor: pointer;
-    }
   }
 `;

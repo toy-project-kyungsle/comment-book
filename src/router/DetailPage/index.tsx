@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Container, ImgDiv, Letters, Background } from './styles';
-import { dbService, authService } from '@utils/fbase';
+import { dbService, authService } from '@utils/fbaseApp';
 import { doc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 // import { useRecoilValue } from 'recoil';
