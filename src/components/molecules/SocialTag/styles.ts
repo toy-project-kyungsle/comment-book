@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const FlexDiv = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   #google,
   #github {

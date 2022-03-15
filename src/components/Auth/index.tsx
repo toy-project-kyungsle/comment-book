@@ -9,8 +9,8 @@ import {
 import '@utils/fbaseApp';
 import { authService } from '@utils/fbaseApp';
 import { Background, BtnContainer, Container, SignUpOrLogin } from './styles';
-import AuthTextArea from '@components/AuthTextArea';
-import AuthSocialLogin from '@components/organisms/AuthSocialLogin';
+import AuthTextArea from '@components/organisms/AuthInput';
+import AuthSocialLogin from '@components/organisms/SocialLogin';
 import useInput from '@hooks/useinput';
 import { connect } from 'react-redux';
 import { setAuth } from '@redux/store';
@@ -23,6 +23,7 @@ const Auth = ({ setShowLoginModal, showLoginModal, setIsLoggedIn }) => {
   const [retype, , onChageRetype] = useInput('');
 
   const onChange = (event: { target: { name: string; value: string } }) => {
+    // console.log(event);
     const {
       target: { name, value },
     } = event;
