@@ -1,6 +1,6 @@
-import SocialTag from '@components/molecules/SocialTag';
+import SocialTag from '@components/molecules/SocialAnchor';
 import React from 'react';
-import { InnerContainer, SosialLogin } from './styles';
+import { InnerContainer, Wrapper } from './styles';
 
 interface Props {
   onSocialClick: (event: any) => void;
@@ -8,7 +8,7 @@ interface Props {
 
 function AuthSocialLogin({ onSocialClick }: Props) {
   return (
-    <SosialLogin>
+    <Wrapper>
       <div className="guide">소셜 로그인도 가능합니다</div>
       <InnerContainer>
         <SocialTag
@@ -31,7 +31,7 @@ function AuthSocialLogin({ onSocialClick }: Props) {
           DivText="Github"
         ></SocialTag>
       </InnerContainer>
-    </SosialLogin>
+    </Wrapper>
   );
 }
 

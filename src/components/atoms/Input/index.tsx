@@ -1,38 +1,30 @@
 import React from 'react';
-import { css } from '@emotion/css';
+import { Sinput } from './styles';
 
 interface Props {
-  className: string;
-  name: string;
+  className?: string;
+  name?: string;
   type: string;
   value: string;
   isRequired: boolean;
+  onKeyDown?: (e: any) => void;
   onChange: (e: any) => void;
   placeholder?: string;
 }
 
 function Input(props: Props) {
-  const { className, name, type, value, isRequired, onChange, placeholder } = props;
+  const { className, name, type, value, isRequired = false, onChange, onKeyDown, placeholder } = props;
 
   return (
-    <input
-      className={
-        className === 'AuthInput' &&
-        css`
-          font-family: 'Noto Sans KR', sans-serif;
-          font-size: 12px;
-          border: none;
-          border-bottom: 1px solid;
-          width: 200px;
-          text-align: center;
-        `
-      }
+    <Sinput
+      data-mode={className}
       name={name}
       type={type}
       required={isRequired && true}
       value={value}
       placeholder={placeholder}
       onChange={onChange}
+      onKeyDown={onKeyDown}
     />
   );
 }

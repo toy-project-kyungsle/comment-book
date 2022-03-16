@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 const engFont = "'Roboto', sans-serif";
 const korFont = "'Noto Sans KR', sans-serif";
 
-export const SosialLogin = styled.div`
+export const Wrapper = styled.div`
   font-family: ${engFont};
   width: 350px;
   margin: 30px 0 0 67px;

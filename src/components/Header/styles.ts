@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
   position: absolute;
   top: 110px;
   right: 0;
@@ -37,34 +37,5 @@ export const RightSection = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-  & p {
-    font-size: 15px;
-  }
-  & input {
-    background: none;
-    height: 24px;
-    width: 130px;
-    margin: 0px 5px 8px 20px;
-    border: none;
-    border-bottom: 1px solid black;
-    font-size: 13px;
-    text-align: center;
-  }
-  & input:focus {
-    outline: none;
-  }
-  .searchBtn {
-    background: none;
-    margin: 0 20px 5px 0;
-    border: none;
-    cursor: pointer;
-  }
-
-  .auth {
-    & p:hover {
-      cursor: pointer;
-      color: #aca7cb;
-    }
   }
 `;

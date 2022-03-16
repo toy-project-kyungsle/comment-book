@@ -23,7 +23,6 @@ const Auth = ({ setShowLoginModal, showLoginModal, setIsLoggedIn }) => {
   const [retype, , onChageRetype] = useInput('');
 
   const onChange = (event: { target: { name: string; value: string } }) => {
-    // console.log(event);
     const {
       target: { name, value },
     } = event;

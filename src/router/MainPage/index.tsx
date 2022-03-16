@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MybooksSlider from '@components/MybooksSlider';
 import MyInfo from '@components/MyInfo';
-import Footer from '@components/Footer';
+import Footer from '@components/organisms/Footer';
 import Auth from '@components/Auth';
 import Loading from '@components/Loading';
 import MainSearch from '@components/MainSearch';

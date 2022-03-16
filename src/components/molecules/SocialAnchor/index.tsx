@@ -1,4 +1,4 @@
-import Img from '@components/atoms/Img';
+import Img from '@components/atoms/Image';
 import React from 'react';
 import { Wrapper } from './styles';
 
