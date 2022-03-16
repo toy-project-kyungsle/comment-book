@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 // import { FbaseAuth } from '@atom/FbaseAuth';
 import Loading from '@components/Loading';
 import DetailLetters from '@components/DetailLetters';
-import { IbookData } from '@utils/types';
+import { IbookData, reduxState } from '@utils/types';
 import DetailComment from '@components/DetailComment';
 import { connect } from 'react-redux';
 
@@ -115,8 +115,8 @@ function DetailPage({ isLoggedIn }) {
   );
 }
 
-function mapStateToProps(state: boolean) {
-  return { isLoggedIn: state };
+function mapStateToProps(state: reduxState) {
+  return { isLoggedIn: state['isLoggedIn'] };
 }
 
 export default connect(mapStateToProps)(DetailPage);

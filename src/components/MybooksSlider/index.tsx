@@ -20,7 +20,7 @@ import GetDetailedName from '@utils/GetCategoryName';
 // import { FbaseAuth } from '@atom/FbaseAuth';
 import DeleteSameElem from '@utils/DeleteSameElem';
 import SliderTopBox from '@components/SliderTopBox';
-import { IFbookData } from '@utils/types';
+import { IFbookData, reduxState } from '@utils/types';
 import { connect } from 'react-redux';
 
 interface Props {
@@ -163,8 +163,8 @@ function MybooksSlider({ loading, setLoadNum, isLoggedIn }: Props) {
   );
 }
 
-function mapStateToProps(state) {
-  return { isLoggedIn: state };
+function mapStateToProps(state: reduxState) {
+  return { isLoggedIn: state['isLoggedIn'] };
 }
 
 export default connect(mapStateToProps)(MybooksSlider);

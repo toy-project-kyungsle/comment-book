@@ -13,7 +13,7 @@ import AuthTextArea from '@components/organisms/AuthInput';
 import AuthSocialLogin from '@components/organisms/SocialLogin';
 import useInput from '@hooks/useinput';
 import { connect } from 'react-redux';
-import { setAuth } from '@redux/store';
+import { setIsLoggedIn } from '@redux/store';
 
 const Auth = ({ setShowLoginModal, showLoginModal, setIsLoggedIn }) => {
   const [email, setEmail] = useState('');
@@ -124,9 +124,9 @@ const Auth = ({ setShowLoginModal, showLoginModal, setIsLoggedIn }) => {
   );
 };
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any) {
   return {
-    setIsLoggedIn: (bool: boolean) => dispatch(setAuth(bool)),
+    setIsLoggedIn: (bool: boolean) => dispatch(setIsLoggedIn(bool)),
   };
 }
 

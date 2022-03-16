@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { Wrapper, LeftSection, RightSection } from './styles';
 import { authService } from '@utils/fbaseApp';
 import { connect } from 'react-redux';
-import { setAuth } from '@redux/store';
+import { setIsLoggedIn } from '@redux/store';
 import Paragraph from '@components/atoms/Paragraph';
 import SearchAuthForm from '@components/molecules/SearchAuthForm';
+import { reduxState } from '@utils/types';
 
-function Header({ setShowLoginModal, isLoggedIn, setisLoggedIn }) {
+function Header({ setShowLoginModal, isLoggedIn, setIsLoggedIn }) {
   const onClickLogout = () => {
-    setisLoggedIn(false);
+    setIsLoggedIn(false);
     authService.signOut();
     alert('로그아웃 되셨습니다!');
   };
@@ -41,13 +42,13 @@ function Header({ setShowLoginModal, isLoggedIn, setisLoggedIn }) {
   );
 }
 
-function mapStateToProps(state: boolean) {
-  return { isLoggedIn: state };
+function mapStateToProps(state: reduxState) {
+  return { isLoggedIn: state['isLoggedIn'] };
 }
 
 function mapDispatchToProps(dispatch: any) {
   return {
-    setisLoggedIn: (bool: boolean) => dispatch(setAuth(bool)),
+    setIsLoggedIn: (bool: boolean) => dispatch(setIsLoggedIn(bool)),
   };
 }
 

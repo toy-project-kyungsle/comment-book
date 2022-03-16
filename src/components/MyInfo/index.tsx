@@ -7,6 +7,7 @@ import Header from '@components/Header';
 // import { useRecoilValue } from 'recoil';
 // import { FbaseAuth } from '@atom/FbaseAuth';
 import { connect } from 'react-redux';
+import { reduxState } from '@utils/types';
 
 interface Props {
   loading: boolean;
@@ -84,8 +85,8 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal, isLoggedIn }: Props) {
   );
 }
 
-function mapStateToProps(state) {
-  return { isLoggedIn: state };
+function mapStateToProps(state: reduxState) {
+  return { isLoggedIn: state['isLoggedIn'] };
 }
 
 export default connect(mapStateToProps)(MyInfo);

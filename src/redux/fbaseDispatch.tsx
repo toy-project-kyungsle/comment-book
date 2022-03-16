@@ -1,7 +1,7 @@
 import React from 'react';
 import { authService } from '@utils/fbaseApp';
 import { connect } from 'react-redux';
-import { setAuth } from '@redux/store';
+import { setIsLoggedIn } from '@redux/store';
 
 function FbaseAuth({ storeAuth }) {
   authService.onAuthStateChanged((user) => {
@@ -16,7 +16,7 @@ function FbaseAuth({ storeAuth }) {
 
 function mapDispatchToProps(dispatch: any) {
   return {
-    storeAuth: (bool: boolean) => dispatch(setAuth(bool)),
+    storeAuth: (bool: boolean) => dispatch(setIsLoggedIn(bool)),
   };
 }
 

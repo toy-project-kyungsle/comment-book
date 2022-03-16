@@ -39,3 +39,8 @@ export interface IFbookData extends IbookData {
   shortComment: string;
   longComment: string;
 }
+
+export interface reduxState {
+  isLoggedIn?: boolean;
+  showLoginModal?: boolean;
+}
