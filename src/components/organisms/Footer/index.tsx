@@ -2,7 +2,7 @@ import Anchor from '@components/atoms/Anchor';
 import Card from '@components/atoms/Card';
 import Paragraph from '@components/atoms/Paragraph';
 import React from 'react';
-import { Wrapper, Box, Mysns } from './styles';
+import { BackGround, Wrapper, Mysns } from './styles';
 
 interface Props {
   loading: boolean;
@@ -17,8 +17,8 @@ function Footer({ loading }: Props) {
   ];
 
   return loading ? null : (
-    <Wrapper>
-      <Box>
+    <BackGround>
+      <Wrapper>
         <Card margin="15px 0">
           <Paragraph className="Footer">All designs and animations were made by the author himself.</Paragraph>
           <Paragraph className="Footer">So unauthorized distribution is prohibited.</Paragraph>
@@ -35,8 +35,8 @@ function Footer({ loading }: Props) {
         <Card margin="15px 0">
           <Paragraph className="Footer">@ 2022 BookComment from Kyungsle</Paragraph>
         </Card>
-      </Box>
-    </Wrapper>
+      </Wrapper>
+    </BackGround>
   );
 }
 

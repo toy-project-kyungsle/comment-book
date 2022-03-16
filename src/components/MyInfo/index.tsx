@@ -3,24 +3,20 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { authService, dbService } from '@utils/fbaseApp';
 import { doc, getDoc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetCategoryName';
-import Header from '@components/Header';
-// import { useRecoilValue } from 'recoil';
-// import { FbaseAuth } from '@atom/FbaseAuth';
+import Header from '@components/organisms/Header';
 import { connect } from 'react-redux';
 import { reduxState } from '@utils/types';
 
 interface Props {
   loading: boolean;
   setLoadNum: React.Dispatch<React.SetStateAction<number>>;
-  setShowLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
   isLoggedIn: boolean;
 }
 
-function MyInfo({ loading, setLoadNum, setShowLoginModal, isLoggedIn }: Props) {
+function MyInfo({ loading, setLoadNum, isLoggedIn }: Props) {
   const [bookCount, setBookCount] = useState(0);
   const [bestBook, setBestBook] = useState('No book');
   const [bestCategory, setBestCategory] = useState('No category');
-  // const isLoggedIn = useRecoilValue(FbaseAuth('myinfo'));
   const [infoLoading, setInfoLoading] = useState(true);
 
   const getMyInfo = useCallback(async () => {
@@ -61,7 +57,7 @@ function MyInfo({ loading, setLoadNum, setShowLoginModal, isLoggedIn }: Props) {
         <MoreBackgroundImg />
         <BackgroundImg />
         <div className="positionDiv">
-          <Header setShowLoginModal={setShowLoginModal} />
+          <Header />
           <TitleBox>
             <p className="title" style={{}}>
               How to use

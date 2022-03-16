@@ -6,28 +6,36 @@ import React from 'react';
 import { ButtonImg, Sform } from './styles';
 
 interface Props {
-  formName: string;
+  className: string;
+  InputName?: string;
   InputType?: string;
   InputPlaceHolder?: string;
   isRequired?: boolean;
 }
 
 function SearchAuthForm(props: Props) {
-  const { formName, InputType = 'text', InputPlaceHolder = 'Search', isRequired = false } = props;
+  const {
+    className,
+    InputName = 'search',
+    InputType = 'text',
+    InputPlaceHolder = 'Search',
+    isRequired = false,
+  } = props;
   const [search, , onChangeSearch] = useInput('');
   const onSubmit = useSearchSubmit(`/search/${search}/4`);
 
   return (
-    <Sform onSubmit={onSubmit} className={formName}>
+    <Sform onSubmit={onSubmit} data-mode={className}>
       <Input
-        className={formName === 'Header' && 'Header'}
+        className={className}
+        name={InputName}
         type={InputType}
         placeholder={InputPlaceHolder}
         value={search}
         onChange={onChangeSearch}
         isRequired={isRequired}
       ></Input>
-      <Button>{ButtonImg()}</Button>
+      <Button className={className}>{ButtonImg(className)}</Button>
     </Sform>
   );
 }

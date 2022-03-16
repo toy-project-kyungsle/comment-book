@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.div`
+export const BackGround = styled.div`
   position: relative;
 
   font-family: 'Roboto', serif;
@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   padding-bottom: 200px;
 `;
 
-export const Box = styled.div`
+export const Wrapper = styled.div`
   position: absolute;
   right: 0;
 

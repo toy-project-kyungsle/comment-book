@@ -8,7 +8,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 // import { useRecoilValue } from 'recoil';
 // import { FbaseAuth } from '@atom/FbaseAuth';
-import Loading from '@components/Loading';
+import Loading from '@components/organisms/Loading';
 import DetailLetters from '@components/DetailLetters';
 import { IbookData, reduxState } from '@utils/types';
 import DetailComment from '@components/DetailComment';

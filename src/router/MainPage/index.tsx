@@ -3,13 +3,15 @@ import MybooksSlider from '@components/MybooksSlider';
 import MyInfo from '@components/MyInfo';
 import Footer from '@components/organisms/Footer';
 import Auth from '@components/Auth';
-import Loading from '@components/Loading';
-import MainSearch from '@components/MainSearch';
+import Loading from '@components/organisms/Loading';
+import MainSearch from '@components/organisms/MainSearch';
+import { connect } from 'react-redux';
+import { reduxState } from '@utils/types';
 
-function MainPage() {
+function MainPage({ showLoginModal }) {
   const [loadNum, setLoadNum] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [showLoginModal, setShowLoginModal] = useState(false);
+  // const [showLoginModal, setShowLoginModal] = useState(false);
 
   useEffect(() => {
     if (loadNum === 2) {
@@ -19,9 +21,9 @@ function MainPage() {
 
   return (
     <div>
-      {showLoginModal ? <Auth showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} /> : null}
+      {showLoginModal ? <Auth showLoginModal={showLoginModal} /> : null}
       <Loading loading={loading} />
-      <MyInfo loading={loading} setLoadNum={setLoadNum} setShowLoginModal={setShowLoginModal} />
+      <MyInfo loading={loading} setLoadNum={setLoadNum} />
       <MainSearch />
       <MybooksSlider loading={loading} setLoadNum={setLoadNum} />
       <Footer loading={loading} />
@@ -29,4 +31,8 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+function mapStateToProps(state: reduxState) {
+  return { showLoginModal: state['showLoginModal'] };
+}
+
+export default connect(mapStateToProps)(MainPage);

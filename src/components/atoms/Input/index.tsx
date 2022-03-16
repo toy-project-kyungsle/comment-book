@@ -6,7 +6,7 @@ interface Props {
   name?: string;
   type: string;
   value: string;
-  isRequired: boolean;
+  isRequired?: boolean;
   onKeyDown?: (e: any) => void;
   onChange: (e: any) => void;
   placeholder?: string;

@@ -10,10 +10,11 @@ import '@utils/fbaseApp';
 import { authService } from '@utils/fbaseApp';
 import { Background, BtnContainer, Container, SignUpOrLogin } from './styles';
 import AuthTextArea from '@components/organisms/AuthInput';
-import AuthSocialLogin from '@components/organisms/SocialLogin';
+import AuthSocialLogin from '@components/molecules/SocialLogin';
 import useInput from '@hooks/useinput';
 import { connect } from 'react-redux';
-import { setIsLoggedIn } from '@redux/store';
+import { setIsLoggedIn, setShowLoginModal } from '@redux/store';
+import { reduxState } from '@utils/types';
 
 const Auth = ({ setShowLoginModal, showLoginModal, setIsLoggedIn }) => {
   const [email, setEmail] = useState('');
@@ -124,10 +125,15 @@ const Auth = ({ setShowLoginModal, showLoginModal, setIsLoggedIn }) => {
   );
 };
 
+function mapStateToProps(state: reduxState) {
+  return { showLoginModal: state['showLoginModal'] };
+}
+
 function mapDispatchToProps(dispatch: any) {
   return {
     setIsLoggedIn: (bool: boolean) => dispatch(setIsLoggedIn(bool)),
+    setShowLoginModal: (bool: boolean) => dispatch(setShowLoginModal(bool)),
   };
 }
 
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

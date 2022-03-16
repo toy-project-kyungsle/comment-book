@@ -1,16 +1,19 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-const HeaderAuth = css`
+const Header = css`
   background: none;
   margin: 0 20px 5px 0;
   border: none;
   cursor: pointer;
 `;
 
-export const Sbutton = styled.button`
+const MainSearch = css`
   background: none;
-  margin: 0 20px 5px 0;
   border: none;
   cursor: pointer;
+`;
+
+export const Sbutton = styled.button`
+  ${(props) => (props['data-mode'] === 'Header' ? Header : props['data-mode'] === 'MainSearch' ? MainSearch : null)}
 `;

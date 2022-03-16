@@ -16,12 +16,11 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { dbService, authService } from '@utils/fbaseApp';
 import { getDoc, doc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetCategoryName';
-// import { useRecoilValue } from 'recoil';
-// import { FbaseAuth } from '@atom/FbaseAuth';
 import DeleteSameElem from '@utils/DeleteSameElem';
 import SliderTopBox from '@components/SliderTopBox';
 import { IFbookData, reduxState } from '@utils/types';
 import { connect } from 'react-redux';
+import useSlideBtn from '@hooks/useSlideBtn';
 
 interface Props {
   loading: boolean;
@@ -30,10 +29,9 @@ interface Props {
 }
 
 function MybooksSlider({ loading, setLoadNum, isLoggedIn }: Props) {
-  const [trans, setTrans] = useState(0);
   const [mybooks, setMybooks] = useState<IFbookData[]>([]);
   const [categoryList, setCategoryList] = useState<string[]>([]);
-  // const isLoggedIn = useRecoilValue(FbaseAuth('slider'));
+  const [trans, setTrans, onClickL, onClickR] = useSlideBtn(0, mybooks.length, ImgWidth, ImgLeftRighMargin);
 
   const getCategoryList = useCallback(async () => {
     if (isLoggedIn) {
@@ -82,20 +80,6 @@ function MybooksSlider({ loading, setLoadNum, isLoggedIn }: Props) {
     },
     [isLoggedIn],
   );
-
-  const onClickL = () => {
-    if (trans >= 0) {
-      return;
-    }
-    setTrans((current) => current + (ImgWidth * 4 + ImgLeftRighMargin * 6));
-  };
-
-  const onClickR = () => {
-    if (trans <= -(((mybooks.length - 4) / 4) * (ImgWidth * 4 + ImgLeftRighMargin * 6))) {
-      return;
-    }
-    setTrans((current) => current - (ImgWidth * 4 + ImgLeftRighMargin * 6));
-  };
 
   useEffect(() => {
     if (isLoggedIn) {

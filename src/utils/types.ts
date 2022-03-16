@@ -43,4 +43,6 @@ export interface IFbookData extends IbookData {
 export interface reduxState {
   isLoggedIn?: boolean;
   showLoginModal?: boolean;
+  setIsLoggedIn?: (data: boolean) => void;
+  setShowLoginModal?: (data: boolean) => void;
 }

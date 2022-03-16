@@ -16,10 +16,23 @@ const HeaderBtn: React.CSSProperties = {
   left: '3',
 };
 
+const MainSearchBtn: React.CSSProperties = {
+  color: `grey`,
+  fontSize: '20px',
+  position: 'relative',
+  top: '10px',
+  left: '7px',
+};
+
 export const Sform = styled.form`
-  ${(props) => props['className'] === 'Header' && Header}
+  ${(props) => props['data-mode'] === 'Header' && Header}
 `;
 
-export function ButtonImg() {
-  return <FontAwesomeIcon icon={faSearch} style={HeaderBtn} />;
+export function ButtonImg(className: string) {
+  return (
+    <FontAwesomeIcon
+      icon={(className === 'Header' || className === 'MainSearch') && faSearch}
+      style={className === 'Header' ? HeaderBtn : className === 'MainSearch' ? MainSearchBtn : null}
+    />
+  );
 }
