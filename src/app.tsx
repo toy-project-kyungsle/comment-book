@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from '@redux/store';
+import FbaseAuth from '@redux/fbaseDispatch';
 
 const MainPage = loadable(() => import('@router/MainPage'));
 const Search = loadable(() => import('@router/Search'));
@@ -18,6 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const App = () => (
   <Provider store={store}>
+    <FbaseAuth />
     <Router basename={mode}>
       <Routes>
         <Route path="/" element={<MainPage />} />
