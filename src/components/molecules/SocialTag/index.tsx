@@ -3,21 +3,19 @@ import React from 'react';
 import { Wrapper } from './styles';
 
 interface Props {
+  className: string;
   onSocialClick: (event: any) => void;
   imgSrc: string;
   DivID?: string;
   DivText?: string;
-  imgHeight?: string;
-  imgWidth?: string;
-  imgMagin?: string;
 }
 
 function SocialTag(props: Props) {
-  const { onSocialClick, imgSrc, imgHeight, imgWidth, imgMagin, DivID, DivText } = props;
+  const { className, onSocialClick, imgSrc, DivID, DivText } = props;
   return (
     <Wrapper>
       <div>
-        <Img src={imgSrc} alt="null" height={imgHeight} width={imgWidth} margin={imgMagin}></Img>
+        <Img className={className} src={imgSrc} alt="null"></Img>
       </div>
       <div id={DivID} onClick={onSocialClick}>
         <div>{DivText}</div>

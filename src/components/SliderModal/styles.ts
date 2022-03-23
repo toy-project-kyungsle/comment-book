@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 export const ClassifyingModal = styled.div`
+  font-family: 'Noto Sans KR', sans-serif;
+
   position: absolute;
   right: 0;
   top: 115px;
@@ -10,7 +12,6 @@ export const ClassifyingModal = styled.div`
 
   display: flex;
 
-  font-family: 'Noto Sans KR', sans-serif;
   color: #00000096;
 
   max-width: 655px;
@@ -41,35 +42,6 @@ export const ClassifyingModal = styled.div`
         cursor: pointer;
         color: wheat;
       }
-    }
-  }
-
-  .closeBtn {
-    border: none;
-    background-color: none;
-    margin-top: 13px;
-    & img {
-      height: 13px;
-      width: 13px;
-    }
-    & img:hover {
-      cursor: pointer;
-    }
-  }
-
-  .resetBtn {
-    position: absolute;
-    right: 8px;
-    bottom: 10px;
-
-    border: none;
-    background-color: none;
-
-    & img {
-      height: 15px;
-    }
-    & img:hover {
-      cursor: pointer;
     }
   }
 `;

@@ -1,27 +1,16 @@
 import React from 'react';
-import { css } from '@emotion/css';
+import { Simage } from './styles';
 
 interface Props {
+  className: string;
   src: string;
-  alt: string;
-  height: string;
-  width: string;
-  margin: string;
+  alt?: string;
+  id?: string;
 }
 
-function Img(props: Props) {
-  const { src, alt, height, width, margin } = props;
-  return (
-    <img
-      className={css`
-        height: ${height};
-        width: ${width};
-        margin: ${margin};
-      `}
-      src={src}
-      alt={alt}
-    ></img>
-  );
+function Image(props: Props) {
+  const { className, src, alt = null, id } = props;
+  return <Simage data-mode={className} src={src} alt={alt} id={id}></Simage>;
 }
 
-export default Img;
+export default Image;

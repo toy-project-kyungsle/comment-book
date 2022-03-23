@@ -1,3 +1,5 @@
+import Button from '@components/atoms/Button';
+import Image from '@components/atoms/Image';
 import DeleteSameElem from '@utils/DeleteSameElem';
 import React from 'react';
 import { ClassifyingModal } from './styles';
@@ -69,19 +71,19 @@ function SliderModal({
           : null}
       </div>
       <div>
-        <button className="closeBtn" onClick={onClickCloseBtn}>
-          <img
+        <Button className="closeBtn" onClick={onClickCloseBtn}>
+          <Image
+            className="closeBtn"
             src="https://user-images.githubusercontent.com/79993356/154801650-d6a3e43d-4ba0-4107-a3c2-dfaeca5eb6af.png"
-            alt="null"
-          ></img>
-        </button>
-        <button className="resetBtn" onClick={onClickResetBtn}>
-          <img
+          ></Image>
+        </Button>
+        <Button className="resetBtn" onClick={onClickResetBtn}>
+          <Image
+            className="resetBtn"
             src="https://user-images.githubusercontent.com/79993356/154805451-4852137e-f850-49f9-814e-6cfc937494ae.svg"
-            alt="null"
             id={categoryListOpen ? 'cg' : ratingListOpen ? 'rt' : yearListOpen ? 'yr' : null}
-          ></img>
-        </button>
+          ></Image>
+        </Button>
       </div>
     </ClassifyingModal>
   ) : null;

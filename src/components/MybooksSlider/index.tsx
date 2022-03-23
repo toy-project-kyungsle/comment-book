@@ -10,7 +10,7 @@ import {
   GuideImg,
   LoginGuide,
 } from './styles';
-import MyBookImg from '@components/MyBookImg';
+import MyBookImg from '@components/molecules/LinkImage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { dbService, authService } from '@utils/fbaseApp';
