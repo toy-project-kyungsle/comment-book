@@ -1,3 +1,5 @@
+import Image from '@components/atoms/Image';
+import Paragraph from '@components/atoms/Paragraph';
 import GetDate from '@utils/GetDate';
 import { IbookData } from '@utils/types';
 import React, { useCallback, useEffect, useState } from 'react';
@@ -57,18 +59,18 @@ function SearchRender({ children, book, viewNum, EndNum }: Props) {
     <Container data-Height={conHeight} data-num={viewNum}>
       <SmallBackGround data-Height={sBackHeight} data-Width={sBackWidth} data-Left={sBackLeft}>
         <ImgDiv data-Left={imgLeft} data-Bottom={imgBottom}>
-          <img src={book.coverLargeUrl} alt={book.title} onClick={onClickImg} />
+          <Image className="SearchRender" src={book.coverLargeUrl} alt={book.title} onClick={onClickImg} />
         </ImgDiv>
         <LetterDiv data-Left={letterLeft} data-Bottom={letterBottom}>
-          <p className="title">
+          <Paragraph className="SearchRenderTitle">
             {book.title.length < 22 ? book.title : book.title.length >= 22 ? book.title.slice(0, 22) + '...' : null}
-          </p>
-          <p className="moreinfo">
+          </Paragraph>
+          <Paragraph className="SearchRenderInfo">
             {book.author ? book.author : book.pubDate ? GetDate(book.pubDate) : book.publisher}
-          </p>
+          </Paragraph>
         </LetterDiv>
       </SmallBackGround>
-      {viewNum === EndNum ? children : null}
+      {viewNum === EndNum && children}
     </Container>
   );
 }

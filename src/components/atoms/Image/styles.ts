@@ -23,6 +23,15 @@ const resetBtn = css`
   height: 15px;
 `;
 
+const SearchRender = css`
+  width: 170px;
+  transition: 0.5s;
+  :hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+`;
+
 export const Simage = styled.img`
   ${(props) => {
     switch (props['data-mode']) {
@@ -34,6 +43,8 @@ export const Simage = styled.img`
         return closeBtn;
       case 'resetBtn':
         return resetBtn;
+      case 'SearchRender':
+        return SearchRender;
       default:
         return null;
     }

@@ -6,11 +6,12 @@ interface Props {
   src: string;
   alt?: string;
   id?: string;
+  onClick?: (e: any) => void;
 }
 
 function Image(props: Props) {
-  const { className, src, alt = null, id } = props;
-  return <Simage data-mode={className} src={src} alt={alt} id={id}></Simage>;
+  const { className, src, alt = null, id, onClick } = props;
+  return <Simage data-mode={className} src={src} alt={alt} id={id} onClick={onClick}></Simage>;
 }
 
 export default Image;

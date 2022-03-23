@@ -24,24 +24,5 @@ export const ClassifyingModal = styled.div`
 
     max-width: 600px;
     min-height: 80px;
-
-    .content {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-
-      width: 120px;
-      font-size: 14px;
-    }
-    .contentInner {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      & div:hover {
-        cursor: pointer;
-        color: wheat;
-      }
-    }
   }
 `;

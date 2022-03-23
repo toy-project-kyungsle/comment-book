@@ -53,35 +53,10 @@ export const ImgDiv = styled.div`
   bottom: ${(props) => props['data-Bottom']};
 
   width: 170px;
-
-  & img {
-    width: 170px;
-    transition: 0.5s;
-  }
-  & img:hover {
-    cursor: pointer;
-    transform: scale(1.05);
-  }
 `;
 
 export const LetterDiv = styled.div`
   position: absolute;
   left: ${(props) => props['data-Left']};
   bottom: ${(props) => props['data-Bottom']};
-
-  font-family: 'Noto Sans KR', sans-serif;
-
-  .title {
-    color: rgb(75, 75, 75);
-    font-size: 14px;
-  }
-
-  .moreinfo {
-    color: #0000007b;
-    font-size: 13px;
-  }
-
-  & p {
-    margin: 0;
-  }
 `;

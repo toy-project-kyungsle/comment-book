@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-const useSearchSubmit = (endPoint: string) => {
+const useNavi = (endPoint: string) => {
   const navigate = useNavigate();
   return () => navigate(endPoint);
 };
 
-export default useSearchSubmit;
+export default useNavi;

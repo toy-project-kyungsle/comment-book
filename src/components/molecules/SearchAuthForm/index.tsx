@@ -1,7 +1,7 @@
 import Button from '@components/atoms/Button';
 import Input from '@components/atoms/Input';
 import useInput from '@hooks/useinput';
-import useSearchSubmit from '@hooks/useSearchSubmit';
+import useSearchSubmit from '@hooks/useNavi';
 import React from 'react';
 import { ButtonImg, Sform } from './styles';
 

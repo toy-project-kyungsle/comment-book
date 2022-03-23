@@ -17,7 +17,7 @@ import { dbService, authService } from '@utils/fbaseApp';
 import { getDoc, doc } from 'firebase/firestore';
 import GetDetailedName from '@utils/GetCategoryName';
 import DeleteSameElem from '@utils/DeleteSameElem';
-import SliderTopBox from '@components/SliderTopBox';
+import SliderTopBox from '@components/molecules/SliderTopBox';
 import { IFbookData, reduxState } from '@utils/types';
 import { connect } from 'react-redux';
 import useSlideBtn from '@hooks/useSlideBtn';
@@ -31,6 +31,7 @@ interface Props {
 function MybooksSlider({ loading, setLoadNum, isLoggedIn }: Props) {
   const [mybooks, setMybooks] = useState<IFbookData[]>([]);
   const [categoryList, setCategoryList] = useState<string[]>([]);
+  const [editYearList, setEditYearList] = useState<number[]>([]);
   const [trans, setTrans, onClickL, onClickR] = useSlideBtn(0, mybooks.length, ImgWidth, ImgLeftRighMargin);
 
   const getCategoryList = useCallback(async () => {
@@ -90,9 +91,25 @@ function MybooksSlider({ loading, setLoadNum, isLoggedIn }: Props) {
     }
   }, [getBookInfo, getCategoryList, isLoggedIn, setLoadNum]);
 
+  useEffect(() => {
+    if (mybooks.length > 0) {
+      mybooks.forEach((elem) => {
+        if (!editYearList.includes(new Date(elem.editDate).getFullYear())) {
+          setEditYearList((prev) => [new Date(elem.editDate).getFullYear(), ...prev]);
+        }
+      });
+    }
+  }, [editYearList, mybooks]);
+
   return loading ? null : (
     <>
-      <SliderTopBox mybooks={mybooks} getBookInfo={getBookInfo} setTrans={setTrans} categoryList={categoryList} />
+      <SliderTopBox
+        mybooks={mybooks}
+        getBookInfo={getBookInfo}
+        setTrans={setTrans}
+        categoryList={categoryList}
+        editYearList={editYearList}
+      />
 
       {isLoggedIn && mybooks.length ? (
         <SlidesBackground>

@@ -11,6 +11,32 @@ const MainSearch = css`
   font-weight: bold;
 `;
 
+const SliderTopToggle = css`
+  margin-left: 20px;
+  color: #0000007b;
+  :hover {
+    cursor: pointer;
+    color: wheat;
+  }
+`;
+
+const SliderTopTitle = css`
+  font-size: 20px;
+`;
+
 export const Sspan = styled.span`
-  ${(props) => (props['data-mode'] === 'Loading' ? Loading : 'MainSearch' ? MainSearch : null)}
+  ${(props) => {
+    switch (props['data-mode']) {
+      case 'Loading':
+        return Loading;
+      case 'MainSearch':
+        return MainSearch;
+      case 'SliderTopToggle':
+        return SliderTopToggle;
+      case 'SliderTopTitle':
+        return SliderTopTitle;
+      default:
+        return null;
+    }
+  }}
 `;

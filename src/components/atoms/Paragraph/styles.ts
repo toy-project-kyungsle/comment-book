@@ -17,24 +17,44 @@ const HeaderAuth = css`
 `;
 
 const MybookImgComment = css`
-  font-family: 'Noto Sans KR', sans-serif;
   line-height: 300%;
 `;
 
 const MyBookImgRating = css`
-  font-family: 'Noto Sans KR', sans-serif;
   text-align: center;
 `;
 
+const SearchRenderTitle = css`
+  color: rgb(75, 75, 75);
+  font-size: 14px;
+  margin: 0;
+`;
+
+const SearchRenderInfo = css`
+  color: #0000007b;
+  font-size: 13px;
+  margin: 0;
+`;
+
 export const SparaGraph = styled.p`
-  ${(props) =>
-    props['data-mode'] === 'Footer'
-      ? Footer
-      : props['data-mode'] === 'HeaderAuth'
-      ? HeaderAuth
-      : props['data-mode'] === 'MybookImgComment'
-      ? MybookImgComment
-      : props['data-mode'] === 'MyBookImgRating'
-      ? MyBookImgRating
-      : null}
+  font-family: 'Noto Sans KR', sans-serif;
+
+  ${(props) => {
+    switch (props['data-mode']) {
+      case 'Footer':
+        return Footer;
+      case 'HeaderAuth':
+        return HeaderAuth;
+      case 'MybookImgComment':
+        return MybookImgComment;
+      case 'MyBookImgRating':
+        return MyBookImgRating;
+      case 'SearchRenderTitle':
+        return SearchRenderTitle;
+      case 'SearchRenderInfo':
+        return SearchRenderInfo;
+      default:
+        return null;
+    }
+  }}
 `;

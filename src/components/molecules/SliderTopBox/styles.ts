@@ -35,20 +35,6 @@ export const TopBox = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    .title {
-      font-size: 20px;
-    }
-
-    .classify > span {
-      margin-left: 20px;
-      color: #0000007b;
-    }
-
-    .classify > span:hover {
-      cursor: pointer;
-      color: wheat;
-    }
   }
 
   .selectedCgCon {
