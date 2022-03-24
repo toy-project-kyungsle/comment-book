@@ -11,7 +11,7 @@ interface Props {
   onChange: (e: any) => void;
 }
 
-function AuthTextArea({ email, password, signUp, retype, onChageRetype, onChange }: Props) {
+function TextAreas({ email, password, signUp, retype, onChageRetype, onChange }: Props) {
   return (
     <Wrapper>
       <InputBox
@@ -51,4 +51,4 @@ function AuthTextArea({ email, password, signUp, retype, onChageRetype, onChange
   );
 }
 
-export default AuthTextArea;
+export default TextAreas;

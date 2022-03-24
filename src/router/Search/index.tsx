@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Empty, Next, Header } from './styles';
 import { useParams } from 'react-router';
 import axios from 'axios';
-import SearchRender from '@components/SearchRender';
+import SearchRender from '@components/organisms/SearchRender';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';

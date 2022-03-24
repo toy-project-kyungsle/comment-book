@@ -51,27 +51,6 @@ export const TitleBox = styled.div`
   left: 0;
   bottom: 53px;
   width: 320px;
-  font-family: 'Roboto', sans-serif;
-
-  .title {
-    font-size: 20px;
-    color: #000000d3;
-    font-weight: bold;
-  }
-  .hello {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14px;
-    color: #0000007b;
-    margin: 0;
-    margin-bottom: 8px;
-  }
-  .guide {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14px;
-    color: #0000007b;
-    line-height: 36px;
-    margin: 0;
-  }
 `;
 
 export const InfoBox = styled.div`
@@ -80,24 +59,7 @@ export const InfoBox = styled.div`
   bottom: 40px;
   height: 15%;
 
-  font-family: 'Noto Sans KR', sans-serif;
-
   display: grid;
   grid-template-columns: 150px 120px;
   grid-template-rows: ${100 / 3}% ${100 / 3}% ${100 / 3}%;
-
-  .title {
-    font-size: 16px;
-
-    font-family: 'Roboto', sans-serif;
-
-    font-weight: 800;
-    color: #0000007b;
-  }
-
-  .info {
-    font-size: 14px;
-    color: #3e4756;
-    text-align: right;
-  }
 `;

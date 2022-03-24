@@ -36,6 +36,35 @@ const SearchRenderInfo = css`
   margin: 0;
 `;
 
+const MyInfoTBtitle = css`
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: #000000d3;
+  font-weight: bold;
+`;
+
+const MyInfoTBhello = css`
+  font-size: 14px;
+  color: #0000007b;
+  margin: 0;
+  margin-bottom: 8px;
+`;
+
+const MyInfoTBguide = css`
+  font-size: 14px;
+  color: #0000007b;
+  line-height: 36px;
+  margin: 0;
+`;
+
+const SubmitForm = css`
+  position: relative;
+  top: -23px;
+  color: #ff0000c7;
+  margin: 0;
+  margin-left: 96px;
+`;
+
 export const SparaGraph = styled.p`
   font-family: 'Noto Sans KR', sans-serif;
 
@@ -53,6 +82,14 @@ export const SparaGraph = styled.p`
         return SearchRenderTitle;
       case 'SearchRenderInfo':
         return SearchRenderInfo;
+      case 'MyInfo TB title':
+        return MyInfoTBtitle;
+      case 'MyInfo TB hello':
+        return MyInfoTBhello;
+      case 'MyInfo TB guide':
+        return MyInfoTBguide;
+      case 'SubmitForm':
+        return SubmitForm;
       default:
         return null;
     }

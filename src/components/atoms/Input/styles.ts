@@ -31,15 +31,30 @@ const MainSearch = css`
   text-align: center;
 `;
 
+const SubmitForm = css`
+  height: 25px;
+  width: 60px;
+  border: none;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 export const Sinput = styled.input`
-  ${(props) =>
-    props['data-mode'] === 'AuthInput'
-      ? AuthInput
-      : props['data-mode'] === 'Header'
-      ? Header
-      : props['data-mode'] === 'MainSearch'
-      ? MainSearch
-      : null}
+  ${(props) => {
+    switch (props['data-mode']) {
+      case 'AuthInput':
+        return AuthInput;
+      case 'Header':
+        return Header;
+      case 'MainSearch':
+        return MainSearch;
+      case 'SubmitForm':
+        return SubmitForm;
+      default:
+        return null;
+    }
+  }}
   &:focus {
     outline: none;
   }

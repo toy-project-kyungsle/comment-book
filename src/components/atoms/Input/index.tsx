@@ -5,10 +5,10 @@ interface Props {
   className?: string;
   name?: string;
   type: string;
-  value: string;
+  value?: string;
   isRequired?: boolean;
   onKeyDown?: (e: any) => void;
-  onChange: (e: any) => void;
+  onChange?: (e: any) => void;
   placeholder?: string;
 }
 
