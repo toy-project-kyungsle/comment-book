@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MybooksSlider from '@components/MybooksSlider';
+import MybooksSlider from '@components/organisms/MybooksSlider';
 import MyInfo from '@components/organisms/MyInfo';
 import Footer from '@components/organisms/Footer';
 import Auth from '@components/organisms/Auth';

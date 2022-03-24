@@ -32,6 +32,11 @@ const SearchRender = css`
   }
 `;
 
+const MainSlider = css`
+  height: 420px;
+  width: 1000px;
+`;
+
 export const Simage = styled.img`
   ${(props) => {
     switch (props['data-mode']) {
@@ -45,6 +50,8 @@ export const Simage = styled.img`
         return resetBtn;
       case 'SearchRender':
         return SearchRender;
+      case 'MainSlider':
+        return MainSlider;
       default:
         return null;
     }

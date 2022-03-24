@@ -10,7 +10,6 @@ const MainSearch = css`
 `;
 
 const closeBtn = css`
-  /* background-color: none; */
   margin-top: 13px;
 `;
 
@@ -18,8 +17,31 @@ const resetBtn = css`
   position: absolute;
   right: 8px;
   bottom: 10px;
+`;
 
-  /* background-color: none; */
+const MainSlider = css`
+  position: absolute;
+  bottom: -10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #00000050;
+  opacity: 0.8;
+  font-size: 30px;
+  :hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+`;
+
+const MainSliderLeft = css`
+  ${MainSlider}
+  right: 230px;
+`;
+
+const MainSliderRight = css`
+  ${MainSlider}
+  right: 190px;
 `;
 
 export const Sbutton = styled.button`
@@ -37,6 +59,10 @@ export const Sbutton = styled.button`
         return closeBtn;
       case 'resetBtn':
         return resetBtn;
+      case 'MainSliderLeft':
+        return MainSliderLeft;
+      case 'MainSliderRight':
+        return MainSliderRight;
       default:
         return null;
     }

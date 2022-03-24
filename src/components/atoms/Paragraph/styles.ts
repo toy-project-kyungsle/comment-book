@@ -1,6 +1,9 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
+const engFont = "'Roboto', sans-serif";
+const korFont = "'Noto Sans KR', sans-serif";
+
 const Footer = css`
   font-size: 14px;
   color: grey;
@@ -37,7 +40,7 @@ const SearchRenderInfo = css`
 `;
 
 const MyInfoTBtitle = css`
-  font-family: 'Roboto', sans-serif;
+  font-family: ${engFont}
   font-size: 20px;
   color: #000000d3;
   font-weight: bold;
@@ -65,33 +68,41 @@ const SubmitForm = css`
   margin-left: 96px;
 `;
 
-export const SparaGraph = styled.p`
-  font-family: 'Noto Sans KR', sans-serif;
+const DetailPageTitle = css`
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: black;
+`;
 
-  ${(props) => {
-    switch (props['data-mode']) {
-      case 'Footer':
-        return Footer;
-      case 'HeaderAuth':
-        return HeaderAuth;
-      case 'MybookImgComment':
-        return MybookImgComment;
-      case 'MyBookImgRating':
-        return MyBookImgRating;
-      case 'SearchRenderTitle':
-        return SearchRenderTitle;
-      case 'SearchRenderInfo':
-        return SearchRenderInfo;
-      case 'MyInfo TB title':
-        return MyInfoTBtitle;
-      case 'MyInfo TB hello':
-        return MyInfoTBhello;
-      case 'MyInfo TB guide':
-        return MyInfoTBguide;
-      case 'SubmitForm':
-        return SubmitForm;
-      default:
-        return null;
-    }
-  }}
+export const SparaGraph = styled.p`
+  font-family: ${korFont}
+    ${(props) => {
+      switch (props['data-mode']) {
+        case 'Footer':
+          return Footer;
+        case 'HeaderAuth':
+          return HeaderAuth;
+        case 'MybookImgComment':
+          return MybookImgComment;
+        case 'MyBookImgRating':
+          return MyBookImgRating;
+        case 'SearchRenderTitle':
+          return SearchRenderTitle;
+        case 'SearchRenderInfo':
+          return SearchRenderInfo;
+        case 'MyInfo TB title':
+          return MyInfoTBtitle;
+        case 'MyInfo TB hello':
+          return MyInfoTBhello;
+        case 'MyInfo TB guide':
+          return MyInfoTBguide;
+        case 'SubmitForm':
+          return SubmitForm;
+        case 'DetailTitle':
+          return DetailPageTitle;
+        default:
+          return null;
+      }
+    }};
 `;

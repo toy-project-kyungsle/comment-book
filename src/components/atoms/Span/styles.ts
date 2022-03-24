@@ -57,6 +57,24 @@ const AuthToggle = css`
   }
 `;
 
+const DetailPage = css`
+  color: rgb(105, 105, 105);
+`;
+
+const DetailPagetagName = css`
+  ${DetailPage}
+  margin-right: 65px;
+`;
+
+const DetailPageValue = css`
+  ${DetailPage}
+`;
+
+const DetailPageRtnComment = css`
+  font-size: 12px;
+  margin-left: 10px;
+`;
+
 export const Sspan = styled.span`
   ${(props) => {
     switch (props['data-mode']) {
@@ -76,6 +94,12 @@ export const Sspan = styled.span`
         return AuthGuide;
       case 'AuthToggle':
         return AuthToggle;
+      case 'DetailPagetagName':
+        return DetailPagetagName;
+      case 'DetailPageValue':
+        return DetailPageValue;
+      case 'DetailPageRtnComment':
+        return DetailPageRtnComment;
       default:
         return null;
     }

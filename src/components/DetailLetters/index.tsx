@@ -1,8 +1,11 @@
 import GetDate from '@utils/GetDate';
 import GetDetailedName from '@utils/GetCategoryName';
 import React from 'react';
-import { Container, OnelineTextArea, RatingTextArea } from './styles';
+import { OnelineTextArea, RatingTextArea } from './styles';
 import { IbookData } from '@utils/types';
+import Paragraph from '@components/atoms/Paragraph';
+import SpanBox from '@components/molecules/SpanBox';
+import Span from '@components/atoms/Span';
 
 interface Props {
   book: IbookData;
@@ -14,64 +17,51 @@ interface Props {
   shortComment: string;
 }
 
-function DetailLetters({
-  book,
-  infoMode,
-  editMode,
-  rating,
-  onChangeRating,
-  onChangeShortComment,
-  shortComment,
-}: Props) {
+function DetailLetters(props: Props) {
+  const { book, infoMode, editMode, rating, onChangeRating, onChangeShortComment, shortComment } = props;
+  const infoArr = [
+    [book.author, '작가&emsp;', book.author],
+    [book.categoryId, '장르&emsp;', GetDetailedName(book.categoryId)],
+    [book.pubDate, '출판일', GetDate(book.pubDate)],
+  ];
   return (
-    <Container>
-      <p className="title">{book.title} </p>
-      {book.author ? (
-        <div className="infoDiv">
-          <span className="tagName">작가&emsp;</span>
-          <span>{book.author}</span>
-        </div>
-      ) : null}
-      {book.categoryId ? (
-        <div className="infoDiv">
-          <span className="tagName">장르&emsp;</span>
-          <span>{GetDetailedName(book.categoryId)}</span>
-        </div>
-      ) : null}
-      {book.pubDate ? (
-        <div className="infoDiv">
-          <span className="tagName">출판일</span>
-          <span>{GetDate(book.pubDate)}</span>
-        </div>
-      ) : null}
-      {!infoMode ? (
-        <div className="infoDiv">
-          <span className="tagName">평점&emsp;</span>
-          {editMode ? (
-            <>
-              <RatingTextArea onChange={onChangeRating} value={rating} />
-              <span className="rtcomment">5점이 만점입니다.</span>
-            </>
-          ) : (
-            <span>{rating}</span>
-          )}
-        </div>
-      ) : null}
-      {!infoMode ? (
-        <div className="infoDiv">
-          <span className="tagName">한줄평</span>
-          {editMode ? (
-            <OnelineTextArea
-              onChange={onChangeShortComment}
-              value={shortComment === "There's no comment" ? '' : shortComment}
-              maxLength={34}
-            />
-          ) : (
-            <span>{shortComment}</span>
-          )}
-        </div>
-      ) : null}
-    </Container>
+    <div>
+      <Paragraph className="DetailTitle">{book.title}</Paragraph>
+      {infoArr.map((elem) => elem[0] && <SpanBox className="DetailPage" firstChild={elem[1]} secondChild={elem[2]} />)}
+      {!infoMode && (
+        <SpanBox
+          className="DetailPage"
+          firstChild="평점&emsp;"
+          secondChild={
+            editMode ? (
+              <>
+                <RatingTextArea onChange={onChangeRating} value={rating} />
+                <Span className="DetailPageRtnComment">5점이 만점입니다.</Span>
+              </>
+            ) : (
+              <Span className="DetailPage">{rating}</Span>
+            )
+          }
+        />
+      )}
+      {!infoMode && (
+        <SpanBox
+          className="DetailPage"
+          firstChild="한줄평"
+          secondChild={
+            editMode ? (
+              <OnelineTextArea
+                onChange={onChangeShortComment}
+                value={shortComment === "There's no comment" ? '' : shortComment}
+                maxLength={34}
+              />
+            ) : (
+              <Span className="DetailPage">{shortComment}</Span>
+            )
+          }
+        />
+      )}
+    </div>
   );
 }
 
