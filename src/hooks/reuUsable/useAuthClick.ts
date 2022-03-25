@@ -1,5 +1,5 @@
 import { setIsLoggedIn, setShowLoginModal } from '@redux/store';
-import { authService } from '@utils/fbaseApp';
+import { authService } from '@utils/funtions/fbaseApp';
 import store from '@redux/store';
 
 const useAuthClick = () => {

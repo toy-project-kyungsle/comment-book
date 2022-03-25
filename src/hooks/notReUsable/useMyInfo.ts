@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
-import { authService, dbService } from '@utils/fbaseApp';
+import { authService, dbService } from '@utils/funtions/fbaseApp';
 import { doc, getDoc } from 'firebase/firestore';
-import GetDetailedName from '@utils/GetCategoryName';
+import GetDetailedName from '@utils/funtions/GetCategoryName';
 import store from '@redux/store';
 
 const useMyInfo = (setLoadNum: React.Dispatch<React.SetStateAction<number>>) => {

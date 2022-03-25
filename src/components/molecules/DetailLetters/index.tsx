@@ -1,11 +1,11 @@
-import GetDate from '@utils/GetDate';
-import GetDetailedName from '@utils/GetCategoryName';
+import GetDate from '@utils/funtions/GetDate';
+import GetDetailedName from '@utils/funtions/GetCategoryName';
 import React from 'react';
-import { OnelineTextArea, RatingTextArea } from './styles';
-import { IbookData } from '@utils/types';
+import { IbookData } from '@utils/objects/types';
 import Paragraph from '@components/atoms/Paragraph';
 import SpanBox from '@components/molecules/SpanBox';
 import Span from '@components/atoms/Span';
+import TextArea from '@components/atoms/TextArea';
 
 interface Props {
   book: IbookData;
@@ -20,14 +20,17 @@ interface Props {
 function DetailLetters(props: Props) {
   const { book, infoMode, editMode, rating, onChangeRating, onChangeShortComment, shortComment } = props;
   const infoArr = [
-    [book.author, '작가&emsp;', book.author],
-    [book.categoryId, '장르&emsp;', GetDetailedName(book.categoryId)],
+    [book.author, `작가\xa0\xa0\xa0`, book.author],
+    [book.categoryId, '장르\xa0\xa0\xa0', GetDetailedName(book.categoryId)],
     [book.pubDate, '출판일', GetDate(book.pubDate)],
   ];
   return (
     <div>
       <Paragraph className="DetailTitle">{book.title}</Paragraph>
-      {infoArr.map((elem) => elem[0] && <SpanBox className="DetailPage" firstChild={elem[1]} secondChild={elem[2]} />)}
+      {infoArr.map(
+        (elem) =>
+          elem[0] && <SpanBox className="DetailPage" firstChild={elem[1]} secondChild={elem[2]} secondVisible={true} />,
+      )}
       {!infoMode && (
         <SpanBox
           className="DetailPage"
@@ -35,13 +38,14 @@ function DetailLetters(props: Props) {
           secondChild={
             editMode ? (
               <>
-                <RatingTextArea onChange={onChangeRating} value={rating} />
+                <TextArea className="DetailPageRating" onChange={onChangeRating} value={rating} />
                 <Span className="DetailPageRtnComment">5점이 만점입니다.</Span>
               </>
             ) : (
               <Span className="DetailPage">{rating}</Span>
             )
           }
+          secondVisible={true}
         />
       )}
       {!infoMode && (
@@ -50,7 +54,8 @@ function DetailLetters(props: Props) {
           firstChild="한줄평"
           secondChild={
             editMode ? (
-              <OnelineTextArea
+              <TextArea
+                className="DetailPageOneline"
                 onChange={onChangeShortComment}
                 value={shortComment === "There's no comment" ? '' : shortComment}
                 maxLength={34}
@@ -59,6 +64,7 @@ function DetailLetters(props: Props) {
               <Span className="DetailPage">{shortComment}</Span>
             )
           }
+          secondVisible={true}
         />
       )}
     </div>

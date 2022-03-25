@@ -1,8 +1,8 @@
 import Span from '@components/atoms/Span';
 import SliderModal from '@components/molecules/SliderModal';
-import useSort from '@hooks/useSort';
-import useToggle from '@hooks/useToggle';
-import { IFbookData } from '@utils/types';
+import useSort from '@hooks/notReUsable/useSort';
+import useToggle from '@hooks/reuUsable/useToggle';
+import { IFbookData } from '@utils/objects/types';
 import React, { useEffect } from 'react';
 import { Background, TopBox } from './styles';
 

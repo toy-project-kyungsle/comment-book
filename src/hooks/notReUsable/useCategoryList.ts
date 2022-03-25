@@ -1,7 +1,7 @@
-import DeleteSameElem from '@utils/DeleteSameElem';
-import { authService, dbService } from '@utils/fbaseApp';
-import GetDetailedName from '@utils/GetCategoryName';
-import { IFbookData } from '@utils/types';
+import DeleteSameElem from '@utils/funtions/DeleteSameElem';
+import { authService, dbService } from '@utils/funtions/fbaseApp';
+import GetDetailedName from '@utils/funtions/GetCategoryName';
+import { IFbookData } from '@utils/objects/types';
 import { doc, getDoc } from 'firebase/firestore';
 import { useCallback, useEffect, useState } from 'react';
 import store from '@redux/store';

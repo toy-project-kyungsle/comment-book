@@ -1,8 +1,8 @@
 import Image from '@components/atoms/Image';
 import Paragraph from '@components/atoms/Paragraph';
-import useSearchPosition from '@hooks/useSearchPosition';
-import GetDate from '@utils/GetDate';
-import { IbookData } from '@utils/types';
+import useSearchPosition from '@hooks/notReUsable/useSearchPosition';
+import GetDate from '@utils/funtions/GetDate';
+import { IbookData } from '@utils/objects/types';
 import React, { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, ImgDiv, LetterDiv, SmallBackGround } from './styles';

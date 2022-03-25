@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { Wrapper, LeftSection, RightSection } from './styles';
 import { connect } from 'react-redux';
 import Paragraph from '@components/atoms/Paragraph';
-import SearchAuthForm from '@components/molecules/SearchAuthForm';
-import { reduxState } from '@utils/types';
-import useAuthClick from '@hooks/useAuthClick';
+import SearchAuthForm from '@components/molecules/InputButton';
+import { reduxState } from '@utils/objects/types';
+import useAuthClick from '@hooks/reuUsable/useAuthClick';
 
 function Header({ isLoggedIn }) {
   const [onClickLogin, onClickLogout] = useAuthClick();

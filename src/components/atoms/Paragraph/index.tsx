@@ -3,7 +3,7 @@ import { SparaGraph } from './styles';
 
 interface Props {
   className: string;
-  children?: string;
+  children?: any;
   onClick?: (e: any) => void;
 }
 

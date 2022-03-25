@@ -1,7 +1,7 @@
 import React from 'react';
 import { Background, Wrapper, SearchBar } from './styles';
 import Span from '@components/atoms/Span';
-import SearchAuthForm from '@components/molecules/SearchAuthForm';
+import SearchAuthForm from '@components/molecules/InputButton';
 
 function MainSearch() {
   return (

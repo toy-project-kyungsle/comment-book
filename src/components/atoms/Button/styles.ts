@@ -44,6 +44,16 @@ const MainSliderRight = css`
   right: 190px;
 `;
 
+const Search = css`
+  position: absolute;
+  left: -260px;
+  bottom: -3px;
+  background-color: white;
+  :hover {
+    transform: scale(1.1);
+  }
+`;
+
 export const Sbutton = styled.button`
   background: none;
   border: none;
@@ -63,6 +73,8 @@ export const Sbutton = styled.button`
         return MainSliderLeft;
       case 'MainSliderRight':
         return MainSliderRight;
+      case 'Search':
+        return Search;
       default:
         return null;
     }

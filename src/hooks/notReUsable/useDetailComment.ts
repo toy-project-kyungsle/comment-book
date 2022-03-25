@@ -1,34 +1,23 @@
-import React, { useCallback } from 'react';
-import { BtnDiv, Description, LonglineTextArea } from './styles';
-import { dbService, authService } from '@utils/fbaseApp';
+import { authService, dbService } from '@utils/funtions/fbaseApp';
+import { IbookData } from '@utils/objects/types';
 import { deleteField, doc, setDoc, updateDoc } from 'firebase/firestore';
-import { IbookData } from '@utils/types';
+import { useCallback } from 'react';
 
 interface Props {
+  setInfoMode: React.Dispatch<React.SetStateAction<boolean>>;
+  setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
+  bookIsbn: number;
+  rating: number;
+  book: IbookData;
   shortComment: string;
   longComment: string;
-  onCangeLongComment: (e: any) => void;
-  book: IbookData;
-  rating: number;
-  bookIsbn: number;
-  editMode: boolean;
-  setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
-  infoMode: boolean;
-  setInfoMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function DetailComment({
-  shortComment,
-  longComment,
-  onCangeLongComment,
-  book,
-  rating,
-  bookIsbn,
-  editMode,
-  setEditMode,
-  infoMode,
-  setInfoMode,
-}: Props) {
+type rtn = [() => void, () => void, () => void, (event: any) => Promise<void>, () => Promise<void>];
+
+const useDetailComment = (props: Props): rtn => {
+  const { setInfoMode, setEditMode, bookIsbn, rating, book, shortComment, longComment } = props;
+
   const onClickInfoBtn = useCallback(() => {
     setInfoMode((prev) => !prev);
   }, [setInfoMode]);
@@ -78,33 +67,7 @@ function DetailComment({
     }
   }, [bookIsbn]);
 
-  return editMode ? (
-    <div style={{ minHeight: '180px' }}>
-      {LonglineTextArea(longComment, onCangeLongComment)}
-      <BtnDiv>
-        <span onClick={onSubmit}>Finish</span>
-        <span onClick={onClickCancle}>Cancle</span>
-      </BtnDiv>
-    </div>
-  ) : infoMode ? (
-    <>
-      <Description>
-        <p>{(book as IbookData).description}</p>
-      </Description>
-      <BtnDiv>
-        <span onClick={onClickInfoBtn}>Comment</span>
-      </BtnDiv>
-    </>
-  ) : (
-    <>
-      <p className="longComment">{longComment}</p>
-      <BtnDiv>
-        <span onClick={onClickInfoBtn}>Info</span>
-        <span onClick={onClickAddEditBtn}>Edit</span>
-        <span onClick={onClickDelete}>Delete</span>
-      </BtnDiv>
-    </>
-  );
-}
+  return [onClickInfoBtn, onClickAddEditBtn, onClickCancle, onSubmit, onClickDelete];
+};
 
-export default DetailComment;
+export default useDetailComment;

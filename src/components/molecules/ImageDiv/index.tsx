@@ -10,7 +10,7 @@ interface Props {
   DivText?: string;
 }
 
-function SocialTag(props: Props) {
+function ImageDiv(props: Props) {
   const { className, onSocialClick, imgSrc, DivID, DivText } = props;
   return (
     <Wrapper>
@@ -24,4 +24,4 @@ function SocialTag(props: Props) {
   );
 }
 
-export default SocialTag;
+export default ImageDiv;

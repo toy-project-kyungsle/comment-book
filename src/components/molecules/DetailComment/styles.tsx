@@ -26,21 +26,3 @@ export const Description = styled.div`
 
   text-align: justify;
 `;
-
-export const BtnDiv = styled.div`
-  position: absolute;
-  right: 0;
-  bottom: -10;
-
-  color: rgb(105, 105, 105);
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-
-  & span {
-    margin-left: 20px;
-  }
-
-  & span:hover {
-    cursor: pointer;
-  }
-`;

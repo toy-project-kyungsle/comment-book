@@ -6,7 +6,7 @@ import Auth from '@components/organisms/Auth';
 import Loading from '@components/organisms/Loading';
 import MainSearch from '@components/organisms/MainSearch';
 import { connect } from 'react-redux';
-import { reduxState } from '@utils/types';
+import { reduxState } from '@utils/objects/types';
 
 function MainPage({ showLoginModal }) {
   const [loadNum, setLoadNum] = useState(0);
@@ -20,7 +20,7 @@ function MainPage({ showLoginModal }) {
 
   return (
     <div>
-      {showLoginModal ? <Auth showLoginModal={showLoginModal} /> : null}
+      {showLoginModal ? <Auth /> : null}
       <Loading loading={loading} />
       <MyInfo loading={loading} setLoadNum={setLoadNum} />
       <MainSearch />

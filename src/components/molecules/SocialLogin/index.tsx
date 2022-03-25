@@ -1,4 +1,4 @@
-import SocialTag from '@components/molecules/SocialTag';
+import SocialTag from '@components/molecules/ImageDiv';
 import React from 'react';
 import { InnerContainer, Wrapper } from './styles';
 

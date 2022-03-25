@@ -1,5 +1,5 @@
 import { setIsLoggedIn, setShowLoginModal } from '@redux/store';
-import { authService } from '@utils/fbaseApp';
+import { authService } from '@utils/funtions/fbaseApp';
 import {
   createUserWithEmailAndPassword,
   GithubAuthProvider,
@@ -8,7 +8,7 @@ import {
   signInWithPopup,
 } from 'firebase/auth';
 import { useState } from 'react';
-import useInput from './useinput';
+import useInput from '../reuUsable/useinput';
 import store from '@redux/store';
 
 type rtn = [string, string, (e: any) => void, string, string, (e: any) => void, (e: any) => void, (e: any) => void];

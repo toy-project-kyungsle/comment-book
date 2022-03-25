@@ -1,4 +1,4 @@
-import { IFbookData } from '@utils/types';
+import { IFbookData } from '@utils/objects/types';
 import GetDetailedName from './GetCategoryName';
 
 interface Params {

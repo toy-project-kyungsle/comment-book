@@ -1,5 +1,5 @@
 import React from 'react';
-import { authService } from '@utils/fbaseApp';
+import { authService } from '@utils/funtions/fbaseApp';
 import { connect } from 'react-redux';
 import { setIsLoggedIn } from '@redux/store';
 

@@ -1,68 +1,28 @@
-import useInput from '@hooks/useinput';
-import axios from 'axios';
-import React, { useCallback, useEffect, useState } from 'react';
+import useInput from '@hooks/reuUsable/useinput';
+import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import { Container, ImgDiv, Letters, Background } from './styles';
-import { dbService, authService } from '@utils/fbaseApp';
-import { doc, getDoc } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
-// import { useRecoilValue } from 'recoil';
-// import { FbaseAuth } from '@atom/FbaseAuth';
 import Loading from '@components/organisms/Loading';
-import DetailLetters from '@components/DetailLetters';
-import { IbookData, reduxState } from '@utils/types';
-import DetailComment from '@components/DetailComment';
-import { connect } from 'react-redux';
+import DetailLetters from '@components/molecules/DetailLetters';
+import { IbookData } from '@utils/objects/types';
+import DetailComment from '@components/molecules/DetailComment';
+import Image from '@components/atoms/Image';
+import Paragraph from '@components/atoms/Paragraph';
+import Anchor from '@components/atoms/Anchor';
+import useNavi from '@hooks/reuUsable/useNavi';
+import useDetailPage from '@hooks/notReUsable/useDetailPage';
 
-function DetailPage({ isLoggedIn }) {
+function DetailPage() {
   const { isbn } = useParams();
-  const [book, setBook] = useState<IbookData | {}>({});
-  const [bookIsbn, setBookIsbn] = useState(0);
-  const [loading, setLoading] = useState(false);
 
   const [rating, setRating, onChangeRating] = useInput(0);
   const [shortComment, setShortComment, onChangeShortComment] = useInput("There's no comment");
   const [longComment, setLongComment, onCangeLongComment] = useInput('You have no commnet for this book');
   const [editMode, setEditMode] = useState(false);
   const [infoMode, setInfoMode] = useState(false);
-  // const isLoggedIn = useRecoilValue(FbaseAuth('detailpage'));
-  const navigate = useNavigate();
+  const navigate = useNavi(-1);
 
-  const onClickTopBtn = useCallback(() => {
-    navigate(-1);
-  }, [navigate]);
-
-  const getBookInfo = useCallback(async () => {
-    if (isLoggedIn) {
-      const dbBooks = (await getDoc(doc(dbService, `UserEval`, authService.currentUser.uid))).data();
-      if (!dbBooks || !dbBooks[bookIsbn]) {
-        setInfoMode(true);
-      } else if (dbBooks) {
-        setInfoMode(false);
-        setRating(dbBooks[bookIsbn].rating);
-        setShortComment(dbBooks[bookIsbn].shortComment);
-        setLongComment(dbBooks[bookIsbn].longComment);
-      }
-    } else {
-      setInfoMode(true);
-      setRating(0);
-      setShortComment("There's no comment");
-      setLongComment('You have no commnet for this book');
-    }
-    setLoading(false);
-  }, [bookIsbn, isLoggedIn, setLongComment, setRating, setShortComment]);
-
-  useEffect(() => {
-    setLoading(true);
-    axios.get(`https://www.interbookserver.kro.kr:3085/isbnsearch/${isbn}`).then((res) => {
-      setBook(res.data.items[0]);
-      setBookIsbn(res.data.items[0].isbn);
-    });
-  }, [isbn, setBook, setLoading]);
-
-  useEffect(() => {
-    if (Object.keys(book).length) getBookInfo();
-  }, [book, getBookInfo, isLoggedIn]);
+  const [book, loading, bookIsbn] = useDetailPage({ isbn, setRating, setShortComment, setLongComment, setInfoMode });
 
   return (
     <>
@@ -70,17 +30,18 @@ function DetailPage({ isLoggedIn }) {
       {loading ? null : (
         <Background>
           <Container>
-            <p className="topBtn" onClick={onClickTopBtn}>
-              <img
+            <Paragraph className="DetailPageTopBtn" onClick={navigate}>
+              <Image
+                className="DetailPageXBtn"
                 src="https://user-images.githubusercontent.com/79993356/154732530-9f85dfa4-e9f8-484a-acdf-6371eb981bc5.png"
                 alt="null"
               />
-            </p>
+            </Paragraph>
             <ImgDiv>
-              <img src={(book as IbookData).coverLargeUrl} alt={(book as IbookData).title} />
-              <a href={(book as IbookData).link} target="_blank" rel="noreferrer">
+              <Image className="default" src={(book as IbookData).coverLargeUrl} alt={(book as IbookData).title} />
+              <Anchor className="DetailPageImgDiv" href={(book as IbookData).link} target="_blank" rel="noreferrer">
                 More Info?
-              </a>
+              </Anchor>
             </ImgDiv>
             <Letters>
               <DetailLetters
@@ -92,9 +53,7 @@ function DetailPage({ isLoggedIn }) {
                 onChangeShortComment={onChangeShortComment}
                 shortComment={shortComment}
               />
-
               <hr />
-
               <DetailComment
                 shortComment={shortComment}
                 longComment={longComment}
@@ -115,8 +74,4 @@ function DetailPage({ isLoggedIn }) {
   );
 }
 
-function mapStateToProps(state: reduxState) {
-  return { isLoggedIn: state['isLoggedIn'] };
-}
-
-export default connect(mapStateToProps)(DetailPage);
+export default DetailPage;

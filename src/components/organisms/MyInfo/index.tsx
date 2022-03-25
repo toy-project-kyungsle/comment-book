@@ -2,7 +2,7 @@ import { InfoBox, Background, BackgroundImg, TitleBox, MoreBackgroundImg } from 
 import React from 'react';
 import Header from '@components/organisms/Header';
 import Paragraph from '@components/atoms/Paragraph';
-import useMyInfo from '@hooks/useMyInfo';
+import useMyInfo from '@hooks/notReUsable/useMyInfo';
 import Span from '@components/atoms/Span';
 
 interface Props {

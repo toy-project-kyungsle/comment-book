@@ -1,7 +1,8 @@
 import React from 'react';
-import { css } from '@emotion/css';
+import { Sanchor } from './styles';
 
 interface Props {
+  className: string;
   href: string;
   target: string;
   rel: string;
@@ -9,11 +10,11 @@ interface Props {
 }
 
 function Anchor(props: Props) {
-  const { href, target, rel, children } = props;
+  const { className, href, target, rel, children } = props;
   return (
-    <a href={href} target={target} rel={rel}>
+    <Sanchor data-mode={className} href={href} target={target} rel={rel}>
       {children}
-    </a>
+    </Sanchor>
   );
 }
 

@@ -1,9 +1,9 @@
-import { authService, dbService } from '@utils/fbaseApp';
+import { authService, dbService } from '@utils/funtions/fbaseApp';
 import store from '@redux/store';
 import { useCallback, useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
-import { IFbookData } from '@utils/types';
-import GetSelectedMybook from '@utils/GetSelectedMybook';
+import { IFbookData } from '@utils/objects/types';
+import GetSelectedMybook from '@utils/funtions/GetSelectedMybook';
 
 type rtn = [IFbookData[], (a: string, b: string, c: string) => void];
 

@@ -1,7 +1,7 @@
 import Button from '@components/atoms/Button';
 import Image from '@components/atoms/Image';
 import SortedDiv from '@components/molecules/SortedDiv';
-import DeleteSameElem from '@utils/DeleteSameElem';
+import DeleteSameElem from '@utils/funtions/DeleteSameElem';
 import React from 'react';
 import { ClassifyingModal } from './styles';
 

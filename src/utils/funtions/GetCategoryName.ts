@@ -1,4 +1,4 @@
-import CategoryList from '@utils/CategoryList';
+import CategoryList from '@utils/objects/CategoryList';
 
 function GetDetailedName(categoryID: number) {
   let tempArr = CategoryList[categoryID] ? CategoryList[categoryID].match(/(.+)>(.+)/) : [];

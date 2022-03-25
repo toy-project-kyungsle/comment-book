@@ -40,7 +40,7 @@ const SearchRenderInfo = css`
 `;
 
 const MyInfoTBtitle = css`
-  font-family: ${engFont}
+  font-family: ${engFont};
   font-size: 20px;
   color: #000000d3;
   font-weight: bold;
@@ -75,34 +75,49 @@ const DetailPageTitle = css`
   color: black;
 `;
 
+const DetailCommentLong = css`
+  color: rgb(105, 105, 105);
+`;
+
+const DetailPageTopBtn = css`
+  position: absolute;
+  top: -5;
+  right: 0;
+  z-index: 5;
+`;
+
 export const SparaGraph = styled.p`
-  font-family: ${korFont}
-    ${(props) => {
-      switch (props['data-mode']) {
-        case 'Footer':
-          return Footer;
-        case 'HeaderAuth':
-          return HeaderAuth;
-        case 'MybookImgComment':
-          return MybookImgComment;
-        case 'MyBookImgRating':
-          return MyBookImgRating;
-        case 'SearchRenderTitle':
-          return SearchRenderTitle;
-        case 'SearchRenderInfo':
-          return SearchRenderInfo;
-        case 'MyInfo TB title':
-          return MyInfoTBtitle;
-        case 'MyInfo TB hello':
-          return MyInfoTBhello;
-        case 'MyInfo TB guide':
-          return MyInfoTBguide;
-        case 'SubmitForm':
-          return SubmitForm;
-        case 'DetailTitle':
-          return DetailPageTitle;
-        default:
-          return null;
-      }
-    }};
+  font-family: ${korFont};
+  ${(props) => {
+    switch (props['data-mode']) {
+      case 'Footer':
+        return Footer;
+      case 'HeaderAuth':
+        return HeaderAuth;
+      case 'MybookImgComment':
+        return MybookImgComment;
+      case 'MyBookImgRating':
+        return MyBookImgRating;
+      case 'SearchRenderTitle':
+        return SearchRenderTitle;
+      case 'SearchRenderInfo':
+        return SearchRenderInfo;
+      case 'MyInfo TB title':
+        return MyInfoTBtitle;
+      case 'MyInfo TB hello':
+        return MyInfoTBhello;
+      case 'MyInfo TB guide':
+        return MyInfoTBguide;
+      case 'SubmitForm':
+        return SubmitForm;
+      case 'DetailTitle':
+        return DetailPageTitle;
+      case 'DetailCommentLong':
+        return DetailCommentLong;
+      case 'DetailPageTopBtn':
+        return DetailPageTopBtn;
+      default:
+        return null;
+    }
+  }};
 `;

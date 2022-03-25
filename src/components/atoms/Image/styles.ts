@@ -37,6 +37,13 @@ const MainSlider = css`
   width: 1000px;
 `;
 
+const DetailPageXBtn = css`
+  width: 15px;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 export const Simage = styled.img`
   ${(props) => {
     switch (props['data-mode']) {
@@ -52,6 +59,8 @@ export const Simage = styled.img`
         return SearchRender;
       case 'MainSlider':
         return MainSlider;
+      case 'DetailPageXBtn':
+        return DetailPageXBtn;
       default:
         return null;
     }

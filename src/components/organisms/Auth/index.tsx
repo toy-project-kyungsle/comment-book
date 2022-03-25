@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import '@utils/fbaseApp';
+import '@utils/funtions/fbaseApp';
 import { Background, Container, SignUpOrLogin } from './styles';
 import AuthSocialLogin from '@components/molecules/SocialLogin';
 import { connect } from 'react-redux';
-import { setIsLoggedIn, setShowLoginModal } from '@redux/store';
-import { reduxState } from '@utils/types';
+import { setShowLoginModal } from '@redux/store';
+import { reduxState } from '@utils/objects/types';
 import SubmitForm from '@components/molecules/SubmitForm';
-import useLogin from '@hooks/useAuth';
+import useLogin from '@hooks/notReUsable/useAuth';
 import Span from '@components/atoms/Span';
 
 const Auth = ({ setShowLoginModal, showLoginModal }) => {
@@ -59,7 +59,6 @@ function mapStateToProps(state: reduxState) {
 
 function mapDispatchToProps(dispatch: any) {
   return {
-    setIsLoggedIn: (bool: boolean) => dispatch(setIsLoggedIn(bool)),
     setShowLoginModal: (bool: boolean) => dispatch(setShowLoginModal(bool)),
   };
 }

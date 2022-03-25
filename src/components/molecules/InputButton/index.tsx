@@ -1,7 +1,7 @@
 import Button from '@components/atoms/Button';
 import Input from '@components/atoms/Input';
-import useInput from '@hooks/useinput';
-import useSearchSubmit from '@hooks/useNavi';
+import useInput from '@hooks/reuUsable/useinput';
+import useSearchSubmit from '@hooks/reuUsable/useNavi';
 import React from 'react';
 import { ButtonImg, Sform } from './styles';
 
@@ -13,7 +13,7 @@ interface Props {
   isRequired?: boolean;
 }
 
-function SearchAuthForm(props: Props) {
+function InputButton(props: Props) {
   const {
     className,
     InputName = 'search',
@@ -40,4 +40,4 @@ function SearchAuthForm(props: Props) {
   );
 }
 
-export default SearchAuthForm;
+export default InputButton;

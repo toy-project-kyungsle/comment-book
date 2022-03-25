@@ -1,7 +1,7 @@
 import React from 'react';
 import LinkImage from '@components/molecules/LinkImage';
 import { Slides, Wrapper } from './styles';
-import { IFbookData } from '@utils/types';
+import { IFbookData } from '@utils/objects/types';
 
 interface Props {
   trans: number;
