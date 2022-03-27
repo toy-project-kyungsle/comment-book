@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import store from '@redux/store';
 import FbaseAuth from '@redux/fbaseDispatch';
 
-const MainPage = loadable(() => import('@router/MainPage'));
-const Search = loadable(() => import('@router/Search'));
-const DetailPage = loadable(() => import('@router/DetailPage'));
+const MainPage = loadable(() => import('@components/pages/MainPage'));
+const Search = loadable(() => import('@components/pages/Search'));
+const DetailPage = loadable(() => import('@components/pages/DetailPage'));
 
 let mode: string;
 

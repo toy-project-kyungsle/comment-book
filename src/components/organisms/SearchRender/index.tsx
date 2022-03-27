@@ -4,8 +4,8 @@ import useSearchPosition from '@hooks/notReUsable/useSearchPosition';
 import GetDate from '@utils/funtions/GetDate';
 import { IbookData } from '@utils/objects/types';
 import React, { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Container, ImgDiv, LetterDiv, SmallBackGround } from './styles';
+import useNavi from '@hooks/reuUsable/useNavi';
 
 interface Props {
   children: any;
@@ -15,12 +15,15 @@ interface Props {
 }
 
 function SearchRender({ children, book, viewNum, EndNum }: Props) {
-  const navigate = useNavigate();
+  const navigate = useNavi(`/comment/${book.isbn}`);
   const [conHeight, sBackLeft, sBackHeight, sBackWidth, imgLeft, imgBottom, letterLeft, letterBottom] =
     useSearchPosition(viewNum);
 
   const onClickImg = useCallback(() => {
-    navigate(`/comment/${book.isbn}`);
+    if (book.isbn)
+      navigate();
+    else
+      alert("해당 상품은 이제 존재하지 않습니다!")
   }, [book.isbn, navigate]);
 
   return (

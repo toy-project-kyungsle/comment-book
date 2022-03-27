@@ -21,7 +21,7 @@
         "src/components/*"
       ],
       "@router/*": [
-        "src/router/*"
+        "src/components/router/*"
       ],
       "@utils/*": [
         "src/utils/*"
