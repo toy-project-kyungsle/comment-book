@@ -128,6 +128,7 @@ const SearchClickDivFirst = css`
 
 export const Sspan = styled.span`
   display: ${(props) => (props['data-visibility'] ? 'inline' : 'none')};
+  /* font-display: swap; */
 
   ${(props) => {
     switch (props['data-mode']) {

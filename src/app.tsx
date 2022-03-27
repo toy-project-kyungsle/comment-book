@@ -9,7 +9,7 @@ const MainPage = loadable(() => import('@router/MainPage'));
 const Search = loadable(() => import('@router/Search'));
 const DetailPage = loadable(() => import('@router/DetailPage'));
 
-let mode;
+let mode: string;
 
 if (process.env.NODE_ENV === 'production') {
   mode = 'Book_Helper';

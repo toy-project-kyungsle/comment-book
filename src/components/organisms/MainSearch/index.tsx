@@ -1,7 +1,7 @@
 import React from 'react';
 import { Background, Wrapper, SearchBar } from './styles';
 import Span from '@components/atoms/Span';
-import SearchAuthForm from '@components/molecules/InputButton';
+import InputButton from '@components/molecules/InputButton';
 
 function MainSearch() {
   return (
@@ -11,7 +11,7 @@ function MainSearch() {
           <Span className="MainSearch">Search Book</Span>
         </div>
         <SearchBar>
-          <SearchAuthForm className="MainSearch" InputPlaceHolder="Free search book you want!" />
+          <InputButton className="MainSearch" InputPlaceHolder="Free search book you want!" />
         </SearchBar>
       </Wrapper>
     </Background>

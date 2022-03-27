@@ -1,5 +1,5 @@
 import Span from '@components/atoms/Span';
-import SliderModal from '@components/molecules/SliderModal';
+import SliderModal from '@components/organisms/SliderModal';
 import useSort from '@hooks/notReUsable/useSort';
 import useToggle from '@hooks/reuUsable/useToggle';
 import { IFbookData } from '@utils/objects/types';

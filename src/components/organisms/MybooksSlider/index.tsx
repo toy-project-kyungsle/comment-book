@@ -1,13 +1,13 @@
 import React from 'react';
 import { SlidesBackground, GuideDiv, LoginGuide } from './styles';
-import SliderTopBox from '@components/molecules/SliderTopBox';
+import SliderTopBox from '@components/organisms/SliderTopBox';
 import { reduxState } from '@utils/objects/types';
 import { connect } from 'react-redux';
 import useSlideBtn from '@hooks/notReUsable/useSlideBtn';
 import useCategoryList from '@hooks/notReUsable/useCategoryList';
 import useBookInfo from '@hooks/notReUsable/useBookInfo';
-import SliderViewer from '@components/molecules/SliderViewer';
-import SliderController from '@components/molecules/SliderController';
+import SliderViewer from '@components/organisms/SliderViewer';
+import ButtonBox from '@components/molecules/ButtonBox';
 import Image from '@components/atoms/Image';
 
 interface Props {
@@ -35,7 +35,7 @@ function MybooksSlider({ loading, setLoadNum, isLoggedIn }: Props) {
         <SlidesBackground>
           <div className="container">
             <SliderViewer trans={trans} mybooks={mybooks} />
-            <SliderController className="MainSlider" onClickL={onClickL} onClickR={onClickR} />
+            <ButtonBox className="MainSlider" firstOnClick={onClickL} secondOnClick={onClickR} />
           </div>
         </SlidesBackground>
       ) : (

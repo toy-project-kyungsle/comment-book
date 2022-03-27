@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '@utils/funtions/fbaseApp';
 import { Background, Container, SignUpOrLogin } from './styles';
-import AuthSocialLogin from '@components/molecules/SocialLogin';
+import SocialLogin from '@components/molecules/SocialLogin';
 import { connect } from 'react-redux';
 import { setShowLoginModal } from '@redux/store';
 import { reduxState } from '@utils/objects/types';
@@ -46,7 +46,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
               </>
             )}
           </SignUpOrLogin>
-          <AuthSocialLogin onSocialClick={onSocialClick} />
+          <SocialLogin onSocialClick={onSocialClick} />
         </Container>
       </Background>
     )

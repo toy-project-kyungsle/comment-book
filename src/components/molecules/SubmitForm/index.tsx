@@ -1,5 +1,5 @@
 import React from 'react';
-import TextAreas from '@components/molecules/Textareas';
+import TextAreas from '@components/molecules/TextAreas';
 import { BtnContainer, Form } from './styles';
 import Paragraph from '@components/atoms/Paragraph';
 import InputBox from '../InputBox';

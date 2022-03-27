@@ -1,7 +1,6 @@
 import Span from '@components/atoms/Span';
-import LoadAnimation from '@components/molecules/LoadAnimation';
 import React from 'react';
-import { Wrapper } from './styles';
+import { LoadAnimation, Wrapper } from './styles';
 
 interface Props {
   loading: boolean;
@@ -12,7 +11,11 @@ function Loading({ loading }: Props) {
     <Wrapper data-mode={loading ? 'doing' : 'done'}>
       <div className="container">
         <Span className="Loading">Book Comment</Span>
-        <LoadAnimation />
+        <LoadAnimation>
+          <div></div>
+          <div></div>
+          <div></div>
+        </LoadAnimation>
       </div>
     </Wrapper>
   );

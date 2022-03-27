@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Wrapper, LeftSection, RightSection } from './styles';
 import { connect } from 'react-redux';
 import Paragraph from '@components/atoms/Paragraph';
-import SearchAuthForm from '@components/molecules/InputButton';
+import InputButton from '@components/molecules/InputButton';
 import { reduxState } from '@utils/objects/types';
 import useAuthClick from '@hooks/reuUsable/useAuthClick';
 
@@ -16,7 +16,7 @@ function Header({ isLoggedIn }) {
         <Link to={`/`}>Book Comment</Link>
       </LeftSection>
       <RightSection>
-        <SearchAuthForm className="Header" />
+        <InputButton className="Header" />
         <div className="auth">
           {isLoggedIn ? (
             <Paragraph className="HeaderAuth" onClick={onClickLogout}>

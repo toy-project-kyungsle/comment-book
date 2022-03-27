@@ -1,5 +1,4 @@
 import Anchor from '@components/atoms/Anchor';
-import Card from '@components/atoms/Card';
 import Paragraph from '@components/atoms/Paragraph';
 import React from 'react';
 import { BackGround, Wrapper, Mysns } from './styles';
@@ -19,10 +18,10 @@ function Footer({ loading }: Props) {
   return loading ? null : (
     <BackGround>
       <Wrapper>
-        <Card margin="15px 0">
+        <div style={{ margin: '15px 0' }}>
           <Paragraph className="Footer">All designs and animations were made by the author himself.</Paragraph>
           <Paragraph className="Footer">So unauthorized distribution is prohibited.</Paragraph>
-        </Card>
+        </div>
         <Mysns>
           <div>
             {AnchorArr.map((a) => (
@@ -32,9 +31,9 @@ function Footer({ loading }: Props) {
             ))}
           </div>
         </Mysns>
-        <Card margin="15px 0">
+        <div style={{ margin: '15px 0' }}>
           <Paragraph className="Footer">@ 2022 BookComment from Kyungsle</Paragraph>
-        </Card>
+        </div>
       </Wrapper>
     </BackGround>
   );
