@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Wrapper, LeftSection, RightSection } from './styles';
 import { connect } from 'react-redux';
 import Paragraph from '@components/atoms/Paragraph';
@@ -13,7 +12,7 @@ function Header({ isLoggedIn }) {
   return (
     <Wrapper>
       <LeftSection>
-        <Link to={`/`}>Book Comment</Link>
+        <Paragraph className="HeaderMain">Book Comment</Paragraph>
       </LeftSection>
       <RightSection>
         <InputButton className="Header" />

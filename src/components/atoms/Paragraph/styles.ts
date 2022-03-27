@@ -11,6 +11,14 @@ const Footer = css`
   text-align: end;
 `;
 
+const HeaderMain = css`
+  font-family: ${korFont};
+  margin: auto 0;
+  color: #050505d3;
+  font-size: 20px;
+  text-decoration: none;
+`;
+
 const HeaderAuth = css`
   font-size: 15px;
   :hover {
@@ -54,10 +62,9 @@ const MyInfoTBhello = css`
 `;
 
 const MyInfoTBguide = css`
-  font-size: 14px;
-  color: #0000007b;
-  line-height: 36px;
+  ${MyInfoTBhello}
   margin: 0;
+  line-height: 36px;
 `;
 
 const SubmitForm = css`
@@ -92,6 +99,8 @@ export const SparaGraph = styled.p`
     switch (props['data-mode']) {
       case 'Footer':
         return Footer;
+      case 'HeaderMain':
+        return HeaderMain;
       case 'HeaderAuth':
         return HeaderAuth;
       case 'MybookImgComment':

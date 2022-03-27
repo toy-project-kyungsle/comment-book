@@ -1,4 +1,4 @@
-import { InfoBox, Background, BackgroundImg, TitleBox, MoreBackgroundImg } from './styles';
+import { InfoBox, Background, BackgroundImg, TitleBox, MoreBackgroundImg, PositionDiv } from './styles';
 import React from 'react';
 import Header from '@components/organisms/Header';
 import Paragraph from '@components/atoms/Paragraph';
@@ -18,14 +18,14 @@ function MyInfo({ loading, setLoadNum }: Props) {
       <Background>
         <MoreBackgroundImg />
         <BackgroundImg />
-        <div className="positionDiv">
+        <PositionDiv>
           <Header />
           <TitleBox>
-            <Paragraph className="MyInfo TB title">How to use</Paragraph>
-            <Paragraph className="MyInfo TB hello">오늘도 Book Comment를 찾아주셔서 감사합니다.</Paragraph>
-            <Paragraph className="MyInfo TB guide">
+            <Span className="MyInfo TB title">How to use</Span>
+            <Span className="MyInfo TB inner">오늘도 Book Comment를 찾아주셔서 감사합니다.</Span>
+            <Span className="MyInfo TB inner">
               원하시는 책을 검색해 후기를 달아보세요. 내가 읽었던 책들도 보여준답니다. 책을 검색해보세요!
-            </Paragraph>
+            </Span>
           </TitleBox>
           <InfoBox>
             <div>
@@ -47,7 +47,7 @@ function MyInfo({ loading, setLoadNum }: Props) {
               <Span className="MyInfo IB info">{bestCategory}</Span>
             </div>
           </InfoBox>
-        </div>
+        </PositionDiv>
       </Background>
     </>
   );

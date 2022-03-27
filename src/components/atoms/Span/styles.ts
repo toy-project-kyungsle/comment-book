@@ -50,6 +50,28 @@ const MyInfoIBInfo = css`
   float: right;
 `;
 
+const MyInfoTBtitle = css`
+  font-family: ${engFont1};
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000d3;
+  line-height: 36px;
+  display: block;
+`;
+
+const MyInfoTBhello = css`
+  font-family: ${korFont};
+  font-size: 14px;
+  color: #0000007b;
+  line-height: 36px;
+  margin: 0;
+  display: block;
+
+  @media (max-width: 768px) {
+    display: inline;
+  }
+`;
+
 // Auth
 
 const AuthGuide = css`
@@ -144,6 +166,10 @@ export const Sspan = styled.span`
         return MyInfoIBTitle;
       case 'MyInfo IB info':
         return MyInfoIBInfo;
+      case 'MyInfo TB title':
+        return MyInfoTBtitle;
+      case 'MyInfo TB inner':
+        return MyInfoTBhello;
       case 'AuthGuide':
         return AuthGuide;
       case 'AuthToggle':

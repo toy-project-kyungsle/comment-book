@@ -6,6 +6,10 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const Header = css`
   margin-top: 13px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const HeaderBtn: React.CSSProperties = {
