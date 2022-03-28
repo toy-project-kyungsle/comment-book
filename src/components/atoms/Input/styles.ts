@@ -29,6 +29,9 @@ const MainSearch = css`
   border-bottom: 1px solid black;
   font-size: 15px;
   text-align: center;
+  @media (max-width: 768px) {
+    width: 250px
+  }
 `;
 
 const SubmitForm = css`

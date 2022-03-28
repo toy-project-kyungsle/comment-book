@@ -16,8 +16,8 @@ const HeaderBtn: React.CSSProperties = {
   color: `grey`,
   fontSize: '15px',
   position: 'relative',
-  top: '4',
-  left: '3',
+  top: '4px',
+  left: '3px',
 };
 
 const MainSearchBtn: React.CSSProperties = {
