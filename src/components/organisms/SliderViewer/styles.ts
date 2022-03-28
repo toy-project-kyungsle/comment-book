@@ -34,9 +34,7 @@ export const Slides = styled.div`
 
 
   @media (min-width: 1000px) {
-    &div {
-      margin: 0 ${ImgLeftRighMargin};
-    }
+    &div {margin: 0 ${ImgLeftRighMargin}}
     & div:nth-of-type(4n + 1) {
       margin-left: 0;
     }
@@ -45,9 +43,7 @@ export const Slides = styled.div`
     }
   }
   @media (max-width: 1000px) and (min-width: 735px) {
-    &div {
-      margin: 0 ${ImgLeftRighMargin};
-    }
+    &div {margin: 0 ${ImgLeftRighMargin}}
     & div:nth-of-type(3n + 1) {
       margin-left: 0;
     }
@@ -56,9 +52,7 @@ export const Slides = styled.div`
     }
   }
   @media (max-width: 735px) and (min-width: 470px) {
-    &div {
-      margin: 0 ${ImgLeftRighMargin};
-    }
+    &div {margin: 0 ${ImgLeftRighMargin}}
     & div:nth-of-type(2n + 1) {
       margin-left: 0;
     }
@@ -67,8 +61,6 @@ export const Slides = styled.div`
     }
   }
   @media (max-width: 470px) {
-    &div {
-      margin: 0px;
-    }
+    &div {margin: 0px}
   }
 `;

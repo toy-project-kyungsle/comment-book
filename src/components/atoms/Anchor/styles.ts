@@ -16,11 +16,25 @@ const DetailPageImgDiv = css`
   }
 `;
 
+const FooterSNS = css`
+    font-size: 14px;
+    color: grey;
+    margin-left: 50px;
+    text-decoration: none;
+
+    @media (max-width: 470px) {
+      margin: 0;
+      margin-right: 30px;
+    }
+`
+
 export const Sanchor = styled.a`
   ${(props) => {
     switch (props['data-mode']) {
       case 'DetailPageImgDiv':
         return DetailPageImgDiv;
+      case 'FooterSNS':
+        return FooterSNS;
       default:
         return null;
     }

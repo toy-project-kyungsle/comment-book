@@ -1,7 +1,7 @@
 import Anchor from '@components/atoms/Anchor';
-import Paragraph from '@components/atoms/Paragraph';
 import React from 'react';
 import { BackGround, Wrapper, Mysns } from './styles';
+import SpanBox from '@components/molecules/SpanBox';
 
 interface Props {
   loading: boolean;
@@ -14,28 +14,25 @@ function Footer({ loading }: Props) {
     ['https://www.instagram.com/keinn51/', 'Insta'],
     ['https://www.facebook.com/sooks447/', 'FaceBook'],
   ];
+  const WarnArr = ['All designs and animations were made by the author himself.',
+    'So unauthorized distribution is prohibited.']
 
   return loading ? null : (
     <BackGround>
       <Wrapper>
-        <div style={{ margin: '15px 0' }}>
-          <Paragraph className="Footer">All designs and animations were made by the author himself.</Paragraph>
-          <Paragraph className="Footer">So unauthorized distribution is prohibited.</Paragraph>
-        </div>
+        <SpanBox className="Footer" textArr={WarnArr} />
         <Mysns>
           <div>
             {AnchorArr.map((a) => (
-              <Anchor href={a[0]} target="_blank" rel="noreferrer">
+              <Anchor className="FooterSNS" href={a[0]} target="_blank" rel="noreferrer">
                 {a[1]}
               </Anchor>
             ))}
           </div>
         </Mysns>
-        <div style={{ margin: '15px 0' }}>
-          <Paragraph className="Footer">@ 2022 BookComment from Kyungsle</Paragraph>
-        </div>
+        <SpanBox className="Footer" textArr={['@ 2022 BookComment from Kyungsle']} />
       </Wrapper>
-    </BackGround>
+    </BackGround >
   );
 }
 

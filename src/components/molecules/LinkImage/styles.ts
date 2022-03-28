@@ -31,6 +31,10 @@ export const BookContainer = styled.div`
       opacity: 1;
     }
   }
+
+  @media (max-width: 470px) {
+    margin: 0;
+  }
 `;
 
 export { PictureWidth, PictureHeight, Margin_Small, Padding_Small };

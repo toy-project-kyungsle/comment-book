@@ -75,6 +75,12 @@ const SearchClickDiv = css`
   }
 `;
 
+// Footer
+
+const Footer = css`
+  margin: 15px 0;
+`
+
 export const Wrapper = styled.div`
   ${(props) => {
     switch (props['data-mode']) {
@@ -92,6 +98,8 @@ export const Wrapper = styled.div`
         return Search;
       case 'SearchClickDiv':
         return SearchClickDiv;
+      case 'Footer':
+        return Footer;
       default:
         return null;
     }

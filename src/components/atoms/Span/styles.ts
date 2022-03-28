@@ -8,29 +8,6 @@ const Loading = css`
   font-size: 40px;
 `;
 
-const MainSearch = css`
-  font-family: ${engFont1};
-  font-size: 22px;
-  font-weight: bold;
-`;
-
-// Slider
-
-const SliderTopTitle = css`
-  font-family: ${engFont1};
-  font-size: 20px;
-`;
-
-const SliderTopToggle = css`
-  font-family: ${engFont1};
-  margin-left: 20px;
-  color: #0000007b;
-  :hover {
-    cursor: pointer;
-    color: wheat;
-  }
-`;
-
 // MyInfo
 
 const MyInfoIBTitle = css`
@@ -69,6 +46,31 @@ const MyInfoTBinner = css`
 
   @media (max-width: 768px) {
     display: inline;
+  }
+`;
+
+// Main Search
+
+const MainSearch = css`
+  font-family: ${engFont1};
+  font-size: 22px;
+  font-weight: bold;
+`;
+
+// Slider
+
+const SliderTopTitle = css`
+  font-family: ${engFont1};
+  font-size: 20px;
+`;
+
+const SliderTopToggle = css`
+  font-family: ${engFont1};
+  margin-left: 20px;
+  color: #0000007b;
+  :hover {
+    cursor: pointer;
+    color: wheat;
   }
 `;
 
@@ -118,6 +120,8 @@ const DetailComment = css`
   }
 `;
 
+// Search
+
 const SearchFirst = css`
   background-image: linear-gradient(to right, #74869d 0, #74869d 100%);
   background-repeat: no-repeat;
@@ -146,6 +150,22 @@ const SearchClickDivFirst = css`
   font-family: ${engFont1};
   margin-right: 10px;
 `;
+
+// Footer
+
+const Footer = css`
+  font-family: ${engFont1};
+  font-size: 14px;
+  color: grey;
+  margin: 0;
+  text-align: end;
+  display: block;
+
+  @media (max-width: 470px) {
+    display: inline;
+  }
+`
+
 
 export const Sspan = styled.span`
   display: ${(props) => (props['data-visibility'] ? 'inline' : 'none')};
@@ -184,6 +204,8 @@ export const Sspan = styled.span`
         return SearchFirst;
       case 'SearchClickDivFirst':
         return SearchClickDivFirst;
+      case 'Footer':
+        return Footer;
       default:
         return null;
     }

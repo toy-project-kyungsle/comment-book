@@ -4,12 +4,7 @@ import styled from '@emotion/styled';
 const engFont = "'Roboto', sans-serif";
 const korFont = "'Noto Sans KR', sans-serif";
 
-const Footer = css`
-  font-size: 14px;
-  color: grey;
-  margin: 0;
-  text-align: end;
-`;
+// Header
 
 const HeaderMain = css`
   font-family: ${korFont};
@@ -27,25 +22,7 @@ const HeaderAuth = css`
   }
 `;
 
-const MybookImgComment = css`
-  line-height: 300%;
-`;
-
-const MyBookImgRating = css`
-  text-align: center;
-`;
-
-const SearchRenderTitle = css`
-  color: rgb(75, 75, 75);
-  font-size: 14px;
-  margin: 0;
-`;
-
-const SearchRenderInfo = css`
-  color: #0000007b;
-  font-size: 13px;
-  margin: 0;
-`;
+// MyInfo
 
 const MyInfoTBtitle = css`
   font-family: ${engFont};
@@ -67,6 +44,30 @@ const MyInfoTBguide = css`
   line-height: 36px;
 `;
 
+// Slider
+
+const MybookImgComment = css`
+  line-height: 300%;
+`;
+
+const MyBookImgRating = css`
+  text-align: center;
+`;
+
+// Search
+
+const SearchRenderTitle = css`
+  color: rgb(75, 75, 75);
+  font-size: 14px;
+  margin: 0;
+`;
+
+const SearchRenderInfo = css`
+  color: #0000007b;
+  font-size: 13px;
+  margin: 0;
+`;
+
 const SubmitForm = css`
   position: relative;
   top: -23px;
@@ -74,6 +75,8 @@ const SubmitForm = css`
   margin: 0;
   margin-left: 96px;
 `;
+
+// Detail Page
 
 const DetailPageTitle = css`
   margin: 0;
@@ -97,8 +100,6 @@ export const SparaGraph = styled.p`
   font-family: ${korFont};
   ${(props) => {
     switch (props['data-mode']) {
-      case 'Footer':
-        return Footer;
       case 'HeaderMain':
         return HeaderMain;
       case 'HeaderAuth':
