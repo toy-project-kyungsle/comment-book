@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    top: 60px;
+  }
 `;
 
 export const LeftSection = styled.div`

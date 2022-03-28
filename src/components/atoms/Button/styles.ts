@@ -11,12 +11,15 @@ const MainSearch = css`
 
 const sliderClose = css`
   margin-top: 13px;
+  text-decoration: none;
+  outline: none;
 `;
 
 const sliderReset = css`
   position: absolute;
   right: 8px;
   bottom: 10px;
+  outline: none;
 `;
 
 const MainSlider = css`

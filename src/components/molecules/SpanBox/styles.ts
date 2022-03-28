@@ -27,6 +27,7 @@ const MyInfoTextBox = css`
   grid-template-rows: ${100 / 3}% ${100 / 3}% ${100 / 3}%;
 
   @media (max-width: 768px) {
+    bottom: 40px;
     left: 50px;
   }
 `

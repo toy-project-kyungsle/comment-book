@@ -14,12 +14,19 @@ export const Background = styled.div`
 
   display: flex;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    height: 690px;
+  }
 `;
 
 export const PositionDiv = styled.div`
   position: relative;
   width: 1100px;
   height: 760px;
+  @media (max-width: 768px) {
+    height: 690px;
+  }
 `;
 
 export const MoreBackgroundImg = styled.div`
@@ -35,6 +42,9 @@ export const MoreBackgroundImg = styled.div`
 
   @media (max-width: 1024px) {
     background: linear-gradient(to top, rgb(236, 240, 241) 60%, rgb(228,232,233) 40%);
+  }
+  @media (max-width: 768px) {
+    height: 690px;
   }
 `;
 
@@ -54,5 +64,8 @@ export const BackgroundImg = styled.div`
     max-height: 70%;
     background-size: 100%;
     background-repeat: no-repeat;
+  }
+  @media (max-width: 768px) {
+    top: 120px;
   }
 `;

@@ -35,7 +35,7 @@ function SliderTopBox({ getBookInfo, setTrans, categoryList, editYearList }: Pro
           {Object.values(sortTagObj)
             .filter((e) => e !== '')
             .map((e) => (
-              <SpanBox className="SliderSelected" textArr={e} />
+              <SpanBox className="SliderSelected" textArr={[e]} />
             ))}
         </SelectedBox>
         <SliderModal
