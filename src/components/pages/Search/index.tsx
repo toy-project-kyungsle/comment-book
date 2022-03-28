@@ -14,6 +14,8 @@ function Search() {
   const { search, display } = useParams();
   const [books, loading, onClickOutBtn, onClickNextBtn] = useSearch({ search, display });
   const viewCount = [0, 1, 2, 3];
+  const [TopTextArr, TopClassArr] = [['Click Picture', ' you wanna comment'], ['SearchFirst']];
+  const [NextTextArr, NextClassArr] = [['next'], ['SearchClickDivFirst']];
 
   return (
     <>
@@ -23,9 +25,8 @@ function Search() {
           <Header>
             <SpanBox
               className="Search"
-              firstChild="Click Picture"
-              secondChild=" you wanna comment"
-              secondVisible={true}
+              classNameArr={TopClassArr}
+              textArr={TopTextArr}
             >
               <Button className="Search" onClick={onClickOutBtn}>
                 <FontAwesomeIcon icon={faChevronCircleLeft} style={{ fontSize: '25px', color: '#D7DBDD' }} />
@@ -38,7 +39,7 @@ function Search() {
                 <div key={e}>
                   <SearchRender book={books[e]} viewNum={e + 1} EndNum={books.length}>
                     <Next data-Left={e / 2 === 0 ? '750px' : '0'}>
-                      <SpanBox className="SearchClickDiv" divOnClick={onClickNextBtn} firstChild="next">
+                      <SpanBox className="SearchClickDiv" divOnClick={onClickNextBtn} textArr={NextTextArr} classNameArr={NextClassArr} >
                         <FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '15px' }} />
                       </SpanBox>
                     </Next>

@@ -47,7 +47,7 @@ const MyInfoIBInfo = css`
 
   font-size: 14px;
   color: #3e4756;
-  float: right;
+  text-align: end;
 `;
 
 const MyInfoTBtitle = css`
@@ -59,7 +59,7 @@ const MyInfoTBtitle = css`
   display: block;
 `;
 
-const MyInfoTBhello = css`
+const MyInfoTBinner = css`
   font-family: ${korFont};
   font-size: 14px;
   color: #0000007b;
@@ -91,18 +91,17 @@ const AuthToggle = css`
 // DetailPage
 
 const DetailPage = css`
+  font-family: ${korFont};
   color: rgb(105, 105, 105);
 `;
 
 const DetailPageFirst = css`
   ${DetailPage}
-  font-family: ${korFont};
   margin-right: 65px;
 `;
 
 const DetailPageSecond = css`
   ${DetailPage}
-  font-family: ${korFont};
 `;
 
 const DetailPageRtnComment = css`
@@ -150,7 +149,6 @@ const SearchClickDivFirst = css`
 
 export const Sspan = styled.span`
   display: ${(props) => (props['data-visibility'] ? 'inline' : 'none')};
-  /* font-display: swap; */
 
   ${(props) => {
     switch (props['data-mode']) {
@@ -169,7 +167,7 @@ export const Sspan = styled.span`
       case 'MyInfo TB title':
         return MyInfoTBtitle;
       case 'MyInfo TB inner':
-        return MyInfoTBhello;
+        return MyInfoTBinner;
       case 'AuthGuide':
         return AuthGuide;
       case 'AuthToggle':
@@ -180,9 +178,7 @@ export const Sspan = styled.span`
         return DetailPageSecond;
       case 'DetailPageRtnComment':
         return DetailPageRtnComment;
-      case 'DetailCommentFirst':
-      case 'DetailCommentSecond':
-      case 'DetailCommentThird':
+      case 'DetailComment':
         return DetailComment;
       case 'SearchFirst':
         return SearchFirst;

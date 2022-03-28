@@ -42,16 +42,17 @@ function DetailComment(props: Props) {
     longComment,
   });
 
+  const [EditModeTextArr, EditModeOnclickArr] = [['Finish', 'Cancle'], [onSubmit, onClickCancle]]
+  const [InfoModeTextArr, InfoModeOnclickArr] = [['Comment'], [onClickInfoBtn]]
+  const [defModeTextArr, defModeOnclickArr] = [['Info', 'Edit', 'Delete'], [onClickInfoBtn, onClickAddEditBtn, onClickDelete]]
+
   return editMode ? (
     <div style={{ minHeight: '180px' }}>
       {LonglineTextArea(longComment, onCangeLongComment)}
       <SpanBox
         className="DetailComment"
-        firstChild="Finish"
-        secondChild="Cancle"
-        secondVisible={true}
-        fisrtOnClick={onSubmit}
-        secondOnClick={onClickCancle}
+        textArr={EditModeTextArr}
+        onClickArr={EditModeOnclickArr}
       />
     </div>
   ) : infoMode ? (
@@ -59,24 +60,18 @@ function DetailComment(props: Props) {
       <Description>
         <Paragraph className="default">{(book as IbookData).description}</Paragraph>
       </Description>
-      <SpanBox className="DetailComment" firstChild="Comment" fisrtOnClick={onClickInfoBtn} />
+      <SpanBox className="DetailComment" textArr={InfoModeTextArr} onClickArr={InfoModeOnclickArr} />
     </>
   ) : (
-    <>
-      <Paragraph className="DetailCommentLong">{longComment}</Paragraph>
-      <SpanBox
-        className="DetailComment"
-        firstChild="Info"
-        secondChild="Edit"
-        thirdChild="Delete"
-        secondVisible={true}
-        thirdVisible={true}
-        fisrtOnClick={onClickInfoBtn}
-        secondOnClick={onClickAddEditBtn}
-        thirdOnClick={onClickDelete}
-      />
-    </>
-  );
+        <>
+          <Paragraph className="DetailCommentLong">{longComment}</Paragraph>
+          <SpanBox
+            className="DetailComment"
+            textArr={defModeTextArr}
+            onClickArr={defModeOnclickArr}
+          />
+        </>
+      );
 }
 
 export default DetailComment;

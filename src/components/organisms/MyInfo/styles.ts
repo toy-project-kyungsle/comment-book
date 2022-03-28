@@ -56,31 +56,3 @@ export const BackgroundImg = styled.div`
     background-repeat: no-repeat;
   }
 `;
-
-export const TitleBox = styled.div`
-  position: absolute;
-  left: 50px;
-  bottom: 53px;
-  width: 320px;
-
-  @media (max-width: 768px) {
-    bottom: 200px;
-    width: 100%;
-    padding-right: 100px;
-  }
-`;
-
-export const InfoBox = styled.div`
-  position: absolute;
-  right: 50px;
-  bottom: 40px;
-  height: 15%;
-
-  display: grid;
-  grid-template-columns: 150px 120px;
-  grid-template-rows: ${100 / 3}% ${100 / 3}% ${100 / 3}%;
-
-  @media (max-width: 768px) {
-    left: 50px;
-  }
-`;

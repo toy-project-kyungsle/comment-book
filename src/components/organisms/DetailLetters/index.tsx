@@ -19,52 +19,51 @@ interface Props {
 
 function DetailLetters(props: Props) {
   const { book, infoMode, editMode, rating, onChangeRating, onChangeShortComment, shortComment } = props;
-  const infoArr = [
-    [book.author, `작가\xa0\xa0\xa0`, book.author],
-    [book.categoryId, '장르\xa0\xa0\xa0', GetDetailedName(book.categoryId)],
-    [book.pubDate, '출판일', GetDate(book.pubDate)],
-  ];
+  const infoArr = [book.author, book.categoryId, book.pubDate];
+  const InfoChildArr = [[`작가\xa0\xa0\xa0\xa0`, book.author],
+  ['장르\xa0\xa0\xa0\xa0', GetDetailedName(book.categoryId)], ['출판일', GetDate(book.pubDate)]];
+  const ClassArr = ['DetailPageFirst', 'DetailPageSecond']
+
+  const ratingModeTextArr = ['평점\xa0\xa0\xa0\xa0', editMode ? (
+    <>
+      <TextArea className="DetailPageRating" onChange={onChangeRating} value={rating} />
+      <Span className="DetailPageRtnComment">5점이 만점입니다.</Span>
+    </>
+  ) : (
+      <Span className="DetailPage">{rating}</Span>
+    )];
+
+  const oneLineTextArr = ['한줄평', editMode ? (
+    <TextArea
+      className="DetailPageOneline"
+      onChange={onChangeShortComment}
+      value={shortComment === "There's no comment" ? '' : shortComment}
+      maxLength={34}
+    />
+  ) : (
+      <Span className="DetailPage">{shortComment}</Span>
+    )]
+
+
   return (
     <div>
       <Paragraph className="DetailTitle">{book.title}</Paragraph>
       {infoArr.map(
-        (elem) =>
-          elem[0] && <SpanBox className="DetailPage" firstChild={elem[1]} secondChild={elem[2]} secondVisible={true} />,
+        (elem, i) =>
+          elem && <SpanBox className="DetailPage" classNameArr={ClassArr} textArr={InfoChildArr[i]} />,
       )}
       {!infoMode && (
         <SpanBox
           className="DetailPage"
-          firstChild="평점&emsp;"
-          secondChild={
-            editMode ? (
-              <>
-                <TextArea className="DetailPageRating" onChange={onChangeRating} value={rating} />
-                <Span className="DetailPageRtnComment">5점이 만점입니다.</Span>
-              </>
-            ) : (
-              <Span className="DetailPage">{rating}</Span>
-            )
-          }
-          secondVisible={true}
+          classNameArr={ClassArr}
+          textArr={ratingModeTextArr}
         />
       )}
       {!infoMode && (
         <SpanBox
           className="DetailPage"
-          firstChild="한줄평"
-          secondChild={
-            editMode ? (
-              <TextArea
-                className="DetailPageOneline"
-                onChange={onChangeShortComment}
-                value={shortComment === "There's no comment" ? '' : shortComment}
-                maxLength={34}
-              />
-            ) : (
-              <Span className="DetailPage">{shortComment}</Span>
-            )
-          }
-          secondVisible={true}
+          classNameArr={ClassArr}
+          textArr={oneLineTextArr}
         />
       )}
     </div>

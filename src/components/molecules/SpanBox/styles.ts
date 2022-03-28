@@ -1,19 +1,54 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { engFont2, korFont } from '@utils/objects/fonts';
+
+// MyInfo
+
+const MyInfoTiTleBox = css`
+  position: absolute;
+  left: 50px;
+  bottom: 53px;
+  width: 320px;
+
+  @media (max-width: 768px) {
+    bottom: 200px;
+    width: 100%;
+    padding-right: 100px;
+  }
+`
+
+const MyInfoTextBox = css`
+  position: absolute;
+  right: 50px;
+  bottom: 40px;
+  height: 15%;
+
+  display: grid;
+  grid-template-columns: 150px 120px;
+  grid-template-rows: ${100 / 3}% ${100 / 3}% ${100 / 3}%;
+
+  @media (max-width: 768px) {
+    left: 50px;
+  }
+`
+
+// Detail Page
 
 const DetailPage = css`
   margin: 7px 0;
 `;
 
 const DetailComment = css`
+  font-size: 14px;
+  
   position: absolute;
   right: 0;
   bottom: -10;
 
   color: rgb(105, 105, 105);
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
 `;
+
+// Search Page
 
 const Search = css`
   position: relative;
@@ -35,6 +70,10 @@ const SearchClickDiv = css`
 export const Wrapper = styled.div`
   ${(props) => {
     switch (props['data-mode']) {
+      case 'MyInfoTiTleBox':
+        return MyInfoTiTleBox;
+      case 'MyInfoTextBox':
+        return MyInfoTextBox;
       case 'DetailPage':
         return DetailPage;
       case 'DetailComment':
