@@ -17,12 +17,12 @@ export const ClassifyingModal = styled.div`
   max-width: 655px;
   min-height: 80px;
   padding: 0 10px 0 20px;
+`;
 
-  .modal_grid {
+export const Modalgrid = styled.div`
     display: grid;
     grid-template-columns: repeat(5, 120px);
 
     max-width: 600px;
     min-height: 80px;
-  }
-`;
+`

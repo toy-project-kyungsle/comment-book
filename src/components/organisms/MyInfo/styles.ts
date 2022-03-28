@@ -34,7 +34,7 @@ export const MoreBackgroundImg = styled.div`
   background-size: cover;
 
   @media (max-width: 1024px) {
-    background: rgb(236, 240, 241);
+    background: linear-gradient(to top, rgb(236, 240, 241) 60%, rgb(228,232,233) 40%);
   }
 `;
 

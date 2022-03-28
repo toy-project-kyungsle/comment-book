@@ -4,7 +4,8 @@ import useSort from '@hooks/notReUsable/useSort';
 import useToggle from '@hooks/reuUsable/useToggle';
 import { IFbookData } from '@utils/objects/types';
 import React, { useEffect } from 'react';
-import { Background, TopBox } from './styles';
+import { Background, TopBox, UpperBox, SelectedBox } from './styles';
+import SpanBox from '@components/molecules/SpanBox';
 
 interface Props {
   mybooks: IFbookData[];
@@ -17,7 +18,7 @@ interface Props {
 function SliderTopBox({ getBookInfo, setTrans, categoryList, editYearList }: Props) {
   const [sortTagObj, , onClickSort] = useSort({ cg: '', rt: '', yr: '' }, setTrans);
   const [listOpenArr, , onClickToggle] = useToggle([false, false, false]);
-  const ToggleArr = ['Category', 'Rating', 'Year'];
+  const ToggleTextArr = ['Category', 'Rating', 'Year'];
 
   useEffect(() => {
     getBookInfo(sortTagObj['cg'], sortTagObj['rt'], sortTagObj['yr']);
@@ -26,27 +27,17 @@ function SliderTopBox({ getBookInfo, setTrans, categoryList, editYearList }: Pro
   return (
     <Background>
       <TopBox>
-        <div className="upperContainer">
-          <div>
-            <Span className="SliderTopTitle">My books</Span>
-          </div>
-          <div>
-            {ToggleArr.map((name: string) => (
-              <Span onClick={onClickToggle} className="SliderTopToggle">
-                {name}
-              </Span>
-            ))}
-          </div>
-        </div>
-        <div className="selectedCgCon">
+        <UpperBox>
+          <SpanBox className="SliderTopTitle" textArr={['My books']} />
+          <SpanBox className="SliderTopToggle" textArr={ToggleTextArr} onClickArr={[onClickToggle]} />
+        </UpperBox>
+        <SelectedBox>
           {Object.values(sortTagObj)
             .filter((e) => e !== '')
             .map((e) => (
-              <div>
-                <Span className="default">{e}</Span>
-              </div>
+              <SpanBox className="SliderSelected" textArr={e} />
             ))}
-        </div>
+        </SelectedBox>
         <SliderModal
           categoryList={categoryList}
           editYearList={editYearList}

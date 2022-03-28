@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { engFont2, korFont } from '@utils/objects/fonts';
 
 // MyInfo
 
@@ -30,6 +29,15 @@ const MyInfoTextBox = css`
   @media (max-width: 768px) {
     left: 50px;
   }
+`
+
+// Slider
+
+const SliderSelected = css`
+      margin-right: 15px;
+      padding-bottom: 5;
+
+      border-bottom: 1px solid #00000030;
 `
 
 // Detail Page
@@ -74,6 +82,8 @@ export const Wrapper = styled.div`
         return MyInfoTiTleBox;
       case 'MyInfoTextBox':
         return MyInfoTextBox;
+      case 'SliderSelected':
+        return SliderSelected;
       case 'DetailPage':
         return DetailPage;
       case 'DetailComment':

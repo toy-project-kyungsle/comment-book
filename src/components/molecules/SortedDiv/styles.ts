@@ -4,6 +4,17 @@ import styled from '@emotion/styled';
 const SliderTopBox = css`
   width: 120px;
   font-size: 14px;
+
+  .contentInner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & div:hover {
+      cursor: pointer;
+      color: wheat;
+    }
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -19,15 +30,4 @@ export const Wrapper = styled.div`
         return null;
     }
   }}
-
-  .contentInner {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    & div:hover {
-      cursor: pointer;
-      color: wheat;
-    }
-  }
 `;

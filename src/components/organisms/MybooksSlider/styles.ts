@@ -12,7 +12,6 @@ export const SlidesBackground = styled.div`
   justify-content: center;
   .container {
     position: relative;
-    width: 1400px;
   }
 `;
 

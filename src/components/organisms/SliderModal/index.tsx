@@ -3,7 +3,7 @@ import Image from '@components/atoms/Image';
 import SortedDiv from '@components/molecules/SortedDiv';
 import DeleteSameElem from '@utils/funtions/DeleteSameElem';
 import React from 'react';
-import { ClassifyingModal } from './styles';
+import { ClassifyingModal, Modalgrid } from './styles';
 
 interface Props {
   categoryList: string[];
@@ -18,7 +18,7 @@ function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onC
 
   return listOpenArr.some((e) => e) ? (
     <ClassifyingModal>
-      <div className="modal_grid">
+      <Modalgrid>
         {categoryList &&
           listOpenArr[0] &&
           categoryList.map((name: string) => {
@@ -28,24 +28,24 @@ function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onC
           ratingSection.map((elem) => {
             return <SortedDiv className="SliderTopBox" onClick={onClickSort} text={elem} id="rt" />;
           })}
-        {listOpenArr[2] &&
-          editYearList &&
+        {editYearList &&
+          listOpenArr[2] &&
           DeleteSameElem(editYearList)
             .sort((a, b) => b - a)
             .map((year) => {
               return <SortedDiv className="SliderTopBox" onClick={onClickSort} text={year} id="yr" />;
             })}
-      </div>
+      </Modalgrid>
       <div>
-        <Button className="closeBtn" onClick={onClickCloseBtn}>
+        <Button className="sliderClose" onClick={onClickCloseBtn}>
           <Image
-            className="closeBtn"
+            className="sliderClose"
             src="https://user-images.githubusercontent.com/79993356/154801650-d6a3e43d-4ba0-4107-a3c2-dfaeca5eb6af.png"
           ></Image>
         </Button>
-        <Button className="resetBtn" onClick={onClickSort}>
+        <Button className="sliderReset" onClick={onClickSort}>
           <Image
-            className="resetBtn"
+            className="sliderReset"
             src="https://user-images.githubusercontent.com/79993356/154805451-4852137e-f850-49f9-814e-6cfc937494ae.svg"
             id={listOpenArr[0] ? 'cg' : listOpenArr[1] ? 'rt' : listOpenArr[2] ? 'yr' : null}
           ></Image>

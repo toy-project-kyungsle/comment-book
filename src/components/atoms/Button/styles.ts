@@ -9,11 +9,11 @@ const MainSearch = css`
   border: none;
 `;
 
-const closeBtn = css`
+const sliderClose = css`
   margin-top: 13px;
 `;
 
-const resetBtn = css`
+const sliderReset = css`
   position: absolute;
   right: 8px;
   bottom: 10px;
@@ -36,12 +36,12 @@ const MainSlider = css`
 
 const MainSliderLeft = css`
   ${MainSlider}
-  right: 230px;
+  right: 40px;
 `;
 
 const MainSliderRight = css`
   ${MainSlider}
-  right: 190px;
+  right: 0px;
 `;
 
 const Search = css`
@@ -65,10 +65,10 @@ export const Sbutton = styled.button`
         return Header;
       case 'MainSearch':
         return MainSearch;
-      case 'closeBtn':
-        return closeBtn;
-      case 'resetBtn':
-        return resetBtn;
+      case 'sliderClose':
+        return sliderClose;
+      case 'sliderReset':
+        return sliderReset;
       case 'MainSliderLeft':
         return MainSliderLeft;
       case 'MainSliderRight':

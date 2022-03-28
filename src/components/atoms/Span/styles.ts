@@ -16,6 +16,11 @@ const MainSearch = css`
 
 // Slider
 
+const SliderTopTitle = css`
+  font-family: ${engFont1};
+  font-size: 20px;
+`;
+
 const SliderTopToggle = css`
   font-family: ${engFont1};
   margin-left: 20px;
@@ -24,11 +29,6 @@ const SliderTopToggle = css`
     cursor: pointer;
     color: wheat;
   }
-`;
-
-const SliderTopTitle = css`
-  font-family: ${engFont1};
-  font-size: 20px;
 `;
 
 // MyInfo

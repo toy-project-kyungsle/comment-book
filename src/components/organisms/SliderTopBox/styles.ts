@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 
-const engFont = "'Roboto', sans-serif";
 const korFont = "'Noto Sans KR', sans-serif";
 
 export const Background = styled.div`
@@ -14,7 +13,6 @@ export const TopBox = styled.div`
   margin: 0 auto;
   padding-top: 80px;
   padding-bottom: 100px;
-  font-family: ${engFont}
 
   animation: smoothShow 1s;
 
@@ -31,13 +29,19 @@ export const TopBox = styled.div`
     }
   }
 
-  .upperContainer {
+  @media (max-width: 1024px) {
+    width: 80%;
+  }
+
+`;
+
+export const UpperBox = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
+`
 
-  .selectedCgCon {
+export const SelectedBox = styled.div`
     font-family: ${korFont} ;
     position: absolute;
     left: 0;
@@ -47,12 +51,4 @@ export const TopBox = styled.div`
     font-size: 14px;
 
     display: flex;
-
-    & div {
-      margin-right: 15px;
-      padding-bottom: 5;
-
-      border-bottom: 1px solid #00000030;
-    }
-  }
-`;
+`

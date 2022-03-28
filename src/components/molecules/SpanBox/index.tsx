@@ -23,7 +23,8 @@ function SpanBox(props: Props) {
   return (
     <Wrapper data-mode={className} onClick={divOnClick}>
       {textArr && textArr.map((text, i) => (
-        <Span className={classNameArr && className[i] ? classNameArr[i] : className} onClick={onClickArr && onClickArr[i]}>
+        <Span className={classNameArr ? (className[i] ? classNameArr[i] : classNameArr[classNameArr.length - 1]) : className}
+          onClick={onClickArr && (onClickArr[i] ? onClickArr[i] : onClickArr[onClickArr.length - 1])}>
           {text}
         </Span>
       ))}

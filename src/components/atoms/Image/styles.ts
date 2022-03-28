@@ -8,18 +8,26 @@ const SocialLogin = css`
   margin: 0px 10px 3px 0px;
 `;
 
+const MainSlider = css`
+  height: 420px;
+  width: 1000px;
+  @media (max-width: 1024px) {
+    display: none;
+  }
+`;
+
 const SliderImg = css`
   height: ${PictureHeight};
   width: ${PictureWidth};
   z-index: 100;
 `;
 
-const closeBtn = css`
+const sliderClose = css`
   height: 13px;
   width: 13px;
 `;
 
-const resetBtn = css`
+const sliderReset = css`
   height: 15px;
 `;
 
@@ -30,11 +38,6 @@ const SearchRender = css`
     cursor: pointer;
     transform: scale(1.05);
   }
-`;
-
-const MainSlider = css`
-  height: 420px;
-  width: 1000px;
 `;
 
 const DetailPageXBtn = css`
@@ -51,10 +54,10 @@ export const Simage = styled.img`
         return SocialLogin;
       case 'SliderImg':
         return SliderImg;
-      case 'closeBtn':
-        return closeBtn;
-      case 'resetBtn':
-        return resetBtn;
+      case 'sliderClose':
+        return sliderClose;
+      case 'sliderReset':
+        return sliderReset;
       case 'SearchRender':
         return SearchRender;
       case 'MainSlider':
