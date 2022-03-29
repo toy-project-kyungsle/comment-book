@@ -14,19 +14,24 @@ const DetailPageImgDiv = css`
   :hover {
     color: black;
   }
+  @media (max-width: 825px) {
+    position: unset;
+    margin: 0 auto;
+    display: block;
+  }
 `;
 
 const FooterSNS = css`
-    font-size: 14px;
-    color: grey;
-    margin-left: 50px;
-    text-decoration: none;
+  font-size: 14px;
+  color: grey;
+  margin-left: 50px;
+  text-decoration: none;
 
-    @media (max-width: 470px) {
-      margin: 0;
-      margin-right: 30px;
-    }
-`
+  @media (max-width: 470px) {
+    margin: 0;
+    margin-right: 30px;
+  }
+`;
 
 export const Sanchor = styled.a`
   ${(props) => {

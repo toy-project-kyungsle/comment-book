@@ -55,6 +55,9 @@ const DetailComment = css`
   bottom: -10;
 
   color: rgb(105, 105, 105);
+  @media (max-width: 825px) {
+    right: 30px;
+  }
 `;
 
 // Search Page

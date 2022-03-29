@@ -91,9 +91,13 @@ const DetailCommentLong = css`
 
 const DetailPageTopBtn = css`
   position: absolute;
-  top: -5;
-  right: 0;
+  top: -5px;
+  right: 0px;
   z-index: 5;
+  @media (max-width: 800px) {
+    top: 0px;
+    right: 10px;
+  }
 `;
 
 export const SparaGraph = styled.p`

@@ -27,7 +27,7 @@ function DetailPage() {
   return (
     <>
       <Loading loading={loading} />
-      {loading ? null : (
+      {!loading && (
         <Background>
           <Container>
             <Paragraph className="DetailPageTopBtn" onClick={navigate}>
