@@ -1,6 +1,12 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
+// Auth
+
+const Auth = css`
+  margin: 30px 0 0 97px;
+`;
+
 // MyInfo
 
 const MyInfoTiTleBox = css`
@@ -91,6 +97,8 @@ const Footer = css`
 export const Wrapper = styled.div`
   ${(props) => {
     switch (props['data-mode']) {
+      case 'Auth':
+        return Auth;
       case 'MyInfoTiTleBox':
         return MyInfoTiTleBox;
       case 'MyInfoTextBox':

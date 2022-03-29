@@ -8,10 +8,20 @@ import { reduxState } from '@utils/objects/types';
 import SubmitForm from '@components/molecules/SubmitForm';
 import useLogin from '@hooks/notReUsable/useAuth';
 import Span from '@components/atoms/Span';
+import SpanBox from '@components/molecules/SpanBox';
 
 const Auth = ({ setShowLoginModal, showLoginModal }) => {
   const [signUp, setSingUp] = useState(false);
   const [email, password, onChange, error, retype, onChageRetype, onSubmit, onSocialClick] = useLogin('', signUp);
+  const [ClassArr, SignUpTextArr, SignUpOnClickArr] = [
+    ['AuthGuide', 'AuthToggle'],
+    ['이미 계정이 있으신가요?', 'Log in'],
+    [null, () => setSingUp((prev) => !prev)],
+  ];
+  const [LoginTextArr, LoginOnClickArr] = [
+    ['회원가입을 원하시나요?', 'Sing up'],
+    [null, () => setSingUp((prev) => !prev)],
+  ];
 
   return (
     showLoginModal && (
@@ -29,23 +39,12 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
             onChange={onChange}
             error={error}
           />
-          <SignUpOrLogin>
-            {signUp ? (
-              <>
-                <Span className="AuthGuide">이미 계정이 있으신가요?</Span>
-                <Span onClick={() => setSingUp((prev) => !prev)} className="AuthToggle">
-                  Log in
-                </Span>
-              </>
-            ) : (
-              <>
-                <Span className="AuthGuide">회원가입을 원하시나요?</Span>
-                <Span onClick={() => setSingUp((prev) => !prev)} className="AuthToggle">
-                  Sing up
-                </Span>
-              </>
-            )}
-          </SignUpOrLogin>
+          <SpanBox
+            className="Auth"
+            classNameArr={ClassArr}
+            textArr={signUp ? SignUpTextArr : LoginTextArr}
+            onClickArr={signUp ? SignUpOnClickArr : LoginOnClickArr}
+          />
           <SocialLogin onSocialClick={onSocialClick} />
         </Container>
       </Background>
