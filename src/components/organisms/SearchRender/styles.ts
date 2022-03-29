@@ -34,10 +34,15 @@ export const Container = styled.div`
       opacity: 1;
     }
   }
+
+  @media (max-width: 800px) {
+    width: 90%;
+  }
 `;
 
 export const SmallBackGround = styled.div`
   position: absolute;
+  right: ${(props) => props['data-Right']};
   left: ${(props) => props['data-Left']};
   bottom: 0;
 

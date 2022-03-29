@@ -23,11 +23,7 @@ function Search() {
       {!loading && (
         <>
           <Header>
-            <SpanBox
-              className="Search"
-              classNameArr={TopClassArr}
-              textArr={TopTextArr}
-            >
+            <SpanBox className="Search" classNameArr={TopClassArr} textArr={TopTextArr}>
               <Button className="Search" onClick={onClickOutBtn}>
                 <FontAwesomeIcon icon={faChevronCircleLeft} style={{ fontSize: '25px', color: '#D7DBDD' }} />
               </Button>
@@ -39,7 +35,12 @@ function Search() {
                 <div key={e}>
                   <SearchRender book={books[e]} viewNum={e + 1} EndNum={books.length}>
                     <Next data-Left={e / 2 === 0 ? '750px' : '0'}>
-                      <SpanBox className="SearchClickDiv" divOnClick={onClickNextBtn} textArr={NextTextArr} classNameArr={NextClassArr} >
+                      <SpanBox
+                        className="SearchClickDiv"
+                        divOnClick={onClickNextBtn}
+                        textArr={NextTextArr}
+                        classNameArr={NextClassArr}
+                      >
                         <FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '15px' }} />
                       </SpanBox>
                     </Next>

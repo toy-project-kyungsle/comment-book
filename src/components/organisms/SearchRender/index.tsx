@@ -16,19 +16,17 @@ interface Props {
 
 function SearchRender({ children, book, viewNum, EndNum }: Props) {
   const navigate = useNavi(`/comment/${book.isbn}`);
-  const [conHeight, sBackLeft, sBackHeight, sBackWidth, imgLeft, imgBottom, letterLeft, letterBottom] =
+  const [conHeight, sBackRight, sBackLeft, sBackHeight, sBackWidth, imgLeft, imgBottom, letterLeft, letterBottom] =
     useSearchPosition(viewNum);
 
   const onClickImg = useCallback(() => {
-    if (book.isbn)
-      navigate();
-    else
-      alert("해당 상품은 이제 존재하지 않습니다!")
+    if (book.isbn) navigate();
+    else alert('해당 상품은 이제 존재하지 않습니다!');
   }, [book.isbn, navigate]);
 
   return (
     <Container data-Height={conHeight} data-num={viewNum}>
-      <SmallBackGround data-Height={sBackHeight} data-Width={sBackWidth} data-Left={sBackLeft}>
+      <SmallBackGround data-Height={sBackHeight} data-Width={sBackWidth} data-Left={sBackLeft} data-Right={sBackRight}>
         <ImgDiv data-Left={imgLeft} data-Bottom={imgBottom}>
           <Image className="SearchRender" src={book.coverLargeUrl} alt={book.title} onClick={onClickImg} />
         </ImgDiv>

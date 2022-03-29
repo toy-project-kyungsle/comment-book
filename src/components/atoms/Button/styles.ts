@@ -1,9 +1,13 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
+// Header
+
 const Header = css`
   margin: 0 20px 5px 0;
 `;
+
+// Slider
 
 const MainSearch = css`
   border: none;
@@ -46,6 +50,8 @@ const MainSliderRight = css`
   ${MainSlider}
   right: 0px;
 `;
+
+// Search
 
 const Search = css`
   position: absolute;

@@ -14,7 +14,7 @@ const MyInfoTiTleBox = css`
     width: 100%;
     padding-right: 100px;
   }
-`
+`;
 
 const MyInfoTextBox = css`
   position: absolute;
@@ -30,16 +30,16 @@ const MyInfoTextBox = css`
     bottom: 40px;
     left: 50px;
   }
-`
+`;
 
 // Slider
 
 const SliderSelected = css`
-      margin-right: 15px;
-      padding-bottom: 5;
+  margin-right: 15px;
+  padding-bottom: 5;
 
-      border-bottom: 1px solid #00000030;
-`
+  border-bottom: 1px solid #00000030;
+`;
 
 // Detail Page
 
@@ -49,7 +49,7 @@ const DetailPage = css`
 
 const DetailComment = css`
   font-size: 14px;
-  
+
   position: absolute;
   right: 0;
   bottom: -10;
@@ -80,7 +80,7 @@ const SearchClickDiv = css`
 
 const Footer = css`
   margin: 15px 0;
-`
+`;
 
 export const Wrapper = styled.div`
   ${(props) => {
