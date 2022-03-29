@@ -6,7 +6,8 @@ export const Header = styled.div`
   font-family: ${engFont};
 
   position: relative;
-  margin: 150px 0 200px 0;
+  width: 90%;
+  margin: 150px auto 200px auto;
 
   color: #3e4756;
 `;

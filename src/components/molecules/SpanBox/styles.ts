@@ -66,6 +66,9 @@ const Search = css`
 
   width: 300px;
   margin: 0 auto;
+  @media (max-width: 800px) {
+    position: unset;
+  }
 `;
 
 const SearchClickDiv = css`

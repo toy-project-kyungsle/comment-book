@@ -61,6 +61,9 @@ const Search = css`
   :hover {
     transform: scale(1.1);
   }
+  @media (max-width: 800px) {
+    left: 0;
+  }
 `;
 
 export const Sbutton = styled.button`

@@ -32,23 +32,22 @@ export const TopBox = styled.div`
   @media (max-width: 1024px) {
     width: 80%;
   }
-
 `;
 
 export const UpperBox = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 export const SelectedBox = styled.div`
-    font-family: ${korFont} ;
-    position: absolute;
-    left: 0;
-    top: 130px;
+  font-family: ${korFont};
+  position: absolute;
+  left: 0;
+  top: 130px;
 
-    color: #00000096;
-    font-size: 14px;
+  color: #00000096;
+  font-size: 14px;
 
-    display: flex;
-`
+  display: flex;
+`;
