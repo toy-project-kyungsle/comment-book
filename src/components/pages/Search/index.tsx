@@ -34,7 +34,7 @@ function Search() {
               return (
                 <div key={e}>
                   <SearchRender book={books[e]} viewNum={e + 1} EndNum={books.length}>
-                    <Next data-Left={e / 2 === 0 ? '750px' : '0'}>
+                    <Next data-Left={e / 2 === 0 ? null : '0'} data-Right={e / 2 === 0 ? '0' : null}>
                       <SpanBox
                         className="SearchClickDiv"
                         divOnClick={onClickNextBtn}
