@@ -8,18 +8,15 @@ interface Props {
   imgSrc: string;
   DivID?: string;
   DivText?: string;
+  children?: any;
 }
 
 function ImageDiv(props: Props) {
-  const { className, onSocialClick, imgSrc, DivID, DivText } = props;
+  const { className, imgSrc, children } = props;
   return (
-    <Wrapper>
-      <div>
-        <Img className={className} src={imgSrc} alt="null"></Img>
-      </div>
-      <div id={DivID} onClick={onSocialClick}>
-        <div>{DivText}</div>
-      </div>
+    <Wrapper data-mode={className}>
+      <Img className={className} src={imgSrc} alt="null"></Img>
+      {children}
     </Wrapper>
   );
 }

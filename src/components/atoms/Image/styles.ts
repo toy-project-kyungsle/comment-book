@@ -2,11 +2,24 @@ import { PictureHeight, PictureWidth } from '@components/molecules/LinkImage/sty
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
+// Reusable
+
+const ImgHover = css`
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+// Auth
+
 const SocialLogin = css`
   height: 20px;
   width: 20px;
   margin: 0px 10px 3px 0px;
+  ${ImgHover}
 `;
+
+// Slider
 
 const MainSlider = css`
   height: 420px;
@@ -31,25 +44,29 @@ const sliderReset = css`
   height: 15px;
 `;
 
+// Search
+
 const SearchRender = css`
   width: 170px;
   transition: 0.5s;
+  ${ImgHover}
   :hover {
-    cursor: pointer;
     transform: scale(1.05);
   }
 `;
 
+// Detail
+
 const DetailPageXBtn = css`
   width: 15px;
-  :hover {
-    cursor: pointer;
-  }
+  ${ImgHover}
 `;
 
 export const Simage = styled.img`
   ${(props) => {
     switch (props['data-mode']) {
+      case 'ImgHover':
+        return ImgHover;
       case 'SocialLogin':
         return SocialLogin;
       case 'SliderImg':

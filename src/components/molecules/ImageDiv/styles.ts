@@ -1,17 +1,17 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+
+const SocialLogin = css`
+  display: flex;
+`;
 
 export const Wrapper = styled.div`
-  display: flex;
-  #google,
-  #github {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  #google:hover,
-  #github:hover {
-    & div {
-      cursor: pointer;
+  ${(props) => {
+    switch (props['data-mode']) {
+      case 'SocialLogin':
+        return SocialLogin;
+      default:
+        return null;
     }
-  }
+  }}
 `;
