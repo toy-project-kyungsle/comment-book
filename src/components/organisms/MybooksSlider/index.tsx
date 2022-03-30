@@ -39,26 +39,26 @@ function MybooksSlider({ loading, setLoadNum, isLoggedIn }: Props) {
           </div>
         </SlidesBackground>
       ) : (
-          <div style={{ position: 'relative' }}>
-            {isLoggedIn ? (
-              <>
-                <LoginGuide data-mode="nobook">이제 원하시는 책을 추가해주세요</LoginGuide>
-                <div style={{ height: '300px', backgroundColor: '#f2f2f2' }}></div>
-              </>
-            ) : (
-                <>
-                  <LoginGuide data-mode="nologin">로그인 하시면 사용 가능합니다</LoginGuide>
-                  <GuideDiv>
-                    <Image
-                      className="MainSlider"
-                      src="https://user-images.githubusercontent.com/79993356/157588810-ec0405ad-e472-4226-ac87-6e2cb6f50b0e.gif"
-                      alt="null"
-                    />
-                  </GuideDiv>
-                </>
-              )}
-          </div>
-        )}
+        <div style={{ position: 'relative' }}>
+          {isLoggedIn ? (
+            <>
+              <LoginGuide data-mode="nobook">이제 원하시는 책을 추가해주세요</LoginGuide>
+              <div style={{ height: '300px', backgroundColor: '#f2f2f2' }}></div>
+            </>
+          ) : (
+            <>
+              <LoginGuide data-mode="nologin">로그인 하시면 사용 가능합니다</LoginGuide>
+              <GuideDiv>
+                <Image
+                  className="MainSlider"
+                  src="https://user-images.githubusercontent.com/79993356/157588810-ec0405ad-e472-4226-ac87-6e2cb6f50b0e.gif"
+                  alt="null"
+                />
+              </GuideDiv>
+            </>
+          )}
+        </div>
+      )}
     </>
   );
 }

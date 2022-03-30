@@ -41,7 +41,7 @@ const useDetailComment = (props: Props): rtn => {
               rating,
               shortComment,
               longComment,
-              editDate: new Date(),
+              editDate: Date(),
             }),
           },
           { merge: true },

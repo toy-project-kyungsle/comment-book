@@ -34,6 +34,7 @@ const useCategoryList = (setLoadNum: (e: any) => void, mybooks: any): rtn => {
     if (isLoggedIn) getCategoryList();
     if (mybooks.length > 0) {
       mybooks.forEach((elem: IFbookData) => {
+        // console.log(elem.editDate);
         if (!editYearList.includes(new Date(elem.editDate).getFullYear())) {
           setEditYearList((prev) => [new Date(elem.editDate).getFullYear(), ...prev]);
         }

@@ -16,6 +16,8 @@ interface Props {
 function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onClickCloseBtn }: Props) {
   const ratingSection = ['0~1', '1~2', '2~3', '3~4', '4~5'];
 
+  // console.log(editYearList);
+
   return listOpenArr.some((e) => e) ? (
     <ClassifyingModal>
       <Modalgrid>
