@@ -1,4 +1,3 @@
-import Span from '@components/atoms/Span';
 import SliderModal from '@components/organisms/SliderModal';
 import useSort from '@hooks/notReUsable/useSort';
 import useToggle from '@hooks/reuUsable/useToggle';
@@ -23,6 +22,8 @@ function SliderTopBox({ getBookInfo, setTrans, categoryList, editYearList }: Pro
   useEffect(() => {
     getBookInfo(sortTagObj['cg'], sortTagObj['rt'], sortTagObj['yr']);
   }, [getBookInfo, sortTagObj]);
+
+  // console.log(sortTagObj);
 
   return (
     <Background>

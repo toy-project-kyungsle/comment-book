@@ -10,11 +10,14 @@ type rtnProps = [Props, React.Dispatch<React.SetStateAction<Props>>, (e: any) =>
 
 const useInput = (initialData: Props, setTrans: React.Dispatch<React.SetStateAction<number>>): rtnProps => {
   const [sortTagObj, setSortTagObj] = useState(initialData);
+  // console.log(sortTagObj);
   const handler = useCallback(
     (e) => {
-      setSortTagObj((prev) => {
-        return { ...prev, [e.target.id]: e.target.innerText };
-      });
+      if (e.target.id !== '') {
+        setSortTagObj((prev) => {
+          return { ...prev, [e.target.id]: e.target.innerText };
+        });
+      }
       setTrans(0);
     },
     [setTrans],
