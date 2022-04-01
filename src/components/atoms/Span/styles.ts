@@ -8,6 +8,22 @@ const Loading = css`
   font-size: 40px;
 `;
 
+// Auth
+
+const AuthGuide = css`
+  font-family: ${korFont};
+  font-size: 14px;
+`;
+
+const AuthToggle = css`
+  font-family: ${engFont1};
+  margin-left: 10px;
+  color: #2980b9;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 // MyInfo
 
 const MyInfoIBTitle = css`
@@ -74,17 +90,9 @@ const SliderTopToggle = css`
   }
 `;
 
-// Auth
-
-const AuthGuide = css`
-  font-family: ${korFont};
-  font-size: 14px;
-`;
-
-const AuthToggle = css`
-  font-family: ${engFont1};
-  margin-left: 10px;
-  color: #2980b9;
+const SliderFilterLetter = css`
+  display: table-cell;
+  vertical-align: middle;
   :hover {
     cursor: pointer;
   }
@@ -164,8 +172,7 @@ const Footer = css`
   @media (max-width: 470px) {
     display: inline;
   }
-`
-
+`;
 
 export const Sspan = styled.span`
   display: ${(props) => (props['data-visibility'] ? 'inline' : 'none')};
@@ -180,6 +187,8 @@ export const Sspan = styled.span`
         return SliderTopToggle;
       case 'SliderTopTitle':
         return SliderTopTitle;
+      case 'SliderFilterLetter':
+        return SliderFilterLetter;
       case 'MyInfo IB title':
         return MyInfoIBTitle;
       case 'MyInfo IB info':

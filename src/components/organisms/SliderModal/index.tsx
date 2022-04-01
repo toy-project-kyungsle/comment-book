@@ -1,6 +1,7 @@
 import Button from '@components/atoms/Button';
 import Image from '@components/atoms/Image';
 import SortedDiv from '@components/molecules/SortedDiv';
+import SpanBox from '@components/molecules/SpanBox';
 import DeleteSameElem from '@utils/funtions/DeleteSameElem';
 import React from 'react';
 import { ClassifyingModal, Modalgrid } from './styles';
@@ -22,18 +23,42 @@ function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onC
         {categoryList &&
           listOpenArr[0] &&
           categoryList.map((name: string) => {
-            return <SortedDiv className="SliderTopBox" onClick={onClickSort} text={name} id="cg" />;
+            return (
+              <SpanBox
+                className="SliderFilterModal"
+                onClickArr={[onClickSort]}
+                textArr={[name]}
+                classNameArr={['SliderFilterLetter']}
+                IdArr={['cg']}
+              />
+            );
           })}
         {listOpenArr[1] &&
           ratingSection.map((elem) => {
-            return <SortedDiv className="SliderTopBox" onClick={onClickSort} text={elem} id="rt" />;
+            return (
+              <SpanBox
+                className="SliderFilterModal"
+                onClickArr={[onClickSort]}
+                textArr={[elem]}
+                classNameArr={['SliderFilterLetter']}
+                IdArr={['rt']}
+              />
+            );
           })}
         {editYearList &&
           listOpenArr[2] &&
           DeleteSameElem(editYearList)
             .sort((a, b) => b - a)
             .map((year) => {
-              return <SortedDiv className="SliderTopBox" onClick={onClickSort} text={year} id="yr" />;
+              return (
+                <SpanBox
+                  className="SliderFilterModal"
+                  onClickArr={[onClickSort]}
+                  textArr={[year]}
+                  classNameArr={['SliderFilterLetter']}
+                  IdArr={['yr']}
+                />
+              );
             })}
       </Modalgrid>
       <div>

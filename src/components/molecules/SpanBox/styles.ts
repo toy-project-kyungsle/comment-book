@@ -47,6 +47,14 @@ const SliderSelected = css`
   border-bottom: 1px solid #00000030;
 `;
 
+const SliderFilterModal = css`
+  width: 120px;
+  font-size: 14px;
+
+  display: table;
+  text-align: center;
+`;
+
 // Detail Page
 
 const DetailPage = css`
@@ -105,6 +113,8 @@ export const Wrapper = styled.div`
         return MyInfoTextBox;
       case 'SliderSelected':
         return SliderSelected;
+      case 'SliderFilterModal':
+        return SliderFilterModal;
       case 'DetailPage':
         return DetailPage;
       case 'DetailComment':
