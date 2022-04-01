@@ -1,4 +1,4 @@
-import { ImgHeight, ImgLeftRighMargin, ImgWidth } from '@components/organisms/MybooksSlider/styles';
+import { ImgHeight, ImgLeftRighMargin, ImgWidth } from '@components/organisms/Main/Slider/styles';
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
@@ -32,9 +32,10 @@ export const Slides = styled.div`
 
   transition: 0.5s;
 
-
   @media (min-width: 1000px) {
-    &div {margin: 0 ${ImgLeftRighMargin}}
+    &div {
+      margin: 0 ${ImgLeftRighMargin};
+    }
     & div:nth-of-type(4n + 1) {
       margin-left: 0;
     }
@@ -43,7 +44,9 @@ export const Slides = styled.div`
     }
   }
   @media (max-width: 1000px) and (min-width: 735px) {
-    &div {margin: 0 ${ImgLeftRighMargin}}
+    &div {
+      margin: 0 ${ImgLeftRighMargin};
+    }
     & div:nth-of-type(3n + 1) {
       margin-left: 0;
     }
@@ -52,7 +55,9 @@ export const Slides = styled.div`
     }
   }
   @media (max-width: 735px) and (min-width: 470px) {
-    &div {margin: 0 ${ImgLeftRighMargin}}
+    &div {
+      margin: 0 ${ImgLeftRighMargin};
+    }
     & div:nth-of-type(2n + 1) {
       margin-left: 0;
     }
@@ -61,6 +66,8 @@ export const Slides = styled.div`
     }
   }
   @media (max-width: 470px) {
-    &div {margin: 0px}
+    &div {
+      margin: 0px;
+    }
   }
 `;

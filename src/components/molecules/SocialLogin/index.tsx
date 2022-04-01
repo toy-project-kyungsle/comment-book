@@ -1,4 +1,4 @@
-import ImageDiv from '@components/molecules/ImageDiv';
+import ImageDiv from '@components/molecules/ImageBox';
 import React from 'react';
 import { InnerContainer, Wrapper } from './styles';
 import Span from '@components/atoms/Span';

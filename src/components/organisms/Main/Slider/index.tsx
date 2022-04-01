@@ -1,12 +1,12 @@
 import React from 'react';
 import { SlidesBackground, GuideDiv, LoginGuide } from './styles';
-import SliderTopBox from '@components/organisms/SliderTopBox';
+import SliderTopBox from '@components/organisms/Main/Slider/TopBox';
 import { reduxState } from '@utils/objects/types';
 import { connect } from 'react-redux';
 import useSlideBtn from '@hooks/notReUsable/useSlideBtn';
 import useCategoryList from '@hooks/notReUsable/useCategoryList';
 import useBookInfo from '@hooks/notReUsable/useBookInfo';
-import SliderViewer from '@components/organisms/SliderViewer';
+import SliderViewer from '@components/organisms/Main/Slider/Viewer';
 import ButtonBox from '@components/molecules/ButtonBox';
 import Image from '@components/atoms/Image';
 
@@ -16,7 +16,7 @@ interface Props {
   isLoggedIn: boolean;
 }
 
-function MybooksSlider({ loading, setLoadNum, isLoggedIn }: Props) {
+function Slider({ loading, setLoadNum, isLoggedIn }: Props) {
   const [mybooks, getBookInfo] = useBookInfo(setLoadNum);
   const [trans, setTrans, onClickL, onClickR] = useSlideBtn(0, mybooks.length);
   const [categoryList, editYearList] = useCategoryList(setLoadNum, mybooks);
@@ -67,4 +67,4 @@ function mapStateToProps(state: reduxState) {
   return { isLoggedIn: state['isLoggedIn'] };
 }
 
-export default connect(mapStateToProps)(MybooksSlider);
+export default connect(mapStateToProps)(Slider);

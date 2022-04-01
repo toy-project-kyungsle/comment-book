@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import MybooksSlider from '@components/organisms/MybooksSlider';
-import MyInfo from '@components/organisms/MyInfo';
-import Footer from '@components/organisms/Footer';
-import Auth from '@components/organisms/Auth';
-import Loading from '@components/organisms/Loading';
-import MainSearch from '@components/organisms/MainSearch';
+import MybooksSlider from '@components/organisms/Main/Slider';
+import MyInfo from '@components/organisms/Main/Information';
+import Footer from '@components/organisms/Main/Footer';
+import Auth from '@components/organisms/Others/Auth';
+import Loading from '@components/organisms/Others/Loading';
+import MainSearch from '@components/organisms/Main/Search';
 import { connect } from 'react-redux';
 import { reduxState } from '@utils/objects/types';
 

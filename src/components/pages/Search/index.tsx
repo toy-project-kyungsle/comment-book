@@ -1,11 +1,11 @@
 import React from 'react';
 import { Empty, Next, Header } from './styles';
 import { useParams } from 'react-router';
-import SearchRender from '@components/organisms/SearchRender';
+import SearchRender from '@components/organisms/Search/BookBoxes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import Loading from '@components/organisms/Loading';
+import Loading from '@components/organisms/Others/Loading';
 import useSearch from '@hooks/notReUsable/useSearch';
 import SpanBox from '@components/molecules/SpanBox';
 import Button from '@components/atoms/Button';

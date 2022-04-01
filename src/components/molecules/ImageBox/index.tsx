@@ -11,7 +11,7 @@ interface Props {
   children?: any;
 }
 
-function ImageDiv(props: Props) {
+function ImageBox(props: Props) {
   const { className, imgSrc, children } = props;
   return (
     <Wrapper data-mode={className}>
@@ -21,4 +21,4 @@ function ImageDiv(props: Props) {
   );
 }
 
-export default ImageDiv;
+export default ImageBox;

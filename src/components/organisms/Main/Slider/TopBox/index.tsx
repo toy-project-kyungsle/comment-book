@@ -1,4 +1,4 @@
-import SliderModal from '@components/organisms/SliderModal';
+import SliderModal from '@components/organisms/Main/Slider/Modal';
 import useSort from '@hooks/notReUsable/useSort';
 import useToggle from '@hooks/reuUsable/useToggle';
 import { IFbookData } from '@utils/objects/types';

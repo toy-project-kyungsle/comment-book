@@ -1,4 +1,4 @@
-import { ImgLeftRighMargin, ImgWidth } from '@components/organisms/MybooksSlider/styles';
+import { ImgLeftRighMargin, ImgWidth } from '@components/organisms/Main/Slider/styles';
 import { useCallback, useState, useEffect } from 'react';
 
 const useSlideBtn = (

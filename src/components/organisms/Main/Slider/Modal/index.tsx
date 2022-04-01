@@ -1,6 +1,5 @@
 import Button from '@components/atoms/Button';
 import Image from '@components/atoms/Image';
-import SortedDiv from '@components/molecules/SortedDiv';
 import SpanBox from '@components/molecules/SpanBox';
 import DeleteSameElem from '@utils/funtions/DeleteSameElem';
 import React from 'react';
