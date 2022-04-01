@@ -91,6 +91,7 @@ const SliderTopToggle = css`
 `;
 
 const SliderFilterLetter = css`
+  font-family: ${korFont};
   display: table-cell;
   vertical-align: middle;
   :hover {
