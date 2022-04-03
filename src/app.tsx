@@ -9,18 +9,10 @@ const MainPage = loadable(() => import('@components/pages/Main'));
 const Search = loadable(() => import('@components/pages/Search'));
 const DetailPage = loadable(() => import('@components/pages/BookDetail'));
 
-let mode: string;
-
-if (process.env.NODE_ENV === 'production') {
-  mode = 'Book_Helper';
-} else {
-  mode = '';
-}
-
 const App = () => (
   <Provider store={store}>
     <FbaseAuth />
-    <Router basename={mode}>
+    <Router basename={process.env.NODE_ENV === 'production' ? 'Book_Helper' : ''}>
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/search/:search/:display/*" element={<Search />} />
