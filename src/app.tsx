@@ -16,7 +16,7 @@ const App = () => {
       <Router basename={process.env.NODE_ENV === 'production' ? 'Book_Helper' : ''}>
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/search/:search/:display/*" element={<Search />} />
+          <Route path="/search/:search/:display" element={<Search />} />
           <Route path="/comment/:isbn" element={<DetailPage />} />
         </Routes>
       </Router>
