@@ -27,19 +27,7 @@ export const Container = styled.div`
   }
 `;
 
-export const ImgDiv = styled.div`
-  position: relative;
-  height: 280px;
-  float: left;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3), 0px 2px 2px rgba(0, 0, 0, 0.22);
-  @media (max-width: 825px) {
-    text-align: center;
-    box-shadow: unset;
-    margin-top: 50px;
-  }
-`;
-
-export const Letters = styled.div`
+export const BookInfo = styled.div`
   width: 100%;
   margin-left: 70px;
 

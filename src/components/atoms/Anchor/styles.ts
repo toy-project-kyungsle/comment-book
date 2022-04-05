@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { engFont1 } from '@utils/objects/fonts';
 
-const DetailPageImgDiv = css`
+const DetailPage_outerLink = css`
   font-family: ${engFont1};
   position: absolute;
   left: 0;
@@ -36,8 +36,8 @@ const FooterSNS = css`
 export const Sanchor = styled.a`
   ${(props) => {
     switch (props['data-mode']) {
-      case 'DetailPageImgDiv':
-        return DetailPageImgDiv;
+      case 'BookDetail--outerLink':
+        return DetailPage_outerLink;
       case 'FooterSNS':
         return FooterSNS;
       default:

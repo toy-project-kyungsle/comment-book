@@ -57,8 +57,16 @@ const SearchRender = css`
 
 // Detail
 
-const DetailPageXBtn = css`
+const BookDetail_Xbtn = css`
   width: 15px;
+  position: absolute;
+  top: 8px;
+  right: 0px;
+  z-index: 5;
+  @media (max-width: 800px) {
+    top: 30px;
+    right: 30px;
+  }
   ${ImgHover}
 `;
 
@@ -79,8 +87,8 @@ export const Simage = styled.img`
         return SearchRender;
       case 'MainSlider':
         return MainSlider;
-      case 'DetailPageXBtn':
-        return DetailPageXBtn;
+      case 'BookDetail--Xbtn':
+        return BookDetail_Xbtn;
       default:
         return null;
     }

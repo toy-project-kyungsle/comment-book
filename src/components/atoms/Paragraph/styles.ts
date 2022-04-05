@@ -89,17 +89,6 @@ const DetailCommentLong = css`
   color: rgb(105, 105, 105);
 `;
 
-const DetailPageTopBtn = css`
-  position: absolute;
-  top: -5px;
-  right: 0px;
-  z-index: 5;
-  @media (max-width: 800px) {
-    top: 0px;
-    right: 10px;
-  }
-`;
-
 export const SparaGraph = styled.p`
   font-family: ${korFont};
   ${(props) => {
@@ -128,8 +117,6 @@ export const SparaGraph = styled.p`
         return DetailPageTitle;
       case 'DetailCommentLong':
         return DetailCommentLong;
-      case 'DetailPageTopBtn':
-        return DetailPageTopBtn;
       default:
         return null;
     }

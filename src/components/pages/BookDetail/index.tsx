@@ -1,16 +1,17 @@
 import useInput from '@hooks/reuUsable/useinput';
 import React, { useState } from 'react';
 import { useParams } from 'react-router';
-import { Container, ImgDiv, Letters, Background } from './styles';
+import { Container, BookInfo, Background } from './styles';
 import Loading from '@components/organisms/Others/Loading';
-import DetailLetters from '@components/organisms/BookDetail/Letters';
+import Letters from '@components/organisms/BookDetail/Letters';
 import { IbookData } from '@utils/objects/types';
-import DetailComment from '@components/organisms/BookDetail/Comments';
+import Comments from '@components/organisms/BookDetail/Comments';
 import Image from '@components/atoms/Image';
-import Paragraph from '@components/atoms/Paragraph';
 import Anchor from '@components/atoms/Anchor';
 import useNavi from '@hooks/reuUsable/useNavi';
 import useDetailPage from '@hooks/notReUsable/useDetailPage';
+import ImageBox from '@components/molecules/ImageBox';
+import Xbtn from './xmark_grey.png';
 
 function DetailPage() {
   const { isbn } = useParams();
@@ -30,21 +31,19 @@ function DetailPage() {
       {!loading && (
         <Background>
           <Container>
-            <Paragraph className="DetailPageTopBtn" onClick={navigate}>
-              <Image
-                className="DetailPageXBtn"
-                src="https://user-images.githubusercontent.com/79993356/154732530-9f85dfa4-e9f8-484a-acdf-6371eb981bc5.png"
-                alt="null"
-              />
-            </Paragraph>
-            <ImgDiv>
-              <Image className="default" src={(book as IbookData).coverLargeUrl} alt={(book as IbookData).title} />
-              <Anchor className="DetailPageImgDiv" href={(book as IbookData).link} target="_blank" rel="noreferrer">
+            <Image className="BookDetail--Xbtn" src={Xbtn} alt="null" onClick={navigate} />
+            <ImageBox className="BookDetail" src={(book as IbookData).coverLargeUrl} alt={(book as IbookData).title}>
+              <Anchor
+                className="BookDetail--outerLink"
+                href={(book as IbookData).link}
+                target="_blank"
+                rel="noreferrer"
+              >
                 More Info?
               </Anchor>
-            </ImgDiv>
-            <Letters>
-              <DetailLetters
+            </ImageBox>
+            <BookInfo>
+              <Letters
                 book={book as IbookData}
                 infoMode={infoMode}
                 editMode={editMode}
@@ -54,7 +53,7 @@ function DetailPage() {
                 shortComment={shortComment}
               />
               <hr />
-              <DetailComment
+              <Comments
                 shortComment={shortComment}
                 longComment={longComment}
                 onCangeLongComment={onCangeLongComment}
@@ -66,7 +65,7 @@ function DetailPage() {
                 infoMode={infoMode}
                 setInfoMode={setInfoMode}
               />
-            </Letters>
+            </BookInfo>
           </Container>
         </Background>
       )}

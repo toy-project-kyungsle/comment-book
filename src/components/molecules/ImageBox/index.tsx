@@ -1,21 +1,20 @@
-import Img from '@components/atoms/Image';
+import Image from '@components/atoms/Image';
 import React from 'react';
 import { Wrapper } from './styles';
 
 interface Props {
   className: string;
-  onSocialClick: (event: any) => void;
-  imgSrc: string;
-  DivID?: string;
-  DivText?: string;
+  src: string;
+  alt?: string;
+  onSocialClick?: (event: any) => void;
   children?: any;
 }
 
 function ImageBox(props: Props) {
-  const { className, imgSrc, children } = props;
+  const { className, src, alt = className, onSocialClick, children } = props;
   return (
     <Wrapper data-mode={className}>
-      <Img className={className} src={imgSrc} alt="null"></Img>
+      <Image className={className} src={src} alt={alt} onClick={onSocialClick}></Image>
       {children}
     </Wrapper>
   );
