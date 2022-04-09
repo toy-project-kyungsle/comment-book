@@ -20,7 +20,7 @@ const HeaderBtn: React.CSSProperties = {
   left: '3px',
 };
 
-const MainSearchBtn: React.CSSProperties = {
+const MainPage_Search: React.CSSProperties = {
   color: `grey`,
   fontSize: '20px',
   position: 'relative',
@@ -35,8 +35,8 @@ export const Sform = styled.form`
 export function ButtonImg(className: string) {
   return (
     <FontAwesomeIcon
-      icon={(className === 'Header' || className === 'MainSearch') && faSearch}
-      style={className === 'Header' ? HeaderBtn : className === 'MainSearch' ? MainSearchBtn : null}
+      icon={(className === 'Header' || className === 'MainPage--Search') && faSearch}
+      style={className === 'Header' ? HeaderBtn : className === 'MainPage--Search' ? MainPage_Search : null}
     />
   );
 }

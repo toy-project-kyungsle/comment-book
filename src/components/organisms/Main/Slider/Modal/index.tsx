@@ -61,15 +61,15 @@ function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onC
             })}
       </Modalgrid>
       <div>
-        <Button className="sliderClose" onClick={onClickCloseBtn}>
+        <Button className="MainPage--Slider--Modal--Close" onClick={onClickCloseBtn}>
           <Image
-            className="sliderClose"
+            className="MainPage--Slider--Modal--Close"
             src="https://user-images.githubusercontent.com/79993356/154801650-d6a3e43d-4ba0-4107-a3c2-dfaeca5eb6af.png"
           ></Image>
         </Button>
-        <Button className="sliderReset" onClick={onClickSort}>
+        <Button className="MainPage--Slider--Modal--Reset" onClick={onClickSort}>
           <Image
-            className="sliderReset"
+            className="MainPage--Slider--Modal--Reset"
             src="https://user-images.githubusercontent.com/79993356/154805451-4852137e-f850-49f9-814e-6cfc937494ae.svg"
             id={listOpenArr[0] ? 'cg' : listOpenArr[1] ? 'rt' : listOpenArr[2] ? 'yr' : null}
           ></Image>

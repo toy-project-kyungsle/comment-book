@@ -1,24 +1,29 @@
 import Button from '@components/atoms/Button';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
 interface Props {
-  className: string;
-  firstOnClick: () => void;
-  secondOnClick: () => void;
+  className?: string;
+  divOnClick?: (e: any) => void;
+  classNameArr?: string[];
+  onClickArr: ((e: any) => void)[];
+  btnChildArr?: any;
 }
 
 function ButtonBox(props: Props) {
-  const { className, firstOnClick, secondOnClick } = props;
+  const { className, divOnClick, classNameArr, onClickArr, btnChildArr } = props;
   return (
-    <div data-mode={className}>
-      <Button className={className + 'Left'} onClick={firstOnClick}>
-        <FontAwesomeIcon icon={faChevronLeft} style={{ color: '#00000030' }} />
-      </Button>
-      <Button className={className + 'Right'} onClick={secondOnClick}>
-        <FontAwesomeIcon icon={faChevronRight} style={{ color: '#00000030' }} />
-      </Button>
+    <div data-mode={className} onClick={divOnClick}>
+      {onClickArr &&
+        onClickArr.map((clickFunc, i) => (
+          <Button
+            className={
+              classNameArr ? (classNameArr[i] ? classNameArr[i] : classNameArr[classNameArr.length - 1]) : className
+            }
+            onClick={clickFunc}
+          >
+            {btnChildArr && btnChildArr[i]}
+          </Button>
+        ))}
     </div>
   );
 }

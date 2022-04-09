@@ -9,6 +9,8 @@ import useBookInfo from '@hooks/notReUsable/useBookInfo';
 import SliderViewer from '@components/organisms/Main/Slider/Viewer';
 import ButtonBox from '@components/molecules/ButtonBox';
 import Image from '@components/atoms/Image';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface Props {
   loading: boolean;
@@ -20,6 +22,12 @@ function Slider({ loading, setLoadNum, isLoggedIn }: Props) {
   const [mybooks, getBookInfo] = useBookInfo(setLoadNum);
   const [trans, setTrans, onClickL, onClickR] = useSlideBtn(0, mybooks.length);
   const [categoryList, editYearList] = useCategoryList(setLoadNum, mybooks);
+  const BtnBoxClassNameArr = ['MainPage--Slider--Left', 'MainPage--Slider--Right'];
+  const BtnBoxOnclickArr = [onClickL, onClickR];
+  const BtnBoxChildArr = [
+    <FontAwesomeIcon icon={faChevronLeft} style={{ color: '#00000030' }} />,
+    <FontAwesomeIcon icon={faChevronRight} style={{ color: '#00000030' }} />,
+  ];
 
   return loading ? null : (
     <>
@@ -35,7 +43,7 @@ function Slider({ loading, setLoadNum, isLoggedIn }: Props) {
         <SlidesBackground>
           <div className="container">
             <SliderViewer trans={trans} mybooks={mybooks} />
-            <ButtonBox className="MainSlider" firstOnClick={onClickL} secondOnClick={onClickR} />
+            <ButtonBox classNameArr={BtnBoxClassNameArr} onClickArr={BtnBoxOnclickArr} btnChildArr={BtnBoxChildArr} />
           </div>
         </SlidesBackground>
       ) : (
@@ -50,7 +58,7 @@ function Slider({ loading, setLoadNum, isLoggedIn }: Props) {
               <LoginGuide data-mode="nologin">로그인 하시면 사용 가능합니다</LoginGuide>
               <GuideDiv>
                 <Image
-                  className="MainSlider"
+                  className="MainPage--Slider"
                   src="https://user-images.githubusercontent.com/79993356/157588810-ec0405ad-e472-4226-ac87-6e2cb6f50b0e.gif"
                   alt="null"
                 />

@@ -67,7 +67,7 @@ const MyInfoTBinner = css`
 
 // Main Search
 
-const MainSearch = css`
+const MainPage_Search = css`
   font-family: ${engFont1};
   font-size: 22px;
   font-weight: bold;
@@ -182,8 +182,8 @@ export const Sspan = styled.span`
     switch (props['data-mode']) {
       case 'Loading':
         return Loading;
-      case 'MainSearch':
-        return MainSearch;
+      case 'MainPage--Search':
+        return MainPage_Search;
       case 'SliderTopToggle':
         return SliderTopToggle;
       case 'SliderTopTitle':

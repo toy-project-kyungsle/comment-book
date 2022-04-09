@@ -20,7 +20,7 @@ const Header = css`
   text-align: center;
 `;
 
-const MainSearch = css`
+const MainPage_Search = css`
   background: none;
   height: 40px;
   width: 400px;
@@ -30,7 +30,7 @@ const MainSearch = css`
   font-size: 15px;
   text-align: center;
   @media (max-width: 768px) {
-    width: 250px
+    width: 250px;
   }
 `;
 
@@ -50,8 +50,8 @@ export const Sinput = styled.input`
         return AuthInput;
       case 'Header':
         return Header;
-      case 'MainSearch':
-        return MainSearch;
+      case 'MainPage--Search':
+        return MainPage_Search;
       case 'SubmitForm':
         return SubmitForm;
       default:

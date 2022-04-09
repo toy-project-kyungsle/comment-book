@@ -21,7 +21,7 @@ const SocialLogin = css`
 
 // Slider
 
-const MainSlider = css`
+const MainPage_Slider = css`
   height: 420px;
   width: 1000px;
   @media (max-width: 1024px) {
@@ -35,12 +35,12 @@ const SliderImg = css`
   z-index: 100;
 `;
 
-const sliderClose = css`
+const MainPage_Slider_Modal_Close = css`
   height: 13px;
   width: 13px;
 `;
 
-const sliderReset = css`
+const MainPage_Slider_Modal_Resetset = css`
   height: 15px;
 `;
 
@@ -79,14 +79,14 @@ export const Simage = styled.img`
         return SocialLogin;
       case 'SliderImg':
         return SliderImg;
-      case 'sliderClose':
-        return sliderClose;
-      case 'sliderReset':
-        return sliderReset;
+      case 'MainPage--Slider--Modal--Close':
+        return MainPage_Slider_Modal_Close;
+      case 'MainPage--Slider--Modal--Reset':
+        return MainPage_Slider_Modal_Resetset;
       case 'SearchRender':
         return SearchRender;
-      case 'MainSlider':
-        return MainSlider;
+      case 'MainPage--Slider':
+        return MainPage_Slider;
       case 'BookDetail--Xbtn':
         return BookDetail_Xbtn;
       default:

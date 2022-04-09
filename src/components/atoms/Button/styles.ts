@@ -7,31 +7,25 @@ const Header = css`
   margin: 0 20px 5px 0;
 `;
 
-// Slider
-
-const MainSearch = css`
+const MainPage_Search = css`
   border: none;
 `;
 
-const sliderClose = css`
+// Slider
+
+const MainPage_Slider_Modal_Close = css`
   margin-top: 13px;
-  text-decoration: none;
-  outline: none;
 `;
 
-const sliderReset = css`
+const MainPage_Slider_Modal_Reset = css`
   position: absolute;
   right: 8px;
   bottom: 10px;
-  outline: none;
 `;
 
-const MainSlider = css`
+const MainPage_Slider = css`
   position: absolute;
   bottom: -10px;
-  background-color: transparent;
-  border: none;
-  outline: none;
   color: #00000050;
   opacity: 0.8;
   font-size: 30px;
@@ -41,19 +35,19 @@ const MainSlider = css`
   }
 `;
 
-const MainSliderLeft = css`
-  ${MainSlider}
+const MainPage_Slider_Left = css`
+  ${MainPage_Slider}
   right: 40px;
 `;
 
-const MainSliderRight = css`
-  ${MainSlider}
+const MainPage_Slider_Right = css`
+  ${MainPage_Slider}
   right: 0px;
 `;
 
 // Search
 
-const Search = css`
+const SearchPage_Back = css`
   position: absolute;
   left: -260px;
   bottom: -3px;
@@ -75,18 +69,18 @@ export const Sbutton = styled.button`
     switch (props['data-mode']) {
       case 'Header':
         return Header;
-      case 'MainSearch':
-        return MainSearch;
-      case 'sliderClose':
-        return sliderClose;
-      case 'sliderReset':
-        return sliderReset;
-      case 'MainSliderLeft':
-        return MainSliderLeft;
-      case 'MainSliderRight':
-        return MainSliderRight;
+      case 'MainPage--Search':
+        return MainPage_Search;
+      case 'MainPage--Slider--Modal--Close':
+        return MainPage_Slider_Modal_Close;
+      case 'MainPage--Slider--Modal--Reset':
+        return MainPage_Slider_Modal_Reset;
+      case 'MainPage--Slider--Left':
+        return MainPage_Slider_Left;
+      case 'MainPage--Slider--Right':
+        return MainPage_Slider_Right;
       case 'Search':
-        return Search;
+        return SearchPage_Back;
       default:
         return null;
     }
