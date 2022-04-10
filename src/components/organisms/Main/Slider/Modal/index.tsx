@@ -4,6 +4,8 @@ import SpanBox from '@components/molecules/SpanBox';
 import DeleteSameElem from '@utils/funtions/DeleteSameElem';
 import React from 'react';
 import { ClassifyingModal, Modalgrid } from './styles';
+import xmarkImg from './xmark.png';
+import rotateImg from './rotate.svg';
 
 interface Props {
   categoryList: string[];
@@ -62,15 +64,12 @@ function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onC
       </Modalgrid>
       <div>
         <Button className="MainPage--Slider--Modal--Close" onClick={onClickCloseBtn}>
-          <Image
-            className="MainPage--Slider--Modal--Close"
-            src="https://user-images.githubusercontent.com/79993356/154801650-d6a3e43d-4ba0-4107-a3c2-dfaeca5eb6af.png"
-          ></Image>
+          <Image className="MainPage--Slider--Modal--Close" src={xmarkImg}></Image>
         </Button>
         <Button className="MainPage--Slider--Modal--Reset" onClick={onClickSort}>
           <Image
             className="MainPage--Slider--Modal--Reset"
-            src="https://user-images.githubusercontent.com/79993356/154805451-4852137e-f850-49f9-814e-6cfc937494ae.svg"
+            src={rotateImg}
             id={listOpenArr[0] ? 'cg' : listOpenArr[1] ? 'rt' : listOpenArr[2] ? 'yr' : null}
           ></Image>
         </Button>

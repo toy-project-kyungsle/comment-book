@@ -11,6 +11,7 @@ import ButtonBox from '@components/molecules/ButtonBox';
 import Image from '@components/atoms/Image';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import sliderGuideImg from './sliderGuideImg.png';
 
 interface Props {
   loading: boolean;
@@ -57,11 +58,7 @@ function Slider({ loading, setLoadNum, isLoggedIn }: Props) {
             <>
               <LoginGuide data-mode="nologin">로그인 하시면 사용 가능합니다</LoginGuide>
               <GuideDiv>
-                <Image
-                  className="MainPage--Slider"
-                  src="https://user-images.githubusercontent.com/79993356/157588810-ec0405ad-e472-4226-ac87-6e2cb6f50b0e.gif"
-                  alt="null"
-                />
+                <Image className="MainPage--Slider" src={sliderGuideImg} alt="null" />
               </GuideDiv>
             </>
           )}
