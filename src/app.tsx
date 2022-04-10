@@ -13,7 +13,7 @@ const App = () => {
   FbaseDispather();
   return (
     <Provider store={store}>
-      <Router basename={process.env.NODE_ENV === 'production' ? 'Book_Helper' : ''}>
+      <Router basename={process.env.NODE_ENV === 'production' ? 'Book_Comment_Web' : ''}>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/search/:search/:display" element={<Search />} />

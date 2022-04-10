@@ -1,7 +1,7 @@
 {
-  "name": "bookhelper_ts_sass",
+  "name": "book_comment_web",
   "version": "1.0.0",
-  "description": "client project for BookHelper written TS and Sass.",
+  "description": "project for Book comment web written TS and Sass.",
   "main": "index.js",
   "scripts": {
     "dev": "cross-env webpack serve --env development",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/keinn51/Book_Helper.git"
+    "url": "git+https://github.com/keinn51/Book_Comment_Web.git"
   },
   "keywords": [
     "front"
@@ -19,7 +19,7 @@
   "author": "keinn51",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/keinn51/Book_Helper/issues"
+    "url": "https://github.com/keinn51/Book_Comment_Web/issues"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.3.0",

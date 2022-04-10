@@ -4,11 +4,11 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const projectName = 'Book_Helper';
+const projectName = 'Book_Comment_Web';
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 const config = {
-  name: 'bookhelper',
+  name: 'bookcommentweb',
   mode: isDevelopment ? 'development' : 'production',
   devtool: !isDevelopment ? 'hidden-source-map' : 'eval',
   resolve: {
