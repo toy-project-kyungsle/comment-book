@@ -3,7 +3,7 @@ import Image from '@components/atoms/Image';
 import SpanBox from '@components/molecules/SpanBox';
 import DeleteSameElem from '@utils/funtions/DeleteSameElem';
 import React from 'react';
-import { ClassifyingModal, Modalgrid } from './styles';
+import { ClassifyingModal, GridBox } from './styles';
 import xmarkImg from './xmark.png';
 import rotateImg from './rotate.svg';
 
@@ -20,7 +20,7 @@ function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onC
 
   return listOpenArr.some((e) => e) ? (
     <ClassifyingModal>
-      <Modalgrid>
+      <GridBox>
         {categoryList &&
           listOpenArr[0] &&
           categoryList.map((name: string) => {
@@ -61,7 +61,7 @@ function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onC
                 />
               );
             })}
-      </Modalgrid>
+      </GridBox>
       <div>
         <Button className="MainPage--Slider--Modal--Close" onClick={onClickCloseBtn}>
           <Image className="MainPage--Slider--Modal--Close" src={xmarkImg}></Image>

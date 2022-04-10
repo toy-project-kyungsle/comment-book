@@ -19,13 +19,15 @@ export const ClassifyingModal = styled.div`
   padding: 0 10px 0 20px;
 `;
 
-export const Modalgrid = styled.div`
+export const GridBox = styled.div`
   display: grid;
   grid-template-columns: repeat(5, auto);
   grid-template-rows: repeat(auto-fill, minmax(40px, auto));
 
   max-width: 600px;
   min-height: 80px;
+
+  align-items: center;
 
   @media (max-width: 735px) {
     grid-template-columns: repeat(3, auto);
