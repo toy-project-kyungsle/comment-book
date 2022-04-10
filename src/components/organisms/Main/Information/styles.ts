@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import bookImg from './bookImg.png';
+import smallBookImg from './smallBookImg.png';
 
 export const Background = styled.div`
   position: relative;
@@ -41,7 +43,7 @@ export const MoreBackgroundImg = styled.div`
   background-size: cover;
 
   @media (max-width: 1024px) {
-    background: linear-gradient(to top, rgb(236, 240, 241) 60%, rgb(228,232,233) 40%);
+    background: linear-gradient(to top, rgb(236, 240, 241) 60%, rgb(228, 232, 233) 40%);
   }
   @media (max-width: 768px) {
     height: 690px;
@@ -54,11 +56,11 @@ export const BackgroundImg = styled.div`
   width: 1665px;
   height: 760px;
 
-  background-image: url('https://user-images.githubusercontent.com/79993356/154531958-e0068ede-1ae9-4b44-8522-2676c4b8d3ef.png');
+  background-image: url(${bookImg});
   background-size: cover;
 
   @media (max-width: 1024px) {
-    background-image: url('https://user-images.githubusercontent.com/79993356/160281782-dfbd3cdc-fdc4-4dc8-839e-8b0438f2af44.png');
+    background-image: url(${smallBookImg});
     top: 180px;
     width: 100%;
     max-height: 70%;

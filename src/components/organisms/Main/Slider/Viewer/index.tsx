@@ -1,5 +1,5 @@
 import React from 'react';
-import LinkImage from '@components/molecules/LinkImage';
+import LinkImage from '@components/molecules/LinkBox';
 import { Slides, Wrapper } from './styles';
 import { IFbookData } from '@utils/objects/types';
 

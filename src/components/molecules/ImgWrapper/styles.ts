@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Margin_Small, Padding_Small, PictureHeight, PictureWidth } from '@components/molecules/LinkImage/styles';
+import { Margin_Small, Padding_Small, PictureHeight, PictureWidth } from '@components/molecules/LinkBox/styles';
 
 export const Wrapper = styled.div`
   font-family: 'Roboto', serif;

@@ -12,7 +12,7 @@ interface Props {
   rating?: number;
 }
 
-function LinkImage({ coverImg, title, isbn, shortcomment, rating }: Props) {
+function LinkBox({ coverImg, title, isbn, shortcomment, rating }: Props) {
   const [reload, setReload] = useState('doing');
 
   useEffect(() => {
@@ -32,4 +32,4 @@ function LinkImage({ coverImg, title, isbn, shortcomment, rating }: Props) {
   );
 }
 
-export default LinkImage;
+export default LinkBox;

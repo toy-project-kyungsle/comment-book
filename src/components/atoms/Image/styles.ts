@@ -1,4 +1,4 @@
-import { PictureHeight, PictureWidth } from '@components/molecules/LinkImage/styles';
+import { PictureHeight, PictureWidth } from '@components/molecules/LinkBox/styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
