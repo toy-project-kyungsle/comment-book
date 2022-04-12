@@ -4,7 +4,7 @@ import SpanBox from '@components/molecules/SpanBox';
 import DeleteSameElem from '@utils/funtions/DeleteSameElem';
 import React from 'react';
 import { ClassifyingModal, GridBox } from './styles';
-import xmarkImg from './xmark.png';
+import xmarkImg from './xmark.svg';
 import rotateImg from './rotate.svg';
 
 interface Props {
