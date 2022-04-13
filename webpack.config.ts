@@ -57,7 +57,7 @@ const config = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpe?g|gif|svg|avif)$/i,
+        test: /\.(svg|avif|webp)$/i,
         use: [
           {
             loader: 'file-loader',
