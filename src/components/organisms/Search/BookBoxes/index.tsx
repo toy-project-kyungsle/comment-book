@@ -25,12 +25,12 @@ function SearchRender({ children, book, viewNum, EndNum }: Props) {
   }, [book.isbn, navigate]);
 
   return (
-    <Container data-Height={conHeight} data-num={viewNum}>
-      <SmallBackGround data-Height={sBackHeight} data-Width={sBackWidth} data-Left={sBackLeft} data-Right={sBackRight}>
-        <ImgDiv data-Left={imgLeft} data-Bottom={imgBottom}>
+    <Container data-height={conHeight} data-num={viewNum}>
+      <SmallBackGround data-height={sBackHeight} data-width={sBackWidth} data-left={sBackLeft} data-right={sBackRight}>
+        <ImgDiv data-left={imgLeft} data-bottom={imgBottom}>
           <Image className="SearchRender" src={book.coverLargeUrl} alt={book.title} onClick={onClickImg} />
         </ImgDiv>
-        <LetterDiv data-Left={letterLeft} data-Bottom={letterBottom}>
+        <LetterDiv data-left={letterLeft} data-bottom={letterBottom}>
           <Paragraph className="SearchRenderTitle">
             {book.title.length < 22 ? book.title : book.title.length >= 22 ? book.title.slice(0, 22) + '...' : null}
           </Paragraph>

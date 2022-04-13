@@ -24,8 +24,8 @@ export const Next = styled.div`
 
   position: absolute;
   bottom: 0;
-  left: ${(props) => props['data-Left']};
-  right: ${(props) => props['data-Right']};
+  left: ${(props) => props['data-left']};
+  right: ${(props) => props['data-right']};
 
   color: rgb(75, 75, 75);
   @media (max-width: 450px) {

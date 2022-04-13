@@ -17,7 +17,7 @@ interface Props {
   shortComment: string;
 }
 
-function DetailLetters(props: Props) {
+function Letters(props: Props) {
   const { book, infoMode, editMode, rating, onChangeRating, onChangeShortComment, shortComment } = props;
   const infoArr = [book.author, book.categoryId, book.pubDate];
   const InfoChildArr = [
@@ -57,7 +57,8 @@ function DetailLetters(props: Props) {
     <div>
       <Paragraph className="DetailTitle">{book.title}</Paragraph>
       {infoArr.map(
-        (elem, i) => elem && <SpanBox className="DetailPage" classNameArr={ClassArr} textArr={InfoChildArr[i]} />,
+        (elem, i) =>
+          elem && <SpanBox className="DetailPage" classNameArr={ClassArr} textArr={InfoChildArr[i]} key={elem} />,
       )}
       {!infoMode && <SpanBox className="DetailPage" classNameArr={ClassArr} textArr={ratingModeTextArr} />}
       {!infoMode && <SpanBox className="DetailPage" classNameArr={ClassArr} textArr={oneLineTextArr} />}
@@ -65,4 +66,4 @@ function DetailLetters(props: Props) {
   );
 }
 
-export default DetailLetters;
+export default Letters;

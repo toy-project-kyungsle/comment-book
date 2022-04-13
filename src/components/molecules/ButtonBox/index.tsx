@@ -20,6 +20,7 @@ function ButtonBox(props: Props) {
               classNameArr ? (classNameArr[i] ? classNameArr[i] : classNameArr[classNameArr.length - 1]) : className
             }
             onClick={clickFunc}
+            key={className[i]}
           >
             {btnChildArr && btnChildArr[i]}
           </Button>

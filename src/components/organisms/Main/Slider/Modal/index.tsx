@@ -23,7 +23,7 @@ function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onC
       <GridBox>
         {categoryList &&
           listOpenArr[0] &&
-          categoryList.map((name: string) => {
+          categoryList.map((name: string, i) => {
             return (
               <SpanBox
                 className="SliderFilterModal"
@@ -31,11 +31,12 @@ function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onC
                 textArr={[name]}
                 classNameArr={['SliderFilterLetter']}
                 IdArr={['cg']}
+                key={i}
               />
             );
           })}
         {listOpenArr[1] &&
-          ratingSection.map((elem) => {
+          ratingSection.map((elem, i) => {
             return (
               <SpanBox
                 className="SliderFilterModal"
@@ -43,6 +44,7 @@ function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onC
                 textArr={[elem]}
                 classNameArr={['SliderFilterLetter']}
                 IdArr={['rt']}
+                key={i}
               />
             );
           })}
@@ -50,7 +52,7 @@ function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onC
           listOpenArr[2] &&
           DeleteSameElem(editYearList)
             .sort((a, b) => b - a)
-            .map((year) => {
+            .map((year, i) => {
               return (
                 <SpanBox
                   className="SliderFilterModal"
@@ -58,6 +60,7 @@ function SliderModal({ categoryList, editYearList, listOpenArr, onClickSort, onC
                   textArr={[year]}
                   classNameArr={['SliderFilterLetter']}
                   IdArr={['yr']}
+                  key={i}
                 />
               );
             })}

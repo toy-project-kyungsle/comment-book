@@ -14,8 +14,10 @@ function Footer({ loading }: Props) {
     ['https://www.instagram.com/keinn51/', 'Insta'],
     ['https://www.facebook.com/sooks447/', 'FaceBook'],
   ];
-  const WarnArr = ['All designs and animations were made by the author himself.',
-    'So unauthorized distribution is prohibited.']
+  const WarnArr = [
+    'All designs and animations were made by the author himself.',
+    'So unauthorized distribution is prohibited.',
+  ];
 
   return loading ? null : (
     <BackGround>
@@ -24,7 +26,7 @@ function Footer({ loading }: Props) {
         <Mysns>
           <div>
             {AnchorArr.map((a) => (
-              <Anchor className="FooterSNS" href={a[0]} target="_blank" rel="noreferrer">
+              <Anchor className="FooterSNS" href={a[0]} target="_blank" rel="noreferrer" key={a[0]}>
                 {a[1]}
               </Anchor>
             ))}
@@ -32,7 +34,7 @@ function Footer({ loading }: Props) {
         </Mysns>
         <SpanBox className="Footer" textArr={['@ 2022 BookComment from Kyungsle']} />
       </Wrapper>
-    </BackGround >
+    </BackGround>
   );
 }
 

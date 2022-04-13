@@ -24,6 +24,7 @@ function SpanBox(props: Props) {
             }
             id={IdArr ? (IdArr[i] ? IdArr[i] : IdArr[IdArr.length - 1]) : null}
             onClick={onClickArr && (onClickArr[i] ? onClickArr[i] : onClickArr[onClickArr.length - 1])}
+            key={`${className}${i}`}
           >
             {text}
           </Span>

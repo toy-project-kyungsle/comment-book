@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: relative;
 
   width: 800px;
-  height: ${(props) => props['data-Height']};
+  height: ${(props) => props['data-height']};
   margin: 0 auto;
 
   animation: ${(props) => (props['data-num'] % 2 === 1 ? 'smoothLeft' : 'smoothRight')} 2s;
@@ -42,26 +42,26 @@ export const Container = styled.div`
 
 export const SmallBackGround = styled.div`
   position: absolute;
-  right: ${(props) => props['data-Right']};
-  left: ${(props) => props['data-Left']};
+  right: ${(props) => props['data-right']};
+  left: ${(props) => props['data-left']};
   bottom: 0;
 
   background-color: #f0f0f0;
 
-  height: ${(props) => props['data-Height']};
-  width: ${(props) => props['data-Width']};
+  height: ${(props) => props['data-height']};
+  width: ${(props) => props['data-width']};
 `;
 
 export const ImgDiv = styled.div`
   position: absolute;
-  left: ${(props) => props['data-Left']};
-  bottom: ${(props) => props['data-Bottom']};
+  left: ${(props) => props['data-left']};
+  bottom: ${(props) => props['data-bottom']};
 
   width: 170px;
 `;
 
 export const LetterDiv = styled.div`
   position: absolute;
-  left: ${(props) => props['data-Left']};
-  bottom: ${(props) => props['data-Bottom']};
+  left: ${(props) => props['data-left']};
+  bottom: ${(props) => props['data-bottom']};
 `;

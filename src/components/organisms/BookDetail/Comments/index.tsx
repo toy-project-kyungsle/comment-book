@@ -18,7 +18,7 @@ interface Props {
   setInfoMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function DetailComment(props: Props) {
+function Comment(props: Props) {
   const {
     shortComment,
     longComment,
@@ -72,4 +72,4 @@ function DetailComment(props: Props) {
   );
 }
 
-export default DetailComment;
+export default Comment;
