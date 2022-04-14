@@ -58,11 +58,7 @@ const config = {
       },
       {
         test: /\.(svg|avif|webp)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
+        loader: 'file-loader',
       },
     ],
   },
@@ -76,13 +72,13 @@ const config = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
-    publicPath: isDevelopment ? '/dist/' : `/${projectName}/`,
+    publicPath: isDevelopment ? '' : `/${projectName}/`,
   },
   devServer: {
     historyApiFallback: true,
     port: 3080,
-    devMiddleware: { publicPath: '/dist/' },
-    static: { directory: path.resolve(__dirname) },
+    // devMiddleware: { publicPath: '/dist/' },
+    // static: { directory: path.resolve(__dirname) },
   },
 };
 

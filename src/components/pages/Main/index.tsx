@@ -26,6 +26,7 @@ function MainPage({ showLoginModal }) {
       <Search />
       <Slider loading={loading} setLoadNum={setLoadNum} />
       <Footer loading={loading} />
+      <p>Hey</p>
     </div>
   );
 }
