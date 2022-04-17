@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
 
-const engFont = "'Open Sans', sans-serif";
-
 export const Header = styled.div`
-  font-family: ${engFont};
+  font-family: 'eng1 font regular';
 
   position: relative;
   width: 90%;
@@ -20,7 +18,7 @@ export const Empty = styled.div`
 `;
 
 export const Next = styled.div`
-  font-family: ${engFont};
+  font-family: 'eng1 font regular';
 
   position: absolute;
   bottom: 0;

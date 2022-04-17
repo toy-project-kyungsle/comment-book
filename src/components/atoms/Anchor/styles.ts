@@ -1,9 +1,8 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { engFont1 } from '@utils/objects/fonts';
 
 const BookDetail_outerLink = css`
-  font-family: ${engFont1};
+  font-family: 'eng1 font regular';
   position: absolute;
   left: 0;
   bottom: -20;

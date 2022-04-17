@@ -60,6 +60,18 @@ const config = {
         test: /\.(svg|avif|webp)$/i,
         loader: 'file-loader',
       },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        loader: 'file-loader',
+        // use: [
+        //   {
+        //     loader: 'url-loader',
+        //     options: {
+        //       limit: 100000,
+        //     },
+        //   },
+        // ],
+      },
     ],
   },
   plugins: [
@@ -77,8 +89,8 @@ const config = {
   devServer: {
     historyApiFallback: true,
     port: 3080,
-    // devMiddleware: { publicPath: '/dist/' },
-    // static: { directory: path.resolve(__dirname) },
+    devMiddleware: { publicPath: '' },
+    static: { directory: path.resolve(__dirname) },
   },
 };
 

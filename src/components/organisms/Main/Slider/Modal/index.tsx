@@ -4,8 +4,8 @@ import SpanBox from '@components/molecules/SpanBox';
 import DeleteSameElem from '@utils/funtions/DeleteSameElem';
 import React from 'react';
 import { ClassifyingModal, GridBox } from './styles';
-import xmarkImg from './xmark.svg';
-import rotateImg from './rotate.svg';
+import xmarkImg from '@utils/images/xmark.svg';
+import rotateImg from '@utils/images/rotate.svg';
 
 interface Props {
   categoryList: string[];

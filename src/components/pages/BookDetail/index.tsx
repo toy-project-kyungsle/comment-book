@@ -11,7 +11,7 @@ import Anchor from '@components/atoms/Anchor';
 import useNavi from '@hooks/reuUsable/useNavi';
 import useDetailPage from '@hooks/notReUsable/useDetailPage';
 import ImageBox from '@components/molecules/ImageBox';
-import Xbtn from './xmark_grey.webp';
+import Xbtn from '@utils/images/xmark_grey.webp';
 
 function DetailPage() {
   const { isbn } = useParams();

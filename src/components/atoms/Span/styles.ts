@@ -1,9 +1,8 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { engFont1, korFont } from '@utils/objects/fonts';
 
 const Loading = css`
-  font-family: ${engFont1};
+  font-family: 'eng1 font regular';
   font-weight: 800;
   font-size: 40px;
 `;
@@ -11,12 +10,12 @@ const Loading = css`
 // Auth
 
 const AuthGuide = css`
-  font-family: ${korFont};
+  font-family: 'kor font regular';
   font-size: 14px;
 `;
 
 const AuthToggle = css`
-  font-family: ${engFont1};
+  font-family: 'eng1 font regular';
   margin-left: 10px;
   color: #2980b9;
   :hover {
@@ -24,27 +23,24 @@ const AuthToggle = css`
   }
 `;
 
-// MyInfo
+//Main--Info
 
-const MyInfoIBTitle = css`
-  font-family: ${engFont1};
-
+const Main__Info__IB__Title = css`
+  font-family: 'eng1 font regular';
   font-size: 16px;
-
   font-weight: 800;
   color: #0000007b;
 `;
 
-const MyInfoIBInfo = css`
-  font-family: ${korFont};
-
+const Main__Info__IB__Inner = css`
+  font-family: 'kor font regular';
   font-size: 14px;
   color: #3e4756;
   text-align: end;
 `;
 
-const MyInfoTBtitle = css`
-  font-family: ${engFont1};
+const Main__Info__TB__Title = css`
+  font-family: 'eng1 font regular';
   font-size: 20px;
   font-weight: bold;
   color: #000000d3;
@@ -52,8 +48,8 @@ const MyInfoTBtitle = css`
   display: block;
 `;
 
-const MyInfoTBinner = css`
-  font-family: ${korFont};
+const Main__Info__TB__Inner = css`
+  font-family: 'kor font regular';
   font-size: 14px;
   color: #0000007b;
   line-height: 36px;
@@ -68,7 +64,7 @@ const MyInfoTBinner = css`
 // Main Search
 
 const MainPage_Search = css`
-  font-family: ${engFont1};
+  font-family: 'eng1 font regular';
   font-size: 22px;
   font-weight: bold;
 `;
@@ -76,12 +72,12 @@ const MainPage_Search = css`
 // Slider
 
 const SliderTopTitle = css`
-  font-family: ${engFont1};
+  font-family: 'eng1 font regular';
   font-size: 20px;
 `;
 
 const SliderTopToggle = css`
-  font-family: ${engFont1};
+  font-family: 'eng1 font regular';
   margin-left: 20px;
   color: #0000007b;
   :hover {
@@ -91,7 +87,7 @@ const SliderTopToggle = css`
 `;
 
 const SliderFilterLetter = css`
-  font-family: ${korFont};
+  font-family: 'kor font regular';
   display: table-cell;
   vertical-align: middle;
   :hover {
@@ -102,7 +98,7 @@ const SliderFilterLetter = css`
 // DetailPage
 
 const DetailPage = css`
-  font-family: ${korFont};
+  font-family: 'kor font regular';
   color: rgb(105, 105, 105);
 `;
 
@@ -116,13 +112,13 @@ const DetailPageSecond = css`
 `;
 
 const DetailPageRtnComment = css`
-  font-family: ${korFont};
+  font-family: 'kor font regular';
   font-size: 12px;
   margin-left: 10px;
 `;
 
 const DetailComment = css`
-  font-family: ${korFont};
+  font-family: 'kor font regular';
   margin-left: 20px;
   :hover {
     cursor: pointer;
@@ -156,14 +152,14 @@ const SearchFirst = css`
 `;
 
 const SearchClickDivFirst = css`
-  font-family: ${engFont1};
+  font-family: 'eng1 font regular';
   margin-right: 10px;
 `;
 
 // Footer
 
 const Footer = css`
-  font-family: ${engFont1};
+  font-family: 'eng1 font regular';
   font-size: 14px;
   color: grey;
   margin: 0;
@@ -190,14 +186,14 @@ export const Sspan = styled.span`
         return SliderTopTitle;
       case 'SliderFilterLetter':
         return SliderFilterLetter;
-      case 'MyInfo IB title':
-        return MyInfoIBTitle;
-      case 'MyInfo IB info':
-        return MyInfoIBInfo;
-      case 'MyInfo TB title':
-        return MyInfoTBtitle;
-      case 'MyInfo TB inner':
-        return MyInfoTBinner;
+      case 'Main--Info--IB--Title':
+        return Main__Info__IB__Title;
+      case 'Main--Info--IB--Inner':
+        return Main__Info__IB__Inner;
+      case 'Main--Info--TB--Title':
+        return Main__Info__TB__Title;
+      case 'Main--Info--TB--Inner':
+        return Main__Info__TB__Inner;
       case 'AuthGuide':
         return AuthGuide;
       case 'AuthToggle':

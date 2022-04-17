@@ -1,13 +1,10 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-const engFont = "'Roboto', sans-serif";
-const korFont = "'Noto Sans KR', sans-serif";
-
 // Header
 
 const HeaderMain = css`
-  font-family: ${korFont};
+  font-family: 'eng1 font regular';
   margin: auto 0;
   color: #050505d3;
   font-size: 20px;
@@ -15,33 +12,12 @@ const HeaderMain = css`
 `;
 
 const HeaderAuth = css`
+  font-family: 'eng1 font regular';
   font-size: 15px;
   :hover {
     cursor: pointer;
     color: #aca7cb;
   }
-`;
-
-// MyInfo
-
-const MyInfoTBtitle = css`
-  font-family: ${engFont};
-  font-size: 20px;
-  color: #000000d3;
-  font-weight: bold;
-`;
-
-const MyInfoTBhello = css`
-  font-size: 14px;
-  color: #0000007b;
-  margin: 0;
-  margin-bottom: 8px;
-`;
-
-const MyInfoTBguide = css`
-  ${MyInfoTBhello}
-  margin: 0;
-  line-height: 36px;
 `;
 
 // Slider
@@ -90,7 +66,7 @@ const DetailCommentLong = css`
 `;
 
 export const SparaGraph = styled.p`
-  font-family: ${korFont};
+  font-family: 'kor font regular';
   ${(props) => {
     switch (props['data-mode']) {
       case 'HeaderMain':
@@ -105,12 +81,6 @@ export const SparaGraph = styled.p`
         return SearchRenderTitle;
       case 'SearchRenderInfo':
         return SearchRenderInfo;
-      case 'MyInfo TB title':
-        return MyInfoTBtitle;
-      case 'MyInfo TB hello':
-        return MyInfoTBhello;
-      case 'MyInfo TB guide':
-        return MyInfoTBguide;
       case 'SubmitForm':
         return SubmitForm;
       case 'DetailTitle':

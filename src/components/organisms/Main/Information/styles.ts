@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import bookImg from './bookImg.avif';
-import smallBookImg from './smallBookImg.avif';
+import bookImg from '@utils/images/bookImg.avif';
+import smallBookImg from '@utils/images/smallBookImg.avif';
 
 export const Background = styled.div`
   position: relative;

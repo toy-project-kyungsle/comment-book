@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 
-const engFont = "'Roboto', sans-serif";
-
 export const Background = styled.div`
   position: fixed;
   top: 0;
@@ -9,7 +7,7 @@ export const Background = styled.div`
   right: 0;
   bottom: 0;
   z-index: 10;
-  font-family: ${engFont};
+  font-family: 'eng1 font regular';
 
   background-color: rgba(0, 0, 0, 0.4);
 `;

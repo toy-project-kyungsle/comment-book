@@ -9,7 +9,7 @@ const Auth = css`
 
 // MyInfo
 
-const MyInfoTiTleBox = css`
+const Main__Info__TiTleBox = css`
   position: absolute;
   left: 50px;
   bottom: 53px;
@@ -22,7 +22,7 @@ const MyInfoTiTleBox = css`
   }
 `;
 
-const MyInfoTextBox = css`
+const Main__Info__TextBox = css`
   position: absolute;
   right: 50px;
   bottom: 40px;
@@ -107,10 +107,10 @@ export const Wrapper = styled.div`
     switch (props['data-mode']) {
       case 'Auth':
         return Auth;
-      case 'MyInfoTiTleBox':
-        return MyInfoTiTleBox;
-      case 'MyInfoTextBox':
-        return MyInfoTextBox;
+      case 'Main--Info--TitleBox':
+        return Main__Info__TiTleBox;
+      case 'Main--Info--TextBox':
+        return Main__Info__TextBox;
       case 'SliderSelected':
         return SliderSelected;
       case 'SliderFilterModal':

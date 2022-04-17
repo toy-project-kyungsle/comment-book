@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 
-const korFont = "'Noto Sans KR', sans-serif";
-
 export const Background = styled.div`
   background-color: #f2f2f2;
 `;
@@ -41,7 +39,7 @@ export const UpperBox = styled.div`
 `;
 
 export const SelectedBox = styled.div`
-  font-family: ${korFont};
+  font-family: 'kor font regular';
   position: absolute;
   left: 0;
   top: 130px;

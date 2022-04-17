@@ -2,8 +2,8 @@ import ImageBox from '@components/molecules/ImageBox';
 import React from 'react';
 import { InnerContainer, Wrapper } from './styles';
 import Span from '@components/atoms/Span';
-import googleImg from './google.webp';
-import githubImg from './github.avif';
+import googleImg from '@utils/images/google.webp';
+import githubImg from '@utils/images/github.avif';
 
 interface Props {
   onSocialClick: (event: any) => void;

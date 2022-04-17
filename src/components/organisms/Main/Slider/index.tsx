@@ -11,7 +11,7 @@ import ButtonBox from '@components/molecules/ButtonBox';
 import Image from '@components/atoms/Image';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import sliderGuideImg from './sliderGuideImg.avif';
+import sliderGuideImg from '@utils/images/sliderGuideImg.avif';
 
 interface Props {
   loading: boolean;
