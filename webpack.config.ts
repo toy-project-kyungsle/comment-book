@@ -63,14 +63,6 @@ const config = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         loader: 'file-loader',
-        // use: [
-        //   {
-        //     loader: 'url-loader',
-        //     options: {
-        //       limit: 100000,
-        //     },
-        //   },
-        // ],
       },
     ],
   },
@@ -84,13 +76,12 @@ const config = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
-    publicPath: isDevelopment ? '' : `/${projectName}/`,
+    publicPath: isDevelopment ? '/' : `/${projectName}/`,
   },
   devServer: {
     historyApiFallback: true,
     port: 3080,
-    devMiddleware: { publicPath: '' },
-    static: { directory: path.resolve(__dirname) },
+    // static: { directory: path.join(__dirname) },
   },
 };
 

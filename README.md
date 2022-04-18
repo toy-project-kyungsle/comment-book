@@ -18,7 +18,7 @@
     <img src="https://img.shields.io/badge/babel-v7.17.5-F9DC3E?logo=babel">
 </p>
 
-## 🏠 [HOME PAGE](https://keinn51.github.io/Book_Helper/)
+## 🏠 [HOME PAGE](https://keinn51.github.io/Book_Comment_Web/)
 
 원하는 책을 골라 comment를 달아보세요!
 
