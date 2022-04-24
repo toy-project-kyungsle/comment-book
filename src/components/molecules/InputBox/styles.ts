@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
   }}
 `;
 
-export const TagDiv = styled.div`
+export const Tag = styled.div`
   visibility: hidden;
   ${(props) => {
     switch (props['data-mode']) {

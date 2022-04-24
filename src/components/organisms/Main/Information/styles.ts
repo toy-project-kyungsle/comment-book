@@ -22,7 +22,7 @@ export const Background = styled.div`
   }
 `;
 
-export const PositionDiv = styled.div`
+export const Wrapper = styled.div`
   position: relative;
   width: 1100px;
   height: 760px;

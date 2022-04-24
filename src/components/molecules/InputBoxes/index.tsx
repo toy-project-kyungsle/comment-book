@@ -11,7 +11,7 @@ interface Props {
   onChange: (e: any) => void;
 }
 
-function TextAreas({ email, password, signUp, retype, onChageRetype, onChange }: Props) {
+function InputBoxed({ email, password, signUp, retype, onChageRetype, onChange }: Props) {
   return (
     <Wrapper>
       <InputBox
@@ -51,4 +51,4 @@ function TextAreas({ email, password, signUp, retype, onChageRetype, onChange }:
   );
 }
 
-export default TextAreas;
+export default InputBoxed;

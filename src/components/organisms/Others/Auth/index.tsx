@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import '@utils/funtions/fbaseApp';
-import { Background, Container, SignUpOrLogin } from './styles';
+import { Background, Wrapper } from './styles';
 import SocialLogin from '@components/molecules/SocialLogin';
 import { connect } from 'react-redux';
 import { setShowLoginModal } from '@redux/store';
 import { reduxState } from '@utils/objects/types';
 import SubmitForm from '@components/molecules/SubmitForm';
 import useLogin from '@hooks/notReUsable/useAuth';
-import Span from '@components/atoms/Span';
 import SpanBox from '@components/molecules/SpanBox';
 
 const Auth = ({ setShowLoginModal, showLoginModal }) => {
@@ -26,7 +25,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
   return (
     showLoginModal && (
       <Background onClick={() => setShowLoginModal(false)}>
-        <Container onClick={(e) => e.stopPropagation()}>
+        <Wrapper onClick={(e) => e.stopPropagation()}>
           <SubmitForm
             className="Auth"
             onSubmit={onSubmit}
@@ -46,7 +45,7 @@ const Auth = ({ setShowLoginModal, showLoginModal }) => {
             onClickArr={signUp ? SignUpOnClickArr : LoginOnClickArr}
           />
           <SocialLogin onSocialClick={onSocialClick} />
-        </Container>
+        </Wrapper>
       </Background>
     )
   );

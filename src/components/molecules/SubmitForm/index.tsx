@@ -1,6 +1,6 @@
 import React from 'react';
-import TextAreas from '@components/molecules/TextAreas';
-import { BtnContainer, Form } from './styles';
+import InputBoxes from '@components/molecules/InputBoxes';
+import { BtnWrapper, Form } from './styles';
 import Paragraph from '@components/atoms/Paragraph';
 import InputBox from '../InputBox';
 
@@ -9,7 +9,7 @@ function SubmitForm(props) {
   return (
     <Form onSubmit={onSubmit} data-mode={className}>
       <div className="inner" data-mode={className}>
-        <TextAreas
+        <InputBoxes
           email={email}
           password={password}
           signUp={signUp}
@@ -17,9 +17,9 @@ function SubmitForm(props) {
           onChageRetype={onChageRetype}
           onChange={onChange}
         />
-        <BtnContainer data-mode={className}>
+        <BtnWrapper data-mode={className}>
           <InputBox inputClassName="SubmitForm" type="submit" value={value} />
-        </BtnContainer>
+        </BtnWrapper>
       </div>
       <Paragraph className="SubmitForm">{error}</Paragraph>
     </Form>

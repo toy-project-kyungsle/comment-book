@@ -1,6 +1,6 @@
 import Input from '@components/atoms/Input';
 import React from 'react';
-import { TagDiv, Wrapper } from './styles';
+import { Tag, Wrapper } from './styles';
 
 interface Props {
   tagClassName?: string;
@@ -18,7 +18,7 @@ function InputBox(props: Props) {
   const { tagClassName, tagText, inputClassName, inputName, type, isRequired, value, onChange, placeholder } = props;
   return (
     <Wrapper data-mode={tagClassName}>
-      <TagDiv data-mode={tagClassName}>{tagText}</TagDiv>
+      <Tag data-mode={tagClassName}>{tagText}</Tag>
       <Input
         className={inputClassName}
         name={inputName}

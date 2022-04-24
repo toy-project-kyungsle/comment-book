@@ -12,7 +12,7 @@ export const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
   position: absolute;
   top: 20%;
   left: 34%;
@@ -23,8 +23,4 @@ export const Container = styled.div`
   width: 500px;
 
   border: 3px solid #979a9a;
-`;
-
-export const SignUpOrLogin = styled.div`
-  margin: 30px 0 0 97px;
 `;

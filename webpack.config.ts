@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
+const dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const projectName = 'Book_Comment_Web';
@@ -35,7 +35,6 @@ const config = {
               '@babel/preset-env',
               {
                 targets: { browsers: ['last 2 chrome versions'] },
-                debug: isDevelopment,
               },
             ],
             '@babel/preset-react',
@@ -68,7 +67,7 @@ const config = {
   },
   plugins: [
     new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? 'development' : 'production' }),
-    new Dotenv(),
+    new dotenv(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
@@ -81,7 +80,6 @@ const config = {
   devServer: {
     historyApiFallback: true,
     port: 3080,
-    // static: { directory: path.join(__dirname) },
   },
 };
 

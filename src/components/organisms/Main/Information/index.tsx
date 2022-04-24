@@ -1,4 +1,4 @@
-import { Background, BackgroundImg, MoreBackgroundImg, PositionDiv } from './styles';
+import { Background, BackgroundImg, MoreBackgroundImg, Wrapper } from './styles';
 import React from 'react';
 import Header from '@components/organisms/Main/Header';
 import useMyInfo from '@hooks/notReUsable/useMyInfo';
@@ -32,11 +32,11 @@ function MainInfo({ loading, setLoadNum }: Props) {
       <Background>
         <MoreBackgroundImg />
         <BackgroundImg />
-        <PositionDiv>
+        <Wrapper>
           <Header />
           <SpanBox className="Main--Info--TitleBox" classNameArr={TitleBoxClassArr} textArr={TitleBoxTextArr} />
           <SpanBox className="Main--Info--TextBox" classNameArr={InfoBoxClassArr} textArr={InfoBoxTextArr} />
-        </PositionDiv>
+        </Wrapper>
       </Background>
     )
   );
