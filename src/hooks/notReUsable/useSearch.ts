@@ -26,7 +26,7 @@ const useSearch = (props: Props): rtn => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`https://www.interbookserver.kro.kr:3085/search/${search}/${display}/${lstNum}`).then((res) => {
+    axios.get(`${process.env.SERVER_ADR}/search/${search}/${display}/${lstNum}`).then((res) => {
       setBooks(res.data.items);
       setLoading(false);
     });

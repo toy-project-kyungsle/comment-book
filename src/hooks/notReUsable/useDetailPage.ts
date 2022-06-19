@@ -46,7 +46,7 @@ const useDetailPage = (props: Props): rtn => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get(`https://www.interbookserver.kro.kr:3085/isbnsearch/${isbn}`).then((res) => {
+    axios.get(`${process.env.SERVER_ADR}/isbnsearch/${isbn}`).then((res) => {
       if (res.data.items[0]) {
         setBook(res.data.items[0]);
         setBookIsbn(res.data.items[0].isbn);
