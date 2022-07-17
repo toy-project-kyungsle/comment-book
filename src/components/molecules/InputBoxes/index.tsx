@@ -23,6 +23,7 @@ function InputBoxed({ email, password, signUp, retype, onChageRetype, onChange }
         isRequired={true}
         value={email}
         onChange={onChange}
+        placeholder="이메일을 적어주세요"
       />
       <InputBox
         tagClassName="AuthInputTag"
@@ -31,8 +32,8 @@ function InputBoxed({ email, password, signUp, retype, onChageRetype, onChange }
         inputName="password"
         type="password"
         isRequired={true}
-        value={password}
         onChange={onChange}
+        placeholder="비밀번호를 적어주세요"
       />
       {signUp && (
         <InputBox
@@ -40,9 +41,8 @@ function InputBoxed({ email, password, signUp, retype, onChageRetype, onChange }
           tagText="Retype"
           inputClassName="AuthInput"
           inputName="retype"
-          type="text"
+          type="password"
           isRequired={true}
-          value={retype}
           onChange={onChageRetype}
           placeholder="비밀번호를 다시 적어주세요"
         />
