@@ -66,7 +66,7 @@ const DetailComment = css`
 
   position: absolute;
   right: 0;
-  bottom: -10;
+  bottom: -26;
 
   color: rgb(105, 105, 105);
   @media (max-width: 825px) {
