@@ -4,14 +4,12 @@ import InputBox from '@components/molecules/InputBox';
 
 interface Props {
   email: string;
-  password: string;
   signUp: boolean;
-  retype: string;
   onChageRetype: (e: any) => void;
   onChange: (e: any) => void;
 }
 
-function InputBoxed({ email, password, signUp, retype, onChageRetype, onChange }: Props) {
+function AuthInputBox({ email, signUp, onChageRetype, onChange }: Props) {
   return (
     <Wrapper>
       <InputBox
@@ -51,4 +49,4 @@ function InputBoxed({ email, password, signUp, retype, onChageRetype, onChange }
   );
 }
 
-export default InputBoxed;
+export default AuthInputBox;

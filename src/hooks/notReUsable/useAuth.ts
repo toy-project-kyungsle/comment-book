@@ -36,12 +36,14 @@ const useLogin = (initialData: string, signUp: boolean): rtn => {
       if (signUp) {
         if (password === retype) {
           await createUserWithEmailAndPassword(authService, email, password);
+          alert('회원가입 되었습니다');
           setError('');
         } else {
           setError('비밀번호 확인이 다릅니다!');
           return;
         }
       } else {
+        alert('로그인 되었습니다');
         await signInWithEmailAndPassword(authService, email, password);
       }
       store.dispatch(setShowLoginModal(false));
@@ -60,6 +62,7 @@ const useLogin = (initialData: string, signUp: boolean): rtn => {
       provider = new GithubAuthProvider();
     }
     await signInWithPopup(authService, provider);
+    alert('로그인 되었습니다');
     store.dispatch(setShowLoginModal(false));
     store.dispatch(setIsLoggedIn(true));
   };
