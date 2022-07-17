@@ -43,8 +43,8 @@ const useLogin = (initialData: string, signUp: boolean): rtn => {
           return;
         }
       } else {
-        alert('로그인 되었습니다');
         await signInWithEmailAndPassword(authService, email, password);
+        alert('로그인 되었습니다');
       }
       store.dispatch(setShowLoginModal(false));
       store.dispatch(setIsLoggedIn(true));
