@@ -15,13 +15,13 @@ function AuthSocialLogin({ onSocialClick }: Props) {
       <div className="guide">소셜 로그인도 가능합니다</div>
       <InnerContainer>
         <ImageBox className="SocialLogin" onSocialClick={onSocialClick} src={googleImg}>
-          <Span className="default" onClick={onSocialClick}>
+          <Span className="hover-pointer" onClick={onSocialClick}>
             {'Google'}
           </Span>
         </ImageBox>
 
         <ImageBox className="SocialLogin" onSocialClick={onSocialClick} src={githubImg}>
-          <Span className="default" onClick={onSocialClick}>
+          <Span className="hover-pointer" onClick={onSocialClick}>
             {'Github'}
           </Span>
         </ImageBox>

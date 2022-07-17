@@ -7,6 +7,12 @@ const Loading = css`
   font-size: 40px;
 `;
 
+const HoverPointer = css`
+  :hover {
+    cursor: pointer;
+  }
+`;
+
 // Auth
 
 const AuthGuide = css`
@@ -63,7 +69,7 @@ const Main__Info__TB__Inner = css`
 
 // Main Search
 
-const MainPage_Search = css`
+const Main__Search = css`
   font-family: 'eng1 font regular';
   font-size: 22px;
   font-weight: bold;
@@ -178,8 +184,10 @@ export const Sspan = styled.span`
     switch (props['data-mode']) {
       case 'Loading':
         return Loading;
+      case 'hover-pointer':
+        return HoverPointer;
       case 'MainPage--Search':
-        return MainPage_Search;
+        return Main__Search;
       case 'SliderTopToggle':
         return SliderTopToggle;
       case 'SliderTopTitle':
