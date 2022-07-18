@@ -5,6 +5,9 @@ import styled from '@emotion/styled';
 
 const Auth = css`
   margin: 30px 0 0 97px;
+  @media (max-width: 768px) {
+    margin: 30px 0 0 67px;
+  }
 `;
 
 // MyInfo

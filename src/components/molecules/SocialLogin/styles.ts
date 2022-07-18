@@ -10,6 +10,10 @@ export const Wrapper = styled.div`
     font-family: 'kor font regular';
     font-size: 14px;
   }
+
+  @media (max-width: 768px) {
+    margin: 30px 0 0 37px;
+  }
 `;
 
 export const InnerContainer = styled.div`

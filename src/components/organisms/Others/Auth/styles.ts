@@ -23,4 +23,9 @@ export const Wrapper = styled.div`
   width: 500px;
 
   border: 3px solid #979a9a;
+
+  @media (max-width: 768px) {
+    left: 0;
+    width: 100%;
+  }
 `;

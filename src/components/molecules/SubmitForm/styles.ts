@@ -4,6 +4,9 @@ import styled from '@emotion/styled';
 const Auth_inner = css`
   padding: 0 80px;
   margin-top: 60px;
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
 `;
 
 const Auth_BtnContainer = css`
