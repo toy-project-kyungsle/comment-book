@@ -19,6 +19,7 @@ const DetailPageRating = css`
 const DetailPageOneline = css`
   ${DetailPage}
   width: 420px;
+  max-width: 100%;
   height: 55px;
   padding: 10px;
 `;
