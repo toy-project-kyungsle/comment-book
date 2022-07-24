@@ -1,7 +1,7 @@
 ## Book Comment
 
 <p align='center'>
-<img width='50%' src='https://user-images.githubusercontent.com/79993356/161199524-f9a01328-1ae4-44c5-bb3d-b1a3daf6cb8d.png'>
+  <img width='50%' src='https://user-images.githubusercontent.com/79993356/161199524-f9a01328-1ae4-44c5-bb3d-b1a3daf6cb8d.png'>
 </p>
 
 <p align='center'>
@@ -22,6 +22,10 @@
 
 원하는 책을 골라 comment를 달아보세요!
 
+## ⭐️ [WIKI](https://github.com/keinn51/Book_Comment_Web/wiki)
+
+Wiki 에 제가 공부한 것들이 정리되어 있습니다. 반드시 봐주세요 😀
+
 ## 📌 서비스 소개
 
 ### 🔎 도서 검색 기능
@@ -41,7 +45,15 @@
 > - 코멘트를 달았던 책들을 슬라이더로 한 데 모아서 확인할 수 있습니다.
 > - 카테고리, 평점, 연도 별로 필터링해주는 기능이 있습니다.
 
+
+## 🖥 페이지 스크린샷 및 해설
+
+![0020](https://user-images.githubusercontent.com/79993356/180659821-5f000312-b49b-4ce0-b030-f429ed842076.jpg)
+![0021](https://user-images.githubusercontent.com/79993356/180659835-6ede4f4f-a31b-4987-ad64-f239436cbb13.jpg)
+![0022](https://user-images.githubusercontent.com/79993356/180659837-9411f8dd-2e4d-4eb6-bb12-73f515f3f7b5.jpg)
+
 ## 🎥 시연 영상
 
 [<img src="https://user-images.githubusercontent.com/79993356/180659371-13ee498e-ebf7-4d5b-b5f7-6e188244de4c.png" width="400"></img>](https://youtu.be/-O9Ls8MTi7A)
 [<img src="https://user-images.githubusercontent.com/79993356/180659449-094a773a-a5bd-4d1c-a44b-6e22bb83c367.png" width="400"></img>](https://youtu.be/-O9Ls8MTi7A)
+
