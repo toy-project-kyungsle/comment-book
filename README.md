@@ -40,3 +40,8 @@
 
 > - 코멘트를 달았던 책들을 슬라이더로 한 데 모아서 확인할 수 있습니다.
 > - 카테고리, 평점, 연도 별로 필터링해주는 기능이 있습니다.
+
+## 🎥 시연 영상
+
+[<img src="https://user-images.githubusercontent.com/79993356/180659371-13ee498e-ebf7-4d5b-b5f7-6e188244de4c.png" width="400"></img>](https://youtu.be/-O9Ls8MTi7A)
+[<img src="https://user-images.githubusercontent.com/79993356/180659449-094a773a-a5bd-4d1c-a44b-6e22bb83c367.png" width="400"></img>](https://youtu.be/-O9Ls8MTi7A)
