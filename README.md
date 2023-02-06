@@ -20,7 +20,9 @@
 
 ## 🏠 [HOME PAGE](https://keinn51.github.io/Book_Comment_Web/)
 
-원하는 책을 골라 comment를 달아보세요!
+### 🚨 서버를 구하지 못하여 배포 페이지는 운영하고 있지 않습니다, 하단의 시연 영상을 참고해주시기 바랍니다..!
+
+원하는 책을 골라 comment를 달아보세요.
 
 ## ⭐️ [WIKI](https://github.com/keinn51/Book_Comment_Web/wiki)
 
