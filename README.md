@@ -1,32 +1,8 @@
 ## Book Comment
 
-<p align='center'>
-  <img width='50%' src='https://user-images.githubusercontent.com/79993356/161199524-f9a01328-1ae4-44c5-bb3d-b1a3daf6cb8d.png'>
-</p>
-
-<p align='center'>
-    <img src="https://img.shields.io/badge/React-v17.0.1-blue?logo=React"/>
-    <img src="https://img.shields.io/badge/node.js-v14.15.1-green?logo=Node.js"/>
-    <img src="https://img.shields.io/badge/Redux-v7.2.6-764ABC?style=flat&logo=Redux"/>
-    <img src="https://img.shields.io/badge/WEBPACK-v5.70.0-007396?style=flat&logo=Webpack"/>
-    <img src="https://img.shields.io/badge/FIREBASE-v9.6.8-F7DF1E?style=flat-square&logo=Firebase&logoColor=white"/>
-    <img src="https://img.shields.io/badge/Typescript-v4.0.5-blue?logo=typescript"/>
-    <img src="https://img.shields.io/badge/Express-v4.17.3-000000?style=flat&logo=Express&logoColor=white"/>
-    <img src="https://img.shields.io/badge/prettier-v2.2.0-yellow?logo=prettier" />
-    <img src="https://img.shields.io/badge/eslint-v7.11.0-yellow?logo=eslint">
-    <img src="https://img.shields.io/badge/GitHub Pages-v3.2.3-222222?style=flat&logo=GitHub Pages&logoColor=white"/>
-    <img src="https://img.shields.io/badge/babel-v7.17.5-F9DC3E?logo=babel">
-</p>
-
-## 🏠 [HOME PAGE](https://keinn51.github.io/Book_Comment_Web/)
-
 ### 🚨 서버를 구하지 못하여 배포 페이지는 운영하고 있지 않습니다, 하단의 시연 영상을 참고해주시기 바랍니다..!
 
 원하는 책을 골라 comment를 달아보세요.
-
-## ⭐️ [WIKI](https://github.com/keinn51/Book_Comment_Web/wiki)
-
-Wiki 에 제가 공부한 것들이 정리되어 있습니다. 반드시 봐주세요 😀
 
 ## 📌 서비스 소개
 
@@ -47,15 +23,7 @@ Wiki 에 제가 공부한 것들이 정리되어 있습니다. 반드시 봐주�
 > - 코멘트를 달았던 책들을 슬라이더로 한 데 모아서 확인할 수 있습니다.
 > - 카테고리, 평점, 연도 별로 필터링해주는 기능이 있습니다.
 
-
-## 🖥 페이지 스크린샷 및 해설
-
-![0020](https://user-images.githubusercontent.com/79993356/180659821-5f000312-b49b-4ce0-b030-f429ed842076.jpg)
-![0021](https://user-images.githubusercontent.com/79993356/180659835-6ede4f4f-a31b-4987-ad64-f239436cbb13.jpg)
-![0022](https://user-images.githubusercontent.com/79993356/180659837-9411f8dd-2e4d-4eb6-bb12-73f515f3f7b5.jpg)
-
 ## 🎥 시연 영상
 
-[<img src="https://user-images.githubusercontent.com/79993356/180659371-13ee498e-ebf7-4d5b-b5f7-6e188244de4c.png" width="400"></img>](https://youtu.be/-O9Ls8MTi7A)
-[<img src="https://user-images.githubusercontent.com/79993356/180659449-094a773a-a5bd-4d1c-a44b-6e22bb83c367.png" width="400"></img>](https://youtu.be/-O9Ls8MTi7A)
+https://youtu.be/gdPaIgCl6W0
 
